@@ -1,0 +1,15 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    function signedIn() { return request.auth != null; }
+    function ownsExisting() { return signedIn() && resource.data.ownerId == request.auth.uid; }
+    function ownsIncoming() { return signedIn() && request.resource.data.ownerId == request.auth.uid; }
+
+    match /{collectionName}/{documentId} {
+      allow read: if collectionName in ['leads','messages','templates','activities','followups'] && ownsExisting();
+      allow create: if collectionName in ['leads','messages','templates','activities','followups'] && ownsIncoming();
+      allow update: if collectionName in ['leads','messages','templates','followups'] && ownsExisting() && ownsIncoming();
+      allow delete: if collectionName in ['leads','templates','followups'] && ownsExisting();
+    }
+  }
+}

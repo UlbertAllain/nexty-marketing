@@ -1,0 +1,13 @@
+import test from "node:test";
+import assert from "node:assert/strict";
+import { assertTransition, generateMessage, generateTemplateDraft, googleMapsUrl, instagramUrl, isValidWhatsApp, metrics, normalizePhone, validateLead, whatsappDraftUrl } from "../lib/business";
+import type { Lead, Template } from "../lib/types";
+
+const lead={id:"1",ownerId:"u",companyName:"Kopi Senja",normalizedCompanyName:"kopi senja",category:"Kafe",contactName:"Budi",phone:"081234567890",normalizedPhone:"6281234567890",email:"",instagram:"",website:"",googleMaps:"",potential:"HIGH",status:"NEW",contactHealth:"READY",notes:"",followUpAt:null,lastContactAt:null,lastReplyAt:null,attentionReason:null,createdAt:"",updatedAt:""} satisfies Lead;
+test("nomor Indonesia dinormalisasi untuk WhatsApp",()=>{assert.equal(normalizePhone("0812-3456-7890"),"6281234567890");assert.equal(isValidWhatsApp("081234567890"),true);assert.equal(isValidWhatsApp("123"),false)});
+test("data calon klien dan perpindahan perkembangan divalidasi",()=>{assert.deepEqual(validateLead({companyName:""}),["Nama perusahaan belum diisi."]);assert.doesNotThrow(()=>assertTransition("NEW","READY_TO_CONTACT"));assert.throws(()=>assertTransition("NEW","DEAL"))});
+test("pesan siap pakai mengisi data otomatis",()=>{const template={content:"Halo {{contact_name}} dari {{company_name}} kategori {{category}}"} as Template;assert.equal(generateMessage(template,lead),"Halo Budi dari Kopi Senja kategori Kafe")});
+test("tautan WhatsApp berisi nomor dan pesan",()=>{assert.equal(whatsappDraftUrl(lead.phone,"Halo Budi"),"https://wa.me/6281234567890?text=Halo%20Budi")});
+test("hasil marketing aman saat data kosong",()=>{assert.deepEqual(metrics([]),{total:0,contacted:0,replied:0,deal:0,responseRate:0,conversionRate:0});assert.equal(metrics([{...lead,status:"DEAL"}]).conversionRate,100)});
+test("tautan Instagram dan Google Maps dibuat dari data Excel",()=>{assert.equal(instagramUrl("sunnylaundry.id"),"https://www.instagram.com/sunnylaundry.id/");assert.equal(googleMapsUrl("Jl. Kalingga Tengah, Surakarta"),"https://www.google.com/maps/search/?api=1&query=Jl.%20Kalingga%20Tengah%2C%20Surakarta");assert.equal(googleMapsUrl("https://maps.google.com/example"),"https://maps.google.com/example")});
+test("draf pesan otomatis tetap memakai data dinamis",()=>{const draft=generateTemplateDraft({goal:"OFFER",service:"BRANDING",tone:"FRIENDLY"});assert.equal(draft.title,"Penawaran · Design & Branding");assert.match(draft.content,/\{\{contact_name\}\}/);assert.match(draft.content,/\{\{company_name\}\}/);assert.match(draft.content,/design dan branding/)});

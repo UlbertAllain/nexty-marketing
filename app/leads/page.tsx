@@ -1,2 +1,4 @@
 import { CrmApp } from "@/components/crm-app";
-export default function Page(){return <CrmApp view="leads"/>}
+export default function Page() {
+  return <CrmApp view="leads" />;
+}

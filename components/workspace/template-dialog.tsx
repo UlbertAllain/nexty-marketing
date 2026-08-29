@@ -1,12 +1,109 @@
-"use client";
+﻿"use client";
+
 import { useState } from "react";
-import { Sparkles } from "lucide-react";
 import { Dialog } from "./dialog";
 import { saveTemplate } from "@/lib/repository";
-import { auth } from "@/lib/firebase";
-import type { AiTemplateResult, TemplateGoal, TemplateService, TemplateTone } from "@/lib/ai-template";
-export function TemplateDialog({ownerId,onClose,onSaved}:{ownerId:string;onClose:()=>void;onSaved:()=>void}){
-  const[data,setData]=useState({title:"",category:"Semua bisnis",content:"",isDefault:false}),[generator,setGenerator]=useState<{goal:TemplateGoal;service:TemplateService;tone:TemplateTone;brief:string}>({goal:"INTRODUCTION",service:"ALL",tone:"FRIENDLY",brief:""}),[error,setError]=useState(""),[generating,setGenerating]=useState(false);
-  async function makeWithAi(){try{setGenerating(true);setError("");const token=await auth?.currentUser?.getIdToken();if(!token)throw new Error("Sesi login tidak ditemukan. Silakan login ulang.");const response=await fetch("/api/ai/generate-template",{method:"POST",headers:{"Content-Type":"application/json",Authorization:`Bearer ${token}`},body:JSON.stringify({...generator,category:data.category})});const result=await response.json() as AiTemplateResult&{error?:string};if(!response.ok)throw new Error(result.error||"AI belum bisa membuat pesan.");setData(current=>({...current,title:result.title,content:result.content}))}catch(e){setError(e instanceof Error?e.message:"AI belum bisa membuat pesan.")}finally{setGenerating(false)}}
-  return <Dialog title="Buat pesan siap pakai" onClose={onClose}><form className="form-grid" onSubmit={async event=>{event.preventDefault();try{await saveTemplate(ownerId,data);onSaved()}catch(e){setError(e instanceof Error?e.message:"Pesan belum bisa disimpan.")}}}><label>Nama pesan<input required value={data.title} onChange={e=>setData({...data,title:e.target.value})} placeholder="Akan dibuat oleh AI atau isi sendiri"/></label><label>Cocok untuk usaha<input value={data.category} onChange={e=>setData({...data,category:e.target.value})} placeholder="Kafe, klinik, atau semua bisnis"/></label><section className="generator-box wide"><div><Sparkles size={18}/><span><b>Buat dengan AI</b><small>Gemini akan menulis pesan baru. Hasilnya tetap bisa diperiksa dan diubah.</small></span></div><div className="generator-options"><label>Tujuan pesan<select value={generator.goal} onChange={e=>setGenerator({...generator,goal:e.target.value as TemplateGoal})}><option value="INTRODUCTION">Perkenalan pertama</option><option value="FOLLOW_UP">Menanyakan kembali</option><option value="CONSULTATION">Mengajak konsultasi</option><option value="OFFER">Memberikan penawaran</option></select></label><label>Layanan yang ditawarkan<select value={generator.service} onChange={e=>setGenerator({...generator,service:e.target.value as TemplateService})}><option value="ALL">Semua layanan Nexty</option><option value="WEBSITE_APP">Website & aplikasi</option><option value="BRANDING">Design & branding</option><option value="IOT">Internet of Things</option></select></label><label>Gaya bahasa<select value={generator.tone} onChange={e=>setGenerator({...generator,tone:e.target.value as TemplateTone})}><option value="FRIENDLY">Ramah dan profesional</option><option value="SHORT">Singkat dan langsung</option><option value="FORMAL">Lebih formal</option></select></label><label className="generator-brief">Arahan tambahan untuk AI<textarea rows={3} maxLength={300} value={generator.brief} onChange={e=>setGenerator({...generator,brief:e.target.value})} placeholder="Contoh: fokus menawarkan pembuatan website katalog, jangan terlalu menjual"/><small>{generator.brief.length}/300 karakter</small></label></div><button type="button" className="secondary" disabled={generating} onClick={makeWithAi}><Sparkles size={16}/>{generating?"AI sedang menulis…":"Buat dengan AI"}</button></section><label className="wide">Isi pesan<textarea rows={9} required value={data.content} onChange={e=>setData({...data,content:e.target.value})} placeholder="Klik Buat dengan AI atau tulis pesan sendiri."/><small>Penanda {'{{contact_name}}'}, {'{{company_name}}'}, dan {'{{category}}'} akan diisi saat pesan digunakan.</small></label><label className="check wide"><input type="checkbox" checked={data.isDefault} onChange={e=>setData({...data,isDefault:e.target.checked})}/>Gunakan sebagai pilihan utama</label>{error&&<div className="error-box wide">{error}</div>}<div className="modal-actions wide"><button type="button" className="secondary" onClick={onClose}>Batal</button><button className="primary" disabled={generating}>Simpan pesan</button></div></form></Dialog>
+
+const DEFAULT_TEMPLATE = {
+  title: "",
+  category: "Semua bisnis",
+  content: "",
+  isDefault: false,
+};
+
+export function TemplateDialog({
+  ownerId,
+  onClose,
+  onSaved,
+}: {
+  ownerId: string;
+  onClose: () => void;
+  onSaved: () => void;
+}) {
+  const [data, setData] = useState(DEFAULT_TEMPLATE);
+  const [error, setError] = useState("");
+  const [busy, setBusy] = useState(false);
+
+  async function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
+    event.preventDefault();
+
+    try {
+      setBusy(true);
+      setError("");
+      await saveTemplate(ownerId, data);
+      onSaved();
+    } catch (cause) {
+      setError(
+        cause instanceof Error ? cause.message : "Pesan belum bisa disimpan.",
+      );
+    } finally {
+      setBusy(false);
+    }
+  }
+
+  return (
+    <Dialog title="Buat pesan siap pakai" onClose={onClose}>
+      <form className="form-grid" onSubmit={handleSubmit}>
+        <label>
+          Nama pesan
+          <input
+            required
+            value={data.title}
+            onChange={(event) => setData({ ...data, title: event.target.value })}
+            placeholder="Contoh: Perkenalan pertama"
+          />
+        </label>
+
+        <label>
+          Cocok untuk usaha
+          <input
+            value={data.category}
+            onChange={(event) =>
+              setData({ ...data, category: event.target.value })
+            }
+            placeholder="Kafe, klinik, atau semua bisnis"
+          />
+        </label>
+
+        <label className="wide">
+          Isi pesan
+          <textarea
+            rows={10}
+            required
+            value={data.content}
+            onChange={(event) =>
+              setData({ ...data, content: event.target.value })
+            }
+            placeholder="Halo {{contact_name}}, saya ..."
+          />
+          <small>
+            Gunakan {"{{contact_name}}"}, {"{{company_name}}"}, dan {"{{category}}"}
+            untuk data yang akan diisi otomatis saat pesan dipakai.
+          </small>
+        </label>
+
+        <label className="check wide">
+          <input
+            type="checkbox"
+            checked={data.isDefault}
+            onChange={(event) =>
+              setData({ ...data, isDefault: event.target.checked })
+            }
+          />
+          Gunakan sebagai pilihan utama
+        </label>
+
+        {error && <div className="error-box wide">{error}</div>}
+
+        <div className="modal-actions wide">
+          <button type="button" className="secondary" onClick={onClose}>
+            Batal
+          </button>
+          <button className="primary" disabled={busy}>
+            {busy ? "Menyimpanâ€¦" : "Simpan pesan"}
+          </button>
+        </div>
+      </form>
+    </Dialog>
+  );
 }

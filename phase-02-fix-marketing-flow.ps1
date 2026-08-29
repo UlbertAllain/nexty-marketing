@@ -1,4 +1,55 @@
-﻿import {
+param(
+    [string]$ProjectRoot = (Get-Location).Path
+)
+
+Set-StrictMode -Version Latest
+$ErrorActionPreference = "Stop"
+
+function Write-Step([string]$Message) {
+    Write-Host "[Phase 02] $Message" -ForegroundColor Cyan
+}
+
+function Get-ProjectPath([string]$RelativePath) {
+    return Join-Path $ProjectRoot $RelativePath
+}
+
+$ProjectRoot = (Resolve-Path -LiteralPath $ProjectRoot).Path
+$repositoryPath = Get-ProjectPath "lib/repository.ts"
+$typesPath = Get-ProjectPath "lib/types.ts"
+$indexesPath = Get-ProjectPath "firestore.indexes.json"
+$packagePath = Get-ProjectPath "package.json"
+
+if (
+    -not (Test-Path -LiteralPath $repositoryPath) -or
+    -not (Test-Path -LiteralPath $typesPath) -or
+    -not (Test-Path -LiteralPath $indexesPath) -or
+    -not (Test-Path -LiteralPath $packagePath)
+) {
+    throw "Jalankan patch dari root project nexty-marketing."
+}
+
+$package = Get-Content -Raw -LiteralPath $packagePath | ConvertFrom-Json
+if ($package.name -ne "nexty-labs-marketing-crm") {
+    throw "package.json tidak dikenali. Patch dibatalkan."
+}
+
+$currentRepository = Get-Content -Raw -LiteralPath $repositoryPath
+if ($currentRepository -notmatch 'recordWhatsAppOpened' -or $currentRepository -notmatch 'confirmWhatsAppSent') {
+    throw "lib/repository.ts tidak sesuai versi yang diaudit. Patch dibatalkan agar aman."
+}
+
+$timestamp = Get-Date -Format "yyyyMMdd-HHmmss"
+$backupRoot = Get-ProjectPath ".patch-backups/phase-02-$timestamp"
+New-Item -ItemType Directory -Force -Path (Join-Path $backupRoot "lib") | Out-Null
+Copy-Item -LiteralPath $repositoryPath -Destination (Join-Path $backupRoot "lib/repository.ts") -Force
+Copy-Item -LiteralPath $typesPath -Destination (Join-Path $backupRoot "lib/types.ts") -Force
+Copy-Item -LiteralPath $indexesPath -Destination (Join-Path $backupRoot "firestore.indexes.json") -Force
+
+Write-Step "Backup repository, types, dan Firestore indexes dibuat"
+Write-Step "Memperbaiki lifecycle draft WhatsApp dan follow-up"
+
+$repository = @'
+import {
   addDoc,
   collection,
   doc,
@@ -482,3 +533,76 @@ export async function importLeads(ownerId: string, rows: Partial<Lead>[]) {
 
   return { imported, duplicates, invalid };
 }
+'@
+
+
+Set-Content -LiteralPath $repositoryPath -Value $repository -Encoding utf8
+
+Write-Step "Menambahkan status CANCELLED untuk draft lama"
+$typesContent = Get-Content -Raw -LiteralPath $typesPath
+$typesContent = $typesContent.Replace(
+    'status:"DRAFT"|"SENT"',
+    'status:"DRAFT"|"SENT"|"CANCELLED"'
+)
+Set-Content -LiteralPath $typesPath -Value $typesContent -Encoding utf8
+
+Write-Step "Memastikan index query draft WhatsApp tersedia"
+$indexes = Get-Content -Raw -LiteralPath $indexesPath | ConvertFrom-Json
+$hasMessageDraftIndex = $false
+foreach ($index in $indexes.indexes) {
+    if ($index.collectionGroup -ne "messages") { continue }
+    $fieldPaths = @($index.fields | ForEach-Object { $_.fieldPath })
+    if (
+        $fieldPaths.Count -eq 3 -and
+        $fieldPaths[0] -eq "ownerId" -and
+        $fieldPaths[1] -eq "leadId" -and
+        $fieldPaths[2] -eq "status"
+    ) {
+        $hasMessageDraftIndex = $true
+        break
+    }
+}
+
+if (-not $hasMessageDraftIndex) {
+    $newIndex = [pscustomobject]@{
+        collectionGroup = "messages"
+        queryScope = "COLLECTION"
+        fields = @(
+            [pscustomobject]@{ fieldPath = "ownerId"; order = "ASCENDING" },
+            [pscustomobject]@{ fieldPath = "leadId"; order = "ASCENDING" },
+            [pscustomobject]@{ fieldPath = "status"; order = "ASCENDING" }
+        )
+    }
+    $indexes.indexes += $newIndex
+    $indexes | ConvertTo-Json -Depth 10 | Set-Content -LiteralPath $indexesPath -Encoding utf8
+}
+
+Write-Step "Menjalankan post-check"
+$updated = Get-Content -Raw -LiteralPath $repositoryPath
+$requiredPatterns = @(
+    'existingDrafts.docs.slice(1)',
+    'isAutomaticFollowUp',
+    'earliestDate',
+    'remainingDates',
+    'status: "CANCELLED"'
+)
+
+foreach ($pattern in $requiredPatterns) {
+    if (-not $updated.Contains($pattern)) {
+        throw "Post-check gagal: perubahan '$pattern' tidak ditemukan. Backup: $backupRoot"
+    }
+}
+
+if ($updated -match 'active\.docs\.forEach\(item=>batch\.update\(item\.ref,\{status:"CANCELLED"') {
+    throw "Post-check gagal: pola lama yang membatalkan semua reminder masih ditemukan. Backup: $backupRoot"
+}
+
+$typesUpdated = Get-Content -Raw -LiteralPath $typesPath
+if (-not $typesUpdated.Contains('status:"DRAFT"|"SENT"|"CANCELLED"')) {
+    throw "Post-check gagal: status CANCELLED belum masuk ke Message type. Backup: $backupRoot"
+}
+
+Write-Host ""
+Write-Host "Phase 02 selesai: flow WhatsApp dan reminder sudah dirapikan." -ForegroundColor Green
+Write-Host "Backup : $backupRoot" -ForegroundColor DarkGray
+Write-Host "Next   : npm run lint; npm test; npm run build" -ForegroundColor DarkGray

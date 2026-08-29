@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import {
   BarChart3,
   CalendarClock,
@@ -32,9 +33,20 @@ export function Sidebar({
   return (
     <aside className={open ? "sidebar open" : "sidebar"}>
       <div className="sidebar-brand">
-        <span>N</span>
-        <div>
-          <b>NEXTY LABS</b>
+        <div className="sidebar-brand-media">
+          <span className="brand-logo-frame">
+            <Image
+              src="/brand/nexty-leads-logo.png"
+              alt="Nexty Leads logo"
+              width={42}
+              height={42}
+              className="brand-logo"
+              priority
+            />
+          </span>
+        </div>
+        <div className="sidebar-brand-copy">
+          <b>NEXTY LEADS</b>
           <small>Marketing Desk</small>
         </div>
         <button aria-label="Tutup menu" onClick={onClose}>

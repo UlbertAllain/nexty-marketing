@@ -1,5 +1,6 @@
-﻿"use client";
+"use client";
 
+import Image from "next/image";
 import { type FormEvent, useState } from "react";
 import { sendPasswordResetEmail, signInWithEmailAndPassword } from "firebase/auth";
 import { auth } from "@/lib/firebase";
@@ -60,21 +61,30 @@ export function LoginScreen() {
     <main className="login-page">
       <section className="login-story">
         <div className="login-story-top">
-          <div className="brand-mark">N</div>
-          <span>MARKETING DESK  /  INTERNAL</span>
+          <span className="brand-logo-frame">
+            <Image
+              src="/brand/nexty-leads-logo.png"
+              alt="Nexty Leads logo"
+              width={50}
+              height={50}
+              className="brand-logo"
+              priority
+            />
+          </span>
+          <span>MARKETING DESK / INTERNAL</span>
         </div>
         <div className="login-copy">
-          <p className="eyebrow">NEXTY LABS</p>
+          <p className="eyebrow">NEXTY LEADS</p>
           <h1>Follow-up rapi. Kerja tetap ringan.</h1>
           <p>
-            Satu tempat untuk calon klien, pesan WhatsApp, dan pengingat-tanpa
+            Satu tempat untuk calon klien, pesan WhatsApp, dan pengingat - tanpa
             mengubah pekerjaan sederhana menjadi CRM yang ribet.
           </p>
         </div>
         <div className="login-principles">
-          <span>01  /  Lihat prioritas</span>
-          <span>02  /  Hubungi</span>
-          <span>03  /  Catat hasil</span>
+          <span>01 / Lihat prioritas</span>
+          <span>02 / Hubungi</span>
+          <span>03 / Catat hasil</span>
         </div>
       </section>
 

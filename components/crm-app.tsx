@@ -1,9 +1,10 @@
-﻿"use client";
+"use client";
 /* eslint-disable react-hooks/set-state-in-effect, react-hooks/exhaustive-deps */
-import { useEffect, useState } from "react";
-import { Menu } from "lucide-react";
+
+import { useEffect, useRef, useState } from "react";
+import { LoaderCircle, Menu } from "lucide-react";
 import { useAuth } from "./auth-provider";
-import { listOwned } from "@/lib/repository";
+import { listOwned, listOwnedByField } from "@/lib/repository";
 import type { Activity, FollowUp, Lead, Message, Template } from "@/lib/types";
 import { Sidebar, viewTitle } from "./workspace/sidebar";
 import { DashboardView } from "./workspace/dashboard-view";
@@ -17,55 +18,127 @@ import { ImportDialog } from "./workspace/import-dialog";
 
 export function CrmApp({ view }: { view: string }) {
   const { user, loading, configured } = useAuth();
-  const [menu, setMenu] = useState(false),
-    [dialog, setDialog] = useState<string | null>(null),
-    [busy, setBusy] = useState(true),
-    [error, setError] = useState(""),
-    [toast, setToast] = useState("");
-  const [leads, setLeads] = useState<Lead[]>([]),
-    [templates, setTemplates] = useState<Template[]>([]),
-    [messages, setMessages] = useState<Message[]>([]),
-    [followups, setFollowups] = useState<FollowUp[]>([]),
-    [activities, setActivities] = useState<Activity[]>([]);
+  const [menu, setMenu] = useState(false);
+  const [dialog, setDialog] = useState<string | null>(null);
+  const [busy, setBusy] = useState(false);
+  const [ready, setReady] = useState(false);
+  const [error, setError] = useState("");
+  const [toast, setToast] = useState("");
+  const toastTimer = useRef<number | null>(null);
+
+  const [leads, setLeads] = useState<Lead[]>([]);
+  const [templates, setTemplates] = useState<Template[]>([]);
+  const [messages, setMessages] = useState<Message[]>([]);
+  const [followups, setFollowups] = useState<FollowUp[]>([]);
+  const [activities, setActivities] = useState<Activity[]>([]);
+
   async function refresh() {
     if (!user) return;
+
     try {
       setBusy(true);
       setError("");
-      const data = await Promise.all([
-        listOwned<Lead>("leads", user.uid),
-        listOwned<Template>("templates", user.uid),
-        listOwned<Message>("messages", user.uid),
-        listOwned<FollowUp>("followups", user.uid),
-        listOwned<Activity>("activities", user.uid),
-      ]);
-      setLeads(data[0]);
-      setTemplates(data[1]);
-      setMessages(data[2]);
-      setFollowups(data[3]);
-      setActivities(data[4]);
+
+      const loadLeads = () => listOwned<Lead>("leads", user.uid, 5000);
+      const loadTemplates = () =>
+        listOwned<Template>("templates", user.uid, 250);
+      const loadDraftMessages = () =>
+        listOwnedByField<Message>("messages", user.uid, "status", "DRAFT", 5000);
+      const loadActiveFollowups = () =>
+        listOwnedByField<FollowUp>(
+          "followups",
+          user.uid,
+          "status",
+          "ACTIVE",
+          5000,
+        );
+
+      if (view === "dashboard") {
+        const [nextLeads, nextFollowups, nextMessages, nextActivities] =
+          await Promise.all([
+            loadLeads(),
+            loadActiveFollowups(),
+            loadDraftMessages(),
+            listOwned<Activity>("activities", user.uid, 100),
+          ]);
+        setLeads(nextLeads);
+        setFollowups(nextFollowups);
+        setMessages(nextMessages);
+        setActivities(nextActivities);
+      } else if (view === "leads") {
+        const [nextLeads, nextTemplates, nextMessages] = await Promise.all([
+          loadLeads(),
+          loadTemplates(),
+          loadDraftMessages(),
+        ]);
+        setLeads(nextLeads);
+        setTemplates(nextTemplates);
+        setMessages(nextMessages);
+      } else if (view === "follow-up") {
+        const [nextLeads, nextFollowups] = await Promise.all([
+          loadLeads(),
+          loadActiveFollowups(),
+        ]);
+        setLeads(nextLeads);
+        setFollowups(nextFollowups);
+      } else if (view === "templates") {
+        setTemplates(await loadTemplates());
+      } else if (view === "analytics") {
+        setLeads(await loadLeads());
+      }
     } catch (cause) {
       setError(
         cause instanceof Error ? cause.message : "Data belum bisa dimuat.",
       );
     } finally {
       setBusy(false);
+      setReady(true);
     }
   }
+
   function notify(text: string) {
+    if (toastTimer.current) {
+      window.clearTimeout(toastTimer.current);
+    }
+
     setToast(text);
-    window.setTimeout(() => setToast(""), 5000);
+    toastTimer.current = window.setTimeout(() => {
+      setToast("");
+      toastTimer.current = null;
+    }, 5000);
   }
+
   useEffect(() => {
-    if (!loading && !user) location.href = "/login";
+    if (!loading && configured && !user) location.href = "/login";
     if (user) refresh();
-  }, [user, loading]);
-  if (loading || (busy && !user))
-    return <main className="center-state">Menyiapkan ruang kerja...</main>;
-  if (!configured)
+  }, [user, loading, configured, view]);
+
+  useEffect(
+    () => () => {
+      if (toastTimer.current) window.clearTimeout(toastTimer.current);
+    },
+    [],
+  );
+
+  if (loading) {
     return (
       <main className="center-state">
-        <div>
+        <div className="loading-state" role="status" aria-live="polite">
+          <LoaderCircle className="loading-spinner" size={25} />
+          <div>
+            <b>Menyiapkan ruang kerja</b>
+            <p>Menghubungkan akun dan data marketing...</p>
+          </div>
+        </div>
+      </main>
+    );
+  }
+
+  if (!configured) {
+    return (
+      <main className="center-state">
+        <div className="state-card">
+          <span className="eyebrow">KONFIGURASI</span>
           <h2>Firebase belum tersambung</h2>
           <p>
             Lengkapi file <code>.env.local</code>, lalu jalankan kembali
@@ -74,14 +147,36 @@ export function CrmApp({ view }: { view: string }) {
         </div>
       </main>
     );
+  }
+
   if (!user) return null;
+
+  if (!ready) {
+    return (
+      <main className="center-state">
+        <div className="loading-state" role="status" aria-live="polite">
+          <LoaderCircle className="loading-spinner" size={25} />
+          <div>
+            <b>Memuat data marketing</b>
+            <p>Menyiapkan calon klien, pengingat, dan aktivitas terbaru...</p>
+          </div>
+        </div>
+      </main>
+    );
+  }
+
   const common = { onRefresh: refresh, notify };
+
   return (
     <div className="app-shell">
       <Sidebar view={view} open={menu} onClose={() => setMenu(false)} />
       <main className="workspace">
         <header className="topbar">
-          <button className="mobile-menu" onClick={() => setMenu(true)}>
+          <button
+            className="mobile-menu"
+            onClick={() => setMenu(true)}
+            aria-label="Buka menu"
+          >
             <Menu />
           </button>
           <div>
@@ -95,10 +190,20 @@ export function CrmApp({ view }: { view: string }) {
             <h1>{viewTitle(view)}</h1>
           </div>
           <div className="top-actions">
-            <div className="avatar">N</div>
+            {busy && (
+              <span className="sync-state" role="status" aria-live="polite">
+                <LoaderCircle size={13} />
+                Menyinkronkan
+              </span>
+            )}
+            <div className="avatar" aria-label="Akun Nexty">
+              N
+            </div>
           </div>
         </header>
+
         {error && <div className="banner error-box">{error}</div>}
+
         <section className="content">
           {view === "dashboard" && (
             <DashboardView
@@ -108,7 +213,8 @@ export function CrmApp({ view }: { view: string }) {
               messages={messages}
               onAdd={() => setDialog("lead")}
             />
-          )}{" "}
+          )}
+
           {view === "leads" && (
             <LeadsView
               ownerId={user.uid}
@@ -119,7 +225,8 @@ export function CrmApp({ view }: { view: string }) {
               onImport={() => setDialog("import")}
               {...common}
             />
-          )}{" "}
+          )}
+
           {view === "follow-up" && (
             <FollowupsView
               ownerId={user.uid}
@@ -127,7 +234,8 @@ export function CrmApp({ view }: { view: string }) {
               leads={leads}
               {...common}
             />
-          )}{" "}
+          )}
+
           {view === "templates" && (
             <TemplatesView
               ownerId={user.uid}
@@ -135,11 +243,13 @@ export function CrmApp({ view }: { view: string }) {
               onAdd={() => setDialog("template")}
               {...common}
             />
-          )}{" "}
-          {view === "analytics" && <AnalyticsView leads={leads} />}{" "}
+          )}
+
+          {view === "analytics" && <AnalyticsView leads={leads} />}
           {view === "settings" && <SettingsView email={user.email || "-"} />}
         </section>
       </main>
+
       {dialog === "lead" && (
         <LeadDialog
           ownerId={user.uid}
@@ -151,6 +261,7 @@ export function CrmApp({ view }: { view: string }) {
           }}
         />
       )}
+
       {dialog === "template" && (
         <TemplateDialog
           ownerId={user.uid}
@@ -162,6 +273,7 @@ export function CrmApp({ view }: { view: string }) {
           }}
         />
       )}
+
       {dialog === "import" && (
         <ImportDialog
           ownerId={user.uid}
@@ -172,8 +284,13 @@ export function CrmApp({ view }: { view: string }) {
           }}
           notify={notify}
         />
-      )}{" "}
-      {toast && <div className="toast">{toast}</div>}
+      )}
+
+      {toast && (
+        <div className="toast" role="status" aria-live="polite">
+          {toast}
+        </div>
+      )}
     </div>
   );
 }
@@ -196,6 +313,7 @@ function SettingsView({ email }: { email: string }) {
           </div>
         </dl>
       </section>
+
       <section className="panel">
         <div className="panel-title">
           <h3>Cara pengiriman WhatsApp</h3>
@@ -210,8 +328,7 @@ function SettingsView({ email }: { email: string }) {
           </p>
           <p>
             Sistem tidak dapat membaca status kirim atau balasan. Setelah
-            menekan Send di WhatsApp, kembali ke sistem dan pilih{" "}
-            <b>Sudah dikirim</b>.
+            menekan Send di WhatsApp, kembali ke sistem dan pilih <b>Sudah dikirim</b>.
           </p>
         </div>
       </section>

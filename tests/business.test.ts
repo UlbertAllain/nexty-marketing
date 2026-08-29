@@ -1,11 +1,13 @@
-﻿import test from "node:test";
+import test from "node:test";
 import assert from "node:assert/strict";
 import {
   assertTransition,
   generateMessage,
   googleMapsUrl,
   instagramUrl,
+  isDueAt,
   isValidWhatsApp,
+  LEAD_FIELD_LIMITS,
   metrics,
   normalizePhone,
   validateLead,
@@ -51,6 +53,15 @@ test("data calon klien dan perpindahan perkembangan divalidasi", () => {
   ]);
   assert.doesNotThrow(() => assertTransition("NEW", "READY_TO_CONTACT"));
   assert.throws(() => assertTransition("NEW", "DEAL"));
+});
+
+test("field calon klien memiliki batas panjang", () => {
+  const errors = validateLead({
+    companyName: "A".repeat(LEAD_FIELD_LIMITS.companyName + 1),
+    notes: "N".repeat(LEAD_FIELD_LIMITS.notes + 1),
+  });
+  assert.equal(errors.includes("Nama perusahaan maksimal 120 karakter."), true);
+  assert.equal(errors.includes("Catatan maksimal 2000 karakter."), true);
 });
 
 test("pesan siap pakai mengisi data otomatis", () => {
@@ -100,4 +111,11 @@ test("tautan profil, lokasi, dan website dinormalisasi", () => {
     websiteUrl("https://nextylabs.com/services"),
     "https://nextylabs.com/services",
   );
+});
+
+test("jatuh tempo memakai timestamp aktual, bukan tanggal UTC", () => {
+  const now = new Date("2026-08-29T02:00:00.000Z");
+  assert.equal(isDueAt("2026-08-29T01:59:59.000Z", now), true);
+  assert.equal(isDueAt("2026-08-29T02:00:01.000Z", now), false);
+  assert.equal(isDueAt("bukan-tanggal", now), false);
 });

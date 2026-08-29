@@ -41,3 +41,6 @@ next-env.d.ts
 /.sites-runtime/
 /outputs/
 /work/
+# local migration/patch artifacts
+/.patch-backups/
+/phase-*.ps1

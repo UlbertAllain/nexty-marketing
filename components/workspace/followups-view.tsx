@@ -1,8 +1,9 @@
-﻿"use client";
+"use client";
 /* eslint-disable react-hooks/set-state-in-effect */
 
 import { useEffect, useState } from "react";
 import { CalendarClock, Check, Plus } from "lucide-react";
+import { isDueAt } from "@/lib/business";
 import { completeReminder, scheduleReminder } from "@/lib/repository";
 import type { FollowUp, Lead } from "@/lib/types";
 import { Dialog, EmptyState } from "./dialog";
@@ -22,6 +23,8 @@ export function FollowupsView({
 }) {
   const [open, setOpen] = useState(false);
   const [initialLeadId, setInitialLeadId] = useState("");
+  const [completingId, setCompletingId] = useState<string | null>(null);
+
   const active = items
     .filter((item) => item.status === "ACTIVE")
     .sort((a, b) => a.date.localeCompare(b.date));
@@ -50,6 +53,25 @@ export function FollowupsView({
     setOpen(true);
   }
 
+  async function finishReminder(item: FollowUp) {
+    if (completingId) return;
+
+    try {
+      setCompletingId(item.id);
+      await completeReminder(ownerId, item);
+      notify("Pengingat ditandai selesai.");
+      onRefresh();
+    } catch (error) {
+      notify(
+        error instanceof Error
+          ? error.message
+          : "Pengingat belum bisa diselesaikan.",
+      );
+    } finally {
+      setCompletingId(null);
+    }
+  }
+
   return (
     <>
       <div className="hero-row compact">
@@ -67,13 +89,20 @@ export function FollowupsView({
         </button>
       </div>
 
+      <div className="list-summary">
+        <span>
+          <b>{active.length}</b> pengingat aktif
+        </span>
+      </div>
+
       <div className="follow-list">
         {active.map((item) => {
-          const due = new Date(item.date) <= new Date();
+          const due = isDueAt(item.date);
           const lead = leads.find((candidate) => candidate.id === item.leadId);
+          const completing = completingId === item.id;
 
           return (
-            <article key={item.id}>
+            <article key={item.id} className={due ? "due" : ""}>
               <time>
                 {new Date(item.date).toLocaleDateString("id-ID", {
                   day: "2-digit",
@@ -83,24 +112,29 @@ export function FollowupsView({
               <div>
                 <h3>{lead?.companyName || "Calon klien"}</h3>
                 <p>{item.reason}</p>
-                <small>{new Date(item.date).toLocaleString("id-ID")}</small>
+                <small>
+                  {due ? "Jatuh tempo / " : ""}
+                  {new Date(item.date).toLocaleString("id-ID")}
+                </small>
               </div>
               <button
                 className={due ? "quick-action confirm" : "quick-action"}
-                onClick={async () => {
-                  await completeReminder(ownerId, item);
-                  notify("Pengingat ditandai selesai.");
-                  onRefresh();
-                }}
+                disabled={Boolean(completingId)}
+                onClick={() => finishReminder(item)}
               >
                 <Check size={15} />
-                Selesai
+                {completing ? "Menyimpan..." : "Selesai"}
               </button>
             </article>
           );
         })}
 
-        {!active.length && <EmptyState>Belum ada pengingat aktif.</EmptyState>}
+        {!active.length && (
+          <EmptyState>
+            Belum ada pengingat aktif. Buat pengingat saat ada calon klien yang
+            perlu dihubungi kembali.
+          </EmptyState>
+        )}
       </div>
 
       {open && (
@@ -139,37 +173,40 @@ function ReminderDialog({
   const [date, setDate] = useState("");
   const [reason, setReason] = useState("");
   const [notes, setNotes] = useState("");
+  const [saving, setSaving] = useState(false);
+
+  async function submit(event: React.FormEvent<HTMLFormElement>) {
+    event.preventDefault();
+    if (saving) return;
+
+    try {
+      setSaving(true);
+      await scheduleReminder(ownerId, {
+        leadId,
+        date: new Date(date).toISOString(),
+        reason,
+        notes,
+      });
+      notify("Pengingat sudah dibuat.");
+      saved();
+    } catch (error) {
+      notify(
+        error instanceof Error ? error.message : "Pengingat belum bisa dibuat.",
+      );
+    } finally {
+      setSaving(false);
+    }
+  }
 
   return (
-    <Dialog title="Buat pengingat" onClose={close}>
-      <form
-        className="form-grid"
-        onSubmit={async (event) => {
-          event.preventDefault();
-
-          try {
-            await scheduleReminder(ownerId, {
-              leadId,
-              date: new Date(date).toISOString(),
-              reason,
-              notes,
-            });
-            notify("Pengingat sudah dibuat.");
-            saved();
-          } catch (error) {
-            notify(
-              error instanceof Error
-                ? error.message
-                : "Pengingat belum bisa dibuat.",
-            );
-          }
-        }}
-      >
+    <Dialog title="Buat pengingat" onClose={() => !saving && close()}>
+      <form className="form-grid" onSubmit={submit}>
         <label className="wide">
           Calon klien
           <select
             required
             value={leadId}
+            disabled={saving}
             onChange={(event) => setLeadId(event.target.value)}
           >
             <option value="">Pilih calon klien</option>
@@ -189,6 +226,7 @@ function ReminderDialog({
             required
             type="datetime-local"
             value={date}
+            disabled={saving}
             onChange={(event) => setDate(event.target.value)}
           />
         </label>
@@ -198,6 +236,7 @@ function ReminderDialog({
           <input
             required
             value={reason}
+            disabled={saving}
             onChange={(event) => setReason(event.target.value)}
             placeholder="Tanyakan keputusan setelah penawaran"
           />
@@ -207,17 +246,23 @@ function ReminderDialog({
           Catatan tambahan
           <textarea
             value={notes}
+            disabled={saving}
             onChange={(event) => setNotes(event.target.value)}
           />
         </label>
 
         <div className="modal-actions wide">
-          <button type="button" className="secondary" onClick={close}>
+          <button
+            type="button"
+            className="secondary"
+            onClick={close}
+            disabled={saving}
+          >
             Batal
           </button>
-          <button className="primary">
+          <button className="primary" disabled={saving}>
             <CalendarClock size={16} />
-            Simpan pengingat
+            {saving ? "Menyimpan..." : "Simpan pengingat"}
           </button>
         </div>
       </form>

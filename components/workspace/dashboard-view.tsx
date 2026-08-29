@@ -1,5 +1,5 @@
 import { ArrowRight, Plus } from "lucide-react";
-import { metrics, statusLabel } from "@/lib/business";
+import { isDueAt, metrics, statusLabel } from "@/lib/business";
 import type { Activity, FollowUp, Lead, LeadStatus, Message } from "@/lib/types";
 import { EmptyState } from "./dialog";
 
@@ -26,9 +26,9 @@ export function DashboardView({
   onAdd: () => void;
 }) {
   const summary = metrics(leads);
-  const today = new Date().toISOString().slice(0, 10);
+  const now = new Date();
   const due = followups.filter(
-    (item) => item.status === "ACTIVE" && item.date.slice(0, 10) <= today,
+    (item) => item.status === "ACTIVE" && isDueAt(item.date, now),
   );
   const opened = messages.filter((item) => item.status === "DRAFT");
   const newContacts = leads.filter((item) => item.status === "NEW");

@@ -1,4 +1,4 @@
-﻿import {
+import {
   addDoc,
   collection,
   doc,
@@ -13,8 +13,10 @@
 import { db } from "./firebase";
 import {
   assertTransition,
+  MAX_LEAD_IMPORT_ROWS,
   normalizeCompany,
   normalizePhone,
+  statusLabel,
   validateLead,
 } from "./business";
 import type { FollowUp, Lead, LeadStatus, Template } from "./types";
@@ -68,6 +70,27 @@ export async function listOwned<T>(
       collection(mustDb(), collectionName),
       where("ownerId", "==", ownerId),
       orderBy("createdAt", "desc"),
+      limit(max),
+    ),
+  );
+
+  return snapshot.docs.map(
+    (item) => ({ id: item.id, ...item.data() }) as T,
+  );
+}
+
+export async function listOwnedByField<T>(
+  collectionName: string,
+  ownerId: string,
+  field: string,
+  value: string,
+  max = 5000,
+) {
+  const snapshot = await getDocs(
+    query(
+      collection(mustDb(), collectionName),
+      where("ownerId", "==", ownerId),
+      where(field, "==", value),
       limit(max),
     ),
   );
@@ -207,28 +230,50 @@ export async function updateLeadStatus(
   const database = mustDb();
   const now = new Date().toISOString();
   const batch = writeBatch(database);
-
-  batch.update(doc(database, "leads", lead.id), {
+  const terminalStatuses: LeadStatus[] = ["DEAL", "NOT_INTERESTED", "LOST"];
+  const replyProgressStatuses: LeadStatus[] = [
+    "REPLIED",
+    "QUALIFIED",
+    "MEETING",
+    "PROPOSAL",
+    "NEGOTIATION",
+  ];
+  const leadPatch: Record<string, unknown> = {
     ownerId,
     status,
     attentionReason: null,
     updatedAt: now,
-  });
+  };
+
+  if (status === "REPLIED" && !lead.lastReplyAt) {
+    leadPatch.lastReplyAt = now;
+  }
+
+  if (terminalStatuses.includes(status) || replyProgressStatuses.includes(status)) {
+    const active = await listActiveFollowUps(ownerId, lead.id);
+    const shouldCancelAll = terminalStatuses.includes(status);
+    const remainingDates: string[] = [];
+
+    active.docs.forEach((item) => {
+      const automatic = isAutomaticFollowUp(item.data());
+      if (shouldCancelAll || automatic) {
+        batch.update(item.ref, { status: "CANCELLED", updatedAt: now });
+      } else {
+        remainingDates.push(String(item.data().date));
+      }
+    });
+
+    leadPatch.followUpAt = earliestDate(remainingDates);
+  }
+
+  batch.update(doc(database, "leads", lead.id), leadPatch);
   batch.set(doc(collection(database, "activities")), {
     ownerId,
     leadId: lead.id,
     type: "STATUS_CHANGED",
-    description: `Perkembangan ${lead.companyName} menjadi ${status}.`,
+    description: `Perkembangan ${lead.companyName} menjadi ${statusLabel[status]}.`,
     createdAt: now,
   });
-
-  if (status === "DEAL") {
-    const active = await listActiveFollowUps(ownerId, lead.id);
-    active.docs.forEach((item) =>
-      batch.update(item.ref, { status: "CANCELLED", updatedAt: now }),
-    );
-    batch.update(doc(database, "leads", lead.id), { followUpAt: null });
-  }
 
   await batch.commit();
 }
@@ -474,6 +519,10 @@ export async function completeReminder(ownerId: string, item: FollowUp) {
 }
 
 export async function importLeads(ownerId: string, rows: Partial<Lead>[]) {
+  if (rows.length > MAX_LEAD_IMPORT_ROWS) {
+    throw new Error(`Maksimal ${MAX_LEAD_IMPORT_ROWS.toLocaleString("id-ID")} calon klien per import.`);
+  }
+
   const database = mustDb();
   const existing = await getDocs(
     query(collection(database, "leads"), where("ownerId", "==", ownerId)),

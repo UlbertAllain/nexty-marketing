@@ -1,13 +1,24 @@
 import * as XLSX from "xlsx";
+import { MAX_LEAD_IMPORT_ROWS } from "./business";
 import type { Lead, LeadStatus, Potential } from "./types";
 
 type CellValue = string | number | boolean | Date | null | undefined;
+
+export const MAX_IMPORT_FILE_BYTES = 5 * 1024 * 1024;
+export const MAX_IMPORT_SHEETS = 20;
+const MAX_HEADER_SCAN_ROWS = 25;
+const SHEET_ROW_READ_LIMIT = MAX_LEAD_IMPORT_ROWS + MAX_HEADER_SCAN_ROWS + 5;
 
 export type LeadImportPreview = {
   rows: Partial<Lead>[];
   sheetsRead: number;
   rowsWithoutCompany: number;
   sheetsWithoutHeader: string[];
+};
+
+export type SpreadsheetFileMeta = {
+  name: string;
+  size: number;
 };
 
 const aliases = {
@@ -94,7 +105,7 @@ function otherPhones(value: CellValue) {
 
 function findHeader(rows: CellValue[][]) {
   let best: { index: number; fields: Map<FieldName, number>; score: number } | null = null;
-  for (let index = 0; index < Math.min(rows.length, 25); index++) {
+  for (let index = 0; index < Math.min(rows.length, MAX_HEADER_SCAN_ROWS); index++) {
     const fields = new Map<FieldName, number>();
     rows[index].forEach((value, column) => {
       const field = fieldByHeader.get(normalizeHeader(value));
@@ -111,7 +122,30 @@ function rowValue(row: CellValue[], fields: Map<FieldName, number>, field: Field
   return column === undefined ? "" : row[column];
 }
 
+export function validateSpreadsheetFile(file: SpreadsheetFileMeta) {
+  const extension = file.name.trim().toLowerCase().match(/\.[^.]+$/)?.[0] ?? "";
+  if (![".xlsx", ".xls"].includes(extension)) {
+    return "Gunakan file Excel dengan format .xlsx atau .xls.";
+  }
+  if (file.size <= 0) return "File Excel kosong.";
+  if (file.size > MAX_IMPORT_FILE_BYTES) {
+    return "Ukuran file terlalu besar. Maksimal 5 MB per import.";
+  }
+  return null;
+}
+
+export function readLeadWorkbook(buffer: ArrayBuffer) {
+  return XLSX.read(buffer, {
+    type: "array",
+    sheetRows: SHEET_ROW_READ_LIMIT,
+  });
+}
+
 export function parseLeadWorkbook(workbook: XLSX.WorkBook): LeadImportPreview {
+  if (workbook.SheetNames.length > MAX_IMPORT_SHEETS) {
+    throw new Error(`File memiliki terlalu banyak sheet. Maksimal ${MAX_IMPORT_SHEETS} sheet.`);
+  }
+
   const result: LeadImportPreview = { rows: [], sheetsRead: 0, rowsWithoutCompany: 0, sheetsWithoutHeader: [] };
   for (const sheetName of workbook.SheetNames) {
     const sheet = workbook.Sheets[sheetName];
@@ -130,8 +164,11 @@ export function parseLeadWorkbook(workbook: XLSX.WorkBook): LeadImportPreview {
         result.rowsWithoutCompany++;
         continue;
       }
+      if (result.rows.length >= MAX_LEAD_IMPORT_ROWS) {
+        throw new Error(`Jumlah data terlalu banyak. Maksimal ${MAX_LEAD_IMPORT_ROWS.toLocaleString("id-ID")} calon klien per import.`);
+      }
       const rawPhone = rowValue(rawRow, header.fields, "phone");
-      const notes = [text(rowValue(rawRow, header.fields, "notes")), otherPhones(rawPhone)].filter(Boolean).join("  /  ");
+      const notes = [text(rowValue(rawRow, header.fields, "notes")), otherPhones(rawPhone)].filter(Boolean).join(" / ");
       result.rows.push({
         companyName,
         category: text(rowValue(rawRow, header.fields, "category")) || sheetName,

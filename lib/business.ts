@@ -1,4 +1,18 @@
-﻿import type { Lead, LeadStatus, Potential, Template } from "./types";
+import type { Lead, LeadStatus, Potential, Template } from "./types";
+
+export const MAX_LEAD_IMPORT_ROWS = 5000;
+
+export const LEAD_FIELD_LIMITS = {
+  companyName: 120,
+  category: 80,
+  contactName: 100,
+  phone: 32,
+  email: 160,
+  instagram: 200,
+  website: 500,
+  googleMaps: 1000,
+  notes: 2000,
+} as const;
 
 export const statusLabel: Record<LeadStatus, string> = {
   NEW: "Belum dihubungi",
@@ -53,10 +67,32 @@ export function normalizePhone(value: string) {
 export const isValidWhatsApp = (value: string) =>
   /^62[1-9]\d{7,12}$/.test(normalizePhone(value));
 
+function validateLength(
+  errors: string[],
+  label: string,
+  value: string | undefined,
+  max: number,
+) {
+  if (value && value.trim().length > max) {
+    errors.push(`${label} maksimal ${max} karakter.`);
+  }
+}
+
 export function validateLead(input: Partial<Lead>) {
   const errors: string[] = [];
   if (!input.companyName?.trim()) errors.push("Nama perusahaan belum diisi.");
-  if (input.email && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(input.email)) {
+
+  validateLength(errors, "Nama perusahaan", input.companyName, LEAD_FIELD_LIMITS.companyName);
+  validateLength(errors, "Jenis usaha", input.category, LEAD_FIELD_LIMITS.category);
+  validateLength(errors, "Nama kontak", input.contactName, LEAD_FIELD_LIMITS.contactName);
+  validateLength(errors, "Nomor WhatsApp", input.phone, LEAD_FIELD_LIMITS.phone);
+  validateLength(errors, "Email", input.email, LEAD_FIELD_LIMITS.email);
+  validateLength(errors, "Instagram", input.instagram, LEAD_FIELD_LIMITS.instagram);
+  validateLength(errors, "Website", input.website, LEAD_FIELD_LIMITS.website);
+  validateLength(errors, "Google Maps", input.googleMaps, LEAD_FIELD_LIMITS.googleMaps);
+  validateLength(errors, "Catatan", input.notes, LEAD_FIELD_LIMITS.notes);
+
+  if (input.email && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(input.email.trim())) {
     errors.push("Alamat email belum sesuai format.");
   }
   if (input.phone && !isValidWhatsApp(input.phone)) {
@@ -104,6 +140,11 @@ export function websiteUrl(value: string) {
   const trimmed = value.trim();
   if (!trimmed) return "";
   return /^https?:\/\//i.test(trimmed) ? trimmed : `https://${trimmed}`;
+}
+
+export function isDueAt(value: string, now = new Date()) {
+  const dueAt = new Date(value).getTime();
+  return Number.isFinite(dueAt) && dueAt <= now.getTime();
 }
 
 export function metrics(leads: Lead[]) {

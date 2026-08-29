@@ -1,15 +1,8 @@
-﻿# Nexty Labs Marketing CRM
+# Nexty Labs Marketing CRM
 
-CRM internal sederhana untuk membantu satu orang marketing mengelola calon klien tanpa membuat workflow lebih rumit daripada Excel.
+Workspace internal sederhana untuk satu orang marketing Nexty Labs. Tujuan utamanya adalah mengganti pencatatan Excel yang tersebar dengan alur yang tetap ringan: simpan lead, hubungi melalui WhatsApp, catat hasil, dan kerjakan follow-up.
 
-Aplikasi berfokus pada empat pekerjaan utama:
-
-1. Menyimpan atau mengimpor calon klien.
-2. Menyiapkan pesan WhatsApp dari template manual.
-3. Mencatat perkembangan lead setelah dihubungi.
-4. Membuat dan menyelesaikan pengingat follow-up.
-
-Tidak ada integrasi AI dan tidak ada WhatsApp API. Tombol WhatsApp membuka `wa.me` dengan pesan yang sudah terisi; pengiriman tetap dilakukan langsung oleh pengguna di WhatsApp.
+Aplikasi ini tidak terhubung ke layanan AI dan tidak memakai WhatsApp API. Tombol WhatsApp hanya membuka `wa.me` dengan nomor serta pesan yang sudah disiapkan. Pengiriman tetap dilakukan langsung di WhatsApp.
 
 ## Stack
 
@@ -18,51 +11,9 @@ Tidak ada integrasi AI dan tidak ada WhatsApp API. Tombol WhatsApp membuka `wa.m
 - TypeScript
 - Firebase Authentication
 - Cloud Firestore
+- SheetJS untuk import Excel
 - Tailwind CSS 4
 - Lucide React
-
-## Setup
-
-Gunakan Node.js 22 atau lebih baru.
-
-```bash
-npm install
-```
-
-Salin environment example:
-
-```bash
-cp .env.example .env.local
-```
-
-Isi konfigurasi Firebase di `.env.local`:
-
-```env
-NEXT_PUBLIC_FIREBASE_API_KEY=
-NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN=
-NEXT_PUBLIC_FIREBASE_PROJECT_ID=
-NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET=
-NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID=
-NEXT_PUBLIC_FIREBASE_APP_ID=
-```
-
-Aktifkan Firebase Authentication dengan provider Email/Password dan buat akun marketing yang akan menggunakan aplikasi.
-
-## Development
-
-```bash
-npm run dev
-```
-
-Buka `http://localhost:3000`.
-
-## Quality checks
-
-```bash
-npm run lint
-npm test
-npm run build
-```
 
 ## Business flow
 
@@ -77,27 +28,84 @@ Lead masuk
   -> perbarui status lead
 ```
 
-Template mendukung placeholder berikut:
+Template mendukung placeholder lokal:
 
 - `{{contact_name}}`
 - `{{company_name}}`
 - `{{category}}`
 
-Placeholder tersebut hanya merupakan text templating lokal dan tidak terhubung ke layanan AI.
+## Setup
+
+Gunakan Node.js 22 atau lebih baru.
+
+```bash
+npm install
+```
+
+Salin `.env.example` menjadi `.env.local`, lalu isi Firebase Web App config:
+
+```env
+NEXT_PUBLIC_FIREBASE_API_KEY=
+NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN=
+NEXT_PUBLIC_FIREBASE_PROJECT_ID=
+NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET=
+NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID=
+NEXT_PUBLIC_FIREBASE_APP_ID=
+```
+
+Aktifkan Firebase Authentication provider Email/Password dan Cloud Firestore. Project sengaja menggunakan satu akun marketing; `ownerId` tetap dipakai untuk membatasi data terhadap akun yang sedang login.
+
+## Menjalankan aplikasi
+
+```bash
+npm run dev
+```
+
+Buka `http://localhost:3000`.
+
+## Import Excel
+
+Format yang diterima: `.xlsx` dan `.xls`.
+
+Batas import sengaja dibuat sederhana agar browser tidak terbebani oleh file yang tidak wajar:
+
+- maksimal 5 MB per file;
+- maksimal 20 sheet;
+- maksimal 5.000 calon klien per proses import;
+- data tanpa nama perusahaan dilewati;
+- nama perusahaan ganda dilewati;
+- setiap row tetap melewati business validation sebelum disimpan.
+
+## Quality checks
+
+Untuk pengecekan cepat terhadap source:
+
+```bash
+npm run sanity
+```
+
+Untuk menjalankan seluruh pemeriksaan sebelum commit/deploy:
+
+```bash
+npm run verify
+```
+
+`verify` menjalankan source sanity check, ESLint, unit test, dan production build secara berurutan.
 
 ## Struktur utama
 
 ```text
-app/                    Route dan global styling
-components/             UI dan workspace components
-components/workspace/   Dashboard, leads, follow-up, template, dialog
-lib/business.ts         Business rules dan helper murni
-lib/repository.ts       Operasi Cloud Firestore
-lib/spreadsheet-import.ts Parser import spreadsheet
-lib/types.ts            Domain types
-tests/                  Unit tests
+app/                       routes dan global styling
+components/                UI dan application shell
+components/workspace/      dashboard, leads, follow-up, template, dialog
+lib/business.ts            business rules dan pure helpers
+lib/repository.ts          operasi Cloud Firestore
+lib/spreadsheet-import.ts  parser dan guard import spreadsheet
+lib/types.ts               domain types
+scripts/source-sanity.mjs  regression/source guard
+tests/                     unit tests
 ```
 
-## Catatan desain
+## Prinsip project
 
-Project ini sengaja ditujukan untuk satu pengguna marketing. `ownerId` tetap disimpan pada data untuk memastikan query dan Firestore Security Rules hanya mengakses data milik akun yang sedang login. Tidak diperlukan workspace, role, assignment, atau sistem multi-user selama kebutuhan bisnis masih satu pengguna.
+Project ini sengaja tidak dibuat menjadi CRM enterprise. Selama kebutuhan bisnis hanya satu orang marketing, tidak diperlukan workspace, role, assignment, approval, campaign engine, atau abstraction tambahan yang tidak memberi manfaat langsung.

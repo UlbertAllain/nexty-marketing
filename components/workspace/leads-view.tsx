@@ -1,6 +1,6 @@
-﻿"use client";
+"use client";
 
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import {
   AtSign,
   Check,
@@ -64,13 +64,23 @@ export function LeadsView({
   const [search, setSearch] = useState("");
   const [selected, setSelected] = useState<Lead | null>(null);
   const [editing, setEditing] = useState<Lead | null>(null);
+  const [actionBusy, setActionBusy] = useState<string | null>(null);
 
   const filtered = useMemo(() => {
     const keyword = search.toLowerCase().trim();
 
     return leads
       .filter((lead) =>
-        `${lead.companyName} ${lead.contactName} ${lead.category} ${lead.website}`
+        [
+          lead.companyName,
+          lead.contactName,
+          lead.category,
+          lead.website,
+          lead.email,
+          lead.phone,
+          lead.instagram,
+        ]
+          .join(" ")
           .toLowerCase()
           .includes(keyword),
       )
@@ -87,7 +97,11 @@ export function LeadsView({
     );
 
   async function openWhatsApp(lead: Lead) {
+    const key = `open:${lead.id}`;
+    if (actionBusy) return;
+
     try {
+      setActionBusy(key);
       const template = bestTemplate(lead, templates);
       if (!template) {
         throw new Error("Buat satu pesan siap pakai terlebih dahulu.");
@@ -108,11 +122,17 @@ export function LeadsView({
       notify(
         error instanceof Error ? error.message : "WhatsApp belum bisa dibuka.",
       );
+    } finally {
+      setActionBusy(null);
     }
   }
 
   async function markSent(lead: Lead, message: Message) {
+    const key = `sent:${lead.id}`;
+    if (actionBusy) return;
+
     try {
+      setActionBusy(key);
       await confirmWhatsAppSent(ownerId, lead, message.id, 3);
       notify(
         "Ditandai sudah dikirim. Pengingat tiga hari lagi dibuat otomatis.",
@@ -122,6 +142,8 @@ export function LeadsView({
       notify(
         error instanceof Error ? error.message : "Progres belum bisa disimpan.",
       );
+    } finally {
+      setActionBusy(null);
     }
   }
 
@@ -133,8 +155,19 @@ export function LeadsView({
           <input
             value={search}
             onChange={(event) => setSearch(event.target.value)}
-            placeholder="Cari perusahaan, kontak, jenis usaha, atau website"
+            placeholder="Cari perusahaan, kontak, nomor, atau website"
+            aria-label="Cari calon klien"
           />
+          {search && (
+            <button
+              type="button"
+              className="search-clear"
+              onClick={() => setSearch("")}
+              aria-label="Hapus pencarian"
+            >
+              <X size={14} />
+            </button>
+          )}
         </div>
         <button className="secondary" onClick={onImport}>
           <FileUp size={17} />
@@ -144,6 +177,17 @@ export function LeadsView({
           <Plus size={17} />
           Tambah calon klien
         </button>
+      </div>
+
+      <div className="list-summary">
+        <span>
+          <b>{filtered.length}</b> dari {leads.length} calon klien
+        </span>
+        {search && (
+          <button type="button" onClick={() => setSearch("")}>
+            Reset pencarian
+          </button>
+        )}
       </div>
 
       <div className="table-wrap">
@@ -162,6 +206,8 @@ export function LeadsView({
           <tbody>
             {filtered.map((lead) => {
               const draft = draftFor(lead.id);
+              const busyKey = draft ? `sent:${lead.id}` : `open:${lead.id}`;
+              const currentBusy = actionBusy === busyKey;
 
               return (
                 <tr key={lead.id} onClick={() => setSelected(lead)}>
@@ -225,25 +271,26 @@ export function LeadsView({
                     {draft ? (
                       <button
                         className="quick-action confirm"
+                        disabled={Boolean(actionBusy)}
                         onClick={async (event) => {
                           event.stopPropagation();
                           await markSent(lead, draft);
                         }}
                       >
                         <Check size={15} />
-                        Sudah dikirim
+                        {currentBusy ? "Menyimpan..." : "Sudah dikirim"}
                       </button>
                     ) : (
                       <button
                         className="quick-action"
-                        disabled={!lead.normalizedPhone}
+                        disabled={!lead.normalizedPhone || Boolean(actionBusy)}
                         onClick={async (event) => {
                           event.stopPropagation();
                           await openWhatsApp(lead);
                         }}
                       >
                         <Send size={15} />
-                        Buka WhatsApp
+                        {currentBusy ? "Membuka..." : "Buka WhatsApp"}
                       </button>
                     )}
                   </td>
@@ -254,7 +301,11 @@ export function LeadsView({
         </table>
 
         {!filtered.length && (
-          <EmptyState>Belum ada calon klien yang sesuai pencarian.</EmptyState>
+          <EmptyState>
+            {leads.length
+              ? "Tidak ada calon klien yang cocok dengan pencarian ini."
+              : "Belum ada calon klien. Tambahkan manual atau ambil dari Excel."}
+          </EmptyState>
         )}
       </div>
 
@@ -318,18 +369,35 @@ function LeadPanel({
     initial ? generateMessage(initial, lead) : "",
   );
   const [reminder, setReminder] = useState(true);
+  const [busy, setBusy] = useState(false);
   const next = allowedTransitions(lead.status);
+
+  useEffect(() => {
+    const previousOverflow = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+
+    function onKeyDown(event: KeyboardEvent) {
+      if (event.key === "Escape" && !busy) close();
+    }
+
+    document.addEventListener("keydown", onKeyDown);
+    return () => {
+      document.removeEventListener("keydown", onKeyDown);
+      document.body.style.overflow = previousOverflow;
+    };
+  }, [busy, close]);
 
   function chooseTemplate(id: string) {
     setTemplateId(id);
     const selectedTemplate = templates.find((item) => item.id === id);
-    setMessage(
-      selectedTemplate ? generateMessage(selectedTemplate, lead) : "",
-    );
+    setMessage(selectedTemplate ? generateMessage(selectedTemplate, lead) : "");
   }
 
   async function open() {
+    if (busy) return;
+
     try {
+      setBusy(true);
       window.open(
         whatsappDraftUrl(lead.normalizedPhone, message),
         "_blank",
@@ -344,13 +412,16 @@ function LeadPanel({
       notify(
         error instanceof Error ? error.message : "WhatsApp belum bisa dibuka.",
       );
+    } finally {
+      setBusy(false);
     }
   }
 
   async function confirm() {
-    if (!draft) return;
+    if (!draft || busy) return;
 
     try {
+      setBusy(true);
       await confirmWhatsAppSent(ownerId, lead, draft.id, reminder ? 3 : 0);
       notify(
         reminder
@@ -362,24 +433,56 @@ function LeadPanel({
       notify(
         error instanceof Error ? error.message : "Progres belum bisa disimpan.",
       );
+    } finally {
+      setBusy(false);
+    }
+  }
+
+  async function updateStatus(status: LeadStatus) {
+    if (busy) return;
+
+    try {
+      setBusy(true);
+      await updateLeadStatus(ownerId, lead, status);
+      notify("Perkembangan calon klien sudah diperbarui.");
+      done();
+    } catch (error) {
+      notify(
+        error instanceof Error
+          ? error.message
+          : "Perkembangan belum bisa diperbarui.",
+      );
+    } finally {
+      setBusy(false);
     }
   }
 
   return (
-    <div className="drawer-backdrop" onMouseDown={close}>
-      <aside className="drawer" onMouseDown={(event) => event.stopPropagation()}>
-        <button className="drawer-close" onClick={close} aria-label="Tutup">
+    <div className="drawer-backdrop" onMouseDown={() => !busy && close()}>
+      <aside
+        className="drawer"
+        role="dialog"
+        aria-modal="true"
+        aria-label={`Detail ${lead.companyName}`}
+        onMouseDown={(event) => event.stopPropagation()}
+      >
+        <button
+          className="drawer-close"
+          onClick={close}
+          aria-label="Tutup"
+          disabled={busy}
+        >
           <X />
         </button>
 
         <span className="eyebrow">RINGKASAN CALON KLIEN</span>
         <h2>{lead.companyName}</h2>
         <p>
-          {lead.category}  /  {lead.contactName || "Nama kontak belum diisi"}
+          {lead.category} / {lead.contactName || "Nama kontak belum diisi"}
         </p>
 
         <div className="drawer-actions">
-          <button className="secondary" onClick={edit}>
+          <button className="secondary" onClick={edit} disabled={busy}>
             <Pencil size={15} />
             Edit data
           </button>
@@ -457,6 +560,7 @@ function LeadPanel({
             Pilih pesan siap pakai
             <select
               value={templateId}
+              disabled={busy}
               onChange={(event) => chooseTemplate(event.target.value)}
             >
               <option value="">Tulis pesan sendiri</option>
@@ -473,6 +577,7 @@ function LeadPanel({
             <textarea
               rows={9}
               value={message}
+              disabled={busy}
               onChange={(event) => setMessage(event.target.value)}
               placeholder="Pilih pesan siap pakai atau tulis pesan sendiri."
             />
@@ -487,23 +592,24 @@ function LeadPanel({
                 <input
                   type="checkbox"
                   checked={reminder}
+                  disabled={busy}
                   onChange={(event) => setReminder(event.target.checked)}
                 />
                 Ingatkan lagi tiga hari setelah pesan dikirim
               </label>
-              <button className="primary full" onClick={confirm}>
+              <button className="primary full" onClick={confirm} disabled={busy}>
                 <Check size={16} />
-                Tandai sudah dikirim
+                {busy ? "Menyimpan..." : "Tandai sudah dikirim"}
               </button>
             </>
           ) : (
             <button
               className="primary full"
-              disabled={!message || !lead.normalizedPhone}
+              disabled={!message || !lead.normalizedPhone || busy}
               onClick={open}
             >
               <Send size={16} />
-              Buka pesan di WhatsApp
+              {busy ? "Membuka..." : "Buka pesan di WhatsApp"}
             </button>
           )}
 
@@ -516,14 +622,10 @@ function LeadPanel({
               Catat perkembangan
               <select
                 defaultValue=""
+                disabled={busy}
                 onChange={async (event) => {
                   if (!event.target.value) return;
-                  await updateLeadStatus(
-                    ownerId,
-                    lead,
-                    event.target.value as LeadStatus,
-                  );
-                  done();
+                  await updateStatus(event.target.value as LeadStatus);
                 }}
               >
                 <option value="">Pilih perkembangan...</option>

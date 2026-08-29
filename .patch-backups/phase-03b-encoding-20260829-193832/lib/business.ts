@@ -35,7 +35,7 @@ export const allowedTransitions = (status: LeadStatus) => transitions[status];
 export function assertTransition(from: LeadStatus, to: LeadStatus) {
   if (from !== to && !transitions[from].includes(to)) {
     throw new Error(
-      `Perkembangan "${statusLabel[from]}" belum bisa langsung dipindahkan ke "${statusLabel[to]}".`,
+      `Perkembangan â€œ${statusLabel[from]}â€ belum bisa langsung dipindahkan ke â€œ${statusLabel[to]}â€.`,
     );
   }
 }

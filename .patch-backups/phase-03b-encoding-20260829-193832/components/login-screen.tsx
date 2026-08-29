@@ -1,4 +1,4 @@
-﻿"use client";
+"use client";
 
 import { type FormEvent, useState } from "react";
 import { sendPasswordResetEmail, signInWithEmailAndPassword } from "firebase/auth";
@@ -61,20 +61,20 @@ export function LoginScreen() {
       <section className="login-story">
         <div className="login-story-top">
           <div className="brand-mark">N</div>
-          <span>MARKETING DESK  /  INTERNAL</span>
+          <span>MARKETING DESK · INTERNAL</span>
         </div>
         <div className="login-copy">
           <p className="eyebrow">NEXTY LABS</p>
           <h1>Follow-up rapi. Kerja tetap ringan.</h1>
           <p>
-            Satu tempat untuk calon klien, pesan WhatsApp, dan pengingat-tanpa
+            Satu tempat untuk calon klien, pesan WhatsApp, dan pengingat—tanpa
             mengubah pekerjaan sederhana menjadi CRM yang ribet.
           </p>
         </div>
         <div className="login-principles">
-          <span>01  /  Lihat prioritas</span>
-          <span>02  /  Hubungi</span>
-          <span>03  /  Catat hasil</span>
+          <span>01 · Lihat prioritas</span>
+          <span>02 · Hubungi</span>
+          <span>03 · Catat hasil</span>
         </div>
       </section>
 
@@ -119,7 +119,7 @@ export function LoginScreen() {
           {error && <div className="error-box">{error}</div>}
 
           <button disabled={busy}>
-            {busy ? "Memproses..." : "Masuk"}
+            {busy ? "Memproses…" : "Masuk"}
             <ArrowRight size={17} />
           </button>
           <button
@@ -128,7 +128,7 @@ export function LoginScreen() {
             disabled={resetBusy}
             onClick={resetPassword}
           >
-            {resetBusy ? "Mengirim tautan..." : "Lupa kata sandi?"}
+            {resetBusy ? "Mengirim tautan…" : "Lupa kata sandi?"}
           </button>
         </form>
       </section>

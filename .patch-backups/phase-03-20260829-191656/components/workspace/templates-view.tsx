@@ -1,0 +1,4 @@
+import { Plus } from "lucide-react";
+import type { Template } from "@/lib/types";
+import { EmptyState } from "./dialog";
+export function TemplatesView({templates,onAdd}:{templates:Template[];onAdd:()=>void}){return <><div className="hero-row compact"><div><span className="eyebrow">PESAN SIAP PAKAI</span><h2>Tulis sekali, pakai berkali-kali.</h2><p>Nama kontak, perusahaan, dan jenis usaha akan dimasukkan otomatis sebelum WhatsApp dibuka.</p></div><button className="primary" onClick={onAdd}><Plus size={17}/>Buat pesan</button></div><div className="card-grid">{templates.map(item=><article className="template-card" key={item.id}><span>{item.category}</span><h3>{item.title}</h3><p>{item.content}</p><small>{item.isDefault?"Pilihan utama":"Pesan khusus"}</small></article>)}{!templates.length&&<EmptyState>Buat satu pesan utama agar tim bisa membuka WhatsApp dengan cepat.</EmptyState>}</div></>}

@@ -120,7 +120,7 @@ export function TemplateDialog({
           </button>
           <button className="primary" disabled={busy}>
             {busy
-              ? "Menyimpan..."
+              ? "Menyimpanâ€¦"
               : editing
                 ? "Simpan perubahan"
                 : "Simpan pesan"}

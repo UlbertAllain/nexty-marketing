@@ -1,4 +1,4 @@
-﻿"use client";
+"use client";
 /* eslint-disable react-hooks/set-state-in-effect, react-hooks/exhaustive-deps */
 import { useEffect, useState } from "react";
 import { Menu } from "lucide-react";
@@ -61,7 +61,7 @@ export function CrmApp({ view }: { view: string }) {
     if (user) refresh();
   }, [user, loading]);
   if (loading || (busy && !user))
-    return <main className="center-state">Menyiapkan ruang kerja...</main>;
+    return <main className="center-state">Menyiapkan ruang kerja…</main>;
   if (!configured)
     return (
       <main className="center-state">
@@ -130,14 +130,12 @@ export function CrmApp({ view }: { view: string }) {
           )}{" "}
           {view === "templates" && (
             <TemplatesView
-              ownerId={user.uid}
               templates={templates}
               onAdd={() => setDialog("template")}
-              {...common}
             />
           )}{" "}
           {view === "analytics" && <AnalyticsView leads={leads} />}{" "}
-          {view === "settings" && <SettingsView email={user.email || "-"} />}
+          {view === "settings" && <SettingsView email={user.email || "—"} />}
         </section>
       </main>
       {dialog === "lead" && (
@@ -192,7 +190,7 @@ function SettingsView({ email }: { email: string }) {
           </div>
           <div>
             <dt>Akses</dt>
-            <dd>1 akun marketing</dd>
+            <dd>Tim marketing</dd>
           </div>
         </dl>
       </section>

@@ -146,57 +146,6 @@ export async function createLead(ownerId: string, input: Partial<Lead>) {
   return lead;
 }
 
-export async function updateLead(
-  ownerId: string,
-  lead: Lead,
-  input: Partial<Lead>,
-) {
-  const next = { ...lead, ...input };
-  const errors = validateLead(next);
-  if (errors.length) throw new Error(errors.join(" "));
-
-  const database = mustDb();
-  const normalizedCompanyName = normalizeCompany(next.companyName);
-  const duplicate = await getDocs(
-    query(
-      collection(database, "leads"),
-      where("ownerId", "==", ownerId),
-      where("normalizedCompanyName", "==", normalizedCompanyName),
-      limit(2),
-    ),
-  );
-
-  if (duplicate.docs.some((item) => item.id !== lead.id)) {
-    throw new Error("Perusahaan ini sudah ada di daftar calon klien.");
-  }
-
-  const now = new Date().toISOString();
-  const phone = next.phone?.trim() || "";
-  const normalizedPhone = normalizePhone(phone);
-
-  await setDoc(
-    doc(database, "leads", lead.id),
-    {
-      ownerId,
-      companyName: next.companyName.trim(),
-      normalizedCompanyName,
-      category: next.category?.trim() || "Lainnya",
-      contactName: next.contactName?.trim() || "",
-      phone,
-      normalizedPhone,
-      email: next.email?.trim() || "",
-      instagram: next.instagram?.trim() || "",
-      website: next.website?.trim() || "",
-      googleMaps: next.googleMaps?.trim() || "",
-      potential: next.potential || "MEDIUM",
-      contactHealth: normalizedPhone ? "READY" : "NEED_CHECK",
-      notes: next.notes?.trim() || "",
-      updatedAt: now,
-    },
-    { merge: true },
-  );
-}
-
 export async function updateLeadStatus(
   ownerId: string,
   lead: Lead,

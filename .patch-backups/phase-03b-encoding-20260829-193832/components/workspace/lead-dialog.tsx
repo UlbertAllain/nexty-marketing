@@ -117,7 +117,7 @@ export function LeadDialog({
             onChange={(event) =>
               setData({ ...data, category: event.target.value })
             }
-            placeholder="Kafe, klinik, toko..."
+            placeholder="Kafe, klinik, tokoâ€¦"
           />
         </label>
 
@@ -218,7 +218,7 @@ export function LeadDialog({
           </button>
           <button className="primary" disabled={busy}>
             {busy
-              ? "Menyimpan..."
+              ? "Menyimpanâ€¦"
               : editing
                 ? "Simpan perubahan"
                 : "Simpan calon klien"}

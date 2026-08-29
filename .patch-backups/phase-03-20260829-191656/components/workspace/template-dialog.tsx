@@ -1,44 +1,28 @@
 ﻿"use client";
 
 import { useState } from "react";
-import { saveTemplate } from "@/lib/repository";
-import type { Template } from "@/lib/types";
 import { Dialog } from "./dialog";
+import { saveTemplate } from "@/lib/repository";
 
-type TemplateForm = Pick<
-  Template,
-  "title" | "category" | "content" | "isDefault"
-> & {
-  id?: string;
-  createdAt?: string;
+const DEFAULT_TEMPLATE = {
+  title: "",
+  category: "Semua bisnis",
+  content: "",
+  isDefault: false,
 };
-
-function templateToForm(template?: Template): TemplateForm {
-  return {
-    id: template?.id,
-    createdAt: template?.createdAt,
-    title: template?.title || "",
-    category: template?.category || "Semua bisnis",
-    content: template?.content || "",
-    isDefault: template?.isDefault || false,
-  };
-}
 
 export function TemplateDialog({
   ownerId,
-  template,
   onClose,
   onSaved,
 }: {
   ownerId: string;
-  template?: Template;
   onClose: () => void;
   onSaved: () => void;
 }) {
-  const [data, setData] = useState<TemplateForm>(() => templateToForm(template));
+  const [data, setData] = useState(DEFAULT_TEMPLATE);
   const [error, setError] = useState("");
   const [busy, setBusy] = useState(false);
-  const editing = Boolean(template);
 
   async function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
@@ -58,10 +42,7 @@ export function TemplateDialog({
   }
 
   return (
-    <Dialog
-      title={editing ? "Edit pesan siap pakai" : "Buat pesan siap pakai"}
-      onClose={onClose}
-    >
+    <Dialog title="Buat pesan siap pakai" onClose={onClose}>
       <form className="form-grid" onSubmit={handleSubmit}>
         <label>
           Nama pesan
@@ -119,11 +100,7 @@ export function TemplateDialog({
             Batal
           </button>
           <button className="primary" disabled={busy}>
-            {busy
-              ? "Menyimpan..."
-              : editing
-                ? "Simpan perubahan"
-                : "Simpan pesan"}
+            {busy ? "Menyimpanâ€¦" : "Simpan pesan"}
           </button>
         </div>
       </form>

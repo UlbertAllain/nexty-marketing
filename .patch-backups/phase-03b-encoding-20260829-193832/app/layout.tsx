@@ -1,10 +1,10 @@
-﻿import type { Metadata } from "next";
+import type { Metadata } from "next";
 import { AuthProvider } from "@/components/auth-provider";
 import "./globals.css";
 export const metadata: Metadata = {
   title: {
     default: "Nexty Labs Marketing CRM",
-    template: "%s  /  Nexty Labs CRM",
+    template: "%s · Nexty Labs CRM",
   },
   description:
     "Ruang kerja sederhana untuk menyiapkan pesan WhatsApp, menandai calon klien yang sudah dihubungi, dan membuat pengingat.",

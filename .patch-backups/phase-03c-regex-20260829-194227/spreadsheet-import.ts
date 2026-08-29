@@ -1,4 +1,4 @@
-import * as XLSX from "xlsx";
+﻿import * as XLSX from "xlsx";
 import type { Lead, LeadStatus, Potential } from "./types";
 
 type CellValue = string | number | boolean | Date | null | undefined;
@@ -35,7 +35,7 @@ function normalizeHeader(value: CellValue) {
     .normalize("NFKD")
     .replace(/[\u0300-\u036f]/g, "")
     .toLowerCase()
-    .replace(/[_\u2013\u2014-]+/g, " ")
+    .replace(/[_---]+/g, " ")
     .replace(/[^a-z0-9]+/g, " ")
     .trim()
     .replace(/\s+/g, " ");
@@ -43,7 +43,7 @@ function normalizeHeader(value: CellValue) {
 
 function text(value: CellValue) {
   const result = String(value ?? "").trim();
-  return /^(?:[-\u2013\u2014]|n\/?a|null)$/i.test(result) ? "" : result;
+  return /^(?:-|-|-|n\/?a|null)$/i.test(result) ? "" : result;
 }
 
 function potential(value: CellValue): Potential {

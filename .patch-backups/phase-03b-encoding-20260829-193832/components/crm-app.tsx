@@ -61,7 +61,7 @@ export function CrmApp({ view }: { view: string }) {
     if (user) refresh();
   }, [user, loading]);
   if (loading || (busy && !user))
-    return <main className="center-state">Menyiapkan ruang kerja...</main>;
+    return <main className="center-state">Menyiapkan ruang kerjaâ€¦</main>;
   if (!configured)
     return (
       <main className="center-state">
@@ -137,7 +137,7 @@ export function CrmApp({ view }: { view: string }) {
             />
           )}{" "}
           {view === "analytics" && <AnalyticsView leads={leads} />}{" "}
-          {view === "settings" && <SettingsView email={user.email || "-"} />}
+          {view === "settings" && <SettingsView email={user.email || "â€”"} />}
         </section>
       </main>
       {dialog === "lead" && (

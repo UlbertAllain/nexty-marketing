@@ -35,7 +35,7 @@ function normalizeHeader(value: CellValue) {
     .normalize("NFKD")
     .replace(/[\u0300-\u036f]/g, "")
     .toLowerCase()
-    .replace(/[_\u2013\u2014-]+/g, " ")
+    .replace(/[_–—-]+/g, " ")
     .replace(/[^a-z0-9]+/g, " ")
     .trim()
     .replace(/\s+/g, " ");
@@ -43,7 +43,7 @@ function normalizeHeader(value: CellValue) {
 
 function text(value: CellValue) {
   const result = String(value ?? "").trim();
-  return /^(?:[-\u2013\u2014]|n\/?a|null)$/i.test(result) ? "" : result;
+  return /^(?:-|–|—|n\/?a|null)$/i.test(result) ? "" : result;
 }
 
 function potential(value: CellValue): Potential {
@@ -131,7 +131,7 @@ export function parseLeadWorkbook(workbook: XLSX.WorkBook): LeadImportPreview {
         continue;
       }
       const rawPhone = rowValue(rawRow, header.fields, "phone");
-      const notes = [text(rowValue(rawRow, header.fields, "notes")), otherPhones(rawPhone)].filter(Boolean).join("  /  ");
+      const notes = [text(rowValue(rawRow, header.fields, "notes")), otherPhones(rawPhone)].filter(Boolean).join(" · ");
       result.rows.push({
         companyName,
         category: text(rowValue(rawRow, header.fields, "category")) || sheetName,

@@ -375,7 +375,7 @@ function LeadPanel({
         <span className="eyebrow">RINGKASAN CALON KLIEN</span>
         <h2>{lead.companyName}</h2>
         <p>
-          {lead.category}  /  {lead.contactName || "Nama kontak belum diisi"}
+          {lead.category} Â· {lead.contactName || "Nama kontak belum diisi"}
         </p>
 
         <div className="drawer-actions">
@@ -526,7 +526,7 @@ function LeadPanel({
                   done();
                 }}
               >
-                <option value="">Pilih perkembangan...</option>
+                <option value="">Pilih perkembanganâ€¦</option>
                 {next.map((status) => (
                   <option key={status} value={status}>
                     {statusLabel[status]}

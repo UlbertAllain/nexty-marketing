@@ -13,24 +13,5 @@ export function whatsappDraftUrl(phone:string,message:string){const normalized=n
 export function instagramUrl(value:string){const trimmed=value.trim();if(/^https?:\/\//i.test(trimmed))return trimmed;const handle=trimmed.replace(/^@/,"").replace(/^instagram\.com\//i,"").replace(/\/$/,"");return `https://www.instagram.com/${encodeURIComponent(handle)}/`}
 export function googleMapsUrl(value:string){const trimmed=value.trim();return /^https?:\/\//i.test(trimmed)?trimmed:`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(trimmed)}`}
 
-export type TemplateGoal="INTRODUCTION"|"FOLLOW_UP"|"CONSULTATION"|"OFFER";
-export type TemplateService="ALL"|"WEBSITE_APP"|"BRANDING"|"IOT";
-export type TemplateTone="FRIENDLY"|"SHORT"|"FORMAL";
-const serviceName:Record<TemplateService,string>={ALL:"Solusi Digital",WEBSITE_APP:"Website & Aplikasi",BRANDING:"Design & Branding",IOT:"Internet of Things"};
-const serviceSentence:Record<TemplateService,string>={ALL:"pengembangan digital, mulai dari website atau aplikasi, design dan branding, hingga solusi Internet of Things",WEBSITE_APP:"pembuatan website atau aplikasi yang rapi, mudah digunakan, dan sesuai kebutuhan operasional",BRANDING:"penguatan identitas bisnis melalui design dan branding yang konsisten",IOT:"pembuatan solusi Internet of Things untuk membantu pemantauan dan pekerjaan operasional"};
-export function generateTemplateDraft(input:{goal:TemplateGoal;service:TemplateService;tone:TemplateTone}){
-  const purpose:Record<TemplateGoal,string>={INTRODUCTION:"Perkenalan",FOLLOW_UP:"Tindak Lanjut",CONSULTATION:"Ajakan Konsultasi",OFFER:"Penawaran"};
-  const hello=input.tone==="FORMAL"?"Yth. {{contact_name}},":"Halo {{contact_name}},";
-  const intro=input.tone==="FORMAL"?"Perkenalkan, saya dari Nexty Labs.":"saya dari Nexty Labs.";
-  const service=serviceSentence[input.service];
-  let body="";
-  if(input.goal==="INTRODUCTION")body=`Kami membantu bisnis seperti {{company_name}} dalam ${service}.`;
-  if(input.goal==="FOLLOW_UP")body=`Saya ingin menindaklanjuti pesan sebelumnya mengenai ${service} untuk {{company_name}}.`;
-  if(input.goal==="CONSULTATION")body=`Kami ingin mengajak {{company_name}} berdiskusi singkat mengenai ${service}.`;
-  if(input.goal==="OFFER")body=`Kami memiliki penawaran ${service} yang dapat disesuaikan dengan kebutuhan {{company_name}}.`;
-  const closing=input.tone==="FORMAL"?"Apabila berkenan, kami siap menjelaskan lebih lanjut pada waktu yang nyaman bagi Bapak/Ibu.":input.tone==="SHORT"?"Boleh kami kirimkan informasi singkatnya?":"Kalau berkenan, boleh kami berbagi informasi singkat atau menjadwalkan obrolan santai?";
-  const content=input.tone==="SHORT"?`${hello} ${intro} ${body} ${closing}`:`${hello}\n\n${intro} ${body}\n\n${closing}\n\nTerima kasih.`;
-  return{title:`${purpose[input.goal]} · ${serviceName[input.service]}`,content};
-}
 export function metrics(leads:Lead[]){const contacted=leads.filter(item=>!["NEW","READY_TO_CONTACT"].includes(item.status)).length;const replied=leads.filter(item=>["REPLIED","QUALIFIED","MEETING","PROPOSAL","NEGOTIATION","DEAL"].includes(item.status)).length;const deal=leads.filter(item=>item.status==="DEAL").length;return{total:leads.length,contacted,replied,deal,responseRate:contacted?Math.round(replied/contacted*100):0,conversionRate:leads.length?Math.round(deal/leads.length*100):0}}
 export const potentialLabel:Record<Potential,string>={LOW:"Pantau",MEDIUM:"Menjanjikan",HIGH:"Prioritas"};

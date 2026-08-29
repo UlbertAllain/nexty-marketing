@@ -1,15 +1,35 @@
 "use client";
-import { FormEvent, useRef, useState } from "react";
-import { RecaptchaVerifier, signInWithPhoneNumber } from "firebase/auth";
-import type { ConfirmationResult } from "firebase/auth";
+import { FormEvent, useState } from "react";
+import { sendPasswordResetEmail, signInWithEmailAndPassword } from "firebase/auth";
 import { auth } from "@/lib/firebase";
-import { normalizePhone } from "@/lib/business";
-import { ArrowRight, LockKeyhole } from "lucide-react";
+import { ArrowRight, LockKeyhole, Mail } from "lucide-react";
 
 export function LoginScreen(){
-  const[phone,setPhone]=useState(""),[code,setCode]=useState(""),[confirmation,setConfirmation]=useState<ConfirmationResult|null>(null),[error,setError]=useState(""),[busy,setBusy]=useState(false);
-  const verifier=useRef<RecaptchaVerifier|null>(null);
-  async function requestCode(event:FormEvent){event.preventDefault();if(!auth){setError("Firebase belum disiapkan. Ikuti README.md terlebih dahulu.");return}const allowed=normalizePhone(process.env.NEXT_PUBLIC_NEXTY_WHATSAPP_NUMBER||"");const normalized=normalizePhone(phone);if(!allowed){setError("Nomor WhatsApp Nexty belum diatur di .env.local.");return}if(normalized!==allowed){setError("Gunakan nomor WhatsApp Nexty yang sudah didaftarkan.");return}try{setBusy(true);setError("");verifier.current?.clear();verifier.current=new RecaptchaVerifier(auth,"recaptcha-container",{size:"invisible"});setConfirmation(await signInWithPhoneNumber(auth,`+${normalized}`,verifier.current))}catch{verifier.current?.clear();verifier.current=null;setError("Kode belum bisa dikirim. Periksa Phone Authentication dan nomor Nexty.")}finally{setBusy(false)}}
-  async function confirmCode(event:FormEvent){event.preventDefault();if(!confirmation)return;try{setBusy(true);setError("");await confirmation.confirm(code);location.href="/dashboard"}catch{setError("Kode OTP salah atau sudah kedaluwarsa.")}finally{setBusy(false)}}
-  return <main className="login-page"><section className="login-story"><div className="brand-mark">N</div><div><p className="eyebrow">NEXTY LABS · INTERNAL</p><h1>Hubungi calon klien tanpa kehilangan jejak.</h1><p>Pesan sudah disiapkan, daftar yang belum dihubungi terlihat jelas, dan pengingat dibuat tanpa proses yang rumit.</p></div><small>Ruang kerja marketing · 2026</small></section><section className="login-panel"><form onSubmit={confirmation?confirmCode:requestCode} className="login-card"><span className="lock"><LockKeyhole size={19}/></span><h2>{confirmation?"Masukkan kode OTP":"Masuk dengan nomor Nexty"}</h2><p>{confirmation?`Kode SMS dikirim ke +${normalizePhone(phone)}.`:"Gunakan nomor WhatsApp Nexty yang sudah didaftarkan di Firebase."}</p>{confirmation?<label>Kode OTP<input inputMode="numeric" autoComplete="one-time-code" value={code} onChange={event=>setCode(event.target.value.replace(/\D/g,""))} placeholder="6 digit kode" required/></label>:<label>Nomor WhatsApp Nexty<input type="tel" value={phone} onChange={event=>setPhone(event.target.value)} placeholder="08xxxxxxxxxx" required/></label>}<div id="recaptcha-container"/>{error&&<div className="error-box">{error}</div>}<button disabled={busy}>{busy?"Memproses...":confirmation?"Verifikasi dan masuk":"Kirim kode OTP"}<ArrowRight size={17}/></button>{confirmation&&<button type="button" className="secondary" onClick={()=>{setConfirmation(null);setCode("");setError("")}}>Ganti nomor</button>}</form></section></main>;
+  const[email,setEmail]=useState(""),[password,setPassword]=useState(""),[error,setError]=useState(""),[notice,setNotice]=useState(""),[busy,setBusy]=useState(false),[resetBusy,setResetBusy]=useState(false);
+
+  async function login(event:FormEvent){
+    event.preventDefault();
+    if(!auth){setError("Firebase belum disiapkan. Ikuti README.md terlebih dahulu.");return}
+    try{
+      setBusy(true);setError("");setNotice("");
+      await signInWithEmailAndPassword(auth,email.trim(),password);
+      location.href="/dashboard";
+    }catch{
+      setError("Email atau kata sandi belum benar. Jika belum punya akun, minta admin membuatkannya di Firebase.");
+    }finally{setBusy(false)}
+  }
+
+  async function resetPassword(){
+    if(!auth){setError("Firebase belum disiapkan. Ikuti README.md terlebih dahulu.");return}
+    if(!email.trim()){setError("Masukkan email terlebih dahulu untuk mengirim tautan reset kata sandi.");return}
+    try{
+      setResetBusy(true);setError("");setNotice("");
+      await sendPasswordResetEmail(auth,email.trim());
+      setNotice("Tautan untuk membuat kata sandi baru sudah dikirim ke email tersebut. Periksa kotak masuk atau folder spam.");
+    }catch{
+      setError("Email belum bisa dikirimi tautan reset. Periksa alamat email atau pengaturan Email/Password di Firebase.");
+    }finally{setResetBusy(false)}
+  }
+
+  return <main className="login-page"><section className="login-story"><div className="brand-mark">N</div><div><p className="eyebrow">NEXTY LABS · INTERNAL</p><h1>Hubungi calon klien tanpa kehilangan jejak.</h1><p>Pesan sudah disiapkan, daftar yang belum dihubungi terlihat jelas, dan pengingat dibuat tanpa proses yang rumit.</p></div><small>Ruang kerja marketing · 2026</small></section><section className="login-panel"><form onSubmit={login} className="login-card"><span className="lock"><LockKeyhole size={19}/></span><h2>Masuk ke ruang kerja</h2><p>Gunakan email dan kata sandi akun marketing Nexty.</p><label><span className="label-with-icon"><Mail size={15}/> Email</span><input type="email" autoComplete="email" value={email} onChange={event=>setEmail(event.target.value)} placeholder="nama@nexty.id" required/></label><label>Kata sandi<input type="password" autoComplete="current-password" value={password} onChange={event=>setPassword(event.target.value)} placeholder="Masukkan kata sandi" required/></label>{notice&&<div className="notice-box">{notice}</div>}{error&&<div className="error-box">{error}</div>}<button disabled={busy}>{busy?"Memproses…":"Masuk"}<ArrowRight size={17}/></button><button type="button" className="text-button" disabled={resetBusy} onClick={resetPassword}>{resetBusy?"Mengirim tautan…":"Lupa kata sandi?"}</button></form></section></main>;
 }

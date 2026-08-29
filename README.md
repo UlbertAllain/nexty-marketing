@@ -1,97 +1,139 @@
-# Nexty Labs Marketing Contact Tracker
+# Nexty Labs Marketing CRM
 
-Sistem sederhana untuk tim marketing Nexty Labs: melihat calon klien yang belum dihubungi, membuka WhatsApp dengan pesan yang sudah terisi, menandai pesan yang sudah dikirim, dan membuat pengingat.
+Sistem kerja sederhana untuk tim marketing Nexty Labs: melihat calon klien yang belum dihubungi, membuka WhatsApp dengan pesan yang sudah disiapkan, mencatat perkembangan, membuat pengingat, dan membuat pesan baru dengan AI.
 
-Versi ini sengaja **tidak memakai Meta WhatsApp API, webhook, Firebase Admin, cron, atau pengiriman massal otomatis**. WhatsApp dibuka melalui tautan resmi `wa.me`, lalu tim menekan tombol Send sendiri di WhatsApp.
+Versi ini sengaja **tidak memakai Meta WhatsApp API, webhook, cron, atau pengiriman WhatsApp otomatis**. WhatsApp dibuka melalui tautan `wa.me`, lalu marketing menekan tombol Send sendiri di WhatsApp.
 
-## Yang benar-benar dilakukan sistem
+## Yang dilakukan sistem
 
-- Login menggunakan nomor WhatsApp Nexty dan kode OTP SMS dari Firebase.
+- Login menggunakan **email dan kata sandi Firebase**.
+- Admin membuat akun marketing dari Firebase Authentication; pengguna tidak perlu membuat akun sendiri dari aplikasi.
+- Ada fitur **Lupa kata sandi** untuk mengirim tautan reset ke email.
 - Tambah calon klien secara manual atau ambil dari Excel.
-- Instagram dan Google Maps dari Excel ditampilkan sebagai tombol yang dapat langsung dibuka.
+- Instagram dan Google Maps dari Excel ditampilkan sebagai kolom dan tombol yang dapat langsung dibuka.
 - Data yang belum dihubungi otomatis muncul paling atas.
-- Pesan siap pakai otomatis mengisi nama kontak, perusahaan, dan jenis usaha.
-- Pembuat draf otomatis menyusun pesan berdasarkan tujuan, layanan, dan gaya bahasa tanpa memerlukan API tambahan.
+- Pesan siap pakai mengisi nama kontak, perusahaan, dan jenis usaha secara otomatis.
+- Tombol **Buat dengan AI** benar-benar memanggil Gemini API untuk membuat pesan baru.
 - Tombol **Buka WhatsApp** membuka WhatsApp Web/Desktop dengan nomor tujuan dan pesan yang sudah terisi.
-- Setelah tim menekan Send di WhatsApp, tombol **Sudah dikirim** mencatat progres di sistem.
+- Setelah marketing menekan Send di WhatsApp, marketing cukup klik **Sudah dikirim** di CRM.
 - Saat pesan ditandai terkirim, pengingat tiga hari berikutnya dibuat otomatis.
-- Tim dapat mencatat perkembangan: menunggu jawaban, sudah membalas, penawaran, negosiasi, atau menjadi klien.
-- Beranda menunjukkan yang belum dihubungi, belum dikonfirmasi, dan pengingat yang jatuh tempo.
-- Hasil marketing menghitung jumlah yang dihubungi, tingkat balasan, dan calon klien yang berhasil.
+- Perkembangan calon klien dapat dicatat sampai menjadi klien atau berhenti.
+- Beranda menunjukkan pekerjaan yang perlu didahulukan.
+- Hasil marketing menghitung progres dari data yang dicatat tim.
 - Data perusahaan ganda dideteksi berdasarkan nama yang sudah dinormalisasi.
 
-## Batasan yang harus dipahami
+## Alur kerja paling sederhana
 
-Tanpa Meta WhatsApp API, browser tidak memiliki izin untuk:
+```text
+Login dengan email + kata sandi
+        ↓
+Buka Calon klien
+        ↓
+Yang belum dihubungi muncul paling atas
+        ↓
+Klik Buka WhatsApp
+        ↓
+Nomor + pesan sudah terisi
+        ↓
+Tekan Send di WhatsApp
+        ↓
+Kembali ke CRM
+        ↓
+Klik Sudah dikirim
+        ↓
+Sistem mencatat progres + membuat pengingat 3 hari
+```
+
+## Batasan WhatsApp
+
+Tanpa Meta WhatsApp API, website tidak memiliki izin untuk:
 
 - menekan tombol Send secara otomatis;
 - memastikan pesan benar-benar terkirim, sampai, atau dibaca;
 - membaca balasan WhatsApp;
-- mengirim pesan di background saat aplikasi ditutup;
+- mengirim pesan ketika browser/aplikasi ditutup;
 - memilih akun pengirim secara paksa.
 
-Karena itu alurnya dibuat jujur:
+Akun pengirim mengikuti akun WhatsApp yang sedang aktif di WhatsApp Web/Desktop. Gunakan profil browser khusus marketing dan pastikan profil tersebut login ke akun WhatsApp Nexty.
 
-```text
-Klik Buka WhatsApp
-→ pesan dan nomor tujuan sudah terisi
-→ tekan Send di WhatsApp
-→ kembali ke sistem
-→ klik Sudah dikirim
-→ progres tercatat
-→ pengingat tiga hari dibuat otomatis
-```
-
-Pesan akan dikirim dari akun yang sedang aktif di WhatsApp Web/Desktop. Gunakan profil browser khusus marketing dan pastikan profil tersebut login ke akun WhatsApp Nexty.
-
-## Struktur fitur
+## Struktur menu
 
 | Menu | Kegunaan |
 |---|---|
-| Beranda kerja | Melihat pekerjaan yang perlu didahulukan. |
-| Calon klien | Daftar kontak, perkembangan, dan tombol WhatsApp. |
-| Pengingat | Daftar siapa yang harus dihubungi kembali. |
-| Pesan siap pakai | Menyimpan contoh pesan agar tidak mengetik ulang. |
-| Hasil marketing | Ringkasan progres yang dicatat tim. |
-| Pengaturan | Memeriksa nomor login dan penjelasan cara pengiriman. |
+| Beranda kerja | Melihat pekerjaan yang harus didahulukan. |
+| Calon klien | Daftar perusahaan, kontak, Instagram, Maps, perkembangan, dan tombol WhatsApp. |
+| Pengingat | Melihat siapa yang perlu dihubungi kembali. |
+| Pesan siap pakai | Menyimpan pesan yang sering digunakan dan membuat pesan baru dengan AI. |
+| Hasil marketing | Melihat ringkasan progres marketing. |
+| Pengaturan | Melihat akun yang sedang masuk dan cara kerja WhatsApp. |
 
-Tidak ada menu campaign, inbox palsu, scheduled send, atau status delivered/read karena fitur tersebut tidak dapat bekerja tanpa API.
+Tidak ada menu campaign, inbox palsu, scheduled send, atau status delivered/read karena fitur tersebut membutuhkan integrasi WhatsApp API.
 
 ## Persyaratan
 
 - Node.js 22 atau lebih baru.
 - Project Firebase.
-- Firebase Authentication dengan provider Phone.
+- Firebase Authentication dengan provider **Email/Password**.
 - Cloud Firestore.
 - WhatsApp Web/Desktop yang sudah login menggunakan akun Nexty.
+- Gemini API key dari Google AI Studio jika fitur **Buat dengan AI** ingin digunakan.
 
-## 1. Instalasi di Windows
+---
 
-Ekstrak ZIP, buka PowerShell di folder project, kemudian:
+# Setup pertama kali
+
+## 1. Jangan membuat folder baru setiap menerima update
+
+Ini penting.
+
+Setelah project pertama kali dipasang, **tetap gunakan folder project yang sama**.
+
+`npm install` hanya diperlukan ketika dependencies belum terpasang atau `package.json`/`package-lock.json` berubah.
+
+Kalau hanya menerima perubahan pada file `.tsx`, `.ts`, `.css`, atau README seperti versi ini, **tidak perlu `npm install` lagi**.
+
+Contoh folder kerja:
+
+```text
+D:\Kuliah bang\skripsi\skripsi\nexty-labs-marketing-crm
+```
+
+Pertahankan folder tersebut. Untuk update source, cukup timpa file yang diperbarui ke folder yang sama.
+
+## 2. Instalasi pertama di Windows
+
+Buka PowerShell di folder project:
 
 ```powershell
 npm install
 Copy-Item .env.example .env.local
 ```
 
-Atau:
+Atau gunakan:
 
 ```powershell
 powershell -ExecutionPolicy Bypass -File .\setup-windows.ps1
 ```
 
-Jangan jalankan aplikasi sebelum `.env.local` diisi.
+Script tersebut sekarang **hanya menjalankan `npm install` jika folder `node_modules` belum ada**.
 
-## 2. Membuat project Firebase
+Jadi menjalankan script lagi tidak akan mengunduh semua dependency dari awal.
 
-1. Buka [Firebase Console](https://console.firebase.google.com/).
+---
+
+# Firebase
+
+## 3. Membuat project Firebase
+
+1. Buka Firebase Console.
 2. Pilih **Create a project**.
 3. Setelah project siap, buka **Project settings → General**.
 4. Pada **Your apps**, klik ikon Web `</>`.
-5. Beri nama, misalnya `nexty-marketing`, lalu klik **Register app**.
-6. Firebase menampilkan objek `firebaseConfig`.
+5. Beri nama, misalnya `nexty-marketing`.
+6. Klik **Register app**.
+7. Firebase menampilkan `firebaseConfig`.
 
-Salin nilainya ke `.env.local`:
+Masukkan nilainya ke `.env.local`:
 
 ```env
 NEXT_PUBLIC_FIREBASE_API_KEY=isi_apiKey
@@ -102,36 +144,34 @@ NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID=isi_messagingSenderId
 NEXT_PUBLIC_FIREBASE_APP_ID=isi_appId
 ```
 
-Nilai tersebut adalah konfigurasi aplikasi web, bukan password Firebase. Keamanan data tetap ditentukan oleh Authentication dan Firestore Rules.
+Konfigurasi tersebut adalah konfigurasi aplikasi web Firebase, bukan password Firebase.
 
-## 3. Mengaktifkan login nomor Nexty
-
-Login menggunakan Firebase Phone Authentication. Kode masuk dikirim sebagai **SMS OTP**, bukan pesan WhatsApp.
+## 4. Mengaktifkan login email dan kata sandi
 
 1. Buka **Firebase Console → Build → Authentication**.
-2. Klik **Get started** jika belum pernah digunakan.
+2. Klik **Get started** jika Authentication belum pernah dipakai.
 3. Buka tab **Sign-in method**.
-4. Aktifkan provider **Phone**.
-5. Periksa pengaturan wilayah SMS jika Firebase meminta region yang diizinkan.
-6. Masukkan nomor WhatsApp Nexty ke `.env.local` dalam format internasional tanpa tanda `+`:
+4. Pilih **Email/Password**.
+5. Aktifkan **Email/Password**.
+6. Simpan.
 
-```env
-NEXT_PUBLIC_NEXTY_WHATSAPP_NUMBER=6281234567890
-```
+Aplikasi tidak menyediakan tombol daftar akun. Untuk sistem internal, akun dibuat oleh admin melalui Firebase Console:
 
-Jika nomor aslinya `081234567890`, tulis `6281234567890`.
+1. Buka **Authentication → Users**.
+2. Klik **Add user**.
+3. Masukkan email marketing.
+4. Buat kata sandi sementara.
+5. Berikan email dan kata sandi tersebut kepada anggota tim melalui cara yang aman.
 
-Hanya nomor yang sama persis dengan variabel tersebut yang dapat meminta OTP melalui halaman login aplikasi. Firebase tetap memverifikasi kode OTP yang diterima pada nomor tersebut.
+Pengguna kemudian dapat mengganti kata sandi melalui fitur **Lupa kata sandi**.
 
-Untuk development, Firebase menyediakan nomor telepon pengujian pada pengaturan Phone Authentication. Nomor tes menghindari pengiriman SMS nyata, tetapi hanya gunakan pada development dan jangan gunakan kode tes pada production. Panduan resmi: [Firebase Phone Authentication for Web](https://firebase.google.com/docs/auth/web/phone-auth).
-
-## 4. Membuat Firestore
+## 5. Mengaktifkan Firestore
 
 1. Buka **Firebase Console → Build → Firestore Database**.
 2. Pilih **Create database**.
-3. Pilih mode Production.
+3. Gunakan mode Production.
 4. Pilih region database.
-5. Pasang Firebase CLI:
+5. Pasang Firebase CLI jika belum ada:
 
 ```powershell
 npm install -g firebase-tools
@@ -140,9 +180,39 @@ firebase use --add
 firebase deploy --only firestore:rules,firestore:indexes
 ```
 
-Rules project memastikan setiap pengguna hanya membaca dan mengubah data milik akun loginnya sendiri.
+Rules memastikan pengguna hanya dapat membaca dan mengubah data yang memiliki `ownerId` sama dengan akun yang sedang login.
 
-## 5. Menjalankan aplikasi
+---
+
+# Menjalankan aplikasi
+
+## 6. Isi `.env.local`
+
+Minimal:
+
+```env
+NEXT_PUBLIC_FIREBASE_API_KEY=...
+NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN=...
+NEXT_PUBLIC_FIREBASE_PROJECT_ID=...
+NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET=...
+NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID=...
+NEXT_PUBLIC_FIREBASE_APP_ID=...
+
+GEMINI_API_KEY=...
+GEMINI_MODEL=gemini-3.7-flash
+```
+
+`GEMINI_API_KEY` boleh dikosongkan jika fitur AI belum diperlukan. Semua fitur CRM selain **Buat dengan AI** tetap dapat digunakan.
+
+Jangan membuat:
+
+```env
+NEXT_PUBLIC_GEMINI_API_KEY=...
+```
+
+API key Gemini harus tetap berada di server.
+
+## 7. Jalankan
 
 ```powershell
 npm run dev
@@ -154,99 +224,161 @@ Buka:
 http://localhost:3000
 ```
 
-Masukkan nomor WhatsApp Nexty, tunggu OTP SMS, lalu masukkan kodenya.
+Masuk menggunakan akun email dan kata sandi yang sudah dibuat di Firebase Authentication.
 
-## 6. Menyiapkan WhatsApp Nexty
+---
 
-1. Pada komputer marketing, buka [WhatsApp Web](https://web.whatsapp.com/).
-2. Hubungkan akun WhatsApp Nexty melalui menu **Linked devices** di ponsel.
-3. Gunakan profil browser khusus marketing agar tidak tertukar dengan WhatsApp pribadi.
-4. Biarkan sesi WhatsApp Nexty tetap aktif.
-5. Dari aplikasi CRM, buka **Pengaturan** dan pastikan nomor login benar.
+# WhatsApp
 
-Tautan `wa.me` tidak dapat menentukan akun pengirim. Akun yang dipakai selalu akun WhatsApp yang sedang aktif pada browser/aplikasi tersebut.
+## 8. Menyiapkan WhatsApp Nexty
 
-## 7. Membuat pesan siap pakai
+1. Pada komputer marketing, buka WhatsApp Web.
+2. Hubungkan akun WhatsApp Nexty melalui **Linked devices** di ponsel.
+3. Sebaiknya gunakan profil browser khusus untuk akun Nexty.
+4. Biarkan sesi WhatsApp tetap aktif.
+5. Dari CRM, buka daftar calon klien.
+6. Klik **Buka WhatsApp**.
+7. Pastikan chat yang terbuka menggunakan akun Nexty.
 
-Buka **Pesan siap pakai → Buat pesan**.
+CRM tidak mengirim pesan langsung ke WhatsApp. CRM hanya menyiapkan nomor dan isi pesan.
 
-Contoh:
+---
 
-```text
-Halo {{contact_name}}, saya dari Nexty Labs. Saya melihat {{company_name}} punya peluang menarik untuk mengembangkan bisnis {{category}} secara digital.
+# Membuat pesan dengan AI
+
+## 9. Mendapatkan Gemini API key
+
+1. Buka Google AI Studio.
+2. Login dengan akun Google.
+3. Buka **API Keys** atau **Get API key**.
+4. Klik **Create API key**.
+5. Salin key.
+6. Masukkan ke `.env.local`:
+
+```env
+GEMINI_API_KEY=isi_api_key_dari_google_ai_studio
+GEMINI_MODEL=gemini-3.7-flash
 ```
 
-Penanda yang tersedia:
+Setelah mengubah `.env.local`, hentikan server dengan `Ctrl + C`, lalu jalankan lagi:
 
-| Penanda | Diganti menjadi |
-|---|---|
-| `{{contact_name}}` | Nama orang yang dihubungi atau “Bapak/Ibu” jika kosong |
-| `{{company_name}}` | Nama perusahaan |
-| `{{category}}` | Jenis usaha |
+```powershell
+npm run dev
+```
 
-Pesan dapat diubah lagi sebelum WhatsApp dibuka.
+Jangan masukkan API key Gemini ke GitHub atau chat.
 
-### Membuat draf secara otomatis
+## 10. Menggunakan AI
 
-Pada formulir **Buat pesan**, tersedia bagian **Buat draf otomatis**:
+Pada **Pesan siap pakai → Buat pesan**:
 
-1. Pilih tujuan pesan: perkenalan, menanyakan kembali, ajakan konsultasi, atau penawaran.
-2. Pilih layanan: semua layanan, website dan aplikasi, design dan branding, atau Internet of Things.
-3. Pilih gaya bahasa: ramah profesional, singkat, atau formal.
-4. Klik **Buat draf**.
-5. Periksa dan ubah kata-katanya bila diperlukan.
-6. Klik **Simpan pesan**.
+1. Tentukan jenis usaha target.
+2. Pilih tujuan pesan.
+3. Pilih layanan Nexty.
+4. Pilih gaya bahasa.
+5. Jika perlu, tulis arahan tambahan.
+6. Klik **Buat dengan AI**.
+7. Tunggu AI membuat pesan.
+8. Periksa dan edit hasilnya.
+9. Klik **Simpan pesan**.
 
-Fitur ini bekerja langsung di aplikasi dan tidak memerlukan API AI. Nama kontak dan perusahaan tetap baru dimasukkan ketika pesan digunakan untuk calon klien tertentu.
+Ini benar-benar memanggil Gemini API. Tidak ada generator rule-based sebagai pengganti AI.
 
-## 8. Alur kerja harian
+Data sensitif seperti nomor WhatsApp, email, Instagram, dan Google Maps tidak perlu dikirim ke Gemini. Template menggunakan penanda seperti `{{contact_name}}`, `{{company_name}}`, dan `{{category}}`.
 
-1. Buka menu **Calon klien**.
-2. Data berstatus **Belum dihubungi** muncul paling atas.
-3. Klik **Buka WhatsApp** pada baris yang ingin dihubungi.
-4. WhatsApp terbuka dengan nomor dan pesan yang sudah terisi.
-5. Periksa pesan, lalu tekan Send di WhatsApp.
-6. Kembali ke sistem.
-7. Tombol pada baris berubah menjadi **Sudah dikirim**. Klik tombol tersebut.
-8. Sistem mencatat waktu kirim dan membuat pengingat tiga hari.
-9. Jika calon klien membalas, buka datanya dan ubah perkembangan secara manual menjadi **Sudah membalas**.
-10. Lanjutkan perkembangan sampai menjadi klien atau peluang berhenti.
+---
 
-## 9. Format Excel
+# Import Excel
 
-Semua sheet yang memiliki tabel kontak akan dibaca. File lama **Target Pasar Nexty Labs** dapat langsung digunakan tanpa mengganti judul kolom. Baris cadangan/kosong otomatis dilewati, termasuk baris yang belum memiliki nama usaha tetapi sudah berisi pilihan default Excel.
+## 11. File Excel target pasar
 
-| Kolom | Nama alternatif | Wajib |
+File Excel dengan struktur seperti **Target Pasar Nexty Labs** dapat langsung diimpor.
+
+Kolom yang dikenali:
+
+| Kolom | Contoh | Wajib |
 |---|---|---|
-| `company_name` | `Nama Perusahaan`, `Nama Usaha`, `Nama Bisnis` | Ya |
-| `category` | `Kategori`, `Bidang Usaha`, `Jenis Usaha` | Tidak |
-| `contact_name` | `Nama Kontak` | Tidak |
-| `phone` | `WhatsApp`, `Kontak`, `Nomor Kontak`, `No WA` | Tidak |
-| `email` | `Email` | Tidak |
-| `instagram` | `Instagram`, `IG` | Tidak |
-| `googleMaps` | `Link Google Maps`, `Google Maps` | Tidak |
-| `potential` | `Potensi`, `Prioritas` | Tidak (`Low`, `Medium`, `High`) |
-| `status` | `Status Follow-Up`, `Perkembangan` | Tidak |
-| `notes` | `Catatan` | Tidak |
+| Nama Usaha | Kopi Senja | Ya |
+| Bidang Usaha | Kafe | Tidak |
+| Kontak | Budi / nomor WhatsApp | Tidak |
+| Potensi | High / Medium / Low | Tidak |
+| Instagram | @kopisenja | Tidak |
+| Link Google Maps | link atau alamat | Tidak |
+| Status Follow-Up | Belum Dihubungi / Menunggu Balasan | Tidak |
 
-Nomor yang tersimpan sebagai angka Excel, tampil dalam notasi ilmiah, memakai tanda hubung, atau berisi dua nomor juga ditangani. Untuk dua nomor, nomor pertama dipakai sebagai nomor utama dan sisanya disimpan di catatan. Nomor kosong tetap dapat disimpan, tetapi tombol WhatsApp tidak aktif sampai nomor dilengkapi.
+Sistem juga mengenali beberapa nama kolom alternatif.
 
-Nilai `Belum Dihubungi` dan `Menunggu Balasan` pada file lama ikut dipertahankan sebagai perkembangan awal, sehingga daftar tidak kembali menjadi serba belum dihubungi.
+Baris kosong atau baris cadangan Excel yang tidak mempunyai nama usaha akan dilewati agar tidak menjadi data sampah.
 
-## 10. Deployment
+Instagram dan Google Maps tetap disimpan dan ditampilkan sebagai kolom tersendiri pada tabel calon klien.
 
-Project dapat di-deploy ke Vercel tanpa cron atau server API khusus.
+---
 
-1. Push project ke repository Git privat.
-2. Import repository ke Vercel.
-3. Masukkan seluruh variabel `NEXT_PUBLIC_*` dari `.env.local` ke Environment Variables Vercel.
-4. Deploy.
-5. Tambahkan domain hasil deployment ke **Firebase Authentication → Settings → Authorized domains**.
-6. Buka aplikasi dan uji OTP.
+# Alur kerja marketing
 
-Tidak ada `META_*`, `CRON_SECRET`, private key Firebase Admin, webhook, atau Cloudinary yang perlu diisi.
+## 12. Menghubungi calon klien
 
-## Pemeriksaan sebelum deploy
+1. Buka **Calon klien**.
+2. Kontak **Belum dihubungi** muncul paling atas.
+3. Klik **Buka WhatsApp**.
+4. Nomor dan pesan sudah disiapkan.
+5. Periksa isi pesan.
+6. Tekan Send di WhatsApp.
+7. Kembali ke CRM.
+8. Klik **Sudah dikirim**.
+9. Sistem menyimpan waktu pengiriman.
+10. Sistem membuat pengingat tiga hari berikutnya.
+
+## 13. Ketika calon klien membalas
+
+Balasan dibaca langsung dari WhatsApp karena CRM tidak memakai WhatsApp API.
+
+Marketing kemudian membuka data calon klien dan mengubah perkembangannya, misalnya:
+
+```text
+Sudah dikirim
+↓
+Sudah membalas
+↓
+Peluang cocok
+↓
+Jadwal pertemuan
+↓
+Penawaran dikirim
+↓
+Sedang negosiasi
+↓
+Berhasil jadi klien
+```
+
+---
+
+# Update project tanpa install ulang
+
+Jika menerima ZIP/patch yang hanya berisi source code:
+
+1. **Jangan hapus folder project lama.**
+2. **Jangan pindah ke folder baru.**
+3. Backup jika diperlukan.
+4. Ekstrak patch ke folder project yang sekarang.
+5. Pilih **Replace/Overwrite** ketika Windows meminta konfirmasi.
+6. Jalankan:
+
+```powershell
+npm run dev
+```
+
+Tidak perlu menjalankan `npm install` selama `package.json` dan `package-lock.json` tidak berubah.
+
+Kalau suatu saat dependencies memang berubah, baru jalankan:
+
+```powershell
+npm install
+```
+
+---
+
+# Pemeriksaan sebelum deploy
 
 ```powershell
 npm run lint
@@ -254,36 +386,83 @@ npm test
 npm run build
 ```
 
-## Struktur project
+---
+
+# Struktur project
 
 ```text
 app/                     Halaman Next.js
+app/api/ai/              Endpoint server Gemini
 components/              Login dan ruang kerja
 components/workspace/    Beranda, calon klien, pengingat, pesan, laporan
-lib/business.ts          Validasi, isi pesan, tautan WhatsApp, dan perhitungan
+lib/business.ts          Validasi dan aturan kerja
+lib/ai-template.ts       Validasi input, prompt, dan hasil template AI
 lib/firebase.ts          Koneksi Firebase Web
 lib/repository.ts        Operasi data Firestore
 lib/types.ts             Bentuk data sistem
-tests/                   Unit test aturan utama
+tests/                   Unit test
 firestore.rules          Perlindungan data per akun
-firestore.indexes.json   Index query yang benar-benar digunakan
-setup-windows.ps1        Penyiapan awal Windows
+firestore.indexes.json   Index query yang digunakan
+setup-windows.ps1        Setup pertama kali Windows
 ```
 
-## Masalah yang sering terjadi
+---
 
-- **OTP tidak terkirim**: pastikan provider Phone aktif, nomor memakai format `62`, region SMS diizinkan, dan kuota Firebase tersedia.
-- **reCAPTCHA gagal**: pastikan domain aplikasi ada di Authorized domains dan `NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN` benar.
-- **Nomor ditolak aplikasi**: samakan input dengan `NEXT_PUBLIC_NEXTY_WHATSAPP_NUMBER`.
-- **WhatsApp pribadi yang terbuka**: logout dari WhatsApp pribadi atau gunakan profil browser khusus yang login ke akun Nexty.
-- **Pesan belum terisi**: buat minimal satu Pesan siap pakai dan jadikan pilihan utama.
-- **Data tidak dapat disimpan**: deploy `firestore.rules` dan `firestore.indexes.json`, lalu login ulang.
-- **Vite atau Wrangler muncul**: kamu menggunakan source lama. Versi ini menjalankan `next dev`.
+# Masalah yang sering terjadi
 
-## Keamanan
+### `403` ketika membuat pesan dengan AI
+
+Pada versi login email/password, endpoint AI tidak lagi memeriksa nomor WhatsApp. Endpoint hanya memeriksa apakah pengguna sudah login dengan Firebase.
+
+Jika masih mendapat `403`, pastikan pengguna sudah login dan token Firebase masih aktif. Logout lalu login kembali.
+
+### `401` ketika membuat pesan dengan AI
+
+Sesi login sudah tidak berlaku. Logout dan login kembali.
+
+### `503` ketika membuat pesan dengan AI
+
+Biasanya `GEMINI_API_KEY` belum diisi. Isi key pada `.env.local`, hentikan server, lalu jalankan `npm run dev` lagi.
+
+### Login tidak bisa
+
+Pastikan **Authentication → Sign-in method → Email/Password** sudah aktif dan email pengguna memang sudah dibuat pada **Authentication → Users**.
+
+### Lupa kata sandi tidak bekerja
+
+Pastikan email yang dimasukkan benar dan Firebase Authentication Email/Password sudah aktif. Periksa juga folder spam.
+
+### Data Firestore tidak dapat disimpan
+
+Deploy rules dan indexes:
+
+```powershell
+firebase deploy --only firestore:rules,firestore:indexes
+```
+
+### WhatsApp pribadi yang terbuka
+
+Logout dari WhatsApp pribadi atau gunakan profil browser khusus yang login ke akun WhatsApp Nexty.
+
+### `npm install` terasa harus dilakukan terus
+
+Tidak perlu. Setelah `node_modules` terpasang, simpan folder project tersebut dan gunakan terus folder yang sama. Jalankan `npm install` lagi hanya jika dependencies berubah atau `node_modules` memang terhapus.
+
+### Muncul error Vite/Wrangler
+
+Source lama masih digunakan. Versi ini menggunakan Next.js dan menjalankan:
+
+```powershell
+npm run dev
+```
+
+---
+
+# Keamanan
 
 - Jangan commit `.env.local`.
-- Firebase Phone Auth menggunakan reCAPTCHA untuk mengurangi penyalahgunaan permintaan SMS.
-- Nomor yang diizinkan berada pada variabel konfigurasi publik; keamanan login tetap berasal dari OTP Firebase, bukan dari kerahasiaan nomor.
+- `GEMINI_API_KEY` hanya dibaca oleh route server.
+- Endpoint AI memverifikasi Firebase ID token sebelum memanggil Gemini.
 - Firestore Rules membatasi data berdasarkan `ownerId` akun yang sedang login.
-- Gunakan profil browser khusus dan kunci perangkat marketing karena sesi WhatsApp Nexty tersimpan di perangkat tersebut.
+- Tidak ada Meta API token, webhook secret, cron secret, atau Firebase Admin private key.
+- Sesi WhatsApp Nexty berada pada perangkat/browser marketing, jadi perangkat tersebut harus dijaga.

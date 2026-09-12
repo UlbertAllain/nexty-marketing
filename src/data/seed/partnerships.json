@@ -1,0 +1,1060 @@
+{
+  "sheet": "14 Partnerships",
+  "range": "A1:L72",
+  "rows": [
+    {
+      "row": 1,
+      "cells": [
+        "NEXTYLABS — PARTNERSHIP, REACTIVATION & REFERRAL",
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null
+      ]
+    },
+    {
+      "row": 3,
+      "cells": [
+        "Buka 1–2× seminggu. Ini channel leverage, bukan pekerjaan harian utama.",
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null
+      ]
+    },
+    {
+      "row": 5,
+      "cells": [
+        "A. PARTNERSHIP / WHITE-LABEL PIPELINE",
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null
+      ]
+    },
+    {
+      "row": 6,
+      "cells": [
+        "Partner",
+        "Type",
+        "Why Relevant",
+        "Model",
+        "Contact",
+        "Status",
+        "First Contact",
+        "Last Contact",
+        "Next Action",
+        "Next Date",
+        "Potential Deal",
+        "Notes"
+      ]
+    },
+    {
+      "row": 7,
+      "cells": [
+        "Toekangdigital",
+        "Digital agency",
+        "Possible custom-system overflow",
+        "White-label / referral",
+        "Website contact",
+        "New",
+        null,
+        null,
+        "Send partnership outreach",
+        null,
+        null,
+        "Do not sell web services"
+      ]
+    },
+    {
+      "row": 8,
+      "cells": [
+        null,
+        "Branding studio",
+        "Clients need web after branding",
+        "Referral / white-label",
+        null,
+        "New",
+        null,
+        null,
+        "Research 5 Solo studios",
+        null,
+        null,
+        null
+      ]
+    },
+    {
+      "row": 9,
+      "cells": [
+        null,
+        "Social media agency",
+        "Existing SMB client base",
+        "Referral",
+        null,
+        "New",
+        null,
+        null,
+        "Research 5 agencies",
+        null,
+        null,
+        null
+      ]
+    },
+    {
+      "row": 10,
+      "cells": [
+        null,
+        "SEO freelancer/agency",
+        "Needs technical implementation",
+        "Referral / delivery",
+        null,
+        "New",
+        null,
+        null,
+        "Research 5",
+        null,
+        null,
+        null
+      ]
+    },
+    {
+      "row": 11,
+      "cells": [
+        null,
+        "Photographer/content studio",
+        "Portfolio/e-commerce client base",
+        "Referral",
+        null,
+        "New",
+        null,
+        null,
+        "Research 5",
+        null,
+        null,
+        null
+      ]
+    },
+    {
+      "row": 12,
+      "cells": [
+        null,
+        "Business consultant",
+        "Can uncover operations pain",
+        "Referral",
+        null,
+        "New",
+        null,
+        null,
+        "Research 5",
+        null,
+        null,
+        null
+      ]
+    },
+    {
+      "row": 13,
+      "cells": [
+        null,
+        "IT hardware/vendor",
+        "Can refer internal systems",
+        "Referral",
+        null,
+        "New",
+        null,
+        null,
+        "Research 5",
+        null,
+        null,
+        null
+      ]
+    },
+    {
+      "row": 16,
+      "cells": [
+        "B. OLD LEAD / CLIENT REACTIVATION",
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null
+      ]
+    },
+    {
+      "row": 17,
+      "cells": [
+        "Segment",
+        "Who Fits",
+        "Opening Message",
+        "If Interested",
+        "Follow-up",
+        "Offer Direction",
+        "Priority",
+        "Rule",
+        null,
+        null,
+        null,
+        null
+      ]
+    },
+    {
+      "row": 18,
+      "cells": [
+        "Old Client",
+        "Project pernah selesai",
+        "Halo Kak [NAMA], apa kabar? Kami sedang review project client lama dan kepikiran [PROJECT]. Apakah sekarang ada proses/fitur baru yang masih manual atau improvement yang sudah lama ingin dibuat? Kita bisa mulai dari bagian paling berdampak dulu.",
+        "Audit current asset/process",
+        "D+3 sekali",
+        "Maintenance / improvement / module",
+        "A",
+        "Jangan tanya 'ada project lagi nggak?'",
+        null,
+        null,
+        null,
+        null
+      ]
+    },
+    {
+      "row": 19,
+      "cells": [
+        "Almost Won",
+        "Pernah meeting/proposal",
+        "Halo Kak [NAMA], beberapa waktu lalu kita sempat bahas [KEBUTUHAN]. Apakah masalah tersebut masih relevan atau sudah selesai dengan cara lain?",
+        "Ask what changed",
+        "D+3 then stop",
+        "MVP / revised scope",
+        "A",
+        "Re-discovery dulu",
+        null,
+        null,
+        null,
+        null
+      ]
+    },
+    {
+      "row": 20,
+      "cells": [
+        "Dormant Inquiry",
+        "Pernah DM/tanya harga",
+        "Halo Kak [NAMA], dulu sempat menghubungi NextyLabs soal [KEBUTUHAN]. Kalau masih relevan, saya bisa bantu breakdown scope minimum dulu supaya lebih jelas tanpa harus langsung project besar.",
+        "Qualification",
+        "1 follow-up",
+        "Starter offer",
+        "B",
+        "Jangan langsung diskon",
+        null,
+        null,
+        null,
+        null
+      ]
+    },
+    {
+      "row": 21,
+      "cells": [
+        "Warm Network",
+        "Teman/kenalan founder",
+        "Halo [NAMA], izin titip info. NextyLabs lagi membuka beberapa slot website bisnis dan custom system. Kalau ada kenalan yang digital presence-nya belum maksimal atau operasionalnya tersebar di banyak tools, boleh dikenalkan ke kami.",
+        "Ask for intro",
+        "No pressure",
+        "Referral",
+        "B",
+        "Jangan broadcast rutin",
+        null,
+        null,
+        null,
+        null
+      ]
+    },
+    {
+      "row": 22,
+      "cells": [
+        "Lost - Timing",
+        "Dulu belum prioritas",
+        "Halo Kak [NAMA], waktu itu project [X] belum jadi prioritas. Saya follow-up sesuai periode yang kita sepakati. Apakah kondisinya masih sama atau mulai relevan dibahas lagi?",
+        "Revalidate urgency",
+        "Once",
+        "Original / MVP",
+        "B",
+        "Hanya kontak saat due",
+        null,
+        null,
+        null,
+        null
+      ]
+    },
+    {
+      "row": 25,
+      "cells": [
+        "Name/Business",
+        "Segment",
+        "Last Contact",
+        "Original Need",
+        "Why Stalled",
+        "Status",
+        "Next Contact",
+        "Owner",
+        "Potential Value",
+        "Notes",
+        null,
+        null
+      ]
+    },
+    {
+      "row": 26,
+      "cells": [
+        null,
+        "Old Client",
+        null,
+        null,
+        null,
+        "New",
+        null,
+        "Founder",
+        null,
+        null,
+        null,
+        null
+      ]
+    },
+    {
+      "row": 27,
+      "cells": [
+        null,
+        "Old Client",
+        null,
+        null,
+        null,
+        "New",
+        null,
+        "Founder",
+        null,
+        null,
+        null,
+        null
+      ]
+    },
+    {
+      "row": 28,
+      "cells": [
+        null,
+        "Old Client",
+        null,
+        null,
+        null,
+        "New",
+        null,
+        "Founder",
+        null,
+        null,
+        null,
+        null
+      ]
+    },
+    {
+      "row": 29,
+      "cells": [
+        null,
+        "Old Client",
+        null,
+        null,
+        null,
+        "New",
+        null,
+        "Founder",
+        null,
+        null,
+        null,
+        null
+      ]
+    },
+    {
+      "row": 30,
+      "cells": [
+        null,
+        "Old Client",
+        null,
+        null,
+        null,
+        "New",
+        null,
+        "Founder",
+        null,
+        null,
+        null,
+        null
+      ]
+    },
+    {
+      "row": 31,
+      "cells": [
+        null,
+        "Old Client",
+        null,
+        null,
+        null,
+        "New",
+        null,
+        "Founder",
+        null,
+        null,
+        null,
+        null
+      ]
+    },
+    {
+      "row": 32,
+      "cells": [
+        null,
+        "Old Client",
+        null,
+        null,
+        null,
+        "New",
+        null,
+        "Founder",
+        null,
+        null,
+        null,
+        null
+      ]
+    },
+    {
+      "row": 33,
+      "cells": [
+        null,
+        "Old Client",
+        null,
+        null,
+        null,
+        "New",
+        null,
+        "Founder",
+        null,
+        null,
+        null,
+        null
+      ]
+    },
+    {
+      "row": 34,
+      "cells": [
+        null,
+        "Old Client",
+        null,
+        null,
+        null,
+        "New",
+        null,
+        "Founder",
+        null,
+        null,
+        null,
+        null
+      ]
+    },
+    {
+      "row": 35,
+      "cells": [
+        null,
+        "Old Client",
+        null,
+        null,
+        null,
+        "New",
+        null,
+        "Founder",
+        null,
+        null,
+        null,
+        null
+      ]
+    },
+    {
+      "row": 36,
+      "cells": [
+        null,
+        "Old Client",
+        null,
+        null,
+        null,
+        "New",
+        null,
+        "Founder",
+        null,
+        null,
+        null,
+        null
+      ]
+    },
+    {
+      "row": 37,
+      "cells": [
+        null,
+        "Old Client",
+        null,
+        null,
+        null,
+        "New",
+        null,
+        "Founder",
+        null,
+        null,
+        null,
+        null
+      ]
+    },
+    {
+      "row": 38,
+      "cells": [
+        null,
+        "Old Client",
+        null,
+        null,
+        null,
+        "New",
+        null,
+        "Founder",
+        null,
+        null,
+        null,
+        null
+      ]
+    },
+    {
+      "row": 39,
+      "cells": [
+        null,
+        "Old Client",
+        null,
+        null,
+        null,
+        "New",
+        null,
+        "Founder",
+        null,
+        null,
+        null,
+        null
+      ]
+    },
+    {
+      "row": 40,
+      "cells": [
+        null,
+        "Old Client",
+        null,
+        null,
+        null,
+        "New",
+        null,
+        "Founder",
+        null,
+        null,
+        null,
+        null
+      ]
+    },
+    {
+      "row": 41,
+      "cells": [
+        null,
+        "Old Client",
+        null,
+        null,
+        null,
+        "New",
+        null,
+        "Founder",
+        null,
+        null,
+        null,
+        null
+      ]
+    },
+    {
+      "row": 42,
+      "cells": [
+        null,
+        "Old Client",
+        null,
+        null,
+        null,
+        "New",
+        null,
+        "Founder",
+        null,
+        null,
+        null,
+        null
+      ]
+    },
+    {
+      "row": 43,
+      "cells": [
+        null,
+        "Old Client",
+        null,
+        null,
+        null,
+        "New",
+        null,
+        "Founder",
+        null,
+        null,
+        null,
+        null
+      ]
+    },
+    {
+      "row": 44,
+      "cells": [
+        null,
+        "Old Client",
+        null,
+        null,
+        null,
+        "New",
+        null,
+        "Founder",
+        null,
+        null,
+        null,
+        null
+      ]
+    },
+    {
+      "row": 45,
+      "cells": [
+        null,
+        "Old Client",
+        null,
+        null,
+        null,
+        "New",
+        null,
+        "Founder",
+        null,
+        null,
+        null,
+        null
+      ]
+    },
+    {
+      "row": 48,
+      "cells": [
+        "C. REFERRAL PROGRAM",
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null
+      ]
+    },
+    {
+      "row": 49,
+      "cells": [
+        "Config",
+        "Value",
+        null,
+        "Rule",
+        "Why",
+        "Allowed",
+        "Not Allowed",
+        "Example",
+        null,
+        null,
+        null,
+        null
+      ]
+    },
+    {
+      "row": 50,
+      "cells": [
+        "Default Referral Fee",
+        0.075,
+        null,
+        "Attribution",
+        "Prevent disputes",
+        "Record referrer before/at intro",
+        "Claim after lead already active",
+        "Partner introduces Company A",
+        null,
+        null,
+        null,
+        null
+      ]
+    },
+    {
+      "row": 51,
+      "cells": [
+        "Payment Trigger",
+        "After referred client's payment clears",
+        null,
+        "Payout",
+        "Protect cashflow",
+        "Pay after funds clear",
+        "Pay before collection",
+        "Fee × eligible collected revenue",
+        null,
+        null,
+        null,
+        null
+      ]
+    },
+    {
+      "row": 52,
+      "cells": [
+        "Default Window",
+        "First agreed opportunity unless extended",
+        null,
+        "Scope",
+        "Protect margin",
+        "Define eligible project/revenue",
+        "Automatic lifetime fee",
+        "First project unless extended",
+        null,
+        null,
+        null,
+        null
+      ]
+    },
+    {
+      "row": 53,
+      "cells": [
+        "Exclusivity",
+        "None unless written agreement",
+        null,
+        "Client ownership",
+        "Protect relationship",
+        "Agree who communicates",
+        "Both sides message inconsistently",
+        "White-label: partner owns comms",
+        null,
+        null,
+        null,
+        null
+      ]
+    },
+    {
+      "row": 54,
+      "cells": [
+        "Owner",
+        "Founder / Sales",
+        null,
+        "Disclosure",
+        "Keep trust",
+        "Use simple written terms",
+        "Misrepresent relationship",
+        "Clear referral agreement",
+        null,
+        null,
+        null,
+        null
+      ]
+    },
+    {
+      "row": 57,
+      "cells": [
+        "Referrer",
+        "Prospect",
+        "Intro Date",
+        "Deal Value",
+        "Eligible Revenue",
+        "Fee %",
+        "Expected Fee",
+        "Paid?",
+        "Paid Date",
+        "Notes",
+        null,
+        null
+      ]
+    },
+    {
+      "row": 58,
+      "cells": [
+        null,
+        null,
+        null,
+        null,
+        null,
+        0.075,
+        null,
+        "No",
+        null,
+        null,
+        null,
+        null
+      ]
+    },
+    {
+      "row": 59,
+      "cells": [
+        null,
+        null,
+        null,
+        null,
+        null,
+        0.075,
+        null,
+        "No",
+        null,
+        null,
+        null,
+        null
+      ]
+    },
+    {
+      "row": 60,
+      "cells": [
+        null,
+        null,
+        null,
+        null,
+        null,
+        0.075,
+        null,
+        "No",
+        null,
+        null,
+        null,
+        null
+      ]
+    },
+    {
+      "row": 61,
+      "cells": [
+        null,
+        null,
+        null,
+        null,
+        null,
+        0.075,
+        null,
+        "No",
+        null,
+        null,
+        null,
+        null
+      ]
+    },
+    {
+      "row": 62,
+      "cells": [
+        null,
+        null,
+        null,
+        null,
+        null,
+        0.075,
+        null,
+        "No",
+        null,
+        null,
+        null,
+        null
+      ]
+    },
+    {
+      "row": 63,
+      "cells": [
+        null,
+        null,
+        null,
+        null,
+        null,
+        0.075,
+        null,
+        "No",
+        null,
+        null,
+        null,
+        null
+      ]
+    },
+    {
+      "row": 64,
+      "cells": [
+        null,
+        null,
+        null,
+        null,
+        null,
+        0.075,
+        null,
+        "No",
+        null,
+        null,
+        null,
+        null
+      ]
+    },
+    {
+      "row": 65,
+      "cells": [
+        null,
+        null,
+        null,
+        null,
+        null,
+        0.075,
+        null,
+        "No",
+        null,
+        null,
+        null,
+        null
+      ]
+    },
+    {
+      "row": 66,
+      "cells": [
+        null,
+        null,
+        null,
+        null,
+        null,
+        0.075,
+        null,
+        "No",
+        null,
+        null,
+        null,
+        null
+      ]
+    },
+    {
+      "row": 67,
+      "cells": [
+        null,
+        null,
+        null,
+        null,
+        null,
+        0.075,
+        null,
+        "No",
+        null,
+        null,
+        null,
+        null
+      ]
+    },
+    {
+      "row": 68,
+      "cells": [
+        null,
+        null,
+        null,
+        null,
+        null,
+        0.075,
+        null,
+        "No",
+        null,
+        null,
+        null,
+        null
+      ]
+    },
+    {
+      "row": 69,
+      "cells": [
+        null,
+        null,
+        null,
+        null,
+        null,
+        0.075,
+        null,
+        "No",
+        null,
+        null,
+        null,
+        null
+      ]
+    },
+    {
+      "row": 70,
+      "cells": [
+        null,
+        null,
+        null,
+        null,
+        null,
+        0.075,
+        null,
+        "No",
+        null,
+        null,
+        null,
+        null
+      ]
+    },
+    {
+      "row": 71,
+      "cells": [
+        null,
+        null,
+        null,
+        null,
+        null,
+        0.075,
+        null,
+        "No",
+        null,
+        null,
+        null,
+        null
+      ]
+    },
+    {
+      "row": 72,
+      "cells": [
+        null,
+        null,
+        null,
+        null,
+        null,
+        0.075,
+        null,
+        "No",
+        null,
+        null,
+        null,
+        null
+      ]
+    }
+  ]
+}

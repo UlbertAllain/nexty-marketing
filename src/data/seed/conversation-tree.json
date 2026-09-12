@@ -1,0 +1,152 @@
+[
+  {
+    "from": "First outreach",
+    "response": "Interested / boleh",
+    "interpretation": "Permission earned",
+    "nextAction": "Send 1-page mini audit",
+    "asset": "Mini Audit",
+    "wait": "Same day",
+    "exit": "Audit sent",
+    "crmStage": "Responded"
+  },
+  {
+    "from": "First outreach",
+    "response": "Asks price",
+    "interpretation": "Needs commercial anchor",
+    "nextAction": "Give starting range + 3 qualification questions",
+    "asset": "Offers",
+    "wait": "Now",
+    "exit": "Qualified/not",
+    "crmStage": "Responded"
+  },
+  {
+    "from": "First outreach",
+    "response": "Already has website",
+    "interpretation": "Wrong initial solution",
+    "nextAction": "Pivot to conversion/booking/ops audit",
+    "asset": "Audit checklist",
+    "wait": "Now",
+    "exit": "No gap → close",
+    "crmStage": "Qualified"
+  },
+  {
+    "from": "First outreach",
+    "response": "Already has system",
+    "interpretation": "Potential integration gap",
+    "nextAction": "Ask double-entry/manual work outside system",
+    "asset": "Discovery",
+    "wait": "Now",
+    "exit": "No gap → close",
+    "crmStage": "Qualified"
+  },
+  {
+    "from": "First outreach",
+    "response": "No reply",
+    "interpretation": "Unknown",
+    "nextAction": "D+2 follow-up",
+    "asset": "Templates",
+    "wait": "2d",
+    "exit": "Wait",
+    "crmStage": "Contacted"
+  },
+  {
+    "from": "D+2",
+    "response": "No reply",
+    "interpretation": "Low signal",
+    "nextAction": "D+5 final",
+    "asset": "Templates",
+    "wait": "3d",
+    "exit": "Archive",
+    "crmStage": "Contacted"
+  },
+  {
+    "from": "Mini audit",
+    "response": "Agrees problem",
+    "interpretation": "Pain validated",
+    "nextAction": "Book 15–30 min discovery",
+    "asset": "Discovery",
+    "wait": "1–2d",
+    "exit": "Meeting booked",
+    "crmStage": "Interested"
+  },
+  {
+    "from": "Mini audit",
+    "response": "Disagrees",
+    "interpretation": "Bad hypothesis",
+    "nextAction": "Ask one correction question; update notes",
+    "asset": "None",
+    "wait": "Now",
+    "exit": "Close if no gap",
+    "crmStage": "Responded"
+  },
+  {
+    "from": "Discovery",
+    "response": "Qualified need",
+    "interpretation": "Pain + authority + timing",
+    "nextAction": "Prepare proposal",
+    "asset": "Proposal",
+    "wait": "1–2d",
+    "exit": "Proposal sent",
+    "crmStage": "Meeting"
+  },
+  {
+    "from": "Discovery",
+    "response": "No urgency",
+    "interpretation": "Valid but later",
+    "nextAction": "Agree follow-up date",
+    "asset": "Follow-up",
+    "wait": "Until date",
+    "exit": "Follow Up Later",
+    "crmStage": "Follow Up Later"
+  },
+  {
+    "from": "Proposal",
+    "response": "Price objection",
+    "interpretation": "Value/scope mismatch",
+    "nextAction": "Re-scope Phase 1",
+    "asset": "Pricing",
+    "wait": "Now",
+    "exit": "Negotiation",
+    "crmStage": "Proposal"
+  },
+  {
+    "from": "Proposal",
+    "response": "Trust objection",
+    "interpretation": "Proof gap",
+    "nextAction": "Send relevant case/prototype/reference",
+    "asset": "Portfolio Proof",
+    "wait": "Now",
+    "exit": "Negotiation",
+    "crmStage": "Proposal"
+  },
+  {
+    "from": "Proposal",
+    "response": "Timing objection",
+    "interpretation": "Schedule mismatch",
+    "nextAction": "Adjust sequence/milestones",
+    "asset": "Timeline",
+    "wait": "Now",
+    "exit": "Decision",
+    "crmStage": "Proposal"
+  },
+  {
+    "from": "Proposal",
+    "response": "Won",
+    "interpretation": "Commercial accepted",
+    "nextAction": "Invoice/DP + kickoff",
+    "asset": "Payment terms",
+    "wait": "Now",
+    "exit": "DP received",
+    "crmStage": "Won"
+  },
+  {
+    "from": "Proposal",
+    "response": "Lost",
+    "interpretation": "No deal",
+    "nextAction": "Record reason + learning",
+    "asset": "Lost Analysis",
+    "wait": "Now",
+    "exit": "Closed",
+    "crmStage": "Lost"
+  }
+]

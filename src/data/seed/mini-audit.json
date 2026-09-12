@@ -1,0 +1,240 @@
+{
+  "sheet": "05 Mini Audit",
+  "range": "A1:H22",
+  "rows": [
+    {
+      "row": 1,
+      "cells": [
+        "NEXTYLABS — 1-PAGE MINI AUDIT TEMPLATE",
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null
+      ]
+    },
+    {
+      "row": 4,
+      "cells": [
+        "Field",
+        "Fill Before Sending",
+        null,
+        "Section",
+        "What to Write",
+        "Evidence Rule",
+        "Example",
+        "Output"
+      ]
+    },
+    {
+      "row": 5,
+      "cells": [
+        "Business",
+        "[BUSINESS]",
+        null,
+        "1. Current State",
+        "2–3 factual observations",
+        "Must be visible/public or confirmed",
+        "Reservation via WA + Linktree",
+        "Facts only"
+      ]
+    },
+    {
+      "row": 6,
+      "cells": [
+        "Industry",
+        "[NICHE]",
+        null,
+        "2. Friction",
+        "Problem / possible bottleneck",
+        "Label hypothesis if not confirmed",
+        "Multiple high-intent inquiry paths",
+        "Fact or hypothesis"
+      ]
+    },
+    {
+      "row": 7,
+      "cells": [
+        "Verified Observation",
+        "[WHAT WE ACTUALLY SAW]",
+        null,
+        "3. Impact",
+        "Why it matters",
+        "Do not invent numbers",
+        "Admin repetition / lower clarity",
+        "Qualitative until verified"
+      ]
+    },
+    {
+      "row": 8,
+      "cells": [
+        "Hypothesis",
+        "[WHAT MAY BE HAPPENING — mark as hypothesis]",
+        null,
+        "4. Opportunity",
+        "Top 2–3 improvements",
+        "Tie to business outcome",
+        "Structured booking + tracking",
+        "Prioritized"
+      ]
+    },
+    {
+      "row": 9,
+      "cells": [
+        "Potential Impact",
+        "[TIME / LEAD / TRUST / ADMIN / REVENUE]",
+        null,
+        "5. Proposed Flow",
+        "Before → after",
+        "Simple user/business flow",
+        "IG → form → admin → status",
+        "One flow"
+      ]
+    },
+    {
+      "row": 10,
+      "cells": [
+        "Recommended Next Step",
+        "[ONE LOW-FRICTION STEP]",
+        null,
+        "6. MVP",
+        "Minimum useful scope",
+        "No feature dumping",
+        "Booking + admin calendar + reminder",
+        "Scoped"
+      ]
+    },
+    {
+      "row": 11,
+      "cells": [
+        "Prepared By",
+        "NextyLabs",
+        null,
+        "7. CTA",
+        "Single next step",
+        "15–30 min discovery max",
+        "Validate process + volume",
+        "Meeting"
+      ]
+    },
+    {
+      "row": 14,
+      "cells": [
+        "Niche",
+        "Audit Checks",
+        "Good Evidence",
+        "Common Hypothesis",
+        "Best Demo",
+        "Avoid",
+        "Offer",
+        "Discovery Trigger"
+      ]
+    },
+    {
+      "row": 15,
+      "cells": [
+        "F&B / Cafe",
+        "Menu path, reservation, event/private room, group inquiry, delivery links",
+        "Linktree/site/review",
+        "Admin answers repetitive booking questions",
+        "Reservation/group inquiry flow",
+        "Pitching generic website",
+        "Reservation Flow",
+        "Reservation/event volume"
+      ]
+    },
+    {
+      "row": 16,
+      "cells": [
+        "Gym / Pilates",
+        "Class schedule, packages, locations, booking, waitlist",
+        "Published schedule / link hub",
+        "Package balance & renewal complexity",
+        "Member booking portal",
+        "Assuming manual Excel",
+        "Membership & Booking",
+        "Member count/classes/day"
+      ]
+    },
+    {
+      "row": 17,
+      "cells": [
+        "Clinic / Dental",
+        "Services, doctors, booking CTA, schedule communication",
+        "Official website / review",
+        "Appointment reminder/reschedule friction",
+        "Appointment status flow",
+        "Medical claims",
+        "Clinic Appointment",
+        "Existing EMR/app"
+      ]
+    },
+    {
+      "row": 18,
+      "cells": [
+        "Wedding / Event",
+        "Packages, inquiry, vendor/crew, portfolio",
+        "Official channels",
+        "Coordination scattered across chat/files",
+        "Project dashboard",
+        "Claiming chaos without proof",
+        "Wedding Ops",
+        "Events/month & team"
+      ]
+    },
+    {
+      "row": 19,
+      "cells": [
+        "Rental",
+        "Fleet catalog, booking, availability, driver, pickup",
+        "Official website",
+        "Admin checks unit/date repeatedly",
+        "Availability calendar",
+        "Promise real-time before discovery",
+        "Fleet Booking",
+        "Fleet size & pricing rules"
+      ]
+    },
+    {
+      "row": 20,
+      "cells": [
+        "Beauty / Salon",
+        "Service list, booking, stylist, repeat cycle",
+        "Listing/social",
+        "Booking + repeat reminder complexity",
+        "Service/stylist slots",
+        "Using facility complaints",
+        "CRM & Booking",
+        "Staff count & bookings/day"
+      ]
+    },
+    {
+      "row": 21,
+      "cells": [
+        "Construction / Interior",
+        "Portfolio, service scope, branch, CTA, project story",
+        "Website/maps/founder info",
+        "Inquiry unqualified; proof fragmented",
+        "Portfolio + qualifier",
+        "Cheap company-profile pitch",
+        "Sales Website",
+        "Project value & inquiry quality"
+      ]
+    },
+    {
+      "row": 22,
+      "cells": [
+        "Education / Training",
+        "Lead, trial, registration, payment, schedule, certificate",
+        "Official instructions",
+        "Handoffs between form/app/CS/email",
+        "Enrollment status flow",
+        "Rebuilding LMS unnecessarily",
+        "Enrollment Ops",
+        "Existing LMS/CRM"
+      ]
+    }
+  ]
+}

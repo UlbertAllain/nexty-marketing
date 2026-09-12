@@ -1,0 +1,1319 @@
+{
+  "sheet": "06 Sales Toolkit",
+  "range": "A1:H112",
+  "rows": [
+    {
+      "row": 1,
+      "cells": [
+        "NEXTYLABS — SALES TOOLKIT",
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null
+      ]
+    },
+    {
+      "row": 3,
+      "cells": [
+        "Buka tab ini saat prospect membalas, tanya harga, objection, atau sudah masuk discovery/proposal.",
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null
+      ]
+    },
+    {
+      "row": 5,
+      "cells": [
+        "A. OFFER YANG DIJUAL",
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null
+      ]
+    },
+    {
+      "row": 6,
+      "cells": [
+        "Package",
+        "Target",
+        "Core Scope",
+        "Starting Range",
+        "Payment Direction",
+        "Best Use",
+        "Guardrail",
+        null
+      ]
+    },
+    {
+      "row": 7,
+      "cells": [
+        "Nexty Website Sprint",
+        "Business needs focused sales website",
+        "Landing/company site, responsive, CTA, basic SEO/analytics, deployment",
+        "Rp2.9–4.5 jt",
+        "50% / 50%",
+        "Fast cash / smaller business",
+        "Tight page/scope/revision limit",
+        null
+      ]
+    },
+    {
+      "row": 8,
+      "cells": [
+        "Nexty Business Website",
+        "Growing service business",
+        "5–10 pages, CMS/content, portfolio, lead capture, analytics",
+        "Rp5.9–8.9 jt",
+        "40/30/30 or 50/50",
+        "High-ticket service business",
+        "Custom scope still required",
+        null
+      ]
+    },
+    {
+      "row": 9,
+      "cells": [
+        "Nexty Business System",
+        "Operational pain",
+        "Auth, dashboard, core workflow, database, reporting",
+        "Starts ~Rp12 jt+",
+        "40/30/30",
+        "Excel/WA-heavy operations",
+        "No fixed quote before discovery",
+        null
+      ]
+    },
+    {
+      "row": 10,
+      "cells": [
+        "Nexty Care Basic",
+        "Existing clients",
+        "Monitoring, backup, security update, minor fixes",
+        "~Rp500k/mo",
+        "Monthly upfront",
+        "Recurring revenue",
+        "Define included work",
+        null
+      ]
+    },
+    {
+      "row": 11,
+      "cells": [
+        "Nexty Care Growth",
+        "Clients needing ongoing changes",
+        "Basic + content/small improvements/performance/priority support",
+        "~Rp1–1.5 jt/mo",
+        "Monthly upfront",
+        "Higher recurring value",
+        "No unlimited development",
+        null
+      ]
+    },
+    {
+      "row": 12,
+      "cells": [
+        "Custom / Enterprise",
+        "Complex scope",
+        "Discovery-defined",
+        "Custom quotation",
+        "Milestone-based",
+        "Large opportunities",
+        "Margin, security, SLA, procurement review",
+        null
+      ]
+    },
+    {
+      "row": 14,
+      "cells": [
+        "B. JIKA PROSPECT MEMBALAS — NEXT ACTION",
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null
+      ]
+    },
+    {
+      "row": 15,
+      "cells": [
+        "From",
+        "Prospect Response",
+        "Interpretation",
+        "Next Message / Action",
+        "Asset",
+        "Wait",
+        "Exit",
+        "CRM Stage"
+      ]
+    },
+    {
+      "row": 16,
+      "cells": [
+        "First outreach",
+        "Interested / boleh",
+        "Permission earned",
+        "Send 1-page mini audit",
+        "Mini Audit",
+        "Same day",
+        "Audit sent",
+        "Responded"
+      ]
+    },
+    {
+      "row": 17,
+      "cells": [
+        "First outreach",
+        "Asks price",
+        "Needs commercial anchor",
+        "Give starting range + 3 qualification questions",
+        "Offers",
+        "Now",
+        "Qualified/not",
+        "Responded"
+      ]
+    },
+    {
+      "row": 18,
+      "cells": [
+        "First outreach",
+        "Already has website",
+        "Wrong initial solution",
+        "Pivot to conversion/booking/ops audit",
+        "Audit checklist",
+        "Now",
+        "No gap → close",
+        "Qualified"
+      ]
+    },
+    {
+      "row": 19,
+      "cells": [
+        "First outreach",
+        "Already has system",
+        "Potential integration gap",
+        "Ask double-entry/manual work outside system",
+        "Discovery",
+        "Now",
+        "No gap → close",
+        "Qualified"
+      ]
+    },
+    {
+      "row": 20,
+      "cells": [
+        "First outreach",
+        "No reply",
+        "Unknown",
+        "D+2 follow-up",
+        "Templates",
+        "2d",
+        "Wait",
+        "Contacted"
+      ]
+    },
+    {
+      "row": 21,
+      "cells": [
+        "D+2",
+        "No reply",
+        "Low signal",
+        "D+5 final",
+        "Templates",
+        "3d",
+        "Archive",
+        "Contacted"
+      ]
+    },
+    {
+      "row": 22,
+      "cells": [
+        "Mini audit",
+        "Agrees problem",
+        "Pain validated",
+        "Book 15–30 min discovery",
+        "Discovery",
+        "1–2d",
+        "Meeting booked",
+        "Interested"
+      ]
+    },
+    {
+      "row": 23,
+      "cells": [
+        "Mini audit",
+        "Disagrees",
+        "Bad hypothesis",
+        "Ask one correction question; update notes",
+        "None",
+        "Now",
+        "Close if no gap",
+        "Responded"
+      ]
+    },
+    {
+      "row": 24,
+      "cells": [
+        "Discovery",
+        "Qualified need",
+        "Pain + authority + timing",
+        "Prepare proposal",
+        "Proposal",
+        "1–2d",
+        "Proposal sent",
+        "Meeting"
+      ]
+    },
+    {
+      "row": 25,
+      "cells": [
+        "Discovery",
+        "No urgency",
+        "Valid but later",
+        "Agree follow-up date",
+        "Follow-up",
+        "Until date",
+        "Follow Up Later",
+        "Follow Up Later"
+      ]
+    },
+    {
+      "row": 26,
+      "cells": [
+        "Proposal",
+        "Price objection",
+        "Value/scope mismatch",
+        "Re-scope Phase 1",
+        "Pricing",
+        "Now",
+        "Negotiation",
+        "Proposal"
+      ]
+    },
+    {
+      "row": 27,
+      "cells": [
+        "Proposal",
+        "Trust objection",
+        "Proof gap",
+        "Send relevant case/prototype/reference",
+        "Portfolio Proof",
+        "Now",
+        "Negotiation",
+        "Proposal"
+      ]
+    },
+    {
+      "row": 28,
+      "cells": [
+        "Proposal",
+        "Timing objection",
+        "Schedule mismatch",
+        "Adjust sequence/milestones",
+        "Timeline",
+        "Now",
+        "Decision",
+        "Proposal"
+      ]
+    },
+    {
+      "row": 29,
+      "cells": [
+        "Proposal",
+        "Won",
+        "Commercial accepted",
+        "Invoice/DP + kickoff",
+        "Payment terms",
+        "Now",
+        "DP received",
+        "Won"
+      ]
+    },
+    {
+      "row": 30,
+      "cells": [
+        "Proposal",
+        "Lost",
+        "No deal",
+        "Record reason + learning",
+        "Lost Analysis",
+        "Now",
+        "Closed",
+        "Lost"
+      ]
+    },
+    {
+      "row": 32,
+      "cells": [
+        "C. TEMPLATE CHAT",
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null
+      ]
+    },
+    {
+      "row": 33,
+      "cells": [
+        "Scenario",
+        "Use When",
+        "Template",
+        "Next Step",
+        "Wait",
+        "Do Not",
+        null,
+        null
+      ]
+    },
+    {
+      "row": 34,
+      "cells": [
+        "Observation-first",
+        "Cold prospect",
+        "Halo Kak, saya dari NextyLabs. Saya sempat melihat [BUSINESS] dan notice [OBSERVATION]. Saya tidak tahu apakah ini concern internal, tapi kami punya ide untuk [OUTCOME]. Kalau berkenan, saya bisa kirim 2–3 poin audit singkat dulu.",
+        "Mini audit after permission",
+        "D+2",
+        "Jangan generic 'kami jasa website'",
+        null,
+        null
+      ]
+    },
+    {
+      "row": 35,
+      "cells": [
+        "Asks price",
+        "Prospect tanya harga",
+        "Bisa Kak. Range tergantung scope. Untuk gambaran saya bisa kasih starting range, lalu saya butuh 3 hal: pengguna, flow sekarang, dan fitur wajib.",
+        "Range + qualification",
+        "Now",
+        "Jangan quote ngawur",
+        null,
+        null
+      ]
+    },
+    {
+      "row": 36,
+      "cells": [
+        "Already has website",
+        "Site exists",
+        "Bagus, berarti saya tidak akan menawarkan website baru. Yang ingin saya cek justru apakah website sekarang membantu inquiry/booking atau masih sekadar informasi. Kalau sudah optimal, tidak perlu diubah.",
+        "Conversion audit",
+        "Now",
+        "Jangan maksa redesign",
+        null,
+        null
+      ]
+    },
+    {
+      "row": 37,
+      "cells": [
+        "Already has system",
+        "Has POS/CRM/app",
+        "Sip, tidak perlu mengganti yang sudah bekerja. Yang perlu dicek apakah masih ada double entry, spreadsheet tambahan, atau follow-up manual di luar sistem.",
+        "Integration audit",
+        "Now",
+        "Jangan attack vendor",
+        null,
+        null
+      ]
+    },
+    {
+      "row": 38,
+      "cells": [
+        "Interested",
+        "Says 'boleh'",
+        "Siap Kak. Saya kirim satu halaman saja: kondisi yang terlihat, opportunity, dan flow solusi. Kalau relevan baru kita ngobrol 15–20 menit untuk validasi.",
+        "Send audit",
+        "Same day",
+        "Jangan proposal panjang",
+        null,
+        null
+      ]
+    },
+    {
+      "row": 39,
+      "cells": [
+        "Meeting CTA",
+        "Audit accepted",
+        "Kalau poinnya relevan, boleh call/ketemu 15–20 menit? Fokusnya memahami flow, volume, PIC dan bottleneck paling mahal.",
+        "Book discovery",
+        "1–2d",
+        "Jangan demo tech dulu",
+        null,
+        null
+      ]
+    },
+    {
+      "row": 40,
+      "cells": [
+        "D+2",
+        "No reply",
+        "Halo Kak, izin follow-up. Saya bisa kirim 2–3 poin audit langsung di chat ini supaya Kakak bisa nilai dulu, tanpa meeting.",
+        "Wait",
+        "3d",
+        "Jangan 'UP kak'",
+        null,
+        null
+      ]
+    },
+    {
+      "row": 41,
+      "cells": [
+        "D+5",
+        "Still no reply",
+        "Halo Kak, saya follow-up terakhir supaya tidak mengganggu. Kalau belum prioritas sekarang tidak apa-apa. Kalau nanti butuh, saya senang bantu mulai dari audit kecil.",
+        "Archive",
+        "Stop",
+        "No endless follow-up",
+        null,
+        null
+      ]
+    },
+    {
+      "row": 42,
+      "cells": [
+        "Proposal follow-up",
+        "Proposal sent",
+        "Halo Kak, dari proposal kemarin apakah ada bagian scope, timeline, atau investment yang masih membuat tim ragu untuk lanjut? Kita breakdown bagian itu saja.",
+        "Find objection",
+        "1–3d",
+        "Jangan 'gimana proposalnya?'",
+        null,
+        null
+      ]
+    },
+    {
+      "row": 43,
+      "cells": [
+        "Price objection",
+        "Too expensive",
+        "Saya tidak ingin menurunkan kualitas lalu scope tidak realistis. Kalau budget perlu ditekan, opsi sehat adalah memisahkan Phase 1 ke fitur paling berdampak, sisanya menyusul.",
+        "Re-scope MVP",
+        "Now",
+        "Jangan discount tanpa trade-off",
+        null,
+        null
+      ]
+    },
+    {
+      "row": 44,
+      "cells": [
+        "No budget",
+        "Not budgeted",
+        "Kalau belum ada budget saya tidak akan push. Kalau problemnya tetap prioritas, saya bisa bantu buat scope minimum sebagai bahan budgeting internal.",
+        "Schedule revisit",
+        "Date",
+        "No fake urgency",
+        null,
+        null
+      ]
+    },
+    {
+      "row": 45,
+      "cells": [
+        "Referral ask",
+        "Happy client",
+        "Kalau hasil kerja kami membantu, saya mau titip satu hal. Kalau ada kenalan bisnis yang butuh website/sistem atau prosesnya masih manual, boleh dikenalkan ke NextyLabs. Kami mulai dari audit, bukan hard selling.",
+        "Log referrer",
+        "After value",
+        "Jangan terlalu dini",
+        null,
+        null
+      ]
+    },
+    {
+      "row": 46,
+      "cells": [
+        "Partner outreach",
+        "Agency/freelancer",
+        "Halo Kak, saya dari NextyLabs. Kami fokus software development/custom web system. Kalau tim Kakak dapat custom system atau overflow engineering, kami bisa bantu white-label/referral. Kalau relevan, boleh ngobrol singkat?",
+        "Capability call",
+        "D+3",
+        "Jangan compete on core",
+        null,
+        null
+      ]
+    },
+    {
+      "row": 47,
+      "cells": [
+        "Warm network",
+        "Founder contacts",
+        "Halo [NAMA], izin titip info. NextyLabs lagi membuka beberapa slot website bisnis dan custom system. Kalau ada kenalan yang digital presence-nya belum maksimal atau operasionalnya tersebar di banyak tools, boleh dikenalkan.",
+        "Ask intro",
+        "No pressure",
+        "No routine broadcast",
+        null,
+        null
+      ]
+    },
+    {
+      "row": 49,
+      "cells": [
+        "D. OBJECTION HANDLING",
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null
+      ]
+    },
+    {
+      "row": 50,
+      "cells": [
+        "Objection",
+        "Likely Meaning",
+        "Diagnostic Question",
+        "Recommended Response",
+        "Next Action",
+        "Avoid",
+        null,
+        null
+      ]
+    },
+    {
+      "row": 51,
+      "cells": [
+        "Mahal",
+        "Value/scope mismatch",
+        "Dibanding budget, competitor, atau impact yang diharapkan?",
+        "Protect outcome; phase MVP instead of random discount.",
+        "Re-scope",
+        "Immediate discount",
+        null,
+        null
+      ]
+    },
+    {
+      "row": 52,
+      "cells": [
+        "Belum ada budget",
+        "Not budgeted / low priority",
+        "Budget cycle kapan dan problem ini seberapa prioritas?",
+        "If real problem, create budgeting scope and revisit date.",
+        "Follow Up Later",
+        "Fake urgency",
+        null,
+        null
+      ]
+    },
+    {
+      "row": 53,
+      "cells": [
+        "Pikir-pikir dulu",
+        "Unspoken objection",
+        "Bagian mana yang masih belum yakin: kebutuhan, trust, timeline, atau harga?",
+        "Surface exact blocker.",
+        "Clarify",
+        "Passive waiting",
+        null,
+        null
+      ]
+    },
+    {
+      "row": 54,
+      "cells": [
+        "Kirim harga aja",
+        "Low time / early shopping",
+        "Boleh. Untuk range yang tidak misleading, saya perlu pengguna, flow, dan fitur wajib.",
+        "Give range + 3 questions",
+        "Qualify",
+        "20-question form",
+        null,
+        null
+      ]
+    },
+    {
+      "row": 55,
+      "cells": [
+        "Sudah punya website",
+        "Initial offer mismatch",
+        "Apakah website sudah membantu inquiry/booking dan terukur?",
+        "Do not rebuild; audit conversion only.",
+        "Pivot/close",
+        "Insist on redesign",
+        null,
+        null
+      ]
+    },
+    {
+      "row": 56,
+      "cells": [
+        "Sudah punya sistem",
+        "Replacement risk",
+        "Masih ada proses di luar sistem atau double input?",
+        "Only solve gap/integration.",
+        "Discovery",
+        "Replace working stack",
+        null,
+        null
+      ]
+    },
+    {
+      "row": 57,
+      "cells": [
+        "Ada freelancer/vendor",
+        "Existing relationship",
+        "Apa yang sudah mereka handle dan ada area yang belum tertutup?",
+        "Respect boundary; offer overflow/specialized scope.",
+        "Partner/complement",
+        "Attack vendor",
+        null,
+        null
+      ]
+    },
+    {
+      "row": 58,
+      "cells": [
+        "Takut maintenance",
+        "Operational risk",
+        "Siapa yang akan mengelola setelah go-live?",
+        "Explain ownership, docs, support options, handover.",
+        "Care option",
+        "Lock-in tactics",
+        null,
+        null
+      ]
+    },
+    {
+      "row": 59,
+      "cells": [
+        "Takut data bocor",
+        "Security concern",
+        "Data apa yang akan disimpan dan siapa yang mengakses?",
+        "Scope auth, access control, backup, secrets, logging, privacy.",
+        "Security discovery",
+        "Say '100% aman'",
+        null,
+        null
+      ]
+    },
+    {
+      "row": 60,
+      "cells": [
+        "Butuh cepat",
+        "Urgent deadline",
+        "Fitur apa yang wajib usable di tanggal itu?",
+        "Phase critical path; defer non-essential scope.",
+        "MVP timeline",
+        "Promise full scope",
+        null,
+        null
+      ]
+    },
+    {
+      "row": 61,
+      "cells": [
+        "Minta source code",
+        "Ownership/procurement",
+        "Apakah source ownership wajib secara kontrak?",
+        "Define repo, license, third-party deps, handover.",
+        "Commercial term",
+        "Ambiguous ownership",
+        null,
+        null
+      ]
+    },
+    {
+      "row": 62,
+      "cells": [
+        "Minta trial gratis",
+        "Trust gap",
+        "Apa yang perlu divalidasi: UX, feasibility, atau capability?",
+        "Use limited prototype/audit, not free production work.",
+        "Paid/limited POC",
+        "Build project free",
+        null,
+        null
+      ]
+    },
+    {
+      "row": 63,
+      "cells": [
+        "Bandingkan lebih murah",
+        "Price shopping",
+        "Apakah scope, support, handover, QA, dan deployment sama?",
+        "Compare deliverables and risk, not hourly price.",
+        "Scope comparison",
+        "Race to bottom",
+        null,
+        null
+      ]
+    },
+    {
+      "row": 64,
+      "cells": [
+        "In-house dev ada",
+        "Capacity/specialization",
+        "Tim internal kekurangan capacity atau capability tertentu?",
+        "Offer scoped delivery/augmentation.",
+        "Partnership",
+        "Replace team",
+        null,
+        null
+      ]
+    },
+    {
+      "row": 65,
+      "cells": [
+        "Harus procurement",
+        "Enterprise process",
+        "Dokumen/vendor requirements apa yang wajib?",
+        "Follow procurement gate and timeline.",
+        "Qualification",
+        "Circumvent process",
+        null,
+        null
+      ]
+    },
+    {
+      "row": 67,
+      "cells": [
+        "E. DISCOVERY QUESTIONS",
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null
+      ]
+    },
+    {
+      "row": 68,
+      "cells": [
+        "4. DISCOVERY QUESTIONS",
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null
+      ]
+    },
+    {
+      "row": 69,
+      "cells": [
+        "Area",
+        "Questions",
+        "Why it matters",
+        null,
+        null,
+        null,
+        null,
+        null
+      ]
+    },
+    {
+      "row": 70,
+      "cells": [
+        "Current flow",
+        "Bagaimana proses dari customer masuk sampai transaksi/layanan selesai?",
+        "End-to-end",
+        null,
+        null,
+        null,
+        null,
+        null
+      ]
+    },
+    {
+      "row": 71,
+      "cells": [
+        "Volume",
+        "Berapa booking/member/event/transaksi per hari/minggu/bulan?",
+        "ROI & scale",
+        null,
+        null,
+        null,
+        null,
+        null
+      ]
+    },
+    {
+      "row": 72,
+      "cells": [
+        "Tools",
+        "Sekarang pakai WA, Excel, POS, Calendar, app lain?",
+        "Integration risk",
+        null,
+        null,
+        null,
+        null,
+        null
+      ]
+    },
+    {
+      "row": 73,
+      "cells": [
+        "People",
+        "Siapa saja yang menjalankan proses?",
+        "Role & adoption",
+        null,
+        null,
+        null,
+        null,
+        null
+      ]
+    },
+    {
+      "row": 74,
+      "cells": [
+        "Pain",
+        "Bagian yang paling sering bikin admin mengulang kerja atau data tercecer?",
+        "Problem severity",
+        null,
+        null,
+        null,
+        null,
+        null
+      ]
+    },
+    {
+      "row": 75,
+      "cells": [
+        "Exception",
+        "Kasus yang paling sering bikin flow berantakan?",
+        "Edge cases",
+        null,
+        null,
+        null,
+        null,
+        null
+      ]
+    },
+    {
+      "row": 76,
+      "cells": [
+        "Customer friction",
+        "Pertanyaan/keluhan customer yang paling sering berulang?",
+        "UX opportunity",
+        null,
+        null,
+        null,
+        null,
+        null
+      ]
+    },
+    {
+      "row": 77,
+      "cells": [
+        "Existing system",
+        "Apa yang sudah bekerja baik dan jangan diubah?",
+        "Avoid rebuild",
+        null,
+        null,
+        null,
+        null,
+        null
+      ]
+    },
+    {
+      "row": 78,
+      "cells": [
+        "Priority",
+        "Kalau satu hal bisa diperbaiki bulan ini, apa?",
+        "MVP focus",
+        null,
+        null,
+        null,
+        null,
+        null
+      ]
+    },
+    {
+      "row": 79,
+      "cells": [
+        "Impact",
+        "Kalau masalah ini beres, apa yang berubah?",
+        "Value framing",
+        null,
+        null,
+        null,
+        null,
+        null
+      ]
+    },
+    {
+      "row": 80,
+      "cells": [
+        "Budget",
+        "Sudah ada range budget / approval process?",
+        "Qualification",
+        null,
+        null,
+        null,
+        null,
+        null
+      ]
+    },
+    {
+      "row": 81,
+      "cells": [
+        "Authority",
+        "Siapa yang perlu setuju?",
+        "Decision mapping",
+        null,
+        null,
+        null,
+        null,
+        null
+      ]
+    },
+    {
+      "row": 82,
+      "cells": [
+        "Timing",
+        "Kapan paling lambat solusi perlu dipakai?",
+        "Urgency",
+        null,
+        null,
+        null,
+        null,
+        null
+      ]
+    },
+    {
+      "row": 83,
+      "cells": [
+        "Data/security",
+        "Data apa yang disimpan? Ada data sensitif/customer/payment?",
+        "Security scope",
+        null,
+        null,
+        null,
+        null,
+        null
+      ]
+    },
+    {
+      "row": 85,
+      "cells": [
+        "F. PROPOSAL & CLOSING",
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null
+      ]
+    },
+    {
+      "row": 86,
+      "cells": [
+        "Proposal Section",
+        "Purpose",
+        "Must Include",
+        "Do Not Include",
+        "Client Question Answered",
+        "Owner",
+        "Gate",
+        "Notes"
+      ]
+    },
+    {
+      "row": 87,
+      "cells": [
+        "1. Problem Understanding",
+        "Show comprehension",
+        "Current flow, pain, scope boundary",
+        "Generic company history",
+        "Do you understand us?",
+        "Sales",
+        "Discovery complete",
+        null
+      ]
+    },
+    {
+      "row": 88,
+      "cells": [
+        "2. Proposed Solution",
+        "Connect solution to pain",
+        "Business/user flow + modules",
+        "Tech jargon dump",
+        "What changes?",
+        "Solution/Tech",
+        "Problem validated",
+        null
+      ]
+    },
+    {
+      "row": 89,
+      "cells": [
+        "3. Scope",
+        "Control expectation",
+        "In scope / out of scope",
+        "Ambiguous unlimited revisions",
+        "What exactly is included?",
+        "Sales/Tech",
+        "Feasibility checked",
+        null
+      ]
+    },
+    {
+      "row": 90,
+      "cells": [
+        "4. Deliverables",
+        "Define outputs",
+        "UI/system/deployment/docs/training",
+        "Vague 'complete system'",
+        "What do we receive?",
+        "PM",
+        "Scope signed",
+        null
+      ]
+    },
+    {
+      "row": 91,
+      "cells": [
+        "5. Timeline",
+        "Set milestones",
+        "Discovery/design/dev/UAT/go-live",
+        "Impossible dates",
+        "When usable?",
+        "PM",
+        "Dependencies known",
+        null
+      ]
+    },
+    {
+      "row": 92,
+      "cells": [
+        "6. Investment",
+        "Make buying clear",
+        "Price, tax if any, validity",
+        "Mystery fee",
+        "How much?",
+        "Founder",
+        "Margin checked",
+        null
+      ]
+    },
+    {
+      "row": 93,
+      "cells": [
+        "7. Payment Terms",
+        "Protect cash",
+        "50/50 small or 40/30/30 larger",
+        "Start with 0 DP",
+        "When pay?",
+        "Founder",
+        "Commercial approval",
+        null
+      ]
+    },
+    {
+      "row": 94,
+      "cells": [
+        "8. Next Step",
+        "Move decision",
+        "Decision date + invoice/DP",
+        "Open-ended ending",
+        "How do we start?",
+        "Sales",
+        "Decision-maker present",
+        null
+      ]
+    },
+    {
+      "row": 97,
+      "cells": [
+        "Project Type",
+        "Suggested Payment",
+        "When to Use",
+        "Commercial Rule",
+        "Risk Control",
+        "Maintenance",
+        null,
+        null
+      ]
+    },
+    {
+      "row": 98,
+      "cells": [
+        "Small website",
+        "50% DP / 50% pre-production",
+        "Clear scope, short cycle",
+        "No production before balance",
+        "Revision limit + content deadline",
+        "Offer Nexty Care",
+        null,
+        null
+      ]
+    },
+    {
+      "row": 99,
+      "cells": [
+        "Business website",
+        "40% DP / 30% staging / 30% pre-go-live",
+        "Medium scope",
+        "Milestone acceptance",
+        "Change request outside scope",
+        "Offer care/analytics",
+        null,
+        null
+      ]
+    },
+    {
+      "row": 100,
+      "cells": [
+        "Custom system",
+        "40% DP / 30% agreed milestone / 30% pre-go-live",
+        "Longer build",
+        "Milestone + UAT criteria",
+        "Scope/change control",
+        "Maintenance/SLA separate",
+        null,
+        null
+      ]
+    },
+    {
+      "row": 101,
+      "cells": [
+        "Retainer / Care",
+        "Monthly upfront",
+        "Ongoing support",
+        "Define included hours/work",
+        "No unlimited development",
+        "Recurring",
+        null,
+        null
+      ]
+    },
+    {
+      "row": 102,
+      "cells": [
+        "White-label",
+        "Per milestone / monthly",
+        "Agency partner",
+        "Payment responsibility written",
+        "Client ownership/SLA written",
+        "By agreement",
+        null,
+        null
+      ]
+    },
+    {
+      "row": 105,
+      "cells": [
+        "Closing Situation",
+        "Diagnostic Question",
+        "Response Direction",
+        "CTA",
+        "Never Do",
+        "CRM Update",
+        null,
+        null
+      ]
+    },
+    {
+      "row": 106,
+      "cells": [
+        "Proposal silence",
+        "Apakah ada bagian scope, timeline, atau investment yang masih membuat tim ragu?",
+        "Surface blocker",
+        "Discuss one blocker",
+        "Spam 'gimana kak?'",
+        "Proposal",
+        null,
+        null
+      ]
+    },
+    {
+      "row": 107,
+      "cells": [
+        "Price",
+        "Bagian mana yang terasa terlalu besar dibanding prioritas?",
+        "Reduce scope / phase",
+        "Agree MVP",
+        "Blind discount",
+        "Negotiation",
+        null,
+        null
+      ]
+    },
+    {
+      "row": 108,
+      "cells": [
+        "Trust",
+        "Proof seperti apa yang dibutuhkan untuk merasa aman lanjut?",
+        "Relevant case/demo/reference",
+        "Send proof",
+        "Send 20 portfolios",
+        "Negotiation",
+        null,
+        null
+      ]
+    },
+    {
+      "row": 109,
+      "cells": [
+        "Timing",
+        "Tanggal apa yang realistis dan apa yang harus usable dulu?",
+        "Phase milestones",
+        "Agree sequence",
+        "Promise impossible date",
+        "Follow Up Later/Proposal",
+        null,
+        null
+      ]
+    },
+    {
+      "row": 110,
+      "cells": [
+        "Internal approval",
+        "Siapa saja yang perlu approve dan informasi apa yang mereka butuhkan?",
+        "Help decision package",
+        "Decision meeting",
+        "Bypass stakeholder",
+        "Proposal",
+        null,
+        null
+      ]
+    },
+    {
+      "row": 111,
+      "cells": [
+        "Competitor",
+        "Apa faktor utama yang sedang dibandingkan?",
+        "Clarify scope/quality/risk",
+        "Offer apples-to-apples compare",
+        "Trash competitor",
+        "Proposal",
+        null,
+        null
+      ]
+    },
+    {
+      "row": 112,
+      "cells": [
+        "Won",
+        "Siapa PIC project dan billing?",
+        "Invoice DP + kickoff",
+        "Set kickoff after DP",
+        "Start coding early",
+        "Won",
+        null,
+        null
+      ]
+    }
+  ]
+}

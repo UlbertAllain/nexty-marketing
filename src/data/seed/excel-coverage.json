@@ -1,0 +1,128 @@
+[
+  {
+    "sheet": "00 START HERE",
+    "range": "A1:L34",
+    "destination": "Dashboard + Data Vault",
+    "nonEmptyCells": 148,
+    "formulaCount": 77
+  },
+  {
+    "sheet": "01 Priority Queue",
+    "range": "A1:J74",
+    "destination": "Dashboard / Leads",
+    "nonEmptyCells": 702,
+    "formulaCount": 621
+  },
+  {
+    "sheet": "02 Targets",
+    "range": "A1:AH70",
+    "destination": "Leads",
+    "nonEmptyCells": 2310,
+    "formulaCount": 60
+  },
+  {
+    "sheet": "03 Outreach",
+    "range": "A1:I70",
+    "destination": "Lead detail / Templates",
+    "nonEmptyCells": 630,
+    "formulaCount": 0
+  },
+  {
+    "sheet": "04 Follow-up",
+    "range": "A1:N73",
+    "destination": "Follow-up / Lead detail",
+    "nonEmptyCells": 429,
+    "formulaCount": 345
+  },
+  {
+    "sheet": "05 Mini Audit",
+    "range": "A1:H22",
+    "destination": "Templates / Mini Audit",
+    "nonEmptyCells": 129,
+    "formulaCount": 0
+  },
+  {
+    "sheet": "06 Sales Toolkit",
+    "range": "A1:H112",
+    "destination": "Templates",
+    "nonEmptyCells": 565,
+    "formulaCount": 0
+  },
+  {
+    "sheet": "07 Prospect Pool",
+    "range": "A1:S134",
+    "destination": "Research",
+    "nonEmptyCells": 2404,
+    "formulaCount": 615
+  },
+  {
+    "sheet": "08 Research Queue",
+    "range": "A1:L93",
+    "destination": "Research",
+    "nonEmptyCells": 1070,
+    "formulaCount": 0
+  },
+  {
+    "sheet": "09 Daily KPI",
+    "range": "A1:U34",
+    "destination": "Reports",
+    "nonEmptyCells": 292,
+    "formulaCount": 240
+  },
+  {
+    "sheet": "10 Weekly Review",
+    "range": "A1:P49",
+    "destination": "Reports",
+    "nonEmptyCells": 259,
+    "formulaCount": 111
+  },
+  {
+    "sheet": "11 Cashflow",
+    "range": "A1:H26",
+    "destination": "Reports",
+    "nonEmptyCells": 104,
+    "formulaCount": 21
+  },
+  {
+    "sheet": "12 Content Plan",
+    "range": "A1:J109",
+    "destination": "Growth",
+    "nonEmptyCells": 742,
+    "formulaCount": 0
+  },
+  {
+    "sheet": "13 Growth Plan",
+    "range": "A1:M60",
+    "destination": "Growth",
+    "nonEmptyCells": 552,
+    "formulaCount": 0
+  },
+  {
+    "sheet": "14 Partnerships",
+    "range": "A1:L72",
+    "destination": "Growth",
+    "nonEmptyCells": 255,
+    "formulaCount": 15
+  },
+  {
+    "sheet": "15 Portfolio Proof",
+    "range": "A1:J21",
+    "destination": "Growth / Lead detail",
+    "nonEmptyCells": 145,
+    "formulaCount": 0
+  },
+  {
+    "sheet": "16 Sources",
+    "range": "A1:F141",
+    "destination": "Research / Lead detail",
+    "nonEmptyCells": 835,
+    "formulaCount": 0
+  },
+  {
+    "sheet": "17 Social Media",
+    "range": "A1:P81",
+    "destination": "Lead detail / Research",
+    "nonEmptyCells": 688,
+    "formulaCount": 0
+  }
+]

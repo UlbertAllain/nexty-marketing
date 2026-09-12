@@ -1,0 +1,80 @@
+"use client";
+
+import { useMemo, useState } from "react";
+import { CheckCircle2, Clipboard, ExternalLink } from "lucide-react";
+import type { Lead, LeadTemplateKey } from "@/features/leads/types";
+import { recordOutboundMessage } from "@/features/messages/automation";
+import { buildWhatsAppUrl } from "@/lib/utils/phone";
+import { Button } from "./ui/button";
+
+const templateLabels: Record<LeadTemplateKey, string> = {
+  FIRST_OUTREACH: "Chat pertama",
+  INTERESTED_REPLY: "Kalau tertarik",
+  FOLLOW_UP_D2: "Follow-up D+2",
+  FOLLOW_UP_D5: "Follow-up terakhir",
+  MEETING_CTA: "Ajak meeting",
+};
+
+export function MessageComposer({ lead }: { lead: Lead }) {
+  const initialKey: LeadTemplateKey = lead.stage === "New" || lead.stage === "Qualified" ? "FIRST_OUTREACH" : "FOLLOW_UP_D2";
+  const [key, setKey] = useState<LeadTemplateKey>(initialKey);
+  const [message, setMessage] = useState(lead.templates[initialKey] ?? "");
+  const [copied, setCopied] = useState(false);
+  const [busy, setBusy] = useState(false);
+  const url = useMemo(() => buildWhatsAppUrl(lead.phone, message), [lead.phone, message]);
+
+  function choose(next: LeadTemplateKey) {
+    setKey(next);
+    setMessage(lead.templates[next] ?? "");
+    setCopied(false);
+  }
+
+  async function copy() {
+    await navigator.clipboard.writeText(message);
+    setCopied(true);
+    window.setTimeout(() => setCopied(false), 1500);
+  }
+
+  async function markSent() {
+    setBusy(true);
+    try {
+      await recordOutboundMessage(lead, key, message);
+    } finally {
+      setBusy(false);
+    }
+  }
+
+  return (
+    <section className="panel composer-panel">
+      <div className="panel-heading">
+        <div>
+          <p className="eyebrow">Outreach</p>
+          <h2>Kirim chat tanpa cari template lagi</h2>
+        </div>
+        <span className="channel-pill">WhatsApp</span>
+      </div>
+
+      <div className="template-tabs" role="tablist">
+        {(Object.keys(templateLabels) as LeadTemplateKey[]).map((item) => (
+          <button key={item} className={item === key ? "template-tab active" : "template-tab"} onClick={() => choose(item)}>
+            {templateLabels[item]}
+          </button>
+        ))}
+      </div>
+
+      <textarea className="message-editor" value={message} onChange={(e) => setMessage(e.target.value)} rows={9} />
+      <p className="composer-note"><strong>Sebelum kirim:</strong> {lead.personalizationChecklist || "cek kembali fakta publik dan personalisasi satu observasi."}</p>
+
+      <div className="composer-actions">
+        <button className="button secondary" onClick={copy}><Clipboard size={16} />{copied ? "Tersalin" : "Copy"}</button>
+        <a className={url ? "button secondary" : "button secondary disabled"} href={url || undefined} target="_blank" rel="noreferrer">
+          <ExternalLink size={16} />Buka WhatsApp
+        </a>
+        <Button onClick={markSent} disabled={busy || !message.trim()}>
+          <CheckCircle2 size={16} />{busy ? "Menyimpan…" : "Tandai terkirim"}
+        </Button>
+      </div>
+      <p className="tiny muted">Membuka WhatsApp tidak otomatis dianggap terkirim. Klik “Tandai terkirim” setelah pesan benar-benar dikirim; sistem lalu membuat follow-up berikutnya otomatis.</p>
+    </section>
+  );
+}

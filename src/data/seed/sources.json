@@ -1,0 +1,1244 @@
+[
+  {
+    "id": "SRC-001",
+    "business": "VYNE Pilates",
+    "sourceType": "Primary / high-relevance public source",
+    "url": "https://soloaja.co/read/vyne-pilates-dibuka-istri-wali-kota-solo-hadiri-peresmian",
+    "checkedAt": "2026-09-10",
+    "usedFor": "Digital assets, service structure, public review/friction or workflow evidence",
+    "confidence": "Verified class-volume signal; system gap is hypothesis"
+  },
+  {
+    "id": "SRC-002",
+    "business": "VYNE Pilates",
+    "sourceType": "Secondary / map or review source",
+    "url": "https://www.instagram.com/vyne.pilates/",
+    "checkedAt": "2026-09-10",
+    "usedFor": "Cross-check presence, rating/reviews, corroboration",
+    "confidence": "Public information can change; verify again before outreach."
+  },
+  {
+    "id": "SRC-003",
+    "business": "R-FIT Gym & Sauna",
+    "sourceType": "Primary / high-relevance public source",
+    "url": "https://solo.tempat.info/tempat-gym-solo/",
+    "checkedAt": "2026-09-10",
+    "usedFor": "Digital assets, service structure, public review/friction or workflow evidence",
+    "confidence": "Operational-fit hypothesis backed by business model"
+  },
+  {
+    "id": "SRC-004",
+    "business": "R-FIT Gym & Sauna",
+    "sourceType": "Secondary / map or review source",
+    "url": "https://www.google.com/maps/search/?api=1&query=R-FIT%20GYM%20%26%20SAUNA%2C%20Solo%2C%20Central%20Java%2C%20Indonesia",
+    "checkedAt": "2026-09-10",
+    "usedFor": "Cross-check presence, rating/reviews, corroboration",
+    "confidence": "Public information can change; verify again before outreach."
+  },
+  {
+    "id": "SRC-005",
+    "business": "Dentabila",
+    "sourceType": "Primary / high-relevance public source",
+    "url": "https://dentabila.com/",
+    "checkedAt": "2026-09-10",
+    "usedFor": "Digital assets, service structure, public review/friction or workflow evidence",
+    "confidence": "Website weakness directly verified"
+  },
+  {
+    "id": "SRC-006",
+    "business": "Dentabila",
+    "sourceType": "Secondary / map or review source",
+    "url": "https://indonesiaknowledge.com/directory/dental/surakarta/klinik-gigi-solo-dentabila-dental-clinic-solo-dokter-gigi-solo-surakarta",
+    "checkedAt": "2026-09-10",
+    "usedFor": "Cross-check presence, rating/reviews, corroboration",
+    "confidence": "Public information can change; verify again before outreach."
+  },
+  {
+    "id": "SRC-007",
+    "business": "Pandawa Transport",
+    "sourceType": "Primary / high-relevance public source",
+    "url": "https://www.pandawa-transport.com/",
+    "checkedAt": "2026-09-10",
+    "usedFor": "Digital assets, service structure, public review/friction or workflow evidence",
+    "confidence": "Website weakness directly verified"
+  },
+  {
+    "id": "SRC-008",
+    "business": "Pandawa Transport",
+    "sourceType": "Secondary / map or review source",
+    "url": "https://www.google.com/maps/search/?api=1&query=Pandawa%20Transport%20Solo%2C%20Solo%2C%20Central%20Java%2C%20Indonesia",
+    "checkedAt": "2026-09-10",
+    "usedFor": "Cross-check presence, rating/reviews, corroboration",
+    "confidence": "Public information can change; verify again before outreach."
+  },
+  {
+    "id": "SRC-009",
+    "business": "Safari Rentcar Solo",
+    "sourceType": "Primary / high-relevance public source",
+    "url": "https://pdberger.com/sewa/rental-mobil-surakarta-solo",
+    "checkedAt": "2026-09-10",
+    "usedFor": "Digital assets, service structure, public review/friction or workflow evidence",
+    "confidence": "Verified demand; digital gap inferred from public search"
+  },
+  {
+    "id": "SRC-010",
+    "business": "Safari Rentcar Solo",
+    "sourceType": "Secondary / map or review source",
+    "url": "https://www.google.com/maps/search/?api=1&query=Rental%20Mobil%20Solo%20Safarirentcar%2C%20Solo%2C%20Central%20Java%2C%20Indonesia",
+    "checkedAt": "2026-09-10",
+    "usedFor": "Cross-check presence, rating/reviews, corroboration",
+    "confidence": "Public information can change; verify again before outreach."
+  },
+  {
+    "id": "SRC-011",
+    "business": "BLESS Barbershop Solo",
+    "sourceType": "Primary / high-relevance public source",
+    "url": "https://addagio.io/book/bless-barbershop-solo-solo",
+    "checkedAt": "2026-09-10",
+    "usedFor": "Digital assets, service structure, public review/friction or workflow evidence",
+    "confidence": "Mixed evidence; validate existing booking stack"
+  },
+  {
+    "id": "SRC-012",
+    "business": "BLESS Barbershop Solo",
+    "sourceType": "Secondary / map or review source",
+    "url": "https://id.linkedin.com/in/shoffienaa",
+    "checkedAt": "2026-09-10",
+    "usedFor": "Cross-check presence, rating/reviews, corroboration",
+    "confidence": "Public information can change; verify again before outreach."
+  },
+  {
+    "id": "SRC-013",
+    "business": "GLAM'S Beauty Salon",
+    "sourceType": "Primary / high-relevance public source",
+    "url": "https://qponx.com/id-id/poi/wellness/GLAMS-BEAUTY-SALON__ChIJ-2qq8UUXei4RdiC2vcY0Eh0",
+    "checkedAt": "2026-09-10",
+    "usedFor": "Digital assets, service structure, public review/friction or workflow evidence",
+    "confidence": "Business-model fit; system gap hypothesis"
+  },
+  {
+    "id": "SRC-014",
+    "business": "GLAM'S Beauty Salon",
+    "sourceType": "Secondary / map or review source",
+    "url": "https://www.google.com/maps/search/?api=1&query=GLAM%27S%20BEAUTY%20SALON%20Solo%2C%20Solo%2C%20Central%20Java%2C%20Indonesia",
+    "checkedAt": "2026-09-10",
+    "usedFor": "Cross-check presence, rating/reviews, corroboration",
+    "confidence": "Public information can change; verify again before outreach."
+  },
+  {
+    "id": "SRC-015",
+    "business": "Damai Rent Car",
+    "sourceType": "Primary / high-relevance public source",
+    "url": "https://damairentcar.com/",
+    "checkedAt": "2026-09-10",
+    "usedFor": "Digital assets, service structure, public review/friction or workflow evidence",
+    "confidence": "Verified booking-channel structure"
+  },
+  {
+    "id": "SRC-016",
+    "business": "Damai Rent Car",
+    "sourceType": "Secondary / map or review source",
+    "url": "https://damairentcar.com/en/tentang-kami/",
+    "checkedAt": "2026-09-10",
+    "usedFor": "Cross-check presence, rating/reviews, corroboration",
+    "confidence": "Public information can change; verify again before outreach."
+  },
+  {
+    "id": "SRC-017",
+    "business": "Flou Pilates",
+    "sourceType": "Primary / high-relevance public source",
+    "url": "https://linktr.ee/floupilates",
+    "checkedAt": "2026-09-10",
+    "usedFor": "Digital assets, service structure, public review/friction or workflow evidence",
+    "confidence": "Verified channel/location structure"
+  },
+  {
+    "id": "SRC-018",
+    "business": "Flou Pilates",
+    "sourceType": "Secondary / map or review source",
+    "url": "https://www.lemon8-app.com/%40vianneyel/7580632232617771528?region=id",
+    "checkedAt": "2026-09-10",
+    "usedFor": "Cross-check presence, rating/reviews, corroboration",
+    "confidence": "Public information can change; verify again before outreach."
+  },
+  {
+    "id": "SRC-019",
+    "business": "Bunda Dental Care Solo",
+    "sourceType": "Primary / high-relevance public source",
+    "url": "https://indonesiaknowledge.com/directory/dental/surakarta/bunda-dental-care-solo-surakarta",
+    "checkedAt": "2026-09-10",
+    "usedFor": "Digital assets, service structure, public review/friction or workflow evidence",
+    "confidence": "Verified public review; avoid overgeneralizing"
+  },
+  {
+    "id": "SRC-020",
+    "business": "Bunda Dental Care Solo",
+    "sourceType": "Secondary / map or review source",
+    "url": "https://www.semuabis.com/bunda-dental-care-solo-0878-0499-8773",
+    "checkedAt": "2026-09-10",
+    "usedFor": "Cross-check presence, rating/reviews, corroboration",
+    "confidence": "Public information can change; verify again before outreach."
+  },
+  {
+    "id": "SRC-021",
+    "business": "Samaradana Organizer",
+    "sourceType": "Primary / high-relevance public source",
+    "url": "https://hastanaindonesia.id/anggota/samaradana-organizer",
+    "checkedAt": "2026-09-10",
+    "usedFor": "Digital assets, service structure, public review/friction or workflow evidence",
+    "confidence": "Verified business presence; operational gap hypothesis"
+  },
+  {
+    "id": "SRC-022",
+    "business": "Samaradana Organizer",
+    "sourceType": "Secondary / map or review source",
+    "url": "https://www.popbela.com/relationship/married/wedding-organizer-solo-00-ck827-rh82kv",
+    "checkedAt": "2026-09-10",
+    "usedFor": "Cross-check presence, rating/reviews, corroboration",
+    "confidence": "Public information can change; verify again before outreach."
+  },
+  {
+    "id": "SRC-023",
+    "business": "Nami Wedding Solo",
+    "sourceType": "Primary / high-relevance public source",
+    "url": "https://www.popbela.com/relationship/married/wedding-organizer-solo-00-ck827-rh82kv",
+    "checkedAt": "2026-09-10",
+    "usedFor": "Digital assets, service structure, public review/friction or workflow evidence",
+    "confidence": "Verified service structure; gap hypothesis"
+  },
+  {
+    "id": "SRC-024",
+    "business": "Nami Wedding Solo",
+    "sourceType": "Secondary / map or review source",
+    "url": "https://www.biayanikah.id/wedding-organizer-solo/",
+    "checkedAt": "2026-09-10",
+    "usedFor": "Cross-check presence, rating/reviews, corroboration",
+    "confidence": "Public information can change; verify again before outreach."
+  },
+  {
+    "id": "SRC-025",
+    "business": "OK Rent Car & Scooter",
+    "sourceType": "Primary / high-relevance public source",
+    "url": "https://rentalsolo.com/",
+    "checkedAt": "2026-09-10",
+    "usedFor": "Digital assets, service structure, public review/friction or workflow evidence",
+    "confidence": "Verified service breadth and channel structure"
+  },
+  {
+    "id": "SRC-026",
+    "business": "OK Rent Car & Scooter",
+    "sourceType": "Secondary / map or review source",
+    "url": "https://www.google.com/maps/search/?api=1&query=Ok%20Rent%20Car%20%26%20Scooter%20Solo%2C%20Solo%2C%20Central%20Java%2C%20Indonesia",
+    "checkedAt": "2026-09-10",
+    "usedFor": "Cross-check presence, rating/reviews, corroboration",
+    "confidence": "Public information can change; verify again before outreach."
+  },
+  {
+    "id": "SRC-027",
+    "business": "Grandma's Recipe Signature",
+    "sourceType": "Primary / high-relevance public source",
+    "url": "https://linktr.ee/grandmasignature",
+    "checkedAt": "2026-09-10",
+    "usedFor": "Digital assets, service structure, public review/friction or workflow evidence",
+    "confidence": "Verified digital-channel structure"
+  },
+  {
+    "id": "SRC-028",
+    "business": "Grandma's Recipe Signature",
+    "sourceType": "Secondary / map or review source",
+    "url": "https://www.google.com/maps/search/?api=1&query=Grandma%27s%20Recipe%20Signature%2C%20Solo%2C%20Central%20Java%2C%20Indonesia",
+    "checkedAt": "2026-09-10",
+    "usedFor": "Cross-check presence, rating/reviews, corroboration",
+    "confidence": "Public information can change; verify again before outreach."
+  },
+  {
+    "id": "SRC-029",
+    "business": "DNAFIT LIMITLESS",
+    "sourceType": "Primary / high-relevance public source",
+    "url": "https://solo.tempat.info/tempat-gym-solo/",
+    "checkedAt": "2026-09-10",
+    "usedFor": "Digital assets, service structure, public review/friction or workflow evidence",
+    "confidence": "Verified review but not software-addressable"
+  },
+  {
+    "id": "SRC-030",
+    "business": "DNAFIT LIMITLESS",
+    "sourceType": "Secondary / map or review source",
+    "url": "https://www.google.com/maps/search/?api=1&query=DNAFIT%20LIMITLESS%2C%20Solo%2C%20Central%20Java%2C%20Indonesia",
+    "checkedAt": "2026-09-10",
+    "usedFor": "Cross-check presence, rating/reviews, corroboration",
+    "confidence": "Public information can change; verify again before outreach."
+  },
+  {
+    "id": "SRC-031",
+    "business": "DR Hair & Beauty Lounge",
+    "sourceType": "Primary / high-relevance public source",
+    "url": "https://www.top-rated.online/cities/Surakarta/place/p/14300136/DR%2BHAIR%2B%26%2BBEAUTY%2BLOUNGE%2BSALON%2BTERBAIK%2BDI%2BSOLO",
+    "checkedAt": "2026-09-10",
+    "usedFor": "Digital assets, service structure, public review/friction or workflow evidence",
+    "confidence": "Public presence verified; booking gap hypothesis"
+  },
+  {
+    "id": "SRC-032",
+    "business": "DR Hair & Beauty Lounge",
+    "sourceType": "Secondary / map or review source",
+    "url": "https://www.google.com/maps/search/?api=1&query=DR%20HAIR%20%26%20BEAUTY%20LOUNGE%20SOLO%2C%20Solo%2C%20Central%20Java%2C%20Indonesia",
+    "checkedAt": "2026-09-10",
+    "usedFor": "Cross-check presence, rating/reviews, corroboration",
+    "confidence": "Public information can change; verify again before outreach."
+  },
+  {
+    "id": "SRC-033",
+    "business": "SOLOCOM",
+    "sourceType": "Primary / high-relevance public source",
+    "url": "https://solocom.co.id/",
+    "checkedAt": "2026-09-10",
+    "usedFor": "Digital assets, service structure, public review/friction or workflow evidence",
+    "confidence": "Official workflow directly verified"
+  },
+  {
+    "id": "SRC-034",
+    "business": "SOLOCOM",
+    "sourceType": "Secondary / map or review source",
+    "url": "https://solocom.co.id/tentang-lp/",
+    "checkedAt": "2026-09-10",
+    "usedFor": "Cross-check presence, rating/reviews, corroboration",
+    "confidence": "Public information can change; verify again before outreach."
+  },
+  {
+    "id": "SRC-035",
+    "business": "Wedding Planner Solo (WPS)",
+    "sourceType": "Primary / high-relevance public source",
+    "url": "https://www.weddingplannersolo.com/",
+    "checkedAt": "2026-09-10",
+    "usedFor": "Digital assets, service structure, public review/friction or workflow evidence",
+    "confidence": "Verified scale signal from official site"
+  },
+  {
+    "id": "SRC-036",
+    "business": "Wedding Planner Solo (WPS)",
+    "sourceType": "Secondary / map or review source",
+    "url": "https://www.google.com/maps/search/?api=1&query=Wedding%20Planner%20Solo%2C%20Solo%2C%20Central%20Java%2C%20Indonesia",
+    "checkedAt": "2026-09-10",
+    "usedFor": "Cross-check presence, rating/reviews, corroboration",
+    "confidence": "Public information can change; verify again before outreach."
+  },
+  {
+    "id": "SRC-037",
+    "business": "Mozapro Solo",
+    "sourceType": "Primary / high-relevance public source",
+    "url": "https://linktr.ee/mozapro.solo",
+    "checkedAt": "2026-09-10",
+    "usedFor": "Digital assets, service structure, public review/friction or workflow evidence",
+    "confidence": "Verified franchise/digital presence"
+  },
+  {
+    "id": "SRC-038",
+    "business": "Mozapro Solo",
+    "sourceType": "Secondary / map or review source",
+    "url": "https://www.google.com/maps/search/?api=1&query=Mozapro%20Solo%2C%20Solo%2C%20Central%20Java%2C%20Indonesia",
+    "checkedAt": "2026-09-10",
+    "usedFor": "Cross-check presence, rating/reviews, corroboration",
+    "confidence": "Public information can change; verify again before outreach."
+  },
+  {
+    "id": "SRC-039",
+    "business": "Beauty Zone Solo",
+    "sourceType": "Primary / high-relevance public source",
+    "url": "https://fixpalembang.com/salon-surakarta/",
+    "checkedAt": "2026-09-10",
+    "usedFor": "Digital assets, service structure, public review/friction or workflow evidence",
+    "confidence": "Limited evidence; research again before negative claim"
+  },
+  {
+    "id": "SRC-040",
+    "business": "Beauty Zone Solo",
+    "sourceType": "Secondary / map or review source",
+    "url": "https://www.google.com/maps/search/?api=1&query=Beauty%20Zone%20Solo%20Surakarta%2C%20Solo%2C%20Central%20Java%2C%20Indonesia",
+    "checkedAt": "2026-09-10",
+    "usedFor": "Cross-check presence, rating/reviews, corroboration",
+    "confidence": "Public information can change; verify again before outreach."
+  },
+  {
+    "id": "SRC-041",
+    "business": "Klinik APIC",
+    "sourceType": "Primary / high-relevance public source",
+    "url": "https://www.klinikapicgroup.com/",
+    "checkedAt": "2026-09-10",
+    "usedFor": "Digital assets, service structure, public review/friction or workflow evidence",
+    "confidence": "Verified process signal; gap must be discovered"
+  },
+  {
+    "id": "SRC-042",
+    "business": "Klinik APIC",
+    "sourceType": "Secondary / map or review source",
+    "url": "https://www.google.com/maps/search/?api=1&query=Klinik%20APIC%20Solo%2C%20Solo%2C%20Central%20Java%2C%20Indonesia",
+    "checkedAt": "2026-09-10",
+    "usedFor": "Cross-check presence, rating/reviews, corroboration",
+    "confidence": "Public information can change; verify again before outreach."
+  },
+  {
+    "id": "SRC-043",
+    "business": "SCUTO Solo Baru / Solo Jajar",
+    "sourceType": "Primary / high-relevance public source",
+    "url": "https://scutosolobaru.wixsite.com/mysite",
+    "checkedAt": "2026-09-10",
+    "usedFor": "Digital assets, service structure, public review/friction or workflow evidence",
+    "confidence": "Website presence verified; decision-authority risk high"
+  },
+  {
+    "id": "SRC-044",
+    "business": "SCUTO Solo Baru / Solo Jajar",
+    "sourceType": "Secondary / map or review source",
+    "url": "https://www.mandirikartukredit.com/hot-offer/beli-paket-full-salon-dan-rust-protection-diskon-20-s-d-rp750-ribu-dengan-mandiri-qr-bayar-kartu-debit-kredit",
+    "checkedAt": "2026-09-10",
+    "usedFor": "Cross-check presence, rating/reviews, corroboration",
+    "confidence": "Public information can change; verify again before outreach."
+  },
+  {
+    "id": "SRC-045",
+    "business": "Penta Event Organizer",
+    "sourceType": "Primary / high-relevance public source",
+    "url": "https://linktr.ee/pentaeo",
+    "checkedAt": "2026-09-10",
+    "usedFor": "Digital assets, service structure, public review/friction or workflow evidence",
+    "confidence": "Verified digital presence"
+  },
+  {
+    "id": "SRC-046",
+    "business": "Penta Event Organizer",
+    "sourceType": "Secondary / map or review source",
+    "url": "https://www.blogger.com/profile/18280633839579717465",
+    "checkedAt": "2026-09-10",
+    "usedFor": "Cross-check presence, rating/reviews, corroboration",
+    "confidence": "Public information can change; verify again before outreach."
+  },
+  {
+    "id": "SRC-047",
+    "business": "Deluxe Auto Garage",
+    "sourceType": "Primary / high-relevance public source",
+    "url": "https://deluxeautogarage.com/",
+    "checkedAt": "2026-09-10",
+    "usedFor": "Digital assets, service structure, public review/friction or workflow evidence",
+    "confidence": "Official site verified; system gap hypothesis"
+  },
+  {
+    "id": "SRC-048",
+    "business": "Deluxe Auto Garage",
+    "sourceType": "Secondary / map or review source",
+    "url": "https://www.google.com/maps/search/?api=1&query=Deluxe%20Auto%20Garage%20Solo%2C%20Solo%2C%20Central%20Java%2C%20Indonesia",
+    "checkedAt": "2026-09-10",
+    "usedFor": "Cross-check presence, rating/reviews, corroboration",
+    "confidence": "Public information can change; verify again before outreach."
+  },
+  {
+    "id": "SRC-049",
+    "business": "Kooken Cafe & Resto",
+    "sourceType": "Primary / high-relevance public source",
+    "url": "https://wanderlog.com/id/place/details/6382978/kooken-cafe--resto",
+    "checkedAt": "2026-09-10",
+    "usedFor": "Digital assets, service structure, public review/friction or workflow evidence",
+    "confidence": "Verified public reviews"
+  },
+  {
+    "id": "SRC-050",
+    "business": "Kooken Cafe & Resto",
+    "sourceType": "Secondary / map or review source",
+    "url": "https://restaurantguru.com/Kooken-Cafe-and-Resto-Surakarta",
+    "checkedAt": "2026-09-10",
+    "usedFor": "Cross-check presence, rating/reviews, corroboration",
+    "confidence": "Public information can change; verify again before outreach."
+  },
+  {
+    "id": "SRC-051",
+    "business": "Javacom Academy",
+    "sourceType": "Primary / high-relevance public source",
+    "url": "https://www.javacomacademy.com/",
+    "checkedAt": "2026-09-10",
+    "usedFor": "Digital assets, service structure, public review/friction or workflow evidence",
+    "confidence": "Official site directly verified"
+  },
+  {
+    "id": "SRC-052",
+    "business": "Javacom Academy",
+    "sourceType": "Secondary / map or review source",
+    "url": "https://jelajahkursus.com/lembaga/javacom-academy",
+    "checkedAt": "2026-09-10",
+    "usedFor": "Cross-check presence, rating/reviews, corroboration",
+    "confidence": "Public information can change; verify again before outreach."
+  },
+  {
+    "id": "SRC-053",
+    "business": "Ono Solo Coffee",
+    "sourceType": "Primary / high-relevance public source",
+    "url": "https://wanderlog.com/place/details/11160114/ono-solo-coffee",
+    "checkedAt": "2026-09-10",
+    "usedFor": "Digital assets, service structure, public review/friction or workflow evidence",
+    "confidence": "Verified public reviews; software relevance must be validated"
+  },
+  {
+    "id": "SRC-054",
+    "business": "Ono Solo Coffee",
+    "sourceType": "Secondary / map or review source",
+    "url": "https://restaurantguru.com/Ono-Solo-Coffee-and-Eatery-Surakarta",
+    "checkedAt": "2026-09-10",
+    "usedFor": "Cross-check presence, rating/reviews, corroboration",
+    "confidence": "Public information can change; verify again before outreach."
+  },
+  {
+    "id": "SRC-055",
+    "business": "Timedoor Academy Solo",
+    "sourceType": "Primary / high-relevance public source",
+    "url": "https://timedooracademy.com/id/branch/kursus-coding-di-solo/",
+    "checkedAt": "2026-09-10",
+    "usedFor": "Digital assets, service structure, public review/friction or workflow evidence",
+    "confidence": "Verified chain/corporate structure"
+  },
+  {
+    "id": "SRC-056",
+    "business": "Timedoor Academy Solo",
+    "sourceType": "Secondary / map or review source",
+    "url": "https://www.google.com/maps/search/?api=1&query=Timedoor%20Academy%20Solo%2C%20Solo%2C%20Central%20Java%2C%20Indonesia",
+    "checkedAt": "2026-09-10",
+    "usedFor": "Cross-check presence, rating/reviews, corroboration",
+    "confidence": "Public information can change; verify again before outreach."
+  },
+  {
+    "id": "SRC-057",
+    "business": "Sociallatte Coffee & Eatery",
+    "sourceType": "Primary / high-relevance public source",
+    "url": "https://www.foodmo.id/tempat-makan/sociallatte-coffee-eatery",
+    "checkedAt": "2026-09-10",
+    "usedFor": "Digital assets, service structure, public review/friction or workflow evidence",
+    "confidence": "Partly verified; no specific software complaint found"
+  },
+  {
+    "id": "SRC-058",
+    "business": "Sociallatte Coffee & Eatery",
+    "sourceType": "Secondary / map or review source",
+    "url": "https://www.lemon8-app.com/%40kalanada.efc/7465516390636651015?region=id",
+    "checkedAt": "2026-09-10",
+    "usedFor": "Cross-check presence, rating/reviews, corroboration",
+    "confidence": "Public information can change; verify again before outreach."
+  },
+  {
+    "id": "SRC-059",
+    "business": "Toekangdigital",
+    "sourceType": "Primary / high-relevance public source",
+    "url": "https://toekangdigital.com/digital-marketing-agency-solo-surakarta/",
+    "checkedAt": "2026-09-10",
+    "usedFor": "Digital assets, service structure, public review/friction or workflow evidence",
+    "confidence": "Official service offering verified"
+  },
+  {
+    "id": "SRC-060",
+    "business": "Toekangdigital",
+    "sourceType": "Secondary / map or review source",
+    "url": "https://toekangdigital.com/kursus/",
+    "checkedAt": "2026-09-10",
+    "usedFor": "Cross-check presence, rating/reviews, corroboration",
+    "confidence": "Public information can change; verify again before outreach."
+  },
+  {
+    "id": "SRC-061",
+    "business": "Interiorhaha",
+    "sourceType": "Primary / high-relevance source",
+    "url": "https://id.linkedin.com/in/eric-rahardjo-hoputro-b2a184199",
+    "checkedAt": "2026-09-10",
+    "usedFor": "Presence/service/scale/review/customer journey",
+    "confidence": "Project scale + listing verified; web-gap = search evidence."
+  },
+  {
+    "id": "SRC-062",
+    "business": "Interiorhaha",
+    "sourceType": "Secondary corroboration",
+    "url": "https://www.starofservice.co.id/profesional/desain-interior/surakarta/423987700/interiorhaha",
+    "checkedAt": "2026-09-10",
+    "usedFor": "Cross-check listing/web/channel",
+    "confidence": "Public data can change; verify on outreach day."
+  },
+  {
+    "id": "SRC-063",
+    "business": "Jasa Interior Design Solo | Roble Studio",
+    "sourceType": "Primary / high-relevance source",
+    "url": "https://www.google.com/maps/search/?api=1&query=Roble%20Studio%20Solo",
+    "checkedAt": "2026-09-10",
+    "usedFor": "Presence/service/scale/review/customer journey",
+    "confidence": "Listing verified; web-gap perlu recheck hari outreach."
+  },
+  {
+    "id": "SRC-064",
+    "business": "Jasa Interior Design Solo | Roble Studio",
+    "sourceType": "Secondary corroboration",
+    "url": "https://www.google.com/search?q=%22Roble+Studio%22+Solo+interior",
+    "checkedAt": "2026-09-10",
+    "usedFor": "Cross-check listing/web/channel",
+    "confidence": "Public data can change; verify on outreach day."
+  },
+  {
+    "id": "SRC-065",
+    "business": "PELANGI INTERIOR SOLO",
+    "sourceType": "Primary / high-relevance source",
+    "url": "https://www.google.com/maps/search/?api=1&query=PELANGI%20INTERIOR%20SOLO",
+    "checkedAt": "2026-09-10",
+    "usedFor": "Presence/service/scale/review/customer journey",
+    "confidence": "Listing verified; asosiasi marketplace perlu recheck."
+  },
+  {
+    "id": "SRC-066",
+    "business": "PELANGI INTERIOR SOLO",
+    "sourceType": "Secondary corroboration",
+    "url": "https://shopee.co.id/search?keyword=Custom+Kitchen+Set+Murah+Solo+Pelangi+Interior",
+    "checkedAt": "2026-09-10",
+    "usedFor": "Cross-check listing/web/channel",
+    "confidence": "Public data can change; verify on outreach day."
+  },
+  {
+    "id": "SRC-067",
+    "business": "TADJA Architects",
+    "sourceType": "Primary / high-relevance source",
+    "url": "https://www.ulastempat.com/berikut-15-jasa-desain-rumah-terbaik-di-kota-surakarta/",
+    "checkedAt": "2026-09-10",
+    "usedFor": "Presence/service/scale/review/customer journey",
+    "confidence": "Listing verified; website gap harus recheck."
+  },
+  {
+    "id": "SRC-068",
+    "business": "TADJA Architects",
+    "sourceType": "Secondary corroboration",
+    "url": "https://www.google.com/maps/search/?api=1&query=TADJA%20Architects%20Solo",
+    "checkedAt": "2026-09-10",
+    "usedFor": "Cross-check listing/web/channel",
+    "confidence": "Public data can change; verify on outreach day."
+  },
+  {
+    "id": "SRC-069",
+    "business": "Carolla Interior, Kitchen Set & Kamar Set",
+    "sourceType": "Primary / high-relevance source",
+    "url": "https://carollainterior.com/",
+    "checkedAt": "2026-09-10",
+    "usedFor": "Presence/service/scale/review/customer journey",
+    "confidence": "Official website + listing verified."
+  },
+  {
+    "id": "SRC-070",
+    "business": "Carolla Interior, Kitchen Set & Kamar Set",
+    "sourceType": "Secondary corroboration",
+    "url": "https://www.google.com/maps/search/?api=1&query=Carolla%20Interior%20Solo",
+    "checkedAt": "2026-09-10",
+    "usedFor": "Cross-check listing/web/channel",
+    "confidence": "Public data can change; verify on outreach day."
+  },
+  {
+    "id": "SRC-071",
+    "business": "Raja Bangunan - Jasa Kontraktor di Solo",
+    "sourceType": "Primary / high-relevance source",
+    "url": "https://id.alongwalker.co/top-10-rekomendasi-jasa-kontraktor-terbaik-di-solo-jika-ingin-bangun-kolam-renang-atau-rumah-s13132.html",
+    "checkedAt": "2026-09-10",
+    "usedFor": "Presence/service/scale/review/customer journey",
+    "confidence": "Service/contact verified via directories."
+  },
+  {
+    "id": "SRC-072",
+    "business": "Raja Bangunan - Jasa Kontraktor di Solo",
+    "sourceType": "Secondary corroboration",
+    "url": "https://www.ulastempat.com/15-rekomendasi-kontraktor-terpercaya-di-kota-surakarta/",
+    "checkedAt": "2026-09-10",
+    "usedFor": "Cross-check listing/web/channel",
+    "confidence": "Public data can change; verify on outreach day."
+  },
+  {
+    "id": "SRC-073",
+    "business": "PT. Becom Solo",
+    "sourceType": "Primary / high-relevance source",
+    "url": "https://www.ulastempat.com/15-rekomendasi-kontraktor-terpercaya-di-kota-surakarta/",
+    "checkedAt": "2026-09-10",
+    "usedFor": "Presence/service/scale/review/customer journey",
+    "confidence": "Listing/company presence verified; ops gap = hypothesis."
+  },
+  {
+    "id": "SRC-074",
+    "business": "PT. Becom Solo",
+    "sourceType": "Secondary corroboration",
+    "url": "https://id.linkedin.com/in/manda-ardianingrum-026564221",
+    "checkedAt": "2026-09-10",
+    "usedFor": "Cross-check listing/web/channel",
+    "confidence": "Public data can change; verify on outreach day."
+  },
+  {
+    "id": "SRC-075",
+    "business": "SoloArsi Studio - Arsitek dan Kontraktor",
+    "sourceType": "Primary / high-relevance source",
+    "url": "https://soloarsistudio.id/",
+    "checkedAt": "2026-09-10",
+    "usedFor": "Presence/service/scale/review/customer journey",
+    "confidence": "Official web + listing verified."
+  },
+  {
+    "id": "SRC-076",
+    "business": "SoloArsi Studio - Arsitek dan Kontraktor",
+    "sourceType": "Secondary corroboration",
+    "url": "https://id.linkedin.com/company/soloarsi-studio",
+    "checkedAt": "2026-09-10",
+    "usedFor": "Cross-check listing/web/channel",
+    "confidence": "Public data can change; verify on outreach day."
+  },
+  {
+    "id": "SRC-077",
+    "business": "Couvee - Solo",
+    "sourceType": "Primary / high-relevance source",
+    "url": "https://wanderlog.com/place/details/8906635/couvee-solo",
+    "checkedAt": "2026-09-10",
+    "usedFor": "Presence/service/scale/review/customer journey",
+    "confidence": "Listing verified; authority/stack perlu cek."
+  },
+  {
+    "id": "SRC-078",
+    "business": "Couvee - Solo",
+    "sourceType": "Secondary corroboration",
+    "url": "https://restaurantguru.com/Couvee-Solo-Surakarta",
+    "checkedAt": "2026-09-10",
+    "usedFor": "Cross-check listing/web/channel",
+    "confidence": "Public data can change; verify on outreach day."
+  },
+  {
+    "id": "SRC-079",
+    "business": "Antarakata Coffee, Solo",
+    "sourceType": "Primary / high-relevance source",
+    "url": "https://linktr.ee/antarakata.solo",
+    "checkedAt": "2026-09-10",
+    "usedFor": "Presence/service/scale/review/customer journey",
+    "confidence": "Linktree/reservation/listing verified."
+  },
+  {
+    "id": "SRC-080",
+    "business": "Antarakata Coffee, Solo",
+    "sourceType": "Secondary corroboration",
+    "url": "https://restaurantguru.com/Antarakata-Coffee-Solo-Surakarta",
+    "checkedAt": "2026-09-10",
+    "usedFor": "Cross-check listing/web/channel",
+    "confidence": "Public data can change; verify on outreach day."
+  },
+  {
+    "id": "SRC-081",
+    "business": "Canting Londo Kitchen",
+    "sourceType": "Primary / high-relevance source",
+    "url": "https://linktr.ee/cantinglondo",
+    "checkedAt": "2026-09-10",
+    "usedFor": "Presence/service/scale/review/customer journey",
+    "confidence": "Linktree/service mix/reviews verified."
+  },
+  {
+    "id": "SRC-082",
+    "business": "Canting Londo Kitchen",
+    "sourceType": "Secondary corroboration",
+    "url": "https://wanderlog.com/place/details/2450707/canting-londo-kitchen",
+    "checkedAt": "2026-09-10",
+    "usedFor": "Cross-check listing/web/channel",
+    "confidence": "Public data can change; verify on outreach day."
+  },
+  {
+    "id": "SRC-083",
+    "business": "La Luna Coffee & Eatery",
+    "sourceType": "Deep research source",
+    "url": "https://restaurantguru.com/La-Luna-Coffee-and-Eatery-Surakarta-2",
+    "checkedAt": "2026-09-11",
+    "usedFor": "Public assets, workflow signals, review/service context",
+    "confidence": "Google rating/reviews are very strong; current public listing shows cafe/eatery and birthday-party use. Owned booking/event flow is not prominent in the sources reviewed; do not assume it is absent."
+  },
+  {
+    "id": "SRC-084",
+    "business": "La Luna Coffee & Eatery",
+    "sourceType": "Business listing / map cross-check",
+    "url": "https://www.google.com/maps/search/?api=1&query=La%20Luna%20Coffee%20%26%20Eatery%2C%20Surakarta",
+    "checkedAt": "2026-09-11",
+    "usedFor": "Rating/reviews/contact/local presence",
+    "confidence": "Verify again before outreach."
+  },
+  {
+    "id": "SRC-085",
+    "business": "Wonder Bakery Solo",
+    "sourceType": "Deep research source",
+    "url": "https://wanderlog.com/place/details/6361831/wonder-bakery-solo",
+    "checkedAt": "2026-09-11",
+    "usedFor": "Public assets, workflow signals, review/service context",
+    "confidence": "Very high review volume, established bakery, takeaway/delivery, multiple Solo locations/branches are publicly visible. High-volume retail/branch operation suggests order, custom cake/preorder, queue and customer-data opportunities; current owned digital transaction flow was not prominent in sources reviewed."
+  },
+  {
+    "id": "SRC-086",
+    "business": "Wonder Bakery Solo",
+    "sourceType": "Business listing / map cross-check",
+    "url": "https://www.google.com/maps/search/?api=1&query=Wonder%20Bakery%20Solo%2C%20Surakarta",
+    "checkedAt": "2026-09-11",
+    "usedFor": "Rating/reviews/contact/local presence",
+    "confidence": "Verify again before outreach."
+  },
+  {
+    "id": "SRC-087",
+    "business": "Zafaran Spa Solo",
+    "sourceType": "Deep research source",
+    "url": "https://solo.tempat.info/spa-solo/",
+    "checkedAt": "2026-09-11",
+    "usedFor": "Public assets, workflow signals, review/service context",
+    "confidence": "Large review base, broad spa/treatment offering, active Instagram mentioned in public review source. Treatment appointment, therapist slot, package/member and repeat-visit tracking are natural complexity points; current system must be validated."
+  },
+  {
+    "id": "SRC-088",
+    "business": "Zafaran Spa Solo",
+    "sourceType": "Business listing / map cross-check",
+    "url": "https://www.google.com/maps/search/?api=1&query=Zafaran%20Spa%20Solo%2C%20Surakarta",
+    "checkedAt": "2026-09-11",
+    "usedFor": "Rating/reviews/contact/local presence",
+    "confidence": "Verify again before outreach."
+  },
+  {
+    "id": "SRC-089",
+    "business": "VIVO Dental Clinic",
+    "sourceType": "Deep research source",
+    "url": "https://vivodentalclinic.com/",
+    "checkedAt": "2026-09-11",
+    "usedFor": "Public assets, workflow signals, review/service context",
+    "confidence": "Official website, WhatsApp appointment CTA, service/doctor trust proof, strong review base. Basic website is not the gap. Opportunity is appointment workflow, reminders, reschedule/status and patient-facing journey if not already integrated."
+  },
+  {
+    "id": "SRC-090",
+    "business": "VIVO Dental Clinic",
+    "sourceType": "Business listing / map cross-check",
+    "url": "https://www.google.com/maps/search/?api=1&query=VIVO%20Dental%20Clinic%2C%20Surakarta",
+    "checkedAt": "2026-09-11",
+    "usedFor": "Rating/reviews/contact/local presence",
+    "confidence": "Verify again before outreach."
+  },
+  {
+    "id": "SRC-091",
+    "business": "SEWA MOTOR SOLO - GLOBAL RENTAL MOTOR",
+    "sourceType": "Deep research source",
+    "url": "https://www.ulastempat.com/berikut-15-sewa-motor-terbaik-di-kab-sukoharjo/",
+    "checkedAt": "2026-09-11",
+    "usedFor": "Public assets, workflow signals, review/service context",
+    "confidence": "High review volume, delivery/pickup service, strong responsiveness mentioned in public reviews. Fleet availability, booking dates, ID/requirements, delivery/pickup and payment status can become admin-heavy at this volume."
+  },
+  {
+    "id": "SRC-092",
+    "business": "SEWA MOTOR SOLO - GLOBAL RENTAL MOTOR",
+    "sourceType": "Business listing / map cross-check",
+    "url": "https://www.google.com/maps/search/?api=1&query=SEWA%20MOTOR%20SOLO%20-%20GLOBAL%20RENTAL%20MOTOR%2C%20Surakarta",
+    "checkedAt": "2026-09-11",
+    "usedFor": "Rating/reviews/contact/local presence",
+    "confidence": "Verify again before outreach."
+  },
+  {
+    "id": "SRC-093",
+    "business": "Wedding Organizer Solo - ANDRE Entertainment",
+    "sourceType": "Deep research source",
+    "url": "https://idalamat.com/alamat/wedding-organizer-solo-andre-entertainment-800270",
+    "checkedAt": "2026-09-11",
+    "usedFor": "Public assets, workflow signals, review/service context",
+    "confidence": "Established public presence and multiple wedding-package references; local contact is public. Wedding package inquiry, vendor/crew coordination, rundown and payment milestones are likely operational complexity areas; must be validated."
+  },
+  {
+    "id": "SRC-094",
+    "business": "Wedding Organizer Solo - ANDRE Entertainment",
+    "sourceType": "Business listing / map cross-check",
+    "url": "https://www.google.com/maps/search/?api=1&query=Wedding%20Organizer%20Solo%20-%20ANDRE%20Entertainment%2C%20Surakarta",
+    "checkedAt": "2026-09-11",
+    "usedFor": "Rating/reviews/contact/local presence",
+    "confidence": "Verify again before outreach."
+  },
+  {
+    "id": "SRC-095",
+    "business": "SOLOPHOTO Surakarta",
+    "sourceType": "Deep research source",
+    "url": "https://surakarta.solophoto.id/",
+    "checkedAt": "2026-09-11",
+    "usedFor": "Public assets, workflow signals, review/service context",
+    "confidence": "Large review count, official Surakarta microsite/pop-up page, self-photo model with appointment-like usage. Booking slot, studio capacity, package/add-on, reminder and repeat-visit/customer data are plausible opportunities."
+  },
+  {
+    "id": "SRC-096",
+    "business": "SOLOPHOTO Surakarta",
+    "sourceType": "Business listing / map cross-check",
+    "url": "https://www.google.com/maps/search/?api=1&query=SOLOPHOTO%20Surakarta%2C%20Surakarta",
+    "checkedAt": "2026-09-11",
+    "usedFor": "Rating/reviews/contact/local presence",
+    "confidence": "Verify again before outreach."
+  },
+  {
+    "id": "SRC-097",
+    "business": "Solo Harmony Furniture",
+    "sourceType": "Deep research source",
+    "url": "https://soloharmonyfurniture.com/",
+    "checkedAt": "2026-09-11",
+    "usedFor": "Public assets, workflow signals, review/service context",
+    "confidence": "Strong official website: calculator, portfolio, pricing cues, free survey, warranty, referral, form and WhatsApp; 200+ clients claimed. Website is already strong. Potential opportunity is lead/survey/RAB/project pipeline and after-sales tracking behind the website."
+  },
+  {
+    "id": "SRC-098",
+    "business": "Solo Harmony Furniture",
+    "sourceType": "Business listing / map cross-check",
+    "url": "https://www.google.com/maps/search/?api=1&query=Solo%20Harmony%20Furniture%2C%20Karanganyar%20/%20Colomadu",
+    "checkedAt": "2026-09-11",
+    "usedFor": "Rating/reviews/contact/local presence",
+    "confidence": "Verify again before outreach."
+  },
+  {
+    "id": "SRC-099",
+    "business": "IELC English Campus Solo",
+    "sourceType": "Deep research source",
+    "url": "https://ielc.co.id/reviews/",
+    "checkedAt": "2026-09-11",
+    "usedFor": "Public assets, workflow signals, review/service context",
+    "confidence": "Very strong review base, multiple programs, online/offline learning and responsive admin are publicly evidenced. Lead consultation, placement, enrollment, schedule, teacher allocation, payment and progress reporting may be complex at scale; existing stack must be checked."
+  },
+  {
+    "id": "SRC-100",
+    "business": "IELC English Campus Solo",
+    "sourceType": "Business listing / map cross-check",
+    "url": "https://www.google.com/maps/search/?api=1&query=IELC%20English%20Campus%20Solo%2C%20Surakarta",
+    "checkedAt": "2026-09-11",
+    "usedFor": "Rating/reviews/contact/local presence",
+    "confidence": "Verify again before outreach."
+  },
+  {
+    "id": "SRC-101",
+    "business": "Yuri Stir Mobil",
+    "sourceType": "Deep research source",
+    "url": "https://pdberger.com/kursus/stir-mobil-solo",
+    "checkedAt": "2026-09-11",
+    "usedFor": "Public assets, workflow signals, review/service context",
+    "confidence": "High review volume, multiple locations/contact points, package offerings including driving lessons + SIM mentioned in current directories. Instructor/car availability, package sessions, student schedule, progress and reminder flow are natural operational areas."
+  },
+  {
+    "id": "SRC-102",
+    "business": "Yuri Stir Mobil",
+    "sourceType": "Business listing / map cross-check",
+    "url": "https://www.google.com/maps/search/?api=1&query=Yuri%20Stir%20Mobil%2C%20Surakarta",
+    "checkedAt": "2026-09-11",
+    "usedFor": "Rating/reviews/contact/local presence",
+    "confidence": "Verify again before outreach."
+  },
+  {
+    "id": "SRC-103",
+    "business": "Natural Digital Printing",
+    "sourceType": "Deep research source",
+    "url": "https://solo.tempat.info/percetakan-di-solo/",
+    "checkedAt": "2026-09-11",
+    "usedFor": "Public assets, workflow signals, review/service context",
+    "confidence": "Very high review volume; online/WhatsApp ordering is publicly mentioned; large-format/digital print business. Quote → file approval → queue → production → pickup/delivery → payment status is a high-frequency workflow that can benefit from order tracking."
+  },
+  {
+    "id": "SRC-104",
+    "business": "Natural Digital Printing",
+    "sourceType": "Business listing / map cross-check",
+    "url": "https://www.google.com/maps/search/?api=1&query=Natural%20Digital%20Printing%2C%20Surakarta",
+    "checkedAt": "2026-09-11",
+    "usedFor": "Rating/reviews/contact/local presence",
+    "confidence": "Verify again before outreach."
+  },
+  {
+    "id": "SRC-105",
+    "business": "Solo Laundry & Home Cleaning",
+    "sourceType": "Deep research source",
+    "url": "https://caribisnis.id/laundry/surakarta/banjarsari/solo-laundry-home-cleaning-lau-banj-imp1",
+    "checkedAt": "2026-09-11",
+    "usedFor": "Public assets, workflow signals, review/service context",
+    "confidence": "869 reviews, pickup/delivery, express, scheduled pickup, hotel/linen and specialized cleaning; reviews mention a relatively sophisticated WA order notification system. They may already have a capable order system. Opportunity only exists if pickup route, B2B hotel/linen, item tracking or customer portal still sits outside it."
+  },
+  {
+    "id": "SRC-106",
+    "business": "Solo Laundry & Home Cleaning",
+    "sourceType": "Business listing / map cross-check",
+    "url": "https://www.google.com/maps/search/?api=1&query=Solo%20Laundry%20%26%20Home%20Cleaning%2C%20Surakarta",
+    "checkedAt": "2026-09-11",
+    "usedFor": "Rating/reviews/contact/local presence",
+    "confidence": "Verify again before outreach."
+  },
+  {
+    "id": "SRC-107",
+    "business": "Katering Solo Raya R.A Kitchen",
+    "sourceType": "Deep research source",
+    "url": "https://www.cybo.com/ID-biz/katering-solo-raya-r-a-kitchen",
+    "checkedAt": "2026-09-11",
+    "usedFor": "Public assets, workflow signals, review/service context",
+    "confidence": "Strong rating/review volume, event catering, delivery and long operating hours; public business-site presence. Event inquiry, pax/menu/package, date availability, quote revisions, payment milestones and kitchen/delivery schedule are likely complex."
+  },
+  {
+    "id": "SRC-108",
+    "business": "Katering Solo Raya R.A Kitchen",
+    "sourceType": "Business listing / map cross-check",
+    "url": "https://www.google.com/maps/search/?api=1&query=Katering%20Solo%20Raya%20R.A%20Kitchen%2C%20Surakarta",
+    "checkedAt": "2026-09-11",
+    "usedFor": "Rating/reviews/contact/local presence",
+    "confidence": "Verify again before outreach."
+  },
+  {
+    "id": "SRC-109",
+    "business": "Harsanaya Dental Care Sukoharjo",
+    "sourceType": "Deep research source",
+    "url": "https://www.harsanayadentalcare.com/",
+    "checkedAt": "2026-09-11",
+    "usedFor": "Public assets, workflow signals, review/service context",
+    "confidence": "Official website, two branches, doctors/services, promotions and reservation flow; walk-ins are not accepted for some promo flows. Multi-branch appointment routing, reminders, reschedule and promo campaign attribution may be relevant if not already integrated."
+  },
+  {
+    "id": "SRC-110",
+    "business": "Harsanaya Dental Care Sukoharjo",
+    "sourceType": "Business listing / map cross-check",
+    "url": "https://www.google.com/maps/search/?api=1&query=Harsanaya%20Dental%20Care%20Sukoharjo%2C%20Sukoharjo",
+    "checkedAt": "2026-09-11",
+    "usedFor": "Rating/reviews/contact/local presence",
+    "confidence": "Verify again before outreach."
+  },
+  {
+    "id": "SRC-111",
+    "business": "Wedding Organizer Solo - PT APD Organizer",
+    "sourceType": "Deep research source",
+    "url": "https://hastanaindonesia.id/anggota/apd-organizer",
+    "checkedAt": "2026-09-11",
+    "usedFor": "Public assets, workflow signals, review/service context",
+    "confidence": "HASTANA-verified, public Instagram/Linktree/WhatsApp strategy and active vendor/network positioning. Digital acquisition is strong enough to make internal client/vendor/project management the more interesting angle."
+  },
+  {
+    "id": "SRC-112",
+    "business": "Wedding Organizer Solo - PT APD Organizer",
+    "sourceType": "Business listing / map cross-check",
+    "url": "https://www.google.com/maps/search/?api=1&query=Wedding%20Organizer%20Solo%20-%20PT%20APD%20Organizer%2C%20Sukoharjo%20/%20Kartasura",
+    "checkedAt": "2026-09-11",
+    "usedFor": "Rating/reviews/contact/local presence",
+    "confidence": "Verify again before outreach."
+  },
+  {
+    "id": "SRC-113",
+    "business": "Pusat Meubel Margo Murah Baru - Palur",
+    "sourceType": "Deep research source",
+    "url": "https://www.margomurahbaru.com/",
+    "checkedAt": "2026-09-11",
+    "usedFor": "Public assets, workflow signals, review/service context",
+    "confidence": "Official e-commerce/member website, 15 branches claimed, home/office/project sales and checkout-to-WhatsApp invoice workflow. Web is mature, but public flow shows checkout/invoice/member processes that may involve handoffs; branch/project sales CRM/inventory integration is the potential angle."
+  },
+  {
+    "id": "SRC-114",
+    "business": "Pusat Meubel Margo Murah Baru - Palur",
+    "sourceType": "Business listing / map cross-check",
+    "url": "https://www.google.com/maps/search/?api=1&query=Pusat%20Meubel%20Margo%20Murah%20Baru%20-%20Palur%2C%20Karanganyar%20/%20Palur",
+    "checkedAt": "2026-09-11",
+    "usedFor": "Rating/reviews/contact/local presence",
+    "confidence": "Verify again before outreach."
+  },
+  {
+    "id": "SRC-115",
+    "business": "Heika Kopi Sukoharjo",
+    "sourceType": "Deep research source",
+    "url": "https://restaurantguru.com/Heika-Kopi-Sukoharjo-Jombor",
+    "checkedAt": "2026-09-11",
+    "usedFor": "Public assets, workflow signals, review/service context",
+    "confidence": "~1k reviews, website, booking, live music and delivery; academic/public research indicates meaningful customer volume and attention to experience. Basic website is not enough reason to pitch. Only event/reservation/loyalty/corporate-order flow may be relevant."
+  },
+  {
+    "id": "SRC-116",
+    "business": "Heika Kopi Sukoharjo",
+    "sourceType": "Business listing / map cross-check",
+    "url": "https://www.google.com/maps/search/?api=1&query=Heika%20Kopi%20Sukoharjo%2C%20Sukoharjo",
+    "checkedAt": "2026-09-11",
+    "usedFor": "Rating/reviews/contact/local presence",
+    "confidence": "Verify again before outreach."
+  },
+  {
+    "id": "SRC-117",
+    "business": "MAE Dental - Klinik Gigi Klaten",
+    "sourceType": "Deep research source",
+    "url": "https://idalamat.com/alamat/mae-dental-klinik-gigi-klaten-1061107",
+    "checkedAt": "2026-09-11",
+    "usedFor": "Public assets, workflow signals, review/service context",
+    "confidence": "Very strong local review signal and Instagram-led public presence; long daily operating hours. Owned website/structured appointment journey does not surface strongly; appointment, service education and trust content could be consolidated."
+  },
+  {
+    "id": "SRC-118",
+    "business": "MAE Dental - Klinik Gigi Klaten",
+    "sourceType": "Business listing / map cross-check",
+    "url": "https://www.google.com/maps/search/?api=1&query=MAE%20Dental%20-%20Klinik%20Gigi%20Klaten%2C%20Klaten",
+    "checkedAt": "2026-09-11",
+    "usedFor": "Rating/reviews/contact/local presence",
+    "confidence": "Verify again before outreach."
+  },
+  {
+    "id": "SRC-119",
+    "business": "MKF ARCHITECT",
+    "sourceType": "Deep research source",
+    "url": "https://www.google.com/maps/search/?api=1&query=MKF%20ARCHITECT%2C%20Klaten",
+    "checkedAt": "2026-09-11",
+    "usedFor": "Public assets, workflow signals, review/service context",
+    "confidence": "Strong local rating/review count for an architecture/interior/contractor business. High-ticket project category benefits from project case studies, inquiry qualification and project pipeline; owned site did not surface in the reviewed search."
+  },
+  {
+    "id": "SRC-120",
+    "business": "MKF ARCHITECT",
+    "sourceType": "Business listing / map cross-check",
+    "url": "https://www.google.com/maps/search/?api=1&query=MKF%20ARCHITECT%2C%20Klaten",
+    "checkedAt": "2026-09-11",
+    "usedFor": "Rating/reviews/contact/local presence",
+    "confidence": "Verify again before outreach."
+  },
+  {
+    "id": "SRC-121",
+    "business": "KATERING ORLIN SOLO",
+    "sourceType": "Deep research source",
+    "url": "https://msha.ke/kateringorlinsurakarata/",
+    "checkedAt": "2026-09-11",
+    "usedFor": "Public assets, workflow signals, review/service context",
+    "confidence": "Operating since 2010 according to its public mini-site; serves hajatan and boxed catering with budget-adjusted packages. Public presence is social/mini-site centric; structured event quote, date capacity, menu/pax and payment workflow can be improved if still manual."
+  },
+  {
+    "id": "SRC-122",
+    "business": "KATERING ORLIN SOLO",
+    "sourceType": "Business listing / map cross-check",
+    "url": "https://www.google.com/maps/search/?api=1&query=KATERING%20ORLIN%20SOLO%2C%20Surakarta",
+    "checkedAt": "2026-09-11",
+    "usedFor": "Rating/reviews/contact/local presence",
+    "confidence": "Verify again before outreach."
+  },
+  {
+    "id": "SRC-123",
+    "business": "GAGE Design - Digital Printing Solo",
+    "sourceType": "Second-wave deep research",
+    "url": "https://idalamat.com/alamat/gage-design-digital-printing-solo-462787",
+    "checkedAt": "2026-09-11",
+    "usedFor": "Public assets, service model, workflow signals",
+    "confidence": "Current public directory confirms a dedicated digital-printing business in Laweyan with broad print products; public sources also reference online/WhatsApp ordering and web/social presence. Quote → artwork/file approval → finishing options → production queue → pickup/delivery/status is a repeatable B2B workflow that may still be fragmented across chat and production."
+  },
+  {
+    "id": "SRC-124",
+    "business": "GAGE Design - Digital Printing Solo",
+    "sourceType": "Secondary corroboration",
+    "url": "https://cetak-mmt.blogspot.com/2021/01/cetak-mmt-di-solo.html",
+    "checkedAt": "2026-09-11",
+    "usedFor": "Business presence / channel cross-check",
+    "confidence": "Verify again before outreach."
+  },
+  {
+    "id": "SRC-125",
+    "business": "Rental Mobil Sukoharjo HEHA Trans",
+    "sourceType": "Second-wave deep research",
+    "url": "https://www.ulastempat.com/15-rental-mobil-rekomendasi-di-kab-sukoharjo/",
+    "checkedAt": "2026-09-11",
+    "usedFor": "Public assets, service model, workflow signals",
+    "confidence": "Public rental listings show a local Sukoharjo rental business with public contact, 24-hour service signal and strong rating in current business data. Vehicle/date availability, customer requirements, driver/pickup, quote and payment status are natural high-frequency coordination points."
+  },
+  {
+    "id": "SRC-126",
+    "business": "Rental Mobil Sukoharjo HEHA Trans",
+    "sourceType": "Secondary corroboration",
+    "url": "https://pdberger.com/sewa/rental-mobil-sukoharjo",
+    "checkedAt": "2026-09-11",
+    "usedFor": "Business presence / channel cross-check",
+    "confidence": "Verify again before outreach."
+  },
+  {
+    "id": "SRC-127",
+    "business": "RD Dental Center Klaten",
+    "sourceType": "Second-wave deep research",
+    "url": "https://doktertanya.com/dokter-gigi-klaten/",
+    "checkedAt": "2026-09-11",
+    "usedFor": "Public assets, service model, workflow signals",
+    "confidence": "Current public source lists official website rddentalcenter.com, Instagram @rddental, WhatsApp and a broad treatment menu; public rating/review signal is strong. Basic web presence is not the gap. Opportunity is appointment routing, reminders/reschedule, treatment communication or integration only if current stack leaves manual work."
+  },
+  {
+    "id": "SRC-128",
+    "business": "RD Dental Center Klaten",
+    "sourceType": "Secondary corroboration",
+    "url": "https://www.rddentalcenter.com/",
+    "checkedAt": "2026-09-11",
+    "usedFor": "Business presence / channel cross-check",
+    "confidence": "Verify again before outreach."
+  },
+  {
+    "id": "SRC-129",
+    "business": "Fahove Beauty Salon & SPA",
+    "sourceType": "Second-wave deep research",
+    "url": "https://klaten.tempat.info/salon-di-klaten/",
+    "checkedAt": "2026-09-11",
+    "usedFor": "Public assets, service model, workflow signals",
+    "confidence": "Current public listing confirms Instagram, phone and salon/spa operation; recent local review roundup shows complete treatments, frequent promos, repeat visits and responsive WhatsApp. Service duration, therapist/staff slot, promo/package balance, appointment and repeat-customer follow-up can become operationally complex."
+  },
+  {
+    "id": "SRC-130",
+    "business": "Fahove Beauty Salon & SPA",
+    "sourceType": "Secondary corroboration",
+    "url": "https://idalamat.com/alamat/975320/fahove-beauty-salon-spa-klaten-jawa-tengah",
+    "checkedAt": "2026-09-11",
+    "usedFor": "Business presence / channel cross-check",
+    "confidence": "Verify again before outreach."
+  },
+  {
+    "id": "SRC-131",
+    "business": "D'CHERYL Salon Spa & Beauty Care",
+    "sourceType": "Second-wave deep research",
+    "url": "https://www.semuabis.com/dcheryl-salon-spa-beauty-care-klaten-0815-6822-0332",
+    "checkedAt": "2026-09-11",
+    "usedFor": "Public assets, service model, workflow signals",
+    "confidence": "Current public directories confirm a women-focused salon/spa in Klaten with phone, Instagram/Facebook presence and multiple beauty/spa service categories. Multi-service appointment durations, staff allocation, treatment history, packages and repeat reminders are plausible workflow opportunities."
+  },
+  {
+    "id": "SRC-132",
+    "business": "D'CHERYL Salon Spa & Beauty Care",
+    "sourceType": "Secondary corroboration",
+    "url": "https://idalamat.com/alamat/975319/dcheryl-salon-spabeauty-care-klaten-khusus-wanita-muslimah-klaten-jawa-tengah",
+    "checkedAt": "2026-09-11",
+    "usedFor": "Business presence / channel cross-check",
+    "confidence": "Verify again before outreach."
+  },
+  {
+    "id": "SRC-133",
+    "business": "Montecarlo Bengkel Mobil Solo",
+    "sourceType": "Second-wave deep research",
+    "url": "https://fixpalembang.com/variasi-mobil-solo/",
+    "checkedAt": "2026-09-11",
+    "usedFor": "Public assets, service model, workflow signals",
+    "confidence": "Current 2026 public source lists official website, Instagram and WhatsApp; business has operated since 1993 and provides cost estimates before work. Booking, vehicle/service history, estimate approval, work status, maintenance reminder and after-service follow-up are natural CRM/workshop workflow opportunities."
+  },
+  {
+    "id": "SRC-134",
+    "business": "Montecarlo Bengkel Mobil Solo",
+    "sourceType": "Secondary corroboration",
+    "url": "https://montecarlobengkel.com/",
+    "checkedAt": "2026-09-11",
+    "usedFor": "Business presence / channel cross-check",
+    "confidence": "Verify again before outreach."
+  },
+  {
+    "id": "SRC-135",
+    "business": "Glowing Auto Detailing",
+    "sourceType": "Second-wave deep research",
+    "url": "https://www.kitalulus.com/company/glowing-auto-detailing-e0zb",
+    "checkedAt": "2026-09-11",
+    "usedFor": "Public assets, service model, workflow signals",
+    "confidence": "2026 public company profile identifies a 1–49 employee auto-detailing business in Colomadu with Instagram @glowing_ind. Detailing package booking, vehicle history, coating/aftercare cycle and repeat-customer reminders can be centralized if currently chat-based."
+  },
+  {
+    "id": "SRC-136",
+    "business": "Glowing Auto Detailing",
+    "sourceType": "Secondary corroboration",
+    "url": "https://www.google.com/maps/search/?api=1&query=Glowing%20Auto%20Detailing%2C%20Karanganyar%20/%20Colomadu",
+    "checkedAt": "2026-09-11",
+    "usedFor": "Business presence / channel cross-check",
+    "confidence": "Verify again before outreach."
+  },
+  {
+    "id": "SRC-137",
+    "business": "Gajah Print - Solo",
+    "sourceType": "Second-wave deep research",
+    "url": "https://shopee.co.id/gajahprintsolo",
+    "checkedAt": "2026-09-11",
+    "usedFor": "Public assets, service model, workflow signals",
+    "confidence": "Current Shopee storefront shows 80+ products, 4.9 store rating and multiple custom-print SKUs with hundreds to thousands of sales; local business listing also has strong review volume. High-volume multi-SKU custom printing creates potential complexity across order specification, artwork/file approval, finishing, production status and channel handoff."
+  },
+  {
+    "id": "SRC-138",
+    "business": "Gajah Print - Solo",
+    "sourceType": "Secondary corroboration",
+    "url": "https://www.google.com/maps/search/?api=1&query=Gajah%20Print%20Solo%2C%20Surakarta",
+    "checkedAt": "2026-09-11",
+    "usedFor": "Business presence / channel cross-check",
+    "confidence": "Verify again before outreach."
+  }
+]

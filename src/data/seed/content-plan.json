@@ -1,0 +1,1401 @@
+{
+  "sheet": "12 Content Plan",
+  "range": "A1:J109",
+  "rows": [
+    {
+      "row": 1,
+      "cells": [
+        "NEXTYLABS — CONTENT & DISTRIBUTION PLAN",
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null
+      ]
+    },
+    {
+      "row": 3,
+      "cells": [
+        "Konten bukan pekerjaan terpisah dari sales. Ambil materi dari prospect insight, mini audit, build, case study, dan founder journey.",
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null
+      ]
+    },
+    {
+      "row": 5,
+      "cells": [
+        "A. 30-DAY CONTENT CALENDAR",
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null
+      ]
+    },
+    {
+      "row": 6,
+      "cells": [
+        "Day",
+        "Date",
+        "Primary Channel",
+        "Pillar",
+        "Topic / Hook",
+        "Core Point",
+        "CTA",
+        "Repurpose",
+        "Owner",
+        "Status"
+      ]
+    },
+    {
+      "row": 7,
+      "cells": [
+        1,
+        46276,
+        "Instagram",
+        "Business Problem",
+        "5 tanda bisnis mulai kewalahan pakai Excel",
+        "Masalah bukan Excel-nya; masalah muncul saat data, approval dan ownership tidak lagi jelas.",
+        "DM AUDIT",
+        "Threads + WA",
+        "Marketing",
+        "Planned"
+      ]
+    },
+    {
+      "row": 8,
+      "cells": [
+        2,
+        46277,
+        "Threads",
+        "Founder Journey",
+        "6 hari sepi client itu mengubah cara kami melihat 'kerjaan'",
+        "Saat delivery kosong, sales dan distribution adalah pekerjaan utama.",
+        "Open question",
+        "Instagram Story + WA",
+        "Founder",
+        "Planned"
+      ]
+    },
+    {
+      "row": 9,
+      "cells": [
+        3,
+        46278,
+        "Instagram",
+        "Case Study",
+        "Dari pencatatan manual ke satu dashboard",
+        "Show problem-flow-solution tanpa fake result.",
+        "Lihat project",
+        "Threads + WA",
+        "Marketing",
+        "Planned"
+      ]
+    },
+    {
+      "row": 10,
+      "cells": [
+        4,
+        46279,
+        "Threads",
+        "Business Observation",
+        "Bisnis ramai belum tentu prosesnya sehat",
+        "Volume tinggi memperbesar friction kecil.",
+        "Discuss",
+        "Instagram Story + WA",
+        "Founder",
+        "Planned"
+      ]
+    },
+    {
+      "row": 11,
+      "cells": [
+        5,
+        46280,
+        "Instagram",
+        "Offer",
+        "20 Business Digital Audit",
+        "Audit 3 friction + 3 opportunity, no obligation.",
+        "Daftar audit",
+        "Threads + WA",
+        "Marketing",
+        "Planned"
+      ]
+    },
+    {
+      "row": 12,
+      "cells": [
+        6,
+        46281,
+        "LinkedIn",
+        "Software/Business POV",
+        "Kenapa kami tidak langsung coding saat client minta fitur",
+        "Discovery prevents wrong software.",
+        "Consult",
+        "Threads + WA",
+        "Founder",
+        "Planned"
+      ]
+    },
+    {
+      "row": 13,
+      "cells": [
+        7,
+        46282,
+        "Instagram",
+        "Build in Public",
+        "Cara kami mapping flow sebelum bikin sistem",
+        "Route → validation → service → data flow.",
+        "Follow",
+        "Threads + WA",
+        "Marketing",
+        "Planned"
+      ]
+    },
+    {
+      "row": 14,
+      "cells": [
+        8,
+        46283,
+        "Threads",
+        "Business Observation",
+        "Kalau admin harus copy data dari WA ke Excel lalu ke grup...",
+        "Double entry is a signal, not automatically a software project.",
+        "Reply",
+        "Instagram Story + WA",
+        "Founder",
+        "Planned"
+      ]
+    },
+    {
+      "row": 15,
+      "cells": [
+        9,
+        46284,
+        "Instagram",
+        "Business Problem",
+        "Website cantik vs website yang membantu inquiry",
+        "CTA, trust, qualifier, measurement.",
+        "Audit website",
+        "Threads + WA",
+        "Marketing",
+        "Planned"
+      ]
+    },
+    {
+      "row": 16,
+      "cells": [
+        10,
+        46285,
+        "LinkedIn",
+        "Case Study",
+        "Bagaimana menulis scope supaya project tidak kacau",
+        "In/out scope + acceptance + change request.",
+        "Connect",
+        "Threads + WA",
+        "Founder",
+        "Planned"
+      ]
+    },
+    {
+      "row": 17,
+      "cells": [
+        11,
+        46286,
+        "Instagram",
+        "Case Study",
+        "Audit website: placeholder yang merusak trust",
+        "Use anonymized/general example unless permission.",
+        "Audit",
+        "Threads + WA",
+        "Marketing",
+        "Planned"
+      ]
+    },
+    {
+      "row": 18,
+      "cells": [
+        12,
+        46287,
+        "Threads",
+        "Engineer POV",
+        "Fitur paling mahal sering bukan fitur paling berguna",
+        "MVP prioritization.",
+        "Discuss",
+        "Instagram Story + WA",
+        "Founder",
+        "Planned"
+      ]
+    },
+    {
+      "row": 19,
+      "cells": [
+        13,
+        46288,
+        "Instagram",
+        "Business Problem",
+        "5 proses rental yang sering cocok didigitalisasi",
+        "Availability, booking, driver, payment, maintenance.",
+        "DM RENTAL",
+        "Threads + WA",
+        "Marketing",
+        "Planned"
+      ]
+    },
+    {
+      "row": 20,
+      "cells": [
+        14,
+        46289,
+        "Threads",
+        "Founder Journey",
+        "Belajar berhenti menjual 'jasa bikin website'",
+        "Sell business outcome.",
+        "Open ending",
+        "Instagram Story + WA",
+        "Founder",
+        "Planned"
+      ]
+    },
+    {
+      "row": 21,
+      "cells": [
+        15,
+        46290,
+        "Instagram",
+        "Business Problem",
+        "Gym/Pilates: member data bukan cuma daftar nama",
+        "Expiry, package, attendance, retention.",
+        "Audit membership",
+        "Threads + WA",
+        "Marketing",
+        "Planned"
+      ]
+    },
+    {
+      "row": 22,
+      "cells": [
+        16,
+        46291,
+        "LinkedIn",
+        "Business Observation",
+        "Software bukan solusi untuk proses yang belum jelas",
+        "First simplify process.",
+        "Consult",
+        "Threads + WA",
+        "Founder",
+        "Planned"
+      ]
+    },
+    {
+      "row": 23,
+      "cells": [
+        17,
+        46292,
+        "Instagram",
+        "Case Study",
+        "Before → after customer journey",
+        "Show a generic booking flow.",
+        "DM FLOW",
+        "Threads + WA",
+        "Marketing",
+        "Planned"
+      ]
+    },
+    {
+      "row": 24,
+      "cells": [
+        18,
+        46293,
+        "Threads",
+        "Business Observation",
+        "Kalau semua pertanyaan customer berakhir 'chat admin'...",
+        "Maybe missing self-service info/flow.",
+        "Discuss",
+        "Instagram Story + WA",
+        "Founder",
+        "Planned"
+      ]
+    },
+    {
+      "row": 25,
+      "cells": [
+        19,
+        46294,
+        "Instagram",
+        "Business Problem",
+        "Wedding organizer: satu event = banyak moving parts",
+        "Client, vendor, crew, documents, payment.",
+        "Audit ops",
+        "Threads + WA",
+        "Marketing",
+        "Planned"
+      ]
+    },
+    {
+      "row": 26,
+      "cells": [
+        20,
+        46295,
+        "Threads",
+        "Engineer POV",
+        "Kami lebih suka menghapus fitur daripada menambah fitur",
+        "KISS/YAGNI business value.",
+        "Open question",
+        "Instagram Story + WA",
+        "Founder",
+        "Planned"
+      ]
+    },
+    {
+      "row": 27,
+      "cells": [
+        21,
+        46296,
+        "Instagram",
+        "Proof",
+        "Portfolio/software showcase paling relevant",
+        "Problem + flow + delivery.",
+        "See work",
+        "Threads + WA",
+        "Marketing",
+        "Planned"
+      ]
+    },
+    {
+      "row": 28,
+      "cells": [
+        22,
+        46297,
+        "LinkedIn",
+        "Founder Lesson",
+        "Apa yang kami ukur dari outbound, bukan followers",
+        "Reply→meeting→proposal→deal.",
+        "Connect",
+        "Threads + WA",
+        "Founder",
+        "Planned"
+      ]
+    },
+    {
+      "row": 29,
+      "cells": [
+        23,
+        46298,
+        "Instagram",
+        "Business Problem",
+        "Salon/barber: booking hanyalah awal",
+        "Staff slots, reminder, history, repeat visits.",
+        "Audit booking",
+        "Threads + WA",
+        "Marketing",
+        "Planned"
+      ]
+    },
+    {
+      "row": 30,
+      "cells": [
+        24,
+        46299,
+        "Threads",
+        "Business Observation",
+        "Customer tidak peduli stack-mu",
+        "They care speed, clarity, reliability.",
+        "Discuss",
+        "Instagram Story + WA",
+        "Founder",
+        "Planned"
+      ]
+    },
+    {
+      "row": 31,
+      "cells": [
+        25,
+        46300,
+        "Instagram",
+        "Case Study",
+        "Mini audit → discovery → MVP",
+        "Explain sales-to-solution process.",
+        "Book audit",
+        "Threads + WA",
+        "Marketing",
+        "Planned"
+      ]
+    },
+    {
+      "row": 32,
+      "cells": [
+        26,
+        46301,
+        "LinkedIn",
+        "Engineer POV",
+        "Kapan custom software tidak layak dibuat",
+        "Low volume, no process owner, cheaper SaaS exists.",
+        "Consult",
+        "Threads + WA",
+        "Founder",
+        "Planned"
+      ]
+    },
+    {
+      "row": 33,
+      "cells": [
+        27,
+        46302,
+        "Instagram",
+        "FAQ",
+        "Berapa harga website / custom system?",
+        "Explain scope ranges and why discovery matters.",
+        "DM scope",
+        "Threads + WA",
+        "Marketing",
+        "Planned"
+      ]
+    },
+    {
+      "row": 34,
+      "cells": [
+        28,
+        46303,
+        "Threads",
+        "Founder Journey",
+        "Apa yang kami pelajari dari 30 hari prospecting",
+        "Share actual lessons when available.",
+        "Discuss",
+        "Instagram Story + WA",
+        "Founder",
+        "Planned"
+      ]
+    },
+    {
+      "row": 35,
+      "cells": [
+        29,
+        46304,
+        "Instagram",
+        "Offer",
+        "Project slots / audit reminder",
+        "Who it fits + current capacity.",
+        "Contact",
+        "Threads + WA",
+        "Marketing",
+        "Planned"
+      ]
+    },
+    {
+      "row": 36,
+      "cells": [
+        30,
+        46305,
+        "LinkedIn",
+        "Monthly Review",
+        "Apa yang NextyLabs pelajari bulan ini",
+        "Data, wins, losses, next bet.",
+        "Connect",
+        "Threads + WA",
+        "Founder",
+        "Planned"
+      ]
+    },
+    {
+      "row": 39,
+      "cells": [
+        "B. CHANNEL STRATEGY",
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null
+      ]
+    },
+    {
+      "row": 40,
+      "cells": [
+        "Channel",
+        "Pillar",
+        "Share",
+        "Goal",
+        "Format",
+        "Content Formula",
+        "CTA",
+        "Rule",
+        null,
+        null
+      ]
+    },
+    {
+      "row": 41,
+      "cells": [
+        "Instagram",
+        "Business Problem",
+        "40%",
+        "Create problem awareness",
+        "Carousel/Reel",
+        "Problem → cost → example → better flow",
+        "Audit / DM",
+        "No generic tech tips without business relevance",
+        null,
+        null
+      ]
+    },
+    {
+      "row": 42,
+      "cells": [
+        "Instagram",
+        "Case Study / Proof",
+        "30%",
+        "Build trust",
+        "Carousel/Reel",
+        "Problem → decision → build → result/learning",
+        "See work / consult",
+        "No fake metrics",
+        null,
+        null
+      ]
+    },
+    {
+      "row": 43,
+      "cells": [
+        "Instagram",
+        "Build in Public",
+        "20%",
+        "Show competence",
+        "Story/Reel",
+        "Behind scene → reason → tradeoff → outcome",
+        "Follow / ask",
+        "Explain why, not only code",
+        null,
+        null
+      ]
+    },
+    {
+      "row": 44,
+      "cells": [
+        "Instagram",
+        "Offer",
+        "10%",
+        "Convert demand",
+        "Post/Story",
+        "Who it's for → problem → limited scope → CTA",
+        "Book audit",
+        "Avoid constant discount",
+        null,
+        null
+      ]
+    },
+    {
+      "row": 45,
+      "cells": [
+        "Threads",
+        "Founder Journey",
+        "Core",
+        "Human distribution",
+        "Short thread/post",
+        "Cerita → konflik/keanehan → pemikiran → open ending",
+        "Conversation",
+        "Conversational, not corporate",
+        null,
+        null
+      ]
+    },
+    {
+      "row": 46,
+      "cells": [
+        "Threads",
+        "Business Observation",
+        "Core",
+        "Surface operational pain",
+        "Short observation",
+        "Observed behavior → implication → question",
+        "Reply/discuss",
+        "No hard sell every post",
+        null,
+        null
+      ]
+    },
+    {
+      "row": 47,
+      "cells": [
+        "Threads",
+        "Software Engineer POV",
+        "Core",
+        "Differentiate expertise",
+        "Opinion/story",
+        "Engineering tradeoff → business effect → open ending",
+        "Discuss",
+        "Avoid jargon flexing",
+        null,
+        null
+      ]
+    },
+    {
+      "row": 48,
+      "cells": [
+        "LinkedIn",
+        "Founder / Case / Business Insight",
+        "2–3x/week",
+        "Trust with business audience",
+        "Text + proof",
+        "Context → problem → approach → learning",
+        "Connect / consult",
+        "Founder account > sterile brand voice",
+        null,
+        null
+      ]
+    },
+    {
+      "row": 49,
+      "cells": [
+        "WhatsApp Status",
+        "Proof / Availability",
+        "3–5x/week",
+        "Warm network recall",
+        "Status",
+        "Work proof → one sentence context → availability",
+        "Reply",
+        "No mass hard-sell spam",
+        null,
+        null
+      ]
+    },
+    {
+      "row": 52,
+      "cells": [
+        "C. FOUNDER DISTRIBUTION SOP",
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null
+      ]
+    },
+    {
+      "row": 53,
+      "cells": [
+        "Channel",
+        "Frequency",
+        "What to Post",
+        "Voice",
+        "CTA",
+        "Response SLA",
+        "Lead Handling",
+        "Do Not",
+        null,
+        null
+      ]
+    },
+    {
+      "row": 54,
+      "cells": [
+        "Threads",
+        "4–7x/week",
+        "Founder journey, business observations, software POV",
+        "Natural, conversational",
+        "Question / discuss",
+        "Same day",
+        "If business pain surfaces → DM politely → log lead",
+        "Corporate press-release tone",
+        null,
+        null
+      ]
+    },
+    {
+      "row": 55,
+      "cells": [
+        "LinkedIn",
+        "2–3x/week",
+        "Case study, founder lessons, system/process insight",
+        "Professional but personal",
+        "Connect / consult",
+        "24h",
+        "Move qualified interest to discovery",
+        "Copy IG caption verbatim",
+        null,
+        null
+      ]
+    },
+    {
+      "row": 56,
+      "cells": [
+        "Instagram personal",
+        "2–4x/week + stories",
+        "Build, client-safe proof, behind scenes",
+        "Personal",
+        "Reply/DM",
+        "Same day",
+        "Warm conversation → NextyLeads",
+        "Only repost brand posters",
+        null,
+        null
+      ]
+    },
+    {
+      "row": 57,
+      "cells": [
+        "WhatsApp Status",
+        "3–5x/week",
+        "Work proof, open slots, before/after, mini audit",
+        "Direct",
+        "Reply",
+        "Same day",
+        "Ask permission before sales conversation",
+        "Mass broadcast repeatedly",
+        null,
+        null
+      ]
+    },
+    {
+      "row": 60,
+      "cells": [
+        "Trigger",
+        "What Founder Does",
+        "What Marketing Does",
+        "CRM Stage",
+        "Asset",
+        "Timing",
+        "Success Metric",
+        "Notes",
+        null,
+        null
+      ]
+    },
+    {
+      "row": 61,
+      "cells": [
+        "Someone replies with own business problem",
+        "Ask 1–2 context questions",
+        "Create lead record",
+        "New",
+        "Screenshot/context",
+        "Same day",
+        "Qualified conversation",
+        "No instant pitch",
+        null,
+        null
+      ]
+    },
+    {
+      "row": 62,
+      "cells": [
+        "Asks 'bisa bikin?'",
+        "Acknowledge and route to short discovery",
+        "Research business",
+        "Responded",
+        "Mini audit if useful",
+        "Same day",
+        "Meeting",
+        null,
+        null,
+        null
+      ]
+    },
+    {
+      "row": 63,
+      "cells": [
+        "Friend refers business",
+        "Ask for warm intro",
+        "Track referrer",
+        "Qualified",
+        "Referral log",
+        "Same day",
+        "Intro completed",
+        null,
+        null,
+        null
+      ]
+    },
+    {
+      "row": 64,
+      "cells": [
+        "Post gets many saves/replies",
+        "Continue topic",
+        "Repurpose to carousel",
+        "Content signal",
+        "Content calendar",
+        "48h",
+        "Engagement → conversations",
+        "Don't chase vanity only",
+        null,
+        null
+      ]
+    },
+    {
+      "row": 65,
+      "cells": [
+        "Project milestone",
+        "Share why/decision, not confidential data",
+        "Create proof asset",
+        "N/A",
+        "Portfolio proof",
+        "When safe",
+        "Trust",
+        "Client permission if identifiable",
+        null,
+        null
+      ]
+    },
+    {
+      "row": 66,
+      "cells": [
+        "Open slot",
+        "Founder states who fits",
+        "Prepare response template",
+        "N/A",
+        "Offer",
+        "Limited frequency",
+        "Inbound",
+        "No fake scarcity",
+        null,
+        null
+      ]
+    },
+    {
+      "row": 69,
+      "cells": [
+        "D. 20 BUSINESS DIGITAL AUDIT CAMPAIGN",
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null
+      ]
+    },
+    {
+      "row": 70,
+      "cells": [
+        "Campaign Parameter",
+        "Value",
+        null,
+        "Qualification",
+        "Pass Signal",
+        "Reject / Low Priority",
+        "Question",
+        "Reason",
+        null,
+        null
+      ]
+    },
+    {
+      "row": 71,
+      "cells": [
+        "Slots",
+        "20",
+        null,
+        "Business real/active",
+        "Maps/social/site active",
+        "Inactive/unverifiable",
+        "Nama bisnis + link?",
+        "Avoid fake/low intent",
+        null,
+        null
+      ]
+    },
+    {
+      "row": 72,
+      "cells": [
+        "Audience",
+        "Solo Raya business with visible digital/operational opportunity",
+        null,
+        "Decision access",
+        "Owner/manager reachable",
+        "Student/research only",
+        "Peran Anda?",
+        "Authority",
+        null,
+        null
+      ]
+    },
+    {
+      "row": 73,
+      "cells": [
+        "Promise",
+        "3 verified findings + 3 opportunities + one recommended next step",
+        null,
+        "Problem relevance",
+        "Website/booking/ops pain",
+        "Just wants free design",
+        "Bagian apa yang ingin diperbaiki?",
+        "Intent",
+        null,
+        null
+      ]
+    },
+    {
+      "row": 74,
+      "cells": [
+        "Cost",
+        "Free",
+        null,
+        "Potential value",
+        "High-ticket/repeat operations",
+        "Tiny one-off need",
+        "Volume/customer/process?",
+        "Economics",
+        null,
+        null
+      ]
+    },
+    {
+      "row": 75,
+      "cells": [
+        "Delivery",
+        "Short PDF/chat/1-page audit",
+        null,
+        "Timeline",
+        "Next 1–3 months",
+        "No plan whatsoever",
+        "Kapan ingin improve?",
+        "Urgency",
+        null,
+        null
+      ]
+    },
+    {
+      "row": 76,
+      "cells": [
+        "Time per audit",
+        "Keep internal effort low; prioritize qualified leads",
+        null,
+        "Current stack",
+        "Can describe tools",
+        "No visibility/no answer",
+        "Sekarang pakai apa?",
+        "Feasibility",
+        null,
+        null
+      ]
+    },
+    {
+      "row": 77,
+      "cells": [
+        "CTA",
+        "Apply / WhatsApp",
+        null,
+        "Permission",
+        "Willing to discuss",
+        "Only wants file",
+        "Bersedia 15 menit bila audit relevan?",
+        "Conversion",
+        null,
+        null
+      ]
+    },
+    {
+      "row": 78,
+      "cells": [
+        "Primary Goal",
+        "Conversation → discovery, not vanity leads",
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null
+      ]
+    },
+    {
+      "row": 81,
+      "cells": [
+        "Stage",
+        "Owner",
+        "Action",
+        "Template/Asset",
+        "SLA",
+        "Metric",
+        "Exit",
+        "Notes",
+        null,
+        null
+      ]
+    },
+    {
+      "row": 82,
+      "cells": [
+        "Apply/Inbound",
+        "Marketing",
+        "Qualify",
+        "Short form",
+        "Same day",
+        "Qualified rate",
+        "Qualified/reject",
+        null,
+        null,
+        null
+      ]
+    },
+    {
+      "row": 83,
+      "cells": [
+        "Research",
+        "Marketing",
+        "Verify site/social/reviews",
+        "Target sheet",
+        "24h",
+        "Research complete",
+        "Audit ready",
+        null,
+        null,
+        null
+      ]
+    },
+    {
+      "row": 84,
+      "cells": [
+        "Audit",
+        "Designer/Tech",
+        "3 findings + flow",
+        "Mini Audit",
+        "24–48h",
+        "Audit delivered",
+        "Delivered",
+        "Max scope",
+        null,
+        null
+      ]
+    },
+    {
+      "row": 85,
+      "cells": [
+        "Follow-up",
+        "Marketing",
+        "Ask what resonates",
+        "Template",
+        "1d",
+        "Reply rate",
+        "Discovery/no",
+        null,
+        null,
+        null
+      ]
+    },
+    {
+      "row": 86,
+      "cells": [
+        "Discovery",
+        "Founder/Sales",
+        "Validate pain/volume/authority",
+        "Sales Playbook",
+        "2d",
+        "Meeting rate",
+        "Qualified/later",
+        null,
+        null,
+        null
+      ]
+    },
+    {
+      "row": 87,
+      "cells": [
+        "Proposal",
+        "Founder",
+        "Scope MVP",
+        "Proposal Closing",
+        "1–2d",
+        "Proposal rate",
+        "Decision",
+        null,
+        null,
+        null
+      ]
+    },
+    {
+      "row": 88,
+      "cells": [
+        "Close",
+        "Founder",
+        "DP / archive",
+        "Commercial",
+        "By decision",
+        "Win/cash-in",
+        "Won/Lost",
+        null,
+        null,
+        null
+      ]
+    },
+    {
+      "row": 91,
+      "cells": [
+        "E. WEBSITE / LANDING-PAGE PLAN",
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null
+      ]
+    },
+    {
+      "row": 92,
+      "cells": [
+        "Page",
+        "Audience",
+        "Objective",
+        "Recommended Hero",
+        "Core Sections",
+        "Primary CTA",
+        "Proof Needed",
+        "Tracking Events",
+        "Priority",
+        null
+      ]
+    },
+    {
+      "row": 93,
+      "cells": [
+        "/",
+        "All qualified prospects",
+        "Company-level trust + route by problem",
+        "Dari proses manual menjadi sistem digital yang benar-benar bekerja untuk bisnis Anda.",
+        "Problems we solve → selected work → services by outcome → process → proof → CTA",
+        "Konsultasi Project",
+        "2–4 relevant case studies",
+        "cta_consult, project_view, service_click",
+        "P0",
+        null
+      ]
+    },
+    {
+      "row": 94,
+      "cells": [
+        "/services/business-website",
+        "High-ticket service businesses",
+        "Sell sales asset, not brochure",
+        "Website bisnis yang membantu calon customer memahami, percaya, lalu menghubungi Anda.",
+        "Problem → outcomes → deliverables → examples → process → FAQ → CTA",
+        "Audit Website",
+        "Before/after + case study",
+        "audit_click, whatsapp_click",
+        "P0",
+        null
+      ]
+    },
+    {
+      "row": 95,
+      "cells": [
+        "/services/custom-business-system",
+        "Excel/WA-heavy operations",
+        "Create system demand",
+        "Ketika Excel, WhatsApp, dan proses manual mulai menghambat operasional.",
+        "Symptoms → example flow → modules → approach → security → case → CTA",
+        "Audit Proses",
+        "Internal-system case study",
+        "process_audit_click",
+        "P0",
+        null
+      ]
+    },
+    {
+      "row": 96,
+      "cells": [
+        "/services/website-redesign",
+        "Existing outdated sites",
+        "Capture redesign demand",
+        "Website Anda sudah ada. Pertanyaannya: masih membantu bisnis atau hanya online?",
+        "Audit points → before/after → migration → SEO/performance → CTA",
+        "Minta Mini Audit",
+        "Redesign proof",
+        "redesign_audit_click",
+        "P1",
+        null
+      ]
+    },
+    {
+      "row": 97,
+      "cells": [
+        "/audit",
+        "Campaign traffic",
+        "Convert audit applicants",
+        "20 Business Digital Audit — temukan friction digital yang paling layak diperbaiki.",
+        "Who fits → what you receive → qualification → examples → form → FAQ",
+        "Daftar Audit",
+        "Sample anonymized audit",
+        "audit_submit",
+        "P0",
+        null
+      ]
+    },
+    {
+      "row": 98,
+      "cells": [
+        "/projects",
+        "Sales proof",
+        "Make portfolio business-oriented",
+        "Hasil kerja kami, dijelaskan dari masalah sampai solusi.",
+        "Problem → solution → business flow → tech secondary → result/learning",
+        "Bahas Project Serupa",
+        "Real projects",
+        "project_cta",
+        "P1",
+        null
+      ]
+    },
+    {
+      "row": 101,
+      "cells": [
+        "Homepage Section",
+        "Purpose",
+        "Copy Direction",
+        "Content Required",
+        "Owner",
+        "CTA",
+        "Metric",
+        "Rule",
+        null,
+        null
+      ]
+    },
+    {
+      "row": 102,
+      "cells": [
+        "Hero",
+        "Immediate relevance",
+        "Outcome-first; mention website + custom software",
+        "1 clear headline/subhead",
+        "Founder/Marketing",
+        "Konsultasi Project",
+        "CTA rate",
+        "No service laundry list in hero",
+        null,
+        null
+      ]
+    },
+    {
+      "row": 103,
+      "cells": [
+        "Problem Cards",
+        "Self-segmentation",
+        "Website weak / Excel-heavy / system no longer fits / software idea",
+        "4 problem cards",
+        "Marketing",
+        "See solution",
+        "Card click",
+        "Customer language",
+        null,
+        null
+      ]
+    },
+    {
+      "row": 104,
+      "cells": [
+        "Selected Work",
+        "Trust",
+        "Problem → solution → impact/learning",
+        "3–5 projects",
+        "Marketing/Dev",
+        "View project",
+        "Project view",
+        "No fake metrics",
+        null,
+        null
+      ]
+    },
+    {
+      "row": 105,
+      "cells": [
+        "Services",
+        "Clarify offer",
+        "Website / Custom System / Redesign / Support",
+        "Outcome copy",
+        "Marketing",
+        "Learn more",
+        "Service click",
+        "Tech stack secondary",
+        null,
+        null
+      ]
+    },
+    {
+      "row": 106,
+      "cells": [
+        "Process",
+        "Reduce uncertainty",
+        "Discovery → scope → build → UAT → go-live",
+        "5 steps",
+        "PM",
+        "Consult",
+        "Scroll/CTA",
+        "Show professionalism",
+        null,
+        null
+      ]
+    },
+    {
+      "row": 107,
+      "cells": [
+        "Proof",
+        "Lower risk",
+        "Testimonials/reviews/client facts when permission exists",
+        "Evidence",
+        "Founder",
+        "Consult",
+        "CTA",
+        "No invented logos/results",
+        null,
+        null
+      ]
+    },
+    {
+      "row": 108,
+      "cells": [
+        "FAQ",
+        "Handle buying objections",
+        "Price, timeline, ownership, support, remote",
+        "Answers",
+        "Sales",
+        "Contact",
+        "FAQ interaction",
+        "Plain language",
+        null,
+        null
+      ]
+    },
+    {
+      "row": 109,
+      "cells": [
+        "Footer CTA",
+        "Close",
+        "Tell us what currently feels manual/inefficient",
+        "Simple form/WA",
+        "Marketing",
+        "Start discussion",
+        "Lead",
+        "One CTA",
+        null,
+        null
+      ]
+    }
+  ]
+}

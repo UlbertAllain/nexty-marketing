@@ -1,0 +1,960 @@
+{
+  "sheet": "13 Growth Plan",
+  "range": "A1:M60",
+  "rows": [
+    {
+      "row": 1,
+      "cells": [
+        "NEXTYLABS — GROWTH PLAN",
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null
+      ]
+    },
+    {
+      "row": 3,
+      "cells": [
+        "Rencana kerja 30 hari ada di atas; 30/60/90 day roadmap dan pembagian peran ada di bawah.",
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null
+      ]
+    },
+    {
+      "row": 4,
+      "cells": [
+        "A. 30-DAY WAR PLAN",
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null
+      ]
+    },
+    {
+      "row": 5,
+      "cells": [
+        "Day",
+        "Date",
+        "Phase",
+        "Primary Focus",
+        "New Qualified",
+        "First Outreach",
+        "Follow-ups",
+        "Mini Audits",
+        "Meeting Target",
+        "Partner Outreach",
+        "Content",
+        "Review / Decision",
+        "Exit Criteria"
+      ]
+    },
+    {
+      "row": 6,
+      "cells": [
+        1,
+        46276,
+        "Cash Sprint",
+        "Reactivation + Priority A launch",
+        15,
+        10,
+        10,
+        2,
+        1,
+        3,
+        "Problem post",
+        "Update funnel, lost reason, message variant, next action.",
+        "No active lead without next action/date."
+      ]
+    },
+    {
+      "row": 7,
+      "cells": [
+        2,
+        46277,
+        "Cash Sprint",
+        "Priority A outbound + founder distribution",
+        15,
+        10,
+        10,
+        2,
+        1,
+        3,
+        "Founder story",
+        "Update funnel, lost reason, message variant, next action.",
+        "No active lead without next action/date."
+      ]
+    },
+    {
+      "row": 8,
+      "cells": [
+        3,
+        46278,
+        "Cash Sprint",
+        "Mini audits for responders",
+        15,
+        10,
+        10,
+        2,
+        1,
+        3,
+        "Case study",
+        "Update funnel, lost reason, message variant, next action.",
+        "No active lead without next action/date."
+      ]
+    },
+    {
+      "row": 9,
+      "cells": [
+        4,
+        46279,
+        "Cash Sprint",
+        "Discovery day",
+        15,
+        10,
+        10,
+        2,
+        1,
+        3,
+        "Business observation",
+        "Update funnel, lost reason, message variant, next action.",
+        "No active lead without next action/date."
+      ]
+    },
+    {
+      "row": 10,
+      "cells": [
+        5,
+        46280,
+        "Cash Sprint",
+        "Proposal/closing + referral ask",
+        15,
+        10,
+        10,
+        2,
+        1,
+        3,
+        "Offer/audit slot",
+        "Update funnel, lost reason, message variant, next action.",
+        "No active lead without next action/date."
+      ]
+    },
+    {
+      "row": 11,
+      "cells": [
+        6,
+        46281,
+        "Cash Sprint",
+        "Partnership outreach + follow-ups",
+        15,
+        10,
+        10,
+        2,
+        1,
+        3,
+        "Build in public",
+        "Update funnel, lost reason, message variant, next action.",
+        "No active lead without next action/date."
+      ]
+    },
+    {
+      "row": 12,
+      "cells": [
+        7,
+        46282,
+        "Cash Sprint",
+        "Week-1 funnel review",
+        5,
+        5,
+        10,
+        1,
+        1,
+        3,
+        "Weekly lesson",
+        "Update funnel, lost reason, message variant, next action.",
+        "No active lead without next action/date."
+      ]
+    },
+    {
+      "row": 13,
+      "cells": [
+        8,
+        46283,
+        "Validate & Double Down",
+        "Test winning niche #1",
+        20,
+        15,
+        12,
+        2,
+        1,
+        3,
+        "Problem post",
+        "Update funnel, lost reason, message variant, next action.",
+        "No active lead without next action/date."
+      ]
+    },
+    {
+      "row": 14,
+      "cells": [
+        9,
+        46284,
+        "Validate & Double Down",
+        "Test winning niche #2",
+        20,
+        15,
+        12,
+        2,
+        1,
+        3,
+        "Engineer POV",
+        "Update funnel, lost reason, message variant, next action.",
+        "No active lead without next action/date."
+      ]
+    },
+    {
+      "row": 15,
+      "cells": [
+        10,
+        46285,
+        "Validate & Double Down",
+        "Audit & meeting day",
+        20,
+        15,
+        12,
+        2,
+        1,
+        3,
+        "Mini audit breakdown",
+        "Update funnel, lost reason, message variant, next action.",
+        "No active lead without next action/date."
+      ]
+    },
+    {
+      "row": 16,
+      "cells": [
+        11,
+        46286,
+        "Validate & Double Down",
+        "Proposal day",
+        20,
+        15,
+        12,
+        2,
+        1,
+        3,
+        "Case study",
+        "Update funnel, lost reason, message variant, next action.",
+        "No active lead without next action/date."
+      ]
+    },
+    {
+      "row": 17,
+      "cells": [
+        12,
+        46287,
+        "Validate & Double Down",
+        "Content proof + founder post",
+        20,
+        15,
+        12,
+        2,
+        1,
+        3,
+        "Founder story",
+        "Update funnel, lost reason, message variant, next action.",
+        "No active lead without next action/date."
+      ]
+    },
+    {
+      "row": 18,
+      "cells": [
+        13,
+        46288,
+        "Validate & Double Down",
+        "Partner pipeline",
+        20,
+        15,
+        12,
+        2,
+        1,
+        3,
+        "Partner/collab",
+        "Update funnel, lost reason, message variant, next action.",
+        "No active lead without next action/date."
+      ]
+    },
+    {
+      "row": 19,
+      "cells": [
+        14,
+        46289,
+        "Validate & Double Down",
+        "Week-2 niche decision",
+        5,
+        5,
+        12,
+        1,
+        1,
+        3,
+        "Week insight",
+        "Update funnel, lost reason, message variant, next action.",
+        "No active lead without next action/date."
+      ]
+    },
+    {
+      "row": 20,
+      "cells": [
+        15,
+        46290,
+        "Scale Winning Channels",
+        "Double outbound on best niche",
+        20,
+        15,
+        15,
+        3,
+        2,
+        2,
+        "Problem post",
+        "Update funnel, lost reason, message variant, next action.",
+        "No active lead without next action/date."
+      ]
+    },
+    {
+      "row": 21,
+      "cells": [
+        16,
+        46291,
+        "Scale Winning Channels",
+        "Second-best niche outreach",
+        20,
+        15,
+        15,
+        3,
+        2,
+        2,
+        "Business observation",
+        "Update funnel, lost reason, message variant, next action.",
+        "No active lead without next action/date."
+      ]
+    },
+    {
+      "row": 22,
+      "cells": [
+        17,
+        46292,
+        "Scale Winning Channels",
+        "Mini audits",
+        20,
+        15,
+        15,
+        3,
+        2,
+        2,
+        "Before/after",
+        "Update funnel, lost reason, message variant, next action.",
+        "No active lead without next action/date."
+      ]
+    },
+    {
+      "row": 23,
+      "cells": [
+        18,
+        46293,
+        "Scale Winning Channels",
+        "Discovery + onsite meetings",
+        20,
+        15,
+        15,
+        3,
+        2,
+        2,
+        "Engineer POV",
+        "Update funnel, lost reason, message variant, next action.",
+        "No active lead without next action/date."
+      ]
+    },
+    {
+      "row": 24,
+      "cells": [
+        19,
+        46294,
+        "Scale Winning Channels",
+        "Proposal/negotiation",
+        20,
+        15,
+        15,
+        3,
+        2,
+        2,
+        "Case study",
+        "Update funnel, lost reason, message variant, next action.",
+        "No active lead without next action/date."
+      ]
+    },
+    {
+      "row": 25,
+      "cells": [
+        20,
+        46295,
+        "Scale Winning Channels",
+        "Old lead reactivation round 2",
+        20,
+        15,
+        15,
+        3,
+        2,
+        2,
+        "Founder lesson",
+        "Update funnel, lost reason, message variant, next action.",
+        "No active lead without next action/date."
+      ]
+    },
+    {
+      "row": 26,
+      "cells": [
+        21,
+        46296,
+        "Scale Winning Channels",
+        "Week-3 CAC/funnel review",
+        5,
+        5,
+        15,
+        1,
+        2,
+        2,
+        "Weekly lesson",
+        "Update funnel, lost reason, message variant, next action.",
+        "No active lead without next action/date."
+      ]
+    },
+    {
+      "row": 27,
+      "cells": [
+        22,
+        46297,
+        "Optimize & Stabilize",
+        "Scale best message variant",
+        15,
+        12,
+        15,
+        2,
+        2,
+        2,
+        "Problem post",
+        "Update funnel, lost reason, message variant, next action.",
+        "No active lead without next action/date."
+      ]
+    },
+    {
+      "row": 28,
+      "cells": [
+        23,
+        46298,
+        "Optimize & Stabilize",
+        "Scale partner/referral channel",
+        15,
+        12,
+        15,
+        2,
+        2,
+        2,
+        "Partner story",
+        "Update funnel, lost reason, message variant, next action.",
+        "No active lead without next action/date."
+      ]
+    },
+    {
+      "row": 29,
+      "cells": [
+        24,
+        46299,
+        "Optimize & Stabilize",
+        "Audit + case-study production",
+        15,
+        12,
+        15,
+        2,
+        2,
+        2,
+        "Audit breakdown",
+        "Update funnel, lost reason, message variant, next action.",
+        "No active lead without next action/date."
+      ]
+    },
+    {
+      "row": 30,
+      "cells": [
+        25,
+        46300,
+        "Optimize & Stabilize",
+        "Discovery day",
+        15,
+        12,
+        15,
+        2,
+        2,
+        2,
+        "Case study",
+        "Update funnel, lost reason, message variant, next action.",
+        "No active lead without next action/date."
+      ]
+    },
+    {
+      "row": 31,
+      "cells": [
+        26,
+        46301,
+        "Optimize & Stabilize",
+        "Proposal + maintenance upsell",
+        15,
+        12,
+        15,
+        2,
+        2,
+        2,
+        "Founder POV",
+        "Update funnel, lost reason, message variant, next action.",
+        "No active lead without next action/date."
+      ]
+    },
+    {
+      "row": 32,
+      "cells": [
+        27,
+        46302,
+        "Optimize & Stabilize",
+        "Re-engage Follow Up Later",
+        15,
+        12,
+        15,
+        2,
+        2,
+        2,
+        "FAQ/objection",
+        "Update funnel, lost reason, message variant, next action.",
+        "No active lead without next action/date."
+      ]
+    },
+    {
+      "row": 33,
+      "cells": [
+        28,
+        46303,
+        "Optimize & Stabilize",
+        "Content proof + referral ask",
+        15,
+        12,
+        15,
+        2,
+        2,
+        2,
+        "Referral/social proof",
+        "Update funnel, lost reason, message variant, next action.",
+        "No active lead without next action/date."
+      ]
+    },
+    {
+      "row": 34,
+      "cells": [
+        29,
+        46304,
+        "Optimize & Stabilize",
+        "Final pipeline push",
+        15,
+        12,
+        15,
+        2,
+        2,
+        2,
+        "Open slots",
+        "Update funnel, lost reason, message variant, next action.",
+        "No active lead without next action/date."
+      ]
+    },
+    {
+      "row": 35,
+      "cells": [
+        30,
+        46305,
+        "Optimize & Stabilize",
+        "30-day review + next-month plan",
+        5,
+        5,
+        15,
+        1,
+        2,
+        2,
+        "30-day recap",
+        "Update funnel, lost reason, message variant, next action.",
+        "No active lead without next action/date."
+      ]
+    },
+    {
+      "row": 38,
+      "cells": [
+        "B. 30 / 60 / 90 DAY ROADMAP",
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null
+      ]
+    },
+    {
+      "row": 39,
+      "cells": [
+        "Period",
+        "Primary Goal",
+        "Geography",
+        "ICP Strategy",
+        "Sales Motion",
+        "Asset to Build",
+        "Recurring Revenue",
+        "Decision Gate",
+        "Do Not",
+        "Success Signal",
+        null,
+        null,
+        null
+      ]
+    },
+    {
+      "row": 40,
+      "cells": [
+        "Day 1–30",
+        "Cash-in + identify winning niche/message",
+        "Solo Raya",
+        "Test multiple qualified niches; prioritize A leads",
+        "Reactivation + personalized outbound + mini audit + discovery",
+        "3 strong case studies; core landing pages; audit campaign",
+        "Offer Nexty Care on every relevant win",
+        "At least one repeatable path from contact → meeting → proposal",
+        "Do not expand geography, hire sales, or run broad paid ads",
+        "Real replies, meetings, proposals, DP/cash-in",
+        null,
+        null,
+        null
+      ]
+    },
+    {
+      "row": 41,
+      "cells": [
+        "Day 31–60",
+        "Double down on winners",
+        "Solo Raya + selective Jogja",
+        "Reduce ICP breadth to top 1–2 niches plus partner channel",
+        "Scale winning message; partner/referral; systematic reactivation",
+        "Niche-specific landing/case page; reusable demo",
+        "Convert delivered clients to care; target recurring base",
+        "Winning niche has better response/meeting/win economics than alternatives",
+        "Do not add services just because prospecting is hard",
+        "Higher meeting rate, faster proposal cycle, recurring clients",
+        null,
+        null,
+        null
+      ]
+    },
+    {
+      "row": 42,
+      "cells": [
+        "Day 61–90",
+        "Make pipeline repeatable",
+        "Solo/Jogja; selective Semarang only if motion works",
+        "Replicate proven ICP, not generic SMB targeting",
+        "Batch research + founder distribution + partners + referrals",
+        "Sales SOP, proposal library, proof library, light automation",
+        "Grow maintenance/support base",
+        "Founder can forecast pipeline using own conversion data",
+        "Do not expand cities if local motion still inconsistent",
+        "Predictable weekly pipeline + stable cash coverage",
+        null,
+        null,
+        null
+      ]
+    },
+    {
+      "row": 45,
+      "cells": [
+        "Expansion Gate",
+        "Question",
+        "YES →",
+        "NO →",
+        "Metric Source",
+        "Owner",
+        "Review",
+        "Notes",
+        null,
+        null,
+        null,
+        null,
+        null
+      ]
+    },
+    {
+      "row": 46,
+      "cells": [
+        "Solo → Jogja",
+        "Do we know top niche + working message?",
+        "Research 20–30 matching Jogja leads",
+        "Stay Solo and improve ICP/message",
+        "Weekly Funnel + AB Experiments",
+        "Founder",
+        "Day 30",
+        null,
+        null,
+        null,
+        null,
+        null,
+        null
+      ]
+    },
+    {
+      "row": 47,
+      "cells": [
+        "Jogja → Semarang",
+        "Did the same motion work outside Solo?",
+        "Selective Semarang test",
+        "Fix transferability first",
+        "Weekly Funnel",
+        "Founder",
+        "Day 60",
+        null,
+        null,
+        null,
+        null,
+        null,
+        null
+      ]
+    },
+    {
+      "row": 48,
+      "cells": [
+        "Paid ads",
+        "Is offer/conversion proven organically?",
+        "Small controlled test",
+        "Do not buy traffic yet",
+        "Sales Analytics",
+        "Founder",
+        "After consistent wins",
+        null,
+        null,
+        null,
+        null,
+        null,
+        null
+      ]
+    },
+    {
+      "row": 49,
+      "cells": [
+        "Hire sales",
+        "Is process documented and founder closing capacity constrained?",
+        "Hire/train on existing playbook",
+        "Keep founder-led",
+        "Pipeline volume",
+        "Founder",
+        "Monthly",
+        null,
+        null,
+        null,
+        null,
+        null,
+        null
+      ]
+    },
+    {
+      "row": 50,
+      "cells": [
+        "Build new SaaS/internal product",
+        "Does it directly support revenue or proven demand?",
+        "Scope tightly",
+        "Do not use as escape from sales",
+        "Cashflow/Pipeline",
+        "Founder",
+        "Monthly",
+        null,
+        null,
+        null,
+        null,
+        null,
+        null
+      ]
+    },
+    {
+      "row": 51,
+      "cells": [
+        "Add new service",
+        "Repeated qualified demand + delivery capability?",
+        "Productize",
+        "Keep current service focus",
+        "Lost/Inquiry data",
+        "Founder",
+        "Monthly",
+        null,
+        null,
+        null,
+        null,
+        null,
+        null
+      ]
+    },
+    {
+      "row": 54,
+      "cells": [
+        "C. OPERATING ROLES",
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null
+      ]
+    },
+    {
+      "row": 55,
+      "cells": [
+        "Role",
+        "Daily Responsibilities",
+        "Weekly Responsibilities",
+        "Owns",
+        "Does Not Own",
+        "Handoff In",
+        "Handoff Out",
+        "Primary KPI",
+        "Backup",
+        null,
+        null,
+        null,
+        null
+      ]
+    },
+    {
+      "row": 56,
+      "cells": [
+        "Founder / Sales",
+        "Warm intros, discovery, proposal, negotiation, closing",
+        "Review pipeline, cashflow, pricing, partner channel",
+        "Revenue decision",
+        "Daily raw prospect research",
+        "Qualified lead",
+        "Won/lost/hand-off to delivery",
+        "Meetings, proposals, cash-in",
+        "Co-founder",
+        null,
+        null,
+        null,
+        null
+      ]
+    },
+    {
+      "row": 57,
+      "cells": [
+        "Marketing",
+        "Research, qualification, outreach, follow-up, CRM hygiene",
+        "Message/niche analysis, content coordination",
+        "Top-of-funnel",
+        "Technical solution design",
+        "ICP/offer rules",
+        "Interested lead → Founder",
+        "Replies, interested, meetings",
+        "Founder",
+        null,
+        null,
+        null,
+        null
+      ]
+    },
+    {
+      "row": 58,
+      "cells": [
+        "Designer",
+        "Mini audit visual, website mockup, sales visual",
+        "Reusable audit components/case-study assets",
+        "Visual proof",
+        "Free full design project",
+        "Qualified A lead",
+        "Audit → Marketing/Sales",
+        "Audit-to-meeting",
+        "Developer",
+        null,
+        null,
+        null,
+        null
+      ]
+    },
+    {
+      "row": 59,
+      "cells": [
+        "Developer / Solution",
+        "Feasibility, flow, technical risk, light prototype",
+        "Reusable demos, architecture notes",
+        "Solution feasibility",
+        "Cold outreach unless assigned",
+        "Discovery problem",
+        "Scope/estimate → Founder",
+        "Proposal accuracy",
+        "Tech lead",
+        null,
+        null,
+        null,
+        null
+      ]
+    },
+    {
+      "row": 60,
+      "cells": [
+        "PM / Delivery Owner",
+        "Kickoff, milestones, dependency, UAT",
+        "Delivery health, handover, care upsell",
+        "Delivery after DP",
+        "Pre-sale promises",
+        "Won deal",
+        "Go-live/care",
+        "On-time milestone",
+        "Founder",
+        null,
+        null,
+        null,
+        null
+      ]
+    }
+  ]
+}

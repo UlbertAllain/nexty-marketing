@@ -1,0 +1,482 @@
+{
+  "sheet": "00 START HERE",
+  "range": "A1:L34",
+  "rows": [
+    {
+      "row": 1,
+      "cells": [
+        "NEXTYLABS — SALES WORKSPACE",
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null
+      ]
+    },
+    {
+      "row": 3,
+      "cells": [
+        "Buka tab dari kiri ke kanan. Untuk kerja harian, cukup fokus pada 01–05 + 09. Tab lainnya hanya dibuka saat dibutuhkan.",
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null
+      ]
+    },
+    {
+      "row": 5,
+      "cells": [
+        "Prospect Pool",
+        null,
+        null,
+        "Qualified Targets",
+        null,
+        null,
+        "Priority A",
+        null,
+        null,
+        "Open Leads",
+        null,
+        null
+      ]
+    },
+    {
+      "row": 6,
+      "cells": [
+        129,
+        null,
+        null,
+        69,
+        null,
+        null,
+        42,
+        null,
+        null,
+        69,
+        null,
+        null
+      ]
+    },
+    {
+      "row": 9,
+      "cells": [
+        "ALUR HARIAN — JANGAN BUKA SEMUA TAB",
+        null,
+        null,
+        null,
+        null,
+        "TOP 10 HARI INI",
+        null,
+        null,
+        null,
+        null,
+        null,
+        null
+      ]
+    },
+    {
+      "row": 10,
+      "cells": [
+        "1",
+        "01 Priority Queue",
+        "Pilih 5–10 bisnis teratas untuk hari ini.",
+        "Setelah pilih, jangan scrolling seluruh database.",
+        null,
+        "Rank",
+        "Lead ID",
+        "Business",
+        "Score",
+        "Priority",
+        "Offer",
+        "Next Action"
+      ]
+    },
+    {
+      "row": 11,
+      "cells": [
+        "2",
+        "02 Targets",
+        "Baca riset target + cek ulang website/IG hari itu.",
+        "Pastikan fakta publik masih valid.",
+        null,
+        1,
+        "NX-060",
+        "MKF ARCHITECT",
+        92,
+        "A",
+        "Architecture Portfolio + Lead Qualification",
+        "Re-check current website/IG → identify decision-maker → send personalized first contact"
+      ]
+    },
+    {
+      "row": 12,
+      "cells": [
+        "3",
+        "03 Outreach",
+        "Ambil chat yang sudah dipersonalisasi lalu edit seperlunya.",
+        "Jangan copy-paste mentah.",
+        null,
+        2,
+        "NX-046",
+        "SEWA MOTOR SOLO - GLOBAL RENTAL MOTOR",
+        91,
+        "A",
+        "Motor Rental Booking & Fleet System",
+        "Re-check current website/IG → identify decision-maker → send personalized first contact"
+      ]
+    },
+    {
+      "row": 13,
+      "cells": [
+        "4",
+        "04 Follow-up",
+        "Catat contact date, response, next action, dan next date.",
+        "Lead aktif tanpa next date = lead mati.",
+        null,
+        3,
+        "NX-031",
+        "Interiorhaha",
+        90,
+        "A",
+        "Portfolio & Lead Website",
+        "Mini audit struktur portfolio + 3 project sample."
+      ]
+    },
+    {
+      "row": 14,
+      "cells": [
+        "5",
+        "05 Mini Audit",
+        "Buka hanya kalau prospect bilang boleh / tertarik.",
+        "Jangan bikin audit untuk silent lead.",
+        null,
+        4,
+        "NX-056",
+        "Wedding Organizer Solo - PT APD Organizer",
+        89,
+        "A",
+        "Wedding Client / Vendor Operations System",
+        "Re-check current website/IG → identify decision-maker → send personalized first contact"
+      ]
+    },
+    {
+      "row": 15,
+      "cells": [
+        "6",
+        "09 Daily KPI",
+        "Isi angka aktual sore hari.",
+        "Tujuannya belajar dari data, bukan mengejar vanity.",
+        null,
+        5,
+        "NX-001",
+        "VYNE Pilates",
+        88,
+        "A",
+        "Pilates Booking & Membership System",
+        "Buat mini flow booking → package balance → attendance"
+      ]
+    },
+    {
+      "row": 16,
+      "cells": [
+        null,
+        null,
+        null,
+        null,
+        null,
+        6,
+        "NX-002",
+        "R-FIT Gym & Sauna",
+        88,
+        "A",
+        "Gym Membership & Renewal System",
+        "Discovery-first; prototype setelah ada indikasi manual"
+      ]
+    },
+    {
+      "row": 17,
+      "cells": [
+        null,
+        null,
+        null,
+        null,
+        null,
+        7,
+        "NX-003",
+        "Dentabila",
+        88,
+        "A",
+        "Website Rescue + Appointment Funnel",
+        "Buat before-after hero + screenshot audit placeholder"
+      ]
+    },
+    {
+      "row": 18,
+      "cells": [
+        "TAB YANG DIBUKA SESUAI KONDISI",
+        null,
+        null,
+        null,
+        null,
+        8,
+        "NX-004",
+        "Pandawa Transport",
+        88,
+        "A",
+        "Website Trust Cleanup + Booking Ops",
+        "Screenshot audit + redesigned trust section"
+      ]
+    },
+    {
+      "row": 19,
+      "cells": [
+        "06 Sales Toolkit",
+        "Prospect membalas, tanya harga, objection, atau sudah masuk proposal.",
+        null,
+        null,
+        null,
+        9,
+        "NX-005",
+        "Safari Rentcar Solo",
+        88,
+        "A",
+        "Rental Booking Starter",
+        "First contact + audit no-owned-booking signal"
+      ]
+    },
+    {
+      "row": 20,
+      "cells": [
+        "07 Prospect Pool",
+        "Hanya saat perlu memperbesar database.",
+        null,
+        null,
+        null,
+        10,
+        "NX-006",
+        "BLESS Barbershop Solo",
+        88,
+        "A",
+        "Barber Booking + Live Queue",
+        "Validate stack first"
+      ]
+    },
+    {
+      "row": 21,
+      "cells": [
+        "08 Research Queue",
+        "Saat jadwal khusus research / qualification.",
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null
+      ]
+    },
+    {
+      "row": 22,
+      "cells": [
+        "10 Weekly Review",
+        "Jumat/sabtu untuk review funnel dan keputusan minggu depan.",
+        null,
+        null,
+        null,
+        "RULE UTAMA",
+        null,
+        null,
+        null,
+        null,
+        null,
+        null
+      ]
+    },
+    {
+      "row": 23,
+      "cells": [
+        "11 Cashflow",
+        "Founder review target DP/cash-in.",
+        null,
+        null,
+        null,
+        "Evidence ≠ pain internal. Kalau belum dikonfirmasi, sebut sebagai hipotesis.",
+        null,
+        null,
+        null,
+        null,
+        null,
+        null
+      ]
+    },
+    {
+      "row": 24,
+      "cells": [
+        "12 Content Plan",
+        "Tim konten / founder distribution.",
+        null,
+        null,
+        null,
+        "Satu prospect = satu offer utama. Jangan kirim semua layanan NextyLabs.",
+        null,
+        null,
+        null,
+        null,
+        null,
+        null
+      ]
+    },
+    {
+      "row": 25,
+      "cells": [
+        "13 Growth Plan",
+        "Rencana 30/60/90 hari dan pembagian peran.",
+        null,
+        null,
+        null,
+        "Permission → Mini Audit → Discovery → Proposal.",
+        null,
+        null,
+        null,
+        null,
+        null,
+        null
+      ]
+    },
+    {
+      "row": 26,
+      "cells": [
+        "14 Partnerships",
+        "Reactivation, partner, referral.",
+        null,
+        null,
+        null,
+        "Jangan bikin free prototype untuk prospect yang belum merespons.",
+        null,
+        null,
+        null,
+        null,
+        null,
+        null
+      ]
+    },
+    {
+      "row": 27,
+      "cells": [
+        "15 Portfolio Proof",
+        "Saat prospect minta bukti kerja.",
+        null,
+        null,
+        null,
+        "Turunkan scope sebelum diskon. DP masuk sebelum development.",
+        null,
+        null,
+        null,
+        null,
+        null,
+        null
+      ]
+    },
+    {
+      "row": 28,
+      "cells": [
+        "16 Sources",
+        "Kalau perlu cek sumber riset.",
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null
+      ]
+    },
+    {
+      "row": 31,
+      "cells": [
+        "Priority",
+        "Count",
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null
+      ]
+    },
+    {
+      "row": 32,
+      "cells": [
+        "A",
+        42,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null
+      ]
+    },
+    {
+      "row": 33,
+      "cells": [
+        "B",
+        19,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null
+      ]
+    },
+    {
+      "row": 34,
+      "cells": [
+        "C",
+        8,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null
+      ]
+    }
+  ]
+}

@@ -1,0 +1,82 @@
+[
+  {
+    "section": "1. Problem Understanding",
+    "purpose": "Show comprehension",
+    "mustInclude": "Current flow, pain, scope boundary",
+    "doNotInclude": "Generic company history",
+    "clientQuestion": "Do you understand us?",
+    "owner": "Sales",
+    "gate": "Discovery complete",
+    "notes": null
+  },
+  {
+    "section": "2. Proposed Solution",
+    "purpose": "Connect solution to pain",
+    "mustInclude": "Business/user flow + modules",
+    "doNotInclude": "Tech jargon dump",
+    "clientQuestion": "What changes?",
+    "owner": "Solution/Tech",
+    "gate": "Problem validated",
+    "notes": null
+  },
+  {
+    "section": "3. Scope",
+    "purpose": "Control expectation",
+    "mustInclude": "In scope / out of scope",
+    "doNotInclude": "Ambiguous unlimited revisions",
+    "clientQuestion": "What exactly is included?",
+    "owner": "Sales/Tech",
+    "gate": "Feasibility checked",
+    "notes": null
+  },
+  {
+    "section": "4. Deliverables",
+    "purpose": "Define outputs",
+    "mustInclude": "UI/system/deployment/docs/training",
+    "doNotInclude": "Vague 'complete system'",
+    "clientQuestion": "What do we receive?",
+    "owner": "PM",
+    "gate": "Scope signed",
+    "notes": null
+  },
+  {
+    "section": "5. Timeline",
+    "purpose": "Set milestones",
+    "mustInclude": "Discovery/design/dev/UAT/go-live",
+    "doNotInclude": "Impossible dates",
+    "clientQuestion": "When usable?",
+    "owner": "PM",
+    "gate": "Dependencies known",
+    "notes": null
+  },
+  {
+    "section": "6. Investment",
+    "purpose": "Make buying clear",
+    "mustInclude": "Price, tax if any, validity",
+    "doNotInclude": "Mystery fee",
+    "clientQuestion": "How much?",
+    "owner": "Founder",
+    "gate": "Margin checked",
+    "notes": null
+  },
+  {
+    "section": "7. Payment Terms",
+    "purpose": "Protect cash",
+    "mustInclude": "50/50 small or 40/30/30 larger",
+    "doNotInclude": "Start with 0 DP",
+    "clientQuestion": "When pay?",
+    "owner": "Founder",
+    "gate": "Commercial approval",
+    "notes": null
+  },
+  {
+    "section": "8. Next Step",
+    "purpose": "Move decision",
+    "mustInclude": "Decision date + invoice/DP",
+    "doNotInclude": "Open-ended ending",
+    "clientQuestion": "How do we start?",
+    "owner": "Sales",
+    "gate": "Decision-maker present",
+    "notes": null
+  }
+]

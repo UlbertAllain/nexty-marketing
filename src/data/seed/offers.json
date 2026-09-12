@@ -1,0 +1,56 @@
+[
+  {
+    "name": "Nexty Website Sprint",
+    "target": "Business needs focused sales website",
+    "scope": "Landing/company site, responsive, CTA, basic SEO/analytics, deployment",
+    "startingRange": "Rp2.9–4.5 jt",
+    "payment": "50% / 50%",
+    "bestUse": "Fast cash / smaller business",
+    "guardrail": "Tight page/scope/revision limit"
+  },
+  {
+    "name": "Nexty Business Website",
+    "target": "Growing service business",
+    "scope": "5–10 pages, CMS/content, portfolio, lead capture, analytics",
+    "startingRange": "Rp5.9–8.9 jt",
+    "payment": "40/30/30 or 50/50",
+    "bestUse": "High-ticket service business",
+    "guardrail": "Custom scope still required"
+  },
+  {
+    "name": "Nexty Business System",
+    "target": "Operational pain",
+    "scope": "Auth, dashboard, core workflow, database, reporting",
+    "startingRange": "Starts ~Rp12 jt+",
+    "payment": "40/30/30",
+    "bestUse": "Excel/WA-heavy operations",
+    "guardrail": "No fixed quote before discovery"
+  },
+  {
+    "name": "Nexty Care Basic",
+    "target": "Existing clients",
+    "scope": "Monitoring, backup, security update, minor fixes",
+    "startingRange": "~Rp500k/mo",
+    "payment": "Monthly upfront",
+    "bestUse": "Recurring revenue",
+    "guardrail": "Define included work"
+  },
+  {
+    "name": "Nexty Care Growth",
+    "target": "Clients needing ongoing changes",
+    "scope": "Basic + content/small improvements/performance/priority support",
+    "startingRange": "~Rp1–1.5 jt/mo",
+    "payment": "Monthly upfront",
+    "bestUse": "Higher recurring value",
+    "guardrail": "No unlimited development"
+  },
+  {
+    "name": "Custom / Enterprise",
+    "target": "Complex scope",
+    "scope": "Discovery-defined",
+    "startingRange": "Custom quotation",
+    "payment": "Milestone-based",
+    "bestUse": "Large opportunities",
+    "guardrail": "Margin, security, SLA, procurement review"
+  }
+]

@@ -1,0 +1,122 @@
+[
+  {
+    "objection": "Mahal",
+    "meaning": "Value/scope mismatch",
+    "question": "Dibanding budget, competitor, atau impact yang diharapkan?",
+    "response": "Protect outcome; phase MVP instead of random discount.",
+    "nextAction": "Re-scope",
+    "avoid": "Immediate discount"
+  },
+  {
+    "objection": "Belum ada budget",
+    "meaning": "Not budgeted / low priority",
+    "question": "Budget cycle kapan dan problem ini seberapa prioritas?",
+    "response": "If real problem, create budgeting scope and revisit date.",
+    "nextAction": "Follow Up Later",
+    "avoid": "Fake urgency"
+  },
+  {
+    "objection": "Pikir-pikir dulu",
+    "meaning": "Unspoken objection",
+    "question": "Bagian mana yang masih belum yakin: kebutuhan, trust, timeline, atau harga?",
+    "response": "Surface exact blocker.",
+    "nextAction": "Clarify",
+    "avoid": "Passive waiting"
+  },
+  {
+    "objection": "Kirim harga aja",
+    "meaning": "Low time / early shopping",
+    "question": "Boleh. Untuk range yang tidak misleading, saya perlu pengguna, flow, dan fitur wajib.",
+    "response": "Give range + 3 questions",
+    "nextAction": "Qualify",
+    "avoid": "20-question form"
+  },
+  {
+    "objection": "Sudah punya website",
+    "meaning": "Initial offer mismatch",
+    "question": "Apakah website sudah membantu inquiry/booking dan terukur?",
+    "response": "Do not rebuild; audit conversion only.",
+    "nextAction": "Pivot/close",
+    "avoid": "Insist on redesign"
+  },
+  {
+    "objection": "Sudah punya sistem",
+    "meaning": "Replacement risk",
+    "question": "Masih ada proses di luar sistem atau double input?",
+    "response": "Only solve gap/integration.",
+    "nextAction": "Discovery",
+    "avoid": "Replace working stack"
+  },
+  {
+    "objection": "Ada freelancer/vendor",
+    "meaning": "Existing relationship",
+    "question": "Apa yang sudah mereka handle dan ada area yang belum tertutup?",
+    "response": "Respect boundary; offer overflow/specialized scope.",
+    "nextAction": "Partner/complement",
+    "avoid": "Attack vendor"
+  },
+  {
+    "objection": "Takut maintenance",
+    "meaning": "Operational risk",
+    "question": "Siapa yang akan mengelola setelah go-live?",
+    "response": "Explain ownership, docs, support options, handover.",
+    "nextAction": "Care option",
+    "avoid": "Lock-in tactics"
+  },
+  {
+    "objection": "Takut data bocor",
+    "meaning": "Security concern",
+    "question": "Data apa yang akan disimpan dan siapa yang mengakses?",
+    "response": "Scope auth, access control, backup, secrets, logging, privacy.",
+    "nextAction": "Security discovery",
+    "avoid": "Say '100% aman'"
+  },
+  {
+    "objection": "Butuh cepat",
+    "meaning": "Urgent deadline",
+    "question": "Fitur apa yang wajib usable di tanggal itu?",
+    "response": "Phase critical path; defer non-essential scope.",
+    "nextAction": "MVP timeline",
+    "avoid": "Promise full scope"
+  },
+  {
+    "objection": "Minta source code",
+    "meaning": "Ownership/procurement",
+    "question": "Apakah source ownership wajib secara kontrak?",
+    "response": "Define repo, license, third-party deps, handover.",
+    "nextAction": "Commercial term",
+    "avoid": "Ambiguous ownership"
+  },
+  {
+    "objection": "Minta trial gratis",
+    "meaning": "Trust gap",
+    "question": "Apa yang perlu divalidasi: UX, feasibility, atau capability?",
+    "response": "Use limited prototype/audit, not free production work.",
+    "nextAction": "Paid/limited POC",
+    "avoid": "Build project free"
+  },
+  {
+    "objection": "Bandingkan lebih murah",
+    "meaning": "Price shopping",
+    "question": "Apakah scope, support, handover, QA, dan deployment sama?",
+    "response": "Compare deliverables and risk, not hourly price.",
+    "nextAction": "Scope comparison",
+    "avoid": "Race to bottom"
+  },
+  {
+    "objection": "In-house dev ada",
+    "meaning": "Capacity/specialization",
+    "question": "Tim internal kekurangan capacity atau capability tertentu?",
+    "response": "Offer scoped delivery/augmentation.",
+    "nextAction": "Partnership",
+    "avoid": "Replace team"
+  },
+  {
+    "objection": "Harus procurement",
+    "meaning": "Enterprise process",
+    "question": "Dokumen/vendor requirements apa yang wajib?",
+    "response": "Follow procurement gate and timeline.",
+    "nextAction": "Qualification",
+    "avoid": "Circumvent process"
+  }
+]

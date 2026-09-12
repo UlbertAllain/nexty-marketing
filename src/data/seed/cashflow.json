@@ -1,0 +1,253 @@
+{
+  "sheet": "11 Cashflow",
+  "range": "A1:H26",
+  "rows": [
+    {
+      "row": 1,
+      "cells": [
+        "CASHFLOW TARGET & COMMERCIAL SCENARIOS",
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null
+      ]
+    },
+    {
+      "row": 4,
+      "cells": [
+        "Input",
+        "Value",
+        null,
+        null,
+        null,
+        null,
+        null,
+        null
+      ]
+    },
+    {
+      "row": 5,
+      "cells": [
+        "30-Day Cash-in Target",
+        15000000,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null
+      ]
+    },
+    {
+      "row": 6,
+      "cells": [
+        "Minimum Cash Needed (edit)",
+        15000000,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null
+      ]
+    },
+    {
+      "row": 7,
+      "cells": [
+        "Current Available Cash (edit)",
+        0,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null
+      ]
+    },
+    {
+      "row": 8,
+      "cells": [
+        "Cash Gap",
+        15000000,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null
+      ]
+    },
+    {
+      "row": 9,
+      "cells": [
+        "Rule",
+        "Cash-in and runway decide sales priority; do not use panic discounts.",
+        null,
+        null,
+        null,
+        null,
+        null,
+        null
+      ]
+    },
+    {
+      "row": 12,
+      "cells": [
+        "Offer",
+        "Qty Target",
+        "Typical Price",
+        "Contract Value",
+        "DP / First Collection %",
+        "Expected Cash-in",
+        "Sales Cycle Bias",
+        "Comment"
+      ]
+    },
+    {
+      "row": 13,
+      "cells": [
+        "Website Sprint",
+        2,
+        4000000,
+        8000000,
+        0.5,
+        4000000,
+        "Short",
+        "Entry cash offer; scope tight"
+      ]
+    },
+    {
+      "row": 14,
+      "cells": [
+        "Business Website",
+        1,
+        7000000,
+        7000000,
+        0.5,
+        3500000,
+        "Short–Medium",
+        "Higher proof/portfolio need"
+      ]
+    },
+    {
+      "row": 15,
+      "cells": [
+        "Business System",
+        1,
+        15000000,
+        15000000,
+        0.4,
+        6000000,
+        "Medium",
+        "Discovery required"
+      ]
+    },
+    {
+      "row": 16,
+      "cells": [
+        "Nexty Care Basic",
+        0,
+        500000,
+        0,
+        1,
+        0,
+        "Recurring",
+        "Monthly upfront"
+      ]
+    },
+    {
+      "row": 17,
+      "cells": [
+        "Nexty Care Growth",
+        0,
+        1250000,
+        0,
+        1,
+        0,
+        "Recurring",
+        "Monthly upfront"
+      ]
+    },
+    {
+      "row": 19,
+      "cells": [
+        "TOTAL",
+        null,
+        null,
+        30000000,
+        null,
+        13500000,
+        null,
+        null
+      ]
+    },
+    {
+      "row": 22,
+      "cells": [
+        "Scenario",
+        "Website Sprint",
+        "Business Website",
+        "Business System",
+        "Monthly Care",
+        "Contract Value",
+        "Initial Cash-in",
+        "Use When"
+      ]
+    },
+    {
+      "row": 23,
+      "cells": [
+        "Survival / fastest",
+        2,
+        1,
+        0,
+        0,
+        15000000,
+        7500000,
+        "Need faster cash; short-cycle delivery"
+      ]
+    },
+    {
+      "row": 24,
+      "cells": [
+        "Balanced",
+        3,
+        1,
+        1,
+        0,
+        34000000,
+        15500000,
+        "Default monthly target"
+      ]
+    },
+    {
+      "row": 25,
+      "cells": [
+        "System-heavy",
+        1,
+        1,
+        2,
+        0,
+        41000000,
+        17500000,
+        "Strong custom-system pipeline"
+      ]
+    },
+    {
+      "row": 26,
+      "cells": [
+        "Recurring build",
+        1,
+        1,
+        1,
+        5,
+        28500000,
+        14000000,
+        "Existing client base supports care"
+      ]
+    }
+  ]
+}

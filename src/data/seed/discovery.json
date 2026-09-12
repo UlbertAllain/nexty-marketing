@@ -1,0 +1,72 @@
+[
+  {
+    "area": "Current flow",
+    "question": "Bagaimana proses dari customer masuk sampai transaksi/layanan selesai?",
+    "why": "End-to-end"
+  },
+  {
+    "area": "Volume",
+    "question": "Berapa booking/member/event/transaksi per hari/minggu/bulan?",
+    "why": "ROI & scale"
+  },
+  {
+    "area": "Tools",
+    "question": "Sekarang pakai WA, Excel, POS, Calendar, app lain?",
+    "why": "Integration risk"
+  },
+  {
+    "area": "People",
+    "question": "Siapa saja yang menjalankan proses?",
+    "why": "Role & adoption"
+  },
+  {
+    "area": "Pain",
+    "question": "Bagian yang paling sering bikin admin mengulang kerja atau data tercecer?",
+    "why": "Problem severity"
+  },
+  {
+    "area": "Exception",
+    "question": "Kasus yang paling sering bikin flow berantakan?",
+    "why": "Edge cases"
+  },
+  {
+    "area": "Customer friction",
+    "question": "Pertanyaan/keluhan customer yang paling sering berulang?",
+    "why": "UX opportunity"
+  },
+  {
+    "area": "Existing system",
+    "question": "Apa yang sudah bekerja baik dan jangan diubah?",
+    "why": "Avoid rebuild"
+  },
+  {
+    "area": "Priority",
+    "question": "Kalau satu hal bisa diperbaiki bulan ini, apa?",
+    "why": "MVP focus"
+  },
+  {
+    "area": "Impact",
+    "question": "Kalau masalah ini beres, apa yang berubah?",
+    "why": "Value framing"
+  },
+  {
+    "area": "Budget",
+    "question": "Sudah ada range budget / approval process?",
+    "why": "Qualification"
+  },
+  {
+    "area": "Authority",
+    "question": "Siapa yang perlu setuju?",
+    "why": "Decision mapping"
+  },
+  {
+    "area": "Timing",
+    "question": "Kapan paling lambat solusi perlu dipakai?",
+    "why": "Urgency"
+  },
+  {
+    "area": "Data/security",
+    "question": "Data apa yang disimpan? Ada data sensitif/customer/payment?",
+    "why": "Security scope"
+  }
+]

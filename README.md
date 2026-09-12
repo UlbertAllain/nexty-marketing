@@ -1,111 +1,98 @@
-# Nexty Labs Marketing CRM
+# NextyLeads — Excel Parity Rebuild
 
-Workspace internal sederhana untuk satu orang marketing Nexty Labs. Tujuan utamanya adalah mengganti pencatatan Excel yang tersebar dengan alur yang tetap ringan: simpan lead, hubungi melalui WhatsApp, catat hasil, dan kerjakan follow-up.
+NextyLeads adalah internal marketing workspace NextyLabs. Versi ini dirombak mengikuti workbook **Nexty marketing - Social Enriched.xlsx** tetapi UI tidak meniru bentuk spreadsheet.
 
-Aplikasi ini tidak terhubung ke layanan AI dan tidak memakai WhatsApp API. Tombol WhatsApp hanya membuka `wa.me` dengan nomor serta pesan yang sudah disiapkan. Pengiriman tetap dilakukan langsung di WhatsApp.
+## Prinsip V2
+
+- Semua data Excel masuk tanpa terkecuali.
+- Data operasional dinormalisasi menjadi entity/workflow yang enak dipakai.
+- Seluruh 18 sheet juga disimpan sebagai raw snapshot di Firestore `excelSheets` untuk traceability.
+- Progress CRM yang sudah berjalan tidak di-reset saat data Excel disinkronkan ulang.
+- Single-user workflow, tanpa role/permission layer yang tidak perlu.
+- Tidak ada fitur AI.
+
+## Menu
+
+- **Dashboard** — next action, follow-up due, Priority A, social coverage.
+- **Leads** — 69 qualified targets; research, score, social media, outreach templates, activity, follow-up.
+- **Follow-up** — task D+2 / D+5 otomatis dari aktivitas chat.
+- **Research** — 129 Prospect Pool, 88 Research Queue, 69 Social Media profiles, 138 Sources.
+- **Templates** — general chat, objection, discovery, conversation flow, offers/pricing, mini audit, proposal.
+- **Growth** — Content Plan, 30/60/90 Growth Plan, Partnerships/Reactivation/Referral, Portfolio Proof.
+- **Reports** — live funnel, Daily KPI 30D, Weekly Review, Cashflow.
+- **Settings** — Firebase setup, full Excel sync, coverage matrix, link ke Data Vault.
+- **Data Vault** — audit-only view untuk melihat isi asli seluruh 18 sheet workbook.
+
+## Data coverage
+
+Dataset build ini berisi:
+
+- 18 / 18 Excel sheets mapped
+- 12,259 non-empty workbook cells preserved
+- 2,105 workbook formulas preserved in snapshot metadata
+- 69 qualified leads
+- 129 prospect pool
+- 88 research-queue records
+- 69 social profiles
+- 138 research sources
+- 30 daily KPI rows
+- 345 personalized lead templates (5 × 69 leads)
+- all Sales Toolkit / Mini Audit / Weekly Review / Cashflow / Content / Growth / Partnership / Portfolio sections
+
+## WhatsApp automation
+
+Cold outreach tetap human-in-the-loop:
+
+1. Open a lead.
+2. Choose one personalized template.
+3. Edit/personalize if needed.
+4. Click **Buka WhatsApp**; the message is prefilled.
+5. Send it in WhatsApp.
+6. Return and click **Tandai terkirim**.
+7. NextyLeads records the activity, updates stage, and automatically creates D+2/D+5 follow-up tasks.
+
+Direct-send without pressing Send requires the official WhatsApp Business Cloud API and approved templates; it is intentionally not faked in this version.
 
 ## Stack
 
-- Next.js 16
+- Next.js 16.2.6
 - React 19
 - TypeScript
 - Firebase Authentication
 - Cloud Firestore
-- SheetJS untuk import Excel
-- Tailwind CSS 4
-- Lucide React
-
-## Business flow
-
-```text
-Lead masuk
-  -> pilih/tulis template
-  -> buka WhatsApp
-  -> kirim pesan di WhatsApp
-  -> kembali ke CRM
-  -> tandai sudah dikirim
-  -> follow-up bila diperlukan
-  -> perbarui status lead
-```
-
-Template mendukung placeholder lokal:
-
-- `{{contact_name}}`
-- `{{company_name}}`
-- `{{category}}`
+- date-fns
+- lucide-react
 
 ## Setup
 
-Gunakan Node.js 22 atau lebih baru.
-
 ```bash
 npm install
-```
-
-Salin `.env.example` menjadi `.env.local`, lalu isi Firebase Web App config:
-
-```env
-NEXT_PUBLIC_FIREBASE_API_KEY=
-NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN=
-NEXT_PUBLIC_FIREBASE_PROJECT_ID=
-NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET=
-NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID=
-NEXT_PUBLIC_FIREBASE_APP_ID=
-```
-
-Aktifkan Firebase Authentication provider Email/Password dan Cloud Firestore. Project sengaja menggunakan satu akun marketing; `ownerId` tetap dipakai untuk membatasi data terhadap akun yang sedang login.
-
-## Menjalankan aplikasi
-
-```bash
+cp .env.example .env.local
 npm run dev
 ```
 
-Buka `http://localhost:3000`.
+Fill `.env.local` with the Firebase web-app config, enable Email/Password Authentication, and create the single marketing user.
 
-## Import Excel
+Open **Settings → Sinkronkan Excel** once. The sync is idempotent for research/reference data and preserves live lead progress fields for leads that already exist.
 
-Format yang diterima: `.xlsx` dan `.xls`.
+## Firestore collections
 
-Batas import sengaja dibuat sederhana agar browser tidak terbebani oleh file yang tidak wajar:
+Core operational collections:
 
-- maksimal 5 MB per file;
-- maksimal 20 sheet;
-- maksimal 5.000 calon klien per proses import;
-- data tanpa nama perusahaan dilewati;
-- nama perusahaan ganda dilewati;
-- setiap row tetap melewati business validation sebelum disimpan.
+- `leads`
+- `leads/{leadId}/activities`
+- `tasks`
+- `prospects`
+- `socialProfiles`
+- `researchQueue`
+- `dailyKpis`
+- `researchSources`
 
-## Quality checks
+Traceability collections:
 
-Untuk pengecekan cepat terhadap source:
+- `excelSheets` — one document per Excel sheet containing source range, values, and formulas
+- `meta/excel-seed-v2` — import metadata/counts
 
-```bash
-npm run sanity
-```
+## Source dataset
 
-Untuk menjalankan seluruh pemeriksaan sebelum commit/deploy:
-
-```bash
-npm run verify
-```
-
-`verify` menjalankan source sanity check, ESLint, unit test, dan production build secara berurutan.
-
-## Struktur utama
-
-```text
-app/                       routes dan global styling
-components/                UI dan application shell
-components/workspace/      dashboard, leads, follow-up, template, dialog
-lib/business.ts            business rules dan pure helpers
-lib/repository.ts          operasi Cloud Firestore
-lib/spreadsheet-import.ts  parser dan guard import spreadsheet
-lib/types.ts               domain types
-scripts/source-sanity.mjs  regression/source guard
-tests/                     unit tests
-```
-
-## Prinsip project
-
-Project ini sengaja tidak dibuat menjadi CRM enterprise. Selama kebutuhan bisnis hanya satu orang marketing, tidak diperlukan workspace, role, assignment, approval, campaign engine, atau abstraction tambahan yang tidak memberi manfaat langsung.
+The seed files under `src/data/seed/` were generated from `Nexty marketing - Social Enriched.xlsx` on 2026-09-12. `excel-workbook.json` is the exact workbook snapshot used by Data Vault and the Firestore parity layer.

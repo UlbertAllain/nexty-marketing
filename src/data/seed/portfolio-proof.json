@@ -1,0 +1,261 @@
+{
+  "sheet": "15 Portfolio Proof",
+  "range": "A1:J21",
+  "rows": [
+    {
+      "row": 1,
+      "cells": [
+        "PORTFOLIO → SALES PROOF MAPPING",
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null
+      ]
+    },
+    {
+      "row": 4,
+      "cells": [
+        "Project / Asset",
+        "Known Purpose",
+        "Best Prospect Match",
+        "Proof Angle",
+        "What to Show",
+        "What NOT to Claim",
+        "Missing Evidence",
+        "Next Action",
+        "Public Link",
+        "Status"
+      ]
+    },
+    {
+      "row": 5,
+      "cells": [
+        "NextyLeads",
+        "Replace marketing Excel workflow: lead/target management, contacted status, daily pipeline",
+        "Sales teams, distributors, service businesses",
+        "NextyLabs can map a manual workflow into a focused internal system",
+        "Business flow, lead stages, dashboard, simplicity",
+        "Do not claim revenue uplift without data",
+        "Before/after time/error metrics",
+        "Create sanitized case study",
+        "https://github.com/UlbertAllain/nexty-marketing.git",
+        "Strong"
+      ]
+    },
+    {
+      "row": 6,
+      "cells": [
+        "POS System",
+        "Point-of-sale project",
+        "Retail/F&B",
+        "Transaction/inventory workflow capability",
+        "Core flow, receipt/order/inventory UI",
+        "Do not imply production scale unless verified",
+        "Real deployment/client result",
+        "Review repo and build case story",
+        "https://github.com/UlbertAllain/template-Sistem-Pos-web-app-",
+        "Verify"
+      ]
+    },
+    {
+      "row": 7,
+      "cells": [
+        "ERP System",
+        "ERP project",
+        "Distributor/SME operations",
+        "Multi-module business-system capability",
+        "Module relationships, roles, reports",
+        "Do not oversell enterprise readiness",
+        "Exact modules, scale, deployment",
+        "Create architecture snapshot",
+        "https://github.com/UlbertAllain/System-ERP-",
+        "Verify"
+      ]
+    },
+    {
+      "row": 8,
+      "cells": [
+        "Nexty E-Catalog",
+        "Digital catalog",
+        "Supplier, distributor, product businesses",
+        "Product discovery/catalog capability",
+        "Catalog, categories, inquiry flow",
+        "Do not call e-commerce if no checkout",
+        "Business result/client context",
+        "Create project summary",
+        "https://nexty-ecatalog.vercel.app/",
+        "Verify"
+      ]
+    },
+    {
+      "row": 9,
+      "cells": [
+        "Content Planner",
+        "Content planning system",
+        "Agencies/marketing teams",
+        "Workflow/productivity tool capability",
+        "Planning flow, status, calendar",
+        "Do not claim collaboration scale unless verified",
+        "Users/workflow outcome",
+        "Audit repo + screenshots",
+        "https://github.com/UlbertAllain/content-planner.git",
+        "Verify"
+      ]
+    },
+    {
+      "row": 10,
+      "cells": [
+        "Yuk Jadi Lega",
+        "Public project; scope must be rechecked before sales use",
+        "Only after project scope is verified",
+        "Use only if prospect problem matches actual product",
+        "Relevant flow only",
+        "Do not infer domain/features from project name",
+        "Full project context",
+        "Review before external use",
+        "https://github.com/UlbertAllain/yuk-jadi-lega.git",
+        "Hold"
+      ]
+    },
+    {
+      "row": 11,
+      "cells": [
+        "NextyLabs Website",
+        "Corporate proof",
+        "All",
+        "Professional presence + project navigation",
+        "Projects/process/contact",
+        "Do not use website alone as proof of outcomes",
+        "Case studies/testimonials",
+        "Upgrade project pages",
+        "https://www.nextylabs.id/projects",
+        "Active"
+      ]
+    },
+    {
+      "row": 14,
+      "cells": [
+        "Case Study Structure",
+        "Question",
+        "Example Output",
+        "Evidence Required",
+        "Owner",
+        "Sales Usage",
+        "CTA",
+        "Rule",
+        null,
+        null
+      ]
+    },
+    {
+      "row": 15,
+      "cells": [
+        "Context",
+        "Who/what process?",
+        "Marketing team used spreadsheet workflow",
+        "Verified project scope",
+        "Marketing",
+        "Open story",
+        "Project similar?",
+        "No fake client identity",
+        null,
+        null
+      ]
+    },
+    {
+      "row": 16,
+      "cells": [
+        "Problem",
+        "What was inefficient?",
+        "Target/status/daily pipeline scattered",
+        "Before evidence",
+        "Founder",
+        "Create relevance",
+        "Discuss flow",
+        "Don't exaggerate",
+        null,
+        null
+      ]
+    },
+    {
+      "row": 17,
+      "cells": [
+        "Decision",
+        "Why this approach?",
+        "Single-user, simple workflow; no role complexity",
+        "Architecture reason",
+        "Developer",
+        "Show judgment",
+        "Audit",
+        "Business-first",
+        null,
+        null
+      ]
+    },
+    {
+      "row": 18,
+      "cells": [
+        "Flow",
+        "How did it work?",
+        "Lead → contact → follow-up → status",
+        "Screens/flow",
+        "Developer",
+        "Explain solution",
+        "Demo",
+        "No code dump",
+        null,
+        null
+      ]
+    },
+    {
+      "row": 19,
+      "cells": [
+        "Implementation",
+        "What was built?",
+        "Only relevant modules",
+        "Repo/product",
+        "Developer",
+        "Proof capability",
+        "See work",
+        "Stack secondary",
+        null,
+        null
+      ]
+    },
+    {
+      "row": 20,
+      "cells": [
+        "Result",
+        "What changed?",
+        "Use measured facts only",
+        "Metrics/testimonial",
+        "Founder",
+        "Proof outcome",
+        "Consult",
+        "If no metric, say operational result only",
+        null,
+        null
+      ]
+    },
+    {
+      "row": 21,
+      "cells": [
+        "Learning",
+        "What would you do again?",
+        "Simplicity over feature volume",
+        "Team notes",
+        "Founder",
+        "Thought leadership",
+        "Discuss",
+        "Shows maturity",
+        null,
+        null
+      ]
+    }
+  ]
+}

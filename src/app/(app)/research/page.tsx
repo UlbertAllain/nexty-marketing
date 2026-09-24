@@ -68,7 +68,7 @@ export default function ResearchPage() {
             <div className="research-evidence"><span className="label">Yang terlihat</span><p>{toIndonesianMarketingCopy(item.publicAssets) || "Belum ada ringkasan."}</p></div>
             <div className="research-evidence"><span className="label">Peluang perbaikan</span><p>{toNaturalIndonesianResearchText(item.potentialGap, "Belum ada peluang perbaikan yang tervalidasi.")}</p></div>
             <div className="research-score"><ScoreBar value={item.fitScore} /><span className="tiny muted">{getResearchLevelLabel(item.researchLevel)}</span></div>
-            <div className="research-actions">{item.source1 ? <a className="icon-button" href={item.source1} target="_blank" rel="noreferrer" title="Buka sumber"><ArrowUpRight size={16} /></a> : null}{item.targetId ? <Link className="button secondary compact" href={`/leads/${item.targetId}`}>Buka calon klien</Link> : <button className="button compact" disabled={busyId === item.id} onClick={() => promote(item)}>{busyId === item.id ? "Memproses…" : "Jadikan lead"}</button>}</div>
+            <div className="research-actions">{item.source1 ? <a className="icon-button" href={item.source1} target="_blank" rel="noreferrer" title="Buka sumber"><ArrowUpRight size={16} /></a> : null}{item.targetId ? <Link className="button secondary compact" href={`/leads/${item.targetId}`}>Buka calon klien</Link> : <button className="button compact" disabled={busyId === item.id} onClick={() => promote(item)}>{busyId === item.id ? "Memproses…" : "Masukkan ke daftar"}</button>}</div>
           </article>
         ))}</div>
       ) : null}
@@ -83,7 +83,7 @@ export default function ResearchPage() {
 
       {tab === "social" ? <div className="social-directory">{socials.map((item) => (
         <article className="panel social-card" key={item.leadId}>
-          <div className="social-card-head"><div><span className="tiny muted">{item.leadId} · {item.area}</span><h2>{item.business}</h2><p>{item.niche}</p></div><span className={item.verificationStatus.startsWith("Verified") ? "verification verified" : "verification needs-check"}>{getVerificationLabel(item.verificationStatus)}</span></div>
+          <div className="social-card-head"><div><span className="tiny muted">{item.leadId} · {item.area}</span><h2>{item.business}</h2><p>{toIndonesianMarketingCopy(item.niche)}</p></div><span className={(item.verificationStatus.startsWith("Verified") || item.verificationStatus.startsWith("Terverifikasi")) ? "verification verified" : "verification needs-check"}>{getVerificationLabel(item.verificationStatus)}</span></div>
           <SocialLinks social={item} />
           {item.notes ? <p className="tiny muted social-note">{toNaturalIndonesianResearchText(item.notes, "Catatan verifikasi perlu diperiksa kembali.")}</p> : null}
           {item.verificationSource ? <a className="text-link" href={item.verificationSource} target="_blank" rel="noreferrer">Sumber verifikasi <ArrowUpRight size={14} /></a> : null}

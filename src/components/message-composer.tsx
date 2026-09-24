@@ -9,7 +9,7 @@ import { buildWhatsAppUrl } from "@/lib/utils/phone";
 import { Button } from "./ui/button";
 
 const templateLabels: Record<LeadTemplateKey, string> = {
-  FIRST_OUTREACH: "Chat pertama",
+  FIRST_OUTREACH: "Pesan pertama",
   INTERESTED_REPLY: "Kalau tertarik",
   FOLLOW_UP_D2: "Tindak lanjut H+2",
   FOLLOW_UP_D5: "Tindak lanjut terakhir",
@@ -51,7 +51,7 @@ export function MessageComposer({ lead }: { lead: Lead }) {
       <div className="panel-heading">
         <div>
           <p className="eyebrow">Kirim pesan</p>
-          <h2>Siapkan pesan untuk lead ini</h2>
+          <h2>Siapkan pesan untuk calon klien ini</h2>
         </div>
         <span className="channel-pill">WhatsApp</span>
       </div>
@@ -76,7 +76,7 @@ export function MessageComposer({ lead }: { lead: Lead }) {
           <CheckCircle2 size={16} />{busy ? "Menyimpan…" : "Tandai terkirim"}
         </Button>
       </div>
-      <p className="tiny muted">Setelah pesan benar-benar terkirim di WhatsApp, kembali ke sini lalu klik “Tandai terkirim”. Sistem akan membuat jadwal follow-up berikutnya otomatis.</p>
+      <p className="tiny muted">Setelah pesan benar-benar terkirim di WhatsApp, kembali ke sini lalu klik “Tandai terkirim”. Sistem akan membuat jadwal tindak lanjut berikutnya secara otomatis.</p>
     </section>
   );
 }

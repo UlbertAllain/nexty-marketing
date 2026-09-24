@@ -11,7 +11,7 @@ import {
   type Unsubscribe,
 } from "firebase/firestore";
 import { db } from "@/lib/firebase/client";
-import type { Task } from "@/features/leads/types";
+import type { Task } from "@/modules/leads/types";
 
 export function subscribeTasks(callback: (items: Task[]) => void): Unsubscribe {
   const q = query(collection(db, "tasks"), orderBy("dueAt", "asc"));

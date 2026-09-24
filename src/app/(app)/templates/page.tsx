@@ -3,6 +3,7 @@
 import { useMemo, useState } from "react";
 import { Search } from "lucide-react";
 import { CopyableTemplate } from "@/components/copyable-template";
+import { CustomMessageTemplateManager } from "@/components/custom-message-template-manager";
 import { getStageLabel } from "@/components/status-badge";
 import { PageHeader } from "@/components/page-header";
 import { RawSheetView, type RawSheet } from "@/components/raw-sheet-view";
@@ -16,7 +17,7 @@ import conversationTree from "@/data/seed/conversation-tree.json";
 import proposalSections from "@/data/seed/proposal-sections.json";
 import miniAudit from "@/data/seed/mini-audit.json";
 
-type Tab = "chat" | "objection" | "discovery" | "conversation" | "offer" | "proposal" | "audit";
+type Tab = "chat" | "custom" | "objection" | "discovery" | "conversation" | "offer" | "proposal" | "audit";
 
 export default function TemplatesPage() {
   const [tab, setTab] = useState<Tab>("chat");
@@ -41,9 +42,10 @@ export default function TemplatesPage() {
 
   return (
     <>
-      <PageHeader eyebrow="Contoh pesan" title="Contoh pesan untuk berbagai situasi" description="Pilih sesuai kebutuhan. Untuk menghubungi bisnis tertentu, buka detail calon klien agar pesannya bisa disesuaikan dulu." />
+      <PageHeader eyebrow="Contoh pesan" title="Siapkan dan kelola pesan tim" description="Gunakan contoh bawaan sebagai referensi. Buat pesan kustom untuk gaya komunikasi atau kebutuhan tim yang ingin disimpan sendiri." />
       <div className="tool-tabs scroll-tabs">
-        <button className={tab === "chat" ? "active" : ""} onClick={() => setTab("chat")}>Pesan awal</button>
+        <button className={tab === "chat" ? "active" : ""} onClick={() => setTab("chat")}>Contoh bawaan</button>
+        <button className={tab === "custom" ? "active" : ""} onClick={() => setTab("custom")}>Pesan kustom</button>
         <button className={tab === "objection" ? "active" : ""} onClick={() => setTab("objection")}>Balas keberatan</button>
         <button className={tab === "discovery" ? "active" : ""} onClick={() => setTab("discovery")}>Pertanyaan kebutuhan</button>
         <button className={tab === "conversation" ? "active" : ""} onClick={() => setTab("conversation")}>Alur percakapan</button>
@@ -58,6 +60,8 @@ export default function TemplatesPage() {
           <div className="template-grid">{templateList.map((item) => <CopyableTemplate key={item.scenario} title={toIndonesianMarketingCopy(item.scenario)} description={toIndonesianMarketingCopy(item.useWhen)} text={item.template} />)}</div>
         </>
       ) : null}
+
+      {tab === "custom" ? <CustomMessageTemplateManager /> : null}
 
       {tab === "objection" ? <div className="objection-grid">{liveObjections.map((item) => (
         <article className="panel objection-card" key={item.objection}>

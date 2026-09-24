@@ -4,6 +4,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import {
   BarChart3,
+  BookOpen,
   LayoutDashboard,
   ListTodo,
   LogOut,
@@ -39,6 +40,12 @@ const navGroups = [
       { href: "/reports", label: "Laporan", icon: BarChart3 },
     ],
   },
+  {
+    label: "Bantuan",
+    items: [
+      { href: "/guide", label: "Panduan", icon: BookOpen },
+    ],
+  },
 ];
 
 export function AppShell({ children }: { children: React.ReactNode }) {
@@ -52,7 +59,7 @@ export function AppShell({ children }: { children: React.ReactNode }) {
           <div className="brand-mark brand-mark-small">N</div>
           <div>
             <strong>NextyLeads</strong>
-            <span>Tim Marketing NextyLabs</span>
+            <span>Tim Pemasaran NextyLabs</span>
           </div>
         </Link>
 

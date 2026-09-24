@@ -54,6 +54,11 @@ The app follows the **workflow**, not the workbook tab layout. Excel remains the
 `dailyKpis/{id}`
 - 30-day KPI plan imported from Excel
 
+`messageTemplates/{templateId}`
+- user-created message template
+- title, category, usage, body
+- independent from Excel/reference synchronization
+
 ### Exact Excel parity layer
 
 `excelSheets/{sheetId}`
@@ -72,7 +77,7 @@ This layer guarantees that no workbook cell is silently discarded just because t
 - Dashboard consumes Priority Queue and live CRM data.
 - Lead detail combines Targets + Outreach + Follow-up + Social Media + Sources.
 - Research combines Prospect Pool + Research Queue + Social Media + Sources.
-- Templates combines Mini Audit + Sales Toolkit + personalized outreach.
+- Templates combines built-in references + user-managed custom messages + Mini Audit + Sales Toolkit.
 - Growth combines Content Plan + Growth Plan + Partnerships/Reactivation/Referral + Portfolio Proof.
 - Reports combines live funnel + Daily KPI + Weekly Review + Cashflow.
 - Data Vault exposes the raw workbook snapshot for audit only.
@@ -130,7 +135,8 @@ src/
 │   ├── research/
 │   ├── reference/
 │   ├── settings/
-│   └── tasks/
+│   ├── tasks/
+│   └── templates/
 ├── components/             # reusable application UI
 │   └── ui/
 ├── lib/
@@ -158,6 +164,7 @@ Operational data is live from Firestore:
 - research queue
 - social profiles
 - research sources
+- custom message templates
 
 Reference/workbook content is synchronized into Firestore `referenceData` / `excelSheets` and read live by the UI after synchronization. Bundled JSON is retained only as the bootstrap fallback for a fresh workspace.
 

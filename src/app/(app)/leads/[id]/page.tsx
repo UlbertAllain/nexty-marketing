@@ -8,9 +8,9 @@ import { MessageComposer } from "@/components/message-composer";
 import { PageHeader } from "@/components/page-header";
 import { PriorityBadge, StatusBadge } from "@/components/status-badge";
 import { SocialLinks } from "@/components/social-links";
-import { useActivities, useLead } from "@/features/leads/hooks";
-import { changeLeadStage, updateLead } from "@/features/leads/repository";
-import { LEAD_STAGES, type LeadStage } from "@/features/leads/types";
+import { useActivities, useLead } from "@/modules/leads/hooks";
+import { changeLeadStage, updateLead } from "@/modules/leads/repository";
+import { LEAD_STAGES, type LeadStage } from "@/modules/leads/types";
 import { buildWhatsAppUrl } from "@/lib/utils/phone";
 import { formatDate } from "@/lib/utils/date";
 

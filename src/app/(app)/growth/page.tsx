@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { PageHeader } from "@/components/page-header";
 import { RawSheetView, type RawSheet } from "@/components/raw-sheet-view";
+import { useReferenceData } from "@/modules/reference/reference.hooks";
 import contentPlan from "@/data/seed/content-plan.json";
 import growthPlan from "@/data/seed/growth-plan.json";
 import partnerships from "@/data/seed/partnerships.json";
@@ -19,8 +20,18 @@ const tabs: Array<{ key: Tab; label: string; description: string }> = [
 
 export default function GrowthPage() {
   const [tab, setTab] = useState<Tab>("content");
+  const { data: liveContentPlan } = useReferenceData("content-plan", contentPlan);
+  const { data: liveGrowthPlan } = useReferenceData("growth-plan", growthPlan);
+  const { data: livePartnerships } = useReferenceData("partnerships", partnerships);
+  const { data: livePortfolioProof } = useReferenceData("portfolio-proof", portfolioProof);
   const active = tabs.find((item) => item.key === tab)!;
-  const data = tab === "content" ? contentPlan : tab === "plan" ? growthPlan : tab === "partners" ? partnerships : portfolioProof;
+  const data = tab === "content"
+    ? liveContentPlan
+    : tab === "plan"
+      ? liveGrowthPlan
+      : tab === "partners"
+        ? livePartnerships
+        : livePortfolioProof;
 
   return (
     <>

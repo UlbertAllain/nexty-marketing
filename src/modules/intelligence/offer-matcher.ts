@@ -1,10 +1,48 @@
 import type { BusinessGap, RecommendedOffer } from "./types";
 
+export const GAP_TAGS = [
+  "no-website",
+  "outdated-website",
+  "credibility",
+  "weak-digital-presence",
+  "weak-cta",
+  "campaign",
+  "lead-capture",
+  "conversion",
+  "manual-catalog",
+  "product-discovery",
+  "catalog",
+  "whatsapp-selling",
+  "manual-quotation",
+  "manual-inquiry",
+  "sales-process",
+  "manual-booking",
+  "booking",
+  "scheduling",
+  "manual-sales",
+  "inventory",
+  "retail-operations",
+  "pos",
+  "manual-follow-up",
+  "lead-management",
+  "crm",
+  "fragmented-operations",
+  "manual-operations",
+  "erp",
+  "multi-department",
+  "custom-workflow",
+  "manual-process",
+  "automation",
+  "internal-system",
+] as const;
+
+export type GapTag = typeof GAP_TAGS[number];
+
 export interface NextyLabsService {
   id: string;
   name: string;
   description: string;
-  gapTags: string[];
+  gapTags: GapTag[];
 }
 
 export const NEXTYLABS_SERVICE_CATALOG: NextyLabsService[] = [

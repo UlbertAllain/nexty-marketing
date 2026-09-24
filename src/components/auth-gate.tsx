@@ -2,7 +2,7 @@
 
 import { useEffect } from "react";
 import { useRouter } from "next/navigation";
-import { useAuth } from "@/features/auth/auth-context";
+import { useAuth } from "@/modules/auth/auth-context";
 
 export function AuthGate({ children }: { children: React.ReactNode }) {
   const { user, loading } = useAuth();
@@ -16,7 +16,7 @@ export function AuthGate({ children }: { children: React.ReactNode }) {
     return (
       <main className="center-screen">
         <div className="loading-dot" />
-        <span>Menyiapkan workspace…</span>
+        <span>Menyiapkan ruang kerja…</span>
       </main>
     );
   }

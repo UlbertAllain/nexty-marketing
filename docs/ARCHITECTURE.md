@@ -54,6 +54,11 @@ The app follows the **workflow**, not the workbook tab layout. Excel remains the
 `dailyKpis/{id}`
 - 30-day KPI plan imported from Excel
 
+`messageTemplates/{templateId}`
+- user-created message template
+- title, category, usage, body
+- independent from Excel/reference synchronization
+
 ### Exact Excel parity layer
 
 `excelSheets/{sheetId}`
@@ -72,7 +77,7 @@ This layer guarantees that no workbook cell is silently discarded just because t
 - Dashboard consumes Priority Queue and live CRM data.
 - Lead detail combines Targets + Outreach + Follow-up + Social Media + Sources.
 - Research combines Prospect Pool + Research Queue + Social Media + Sources.
-- Templates combines Mini Audit + Sales Toolkit + personalized outreach.
+- Templates combines built-in references + user-managed custom messages + Mini Audit + Sales Toolkit.
 - Growth combines Content Plan + Growth Plan + Partnerships/Reactivation/Referral + Portfolio Proof.
 - Reports combines live funnel + Daily KPI + Weekly Review + Cashflow.
 - Data Vault exposes the raw workbook snapshot for audit only.
@@ -115,3 +120,51 @@ For an existing lead, sync updates research, scoring, templates, social profile,
 - No public sign-up.
 - Firestore requires authenticated requests.
 - Current scope assumes one internal marketing account.
+
+## Current source structure
+
+```text
+src/
+├── app/                    # routing/layout/page only
+│   ├── (app)/
+│   └── login/
+├── modules/                # domain + data access
+│   ├── auth/
+│   ├── leads/
+│   ├── messages/
+│   ├── research/
+│   ├── reference/
+│   ├── settings/
+│   ├── tasks/
+│   └── templates/
+├── components/             # reusable application UI
+│   └── ui/
+├── lib/
+│   ├── firebase/
+│   └── utils/
+└── data/
+    └── seed/                # import/bootstrap fallback only
+```
+
+### Boundary rules
+
+- `app/` must not initialize Firebase or own persistence code.
+- Firestore subscriptions and writes belong inside the relevant `modules/*` repository/service boundary.
+- `src/data/seed` is bootstrap/reference fallback. Runtime workspace data prefers Firestore after synchronization.
+- Domain-specific behavior must stay inside its module; generic reusable visual components stay under `components/`.
+- Add a new layer only when there is a concrete responsibility, testing, security, or reuse reason.
+
+## Runtime data model
+
+Operational data is live from Firestore:
+
+- leads and lead activities
+- follow-up tasks
+- prospects
+- research queue
+- social profiles
+- research sources
+- custom message templates
+
+Reference/workbook content is synchronized into Firestore `referenceData` / `excelSheets` and read live by the UI after synchronization. Bundled JSON is retained only as the bootstrap fallback for a fresh workspace.
+

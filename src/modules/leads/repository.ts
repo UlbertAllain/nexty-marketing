@@ -15,6 +15,7 @@ import {
 } from "firebase/firestore";
 import { db } from "@/lib/firebase/client";
 import type { Activity, Lead, LeadStage, Prospect } from "./types";
+import { buildIndonesianLeadTemplates, DEFAULT_PERSONALIZATION_CHECKLIST, DEFAULT_RESEARCH_GUARDRAIL } from "./copy";
 
 function withId<T>(data: DocumentData, id: string) {
   return { ...data, id } as T;
@@ -74,25 +75,19 @@ export async function createLead(input: Partial<Lead> & Pick<Lead, "business" | 
     hasNow: "",
     verifiedGap: "",
     publicFriction: "",
-    evidenceStatus: "Manual lead",
-    recommendedOffer: "Business Digital Audit",
+    evidenceStatus: "Calon klien manual",
+    recommendedOffer: "Audit Digital Bisnis",
     solutionConcept: "",
     firstContactAngle: "",
     contactRoute: "WhatsApp",
     stage: "New",
-    nextAction: "Riset singkat lalu kirim chat pertama",
+    nextAction: "Riset singkat lalu kirim pesan pertama",
     researchDate: new Date().toISOString().slice(0, 10),
     source1: "",
     source2: "",
-    guardrail: "Jangan klaim proses internal sebelum discovery.",
-    personalizationChecklist: "Cek website/Instagram sebelum mengirim.",
-    templates: {
-      FIRST_OUTREACH: `Halo Kak, saya dari NextyLabs. Saya sempat melihat ${input.business} dan punya beberapa ide untuk merapikan customer journey atau operasional digitalnya. Kalau berkenan, saya bisa kirim 2–3 poin audit singkat dulu.`,
-      INTERESTED_REPLY: "Siap Kak. Saya kirim satu halaman singkat dulu, lalu kalau relevan baru kita validasi prosesnya 15–20 menit.",
-      FOLLOW_UP_D2: "Halo Kak, izin follow-up. Saya bisa kirim 2–3 poin audit singkat langsung di chat ini supaya Kakak bisa nilai dulu.",
-      FOLLOW_UP_D5: "Halo Kak, saya follow-up terakhir supaya tidak mengganggu. Kalau belum prioritas sekarang tidak apa-apa. Terima kasih.",
-      MEETING_CTA: "Kalau poinnya relevan, boleh kita call/ketemu 15–20 menit untuk memahami flow dan bottleneck utamanya?",
-    },
+    guardrail: DEFAULT_RESEARCH_GUARDRAIL,
+    personalizationChecklist: DEFAULT_PERSONALIZATION_CHECKLIST,
+    templates: buildIndonesianLeadTemplates(input.business, input.niche),
     ...input,
     createdAt: serverTimestamp(),
     updatedAt: serverTimestamp(),
@@ -116,12 +111,12 @@ export async function promoteProspect(prospect: Prospect) {
     hasNow: prospect.publicAssets,
     verifiedGap: prospect.potentialGap,
     publicFriction: prospect.publicFriction,
-    recommendedOffer: prospect.recommendedOffer || "Business Digital Audit",
+    recommendedOffer: prospect.recommendedOffer || "Audit Digital Bisnis",
     firstContactAngle: prospect.notes,
     source1: prospect.source1,
     source2: prospect.source2,
     evidenceStatus: prospect.researchLevel,
-    guardrail: "Prospect dipromosikan dari research pool. Validasi hipotesis sebelum menyebut proses internal.",
+    guardrail: DEFAULT_RESEARCH_GUARDRAIL,
   });
   await updateDoc(doc(db, "prospects", prospect.id), {
     targetId: newId,

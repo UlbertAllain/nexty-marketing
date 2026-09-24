@@ -1,114 +1,114 @@
 [
   {
     "scenario": "Observation-first",
-    "useWhen": "Cold prospect",
-    "template": "Halo Kak, saya dari NextyLabs. Saya sempat melihat [BUSINESS] dan notice [OBSERVATION]. Saya tidak tahu apakah ini concern internal, tapi kami punya ide untuk [OUTCOME]. Kalau berkenan, saya bisa kirim 2–3 poin audit singkat dulu.",
-    "nextStep": "Mini audit after permission",
-    "wait": "D+2",
-    "avoid": "Jangan generic 'kami jasa website'"
+    "useWhen": "Calon klien baru",
+    "template": "Halo Kak, saya dari NextyLabs. Saya sempat melihat [NAMA BISNIS] dan memperhatikan [HAL YANG TERLIHAT]. Saya belum tahu apakah ini memang menjadi kendala di internal, tapi ada beberapa hal yang menurut saya bisa dirapikan untuk [HASIL YANG DIINGINKAN]. Kalau berkenan, saya bisa kirim 2–3 catatan singkat dulu.",
+    "nextStep": "Kirim audit singkat setelah mendapat izin",
+    "wait": "H+2",
+    "avoid": "Jangan kirim pesan umum seperti 'kami jasa website'"
   },
   {
     "scenario": "Asks price",
-    "useWhen": "Prospect tanya harga",
-    "template": "Bisa Kak. Range tergantung scope. Untuk gambaran saya bisa kasih starting range, lalu saya butuh 3 hal: pengguna, flow sekarang, dan fitur wajib.",
-    "nextStep": "Range + qualification",
-    "wait": "Now",
-    "avoid": "Jangan quote ngawur"
+    "useWhen": "Calon klien menanyakan harga",
+    "template": "Bisa Kak. Kisaran harganya tergantung kebutuhan. Biar tidak asal sebut angka, saya butuh tiga informasi dulu: siapa yang akan memakai, bagaimana prosesnya sekarang, dan fitur apa yang wajib ada.",
+    "nextStep": "Berikan kisaran harga setelah kebutuhan dasarnya jelas",
+    "wait": "Sekarang",
+    "avoid": "Jangan memberi harga tanpa memahami kebutuhan"
   },
   {
     "scenario": "Already has website",
-    "useWhen": "Site exists",
-    "template": "Bagus, berarti saya tidak akan menawarkan website baru. Yang ingin saya cek justru apakah website sekarang membantu inquiry/booking atau masih sekadar informasi. Kalau sudah optimal, tidak perlu diubah.",
-    "nextStep": "Conversion audit",
-    "wait": "Now",
-    "avoid": "Jangan maksa redesign"
+    "useWhen": "Sudah punya situs web",
+    "template": "Bagus Kak, berarti tidak perlu membuat situs web baru kalau yang sekarang sudah bekerja dengan baik. Yang perlu dicek justru apakah situs webnya sudah membantu menghasilkan pertanyaan, pemesanan, atau calon pelanggan. Kalau memang sudah optimal, tidak perlu diubah.",
+    "nextStep": "Periksa efektivitas situs web yang sudah ada",
+    "wait": "Sekarang",
+    "avoid": "Jangan memaksa desain ulang"
   },
   {
     "scenario": "Already has system",
-    "useWhen": "Has POS/CRM/app",
-    "template": "Sip, tidak perlu mengganti yang sudah bekerja. Yang perlu dicek apakah masih ada double entry, spreadsheet tambahan, atau follow-up manual di luar sistem.",
-    "nextStep": "Integration audit",
-    "wait": "Now",
-    "avoid": "Jangan attack vendor"
+    "useWhen": "Sudah punya sistem",
+    "template": "Sip Kak, yang sudah berjalan baik tidak perlu diganti. Yang perlu dicek hanya apakah masih ada input ganda, spreadsheet tambahan, atau pekerjaan manual di luar sistem yang sekarang.",
+    "nextStep": "Periksa celah dan kebutuhan integrasi",
+    "wait": "Sekarang",
+    "avoid": "Jangan menyerang sistem atau vendor yang sudah digunakan"
   },
   {
     "scenario": "Interested",
-    "useWhen": "Says 'boleh'",
-    "template": "Siap Kak. Saya kirim satu halaman saja: kondisi yang terlihat, opportunity, dan flow solusi. Kalau relevan baru kita ngobrol 15–20 menit untuk validasi.",
-    "nextStep": "Send audit",
-    "wait": "Same day",
-    "avoid": "Jangan proposal panjang"
+    "useWhen": "Calon klien menunjukkan ketertarikan",
+    "template": "Siap Kak. Saya kirim ringkasan singkat dulu berisi kondisi yang terlihat, peluang perbaikan, dan gambaran solusi. Kalau terasa relevan, baru kita ngobrol sekitar 15–20 menit untuk memastikan kebutuhan sebenarnya.",
+    "nextStep": "Kirim audit singkat",
+    "wait": "Hari yang sama",
+    "avoid": "Jangan langsung kirim proposal panjang"
   },
   {
     "scenario": "Meeting CTA",
-    "useWhen": "Audit accepted",
-    "template": "Kalau poinnya relevan, boleh call/ketemu 15–20 menit? Fokusnya memahami flow, volume, PIC dan bottleneck paling mahal.",
-    "nextStep": "Book discovery",
-    "wait": "1–2d",
-    "avoid": "Jangan demo tech dulu"
+    "useWhen": "Audit singkat sudah diterima",
+    "template": "Kalau poinnya terasa relevan, boleh kita telepon atau bertemu sekitar 15–20 menit? Saya ingin memahami proses yang sekarang, volume aktivitas, siapa yang mengelola, dan bagian yang paling banyak memakan waktu.",
+    "nextStep": "Jadwalkan penggalian kebutuhan",
+    "wait": "1–2 hari",
+    "avoid": "Jangan langsung demo teknis"
   },
   {
     "scenario": "D+2",
-    "useWhen": "No reply",
-    "template": "Halo Kak, izin follow-up. Saya bisa kirim 2–3 poin audit langsung di chat ini supaya Kakak bisa nilai dulu, tanpa meeting.",
-    "nextStep": "Wait",
-    "wait": "3d",
-    "avoid": "Jangan 'UP kak'"
+    "useWhen": "Belum ada balasan",
+    "template": "Halo Kak, izin menindaklanjuti pesan saya sebelumnya. Kalau berkenan, saya bisa kirim 2–3 catatan singkat langsung di sini supaya Kakak bisa lihat dulu tanpa perlu menjadwalkan pertemuan.",
+    "nextStep": "Tunggu respons",
+    "wait": "3 hari",
+    "avoid": "Jangan hanya mengirim 'UP kak'"
   },
   {
     "scenario": "D+5",
-    "useWhen": "Still no reply",
-    "template": "Halo Kak, saya follow-up terakhir supaya tidak mengganggu. Kalau belum prioritas sekarang tidak apa-apa. Kalau nanti butuh, saya senang bantu mulai dari audit kecil.",
-    "nextStep": "Archive",
-    "wait": "Stop",
-    "avoid": "No endless follow-up"
+    "useWhen": "Masih belum ada balasan",
+    "template": "Halo Kak, saya izin menindaklanjuti sekali lagi supaya tidak mengganggu. Kalau belum menjadi prioritas sekarang, tidak apa-apa. Kalau nanti ingin membahas kebutuhan digital atau operasional, kami siap mulai dari pengecekan singkat dulu.",
+    "nextStep": "Arsipkan jika belum ada respons",
+    "wait": "Berhenti",
+    "avoid": "Jangan menindaklanjuti terus-menerus"
   },
   {
     "scenario": "Proposal follow-up",
-    "useWhen": "Proposal sent",
-    "template": "Halo Kak, dari proposal kemarin apakah ada bagian scope, timeline, atau investment yang masih membuat tim ragu untuk lanjut? Kita breakdown bagian itu saja.",
-    "nextStep": "Find objection",
-    "wait": "1–3d",
-    "avoid": "Jangan 'gimana proposalnya?'"
+    "useWhen": "Proposal sudah dikirim",
+    "template": "Halo Kak, dari proposal kemarin apakah ada bagian kebutuhan, waktu pengerjaan, atau biaya yang masih membuat tim ragu untuk lanjut? Kita bahas bagian itu saja supaya lebih jelas.",
+    "nextStep": "Cari keberatan utama",
+    "wait": "1–3 hari",
+    "avoid": "Jangan hanya bertanya 'gimana proposalnya?'"
   },
   {
     "scenario": "Price objection",
-    "useWhen": "Too expensive",
-    "template": "Saya tidak ingin menurunkan kualitas lalu scope tidak realistis. Kalau budget perlu ditekan, opsi sehat adalah memisahkan Phase 1 ke fitur paling berdampak, sisanya menyusul.",
-    "nextStep": "Re-scope MVP",
-    "wait": "Now",
-    "avoid": "Jangan discount tanpa trade-off"
+    "useWhen": "Harga dirasa terlalu tinggi",
+    "template": "Saya tidak ingin menurunkan kualitas hanya supaya angkanya terlihat lebih murah. Kalau anggaran perlu ditekan, opsi yang lebih sehat adalah memulai dari fitur yang paling berdampak dulu, lalu bagian lainnya menyusul.",
+    "nextStep": "Susun ulang tahap pertama",
+    "wait": "Sekarang",
+    "avoid": "Jangan memberi diskon tanpa menyesuaikan cakupan"
   },
   {
     "scenario": "No budget",
-    "useWhen": "Not budgeted",
-    "template": "Kalau belum ada budget saya tidak akan push. Kalau problemnya tetap prioritas, saya bisa bantu buat scope minimum sebagai bahan budgeting internal.",
-    "nextStep": "Schedule revisit",
-    "wait": "Date",
-    "avoid": "No fake urgency"
+    "useWhen": "Belum ada anggaran",
+    "template": "Kalau belum ada anggaran, tidak apa-apa Kak. Saya tidak akan memaksa. Kalau kebutuhannya memang penting, saya bisa bantu susun cakupan minimum sebagai bahan untuk penganggaran internal.",
+    "nextStep": "Tentukan waktu untuk menghubungi kembali",
+    "wait": "Sesuai tanggal",
+    "avoid": "Jangan membuat urgensi palsu"
   },
   {
     "scenario": "Referral ask",
-    "useWhen": "Happy client",
-    "template": "Kalau hasil kerja kami membantu, saya mau titip satu hal. Kalau ada kenalan bisnis yang butuh website/sistem atau prosesnya masih manual, boleh dikenalkan ke NextyLabs. Kami mulai dari audit, bukan hard selling.",
-    "nextStep": "Log referrer",
-    "wait": "After value",
-    "avoid": "Jangan terlalu dini"
+    "useWhen": "Klien puas dengan hasil kerja",
+    "template": "Kalau hasil kerja kami membantu, saya mau titip satu hal. Kalau ada kenalan bisnis yang sedang butuh situs web, sistem, atau ingin merapikan proses operasionalnya, boleh dikenalkan ke NextyLabs. Kami biasanya mulai dari pengecekan kebutuhan dulu, bukan langsung jualan.",
+    "nextStep": "Catat sumber referensi",
+    "wait": "Setelah nilai pekerjaan terasa",
+    "avoid": "Jangan meminta referensi terlalu dini"
   },
   {
     "scenario": "Partner outreach",
-    "useWhen": "Agency/freelancer",
-    "template": "Halo Kak, saya dari NextyLabs. Kami fokus software development/custom web system. Kalau tim Kakak dapat custom system atau overflow engineering, kami bisa bantu white-label/referral. Kalau relevan, boleh ngobrol singkat?",
-    "nextStep": "Capability call",
-    "wait": "D+3",
-    "avoid": "Jangan compete on core"
+    "useWhen": "Agensi atau pekerja lepas",
+    "template": "Halo Kak, saya dari NextyLabs. Kami membantu pengembangan perangkat lunak dan sistem web khusus. Kalau tim Kakak sedang kelebihan pekerjaan teknis atau mendapat proyek sistem khusus yang butuh bantuan tambahan, kami terbuka untuk kerja sama. Kalau relevan, boleh ngobrol singkat?",
+    "nextStep": "Bahas kemampuan dan bentuk kerja sama",
+    "wait": "H+3",
+    "avoid": "Jangan memosisikan diri sebagai pesaing utama mitra"
   },
   {
     "scenario": "Warm network",
-    "useWhen": "Founder contacts",
-    "template": "Halo [NAMA], izin titip info. NextyLabs lagi membuka beberapa slot website bisnis dan custom system. Kalau ada kenalan yang digital presence-nya belum maksimal atau operasionalnya tersebar di banyak tools, boleh dikenalkan.",
-    "nextStep": "Ask intro",
-    "wait": "No pressure",
-    "avoid": "No routine broadcast"
+    "useWhen": "Kontak dari jaringan pribadi",
+    "template": "Halo [NAMA], izin titip info. NextyLabs sedang membuka beberapa slot untuk pembuatan situs web bisnis dan sistem khusus. Kalau ada kenalan yang butuh bantuan merapikan sisi digital atau operasionalnya, boleh dikenalkan ke kami.",
+    "nextStep": "Minta perkenalan",
+    "wait": "Tanpa tekanan",
+    "avoid": "Jangan kirim sebagai pesan siaran rutin"
   }
 ]

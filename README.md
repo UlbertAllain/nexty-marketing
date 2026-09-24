@@ -1,57 +1,49 @@
-# NextyLeads — Excel Parity Rebuild
+# NextyLeads
 
-NextyLeads adalah internal marketing workspace NextyLabs. Versi ini dirombak mengikuti workbook **Nexty marketing - Social Enriched.xlsx** tetapi UI tidak meniru bentuk spreadsheet.
+NextyLeads adalah ruang kerja pemasaran internal NextyLabs untuk mengelola calon klien, riset, pesan, tindak lanjut, dan laporan dalam satu sistem.
 
-## Prinsip V2
+## Fitur utama
 
-- Semua data Excel masuk tanpa terkecuali.
-- Data operasional dinormalisasi menjadi entity/workflow yang enak dipakai.
-- Seluruh 18 sheet juga disimpan sebagai raw snapshot di Firestore `excelSheets` untuk traceability.
-- Progress CRM yang sudah berjalan tidak di-reset saat data Excel disinkronkan ulang.
-- Single-user workflow, tanpa role/permission layer yang tidak perlu.
-- Tidak ada fitur AI.
+- **Hari ini** — urutan pekerjaan berdasarkan tindak lanjut dan prioritas.
+- **Daftar calon klien** — status, prioritas, riset, dan catatan.
+- **Tindak lanjut** — jadwal terlambat, hari ini, dan berikutnya.
+- **Cari calon klien** — riset bisnis, media sosial, dan sumber.
+- **Contoh pesan** — contoh bawaan dan CRUD pesan kustom.
+- **Rencana pertumbuhan** — perencanaan berkala.
+- **Laporan** — perkembangan dan evaluasi.
+- **Panduan** — dokumentasi pengguna di dalam aplikasi.
+- **Pengaturan** — sinkronisasi data sumber.
 
-## Menu
+## Pesan kustom
 
-- **Dashboard** — next action, follow-up due, Priority A, social coverage.
-- **Leads** — 69 qualified targets; research, score, social media, outreach templates, activity, follow-up.
-- **Follow-up** — task D+2 / D+5 otomatis dari aktivitas chat.
-- **Research** — 129 Prospect Pool, 88 Research Queue, 69 Social Media profiles, 138 Sources.
-- **Templates** — general chat, objection, discovery, conversation flow, offers/pricing, mini audit, proposal.
-- **Growth** — Content Plan, 30/60/90 Growth Plan, Partnerships/Reactivation/Referral, Portfolio Proof.
-- **Reports** — live funnel, Daily KPI 30D, Weekly Review, Cashflow.
-- **Settings** — Firebase setup, full Excel sync, coverage matrix, link ke Data Vault.
-- **Data Vault** — audit-only view untuk melihat isi asli seluruh 18 sheet workbook.
+Contoh bawaan bersifat read-only karena berasal dari data acuan.
 
-## Data coverage
+Pesan kustom disimpan terpisah:
 
-Dataset build ini berisi:
+```text
+messageTemplates/{templateId}
+```
 
-- 18 / 18 Excel sheets mapped
-- 12,259 non-empty workbook cells preserved
-- 2,105 workbook formulas preserved in snapshot metadata
-- 69 qualified leads
-- 129 prospect pool
-- 88 research-queue records
-- 69 social profiles
-- 138 research sources
-- 30 daily KPI rows
-- 345 personalized lead templates (5 × 69 leads)
-- all Sales Toolkit / Mini Audit / Weekly Review / Cashflow / Content / Growth / Partnership / Portfolio sections
+Fitur:
 
-## WhatsApp automation
+- tambah;
+- edit;
+- hapus;
+- salin;
+- kategori;
+- keterangan penggunaan.
 
-Cold outreach tetap human-in-the-loop:
+Pesan kustom tidak ditimpa saat sinkronisasi Excel.
 
-1. Open a lead.
-2. Choose one personalized template.
-3. Edit/personalize if needed.
-4. Click **Buka WhatsApp**; the message is prefilled.
-5. Send it in WhatsApp.
-6. Return and click **Tandai terkirim**.
-7. NextyLeads records the activity, updates stage, and automatically creates D+2/D+5 follow-up tasks.
+## Alur WhatsApp
 
-Direct-send without pressing Send requires the official WhatsApp Business Cloud API and approved templates; it is intentionally not faked in this version.
+1. Buka calon klien.
+2. Pilih dan sesuaikan pesan.
+3. Klik **Buka di WhatsApp**.
+4. Kirim pesan.
+5. Kembali ke NextyLeads.
+6. Klik **Tandai terkirim**.
+7. Sistem mencatat aktivitas dan membuat tindak lanjut berikutnya jika diperlukan.
 
 ## Stack
 
@@ -60,6 +52,7 @@ Direct-send without pressing Send requires the official WhatsApp Business Cloud 
 - TypeScript
 - Firebase Authentication
 - Cloud Firestore
+- Zod
 - date-fns
 - lucide-react
 
@@ -71,13 +64,23 @@ cp .env.example .env.local
 npm run dev
 ```
 
-Fill `.env.local` with the Firebase web-app config, enable Email/Password Authentication, and create the single marketing user.
+Isi `.env.local` dengan konfigurasi Firebase Web App dan aktifkan Email/Password Authentication.
 
-Open **Settings → Sinkronkan Excel** once. The sync is idempotent for research/reference data and preserves live lead progress fields for leads that already exist.
+Pada instalasi baru, buka **Pengaturan → Sinkronkan Excel** satu kali.
 
-## Firestore collections
+## Validasi lokal
 
-Core operational collections:
+Sebelum merge atau deploy:
+
+```bash
+npm run typecheck
+npm run lint
+npm run build
+```
+
+## Koleksi Firestore
+
+Operasional:
 
 - `leads`
 - `leads/{leadId}/activities`
@@ -85,14 +88,20 @@ Core operational collections:
 - `prospects`
 - `socialProfiles`
 - `researchQueue`
-- `dailyKpis`
 - `researchSources`
+- `dailyKpis`
+- `messageTemplates`
 
-Traceability collections:
+Acuan/audit:
 
-- `excelSheets` — one document per Excel sheet containing source range, values, and formulas
-- `meta/excel-seed-v2` — import metadata/counts
+- `referenceData`
+- `excelSheets`
+- `meta`
 
-## Source dataset
+## Dokumentasi
 
-The seed files under `src/data/seed/` were generated from `Nexty marketing - Social Enriched.xlsx` on 2026-09-12. `excel-workbook.json` is the exact workbook snapshot used by Data Vault and the Firestore parity layer.
+- [Panduan pengguna](docs/USER_GUIDE.md)
+- [Arsitektur](docs/ARCHITECTURE.md)
+- [Engineering standard](docs/ENGINEERING_STANDARD.md)
+
+Panduan pengguna juga tersedia langsung di aplikasi melalui menu **Panduan**.

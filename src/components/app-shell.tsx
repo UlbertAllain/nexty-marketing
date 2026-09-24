@@ -4,26 +4,48 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import {
   BarChart3,
-  TrendingUp,
+  BookOpen,
   LayoutDashboard,
   ListTodo,
   LogOut,
   MessageSquareText,
   Search,
   Settings,
+  TrendingUp,
   UsersRound,
 } from "lucide-react";
 import clsx from "clsx";
-import { useAuth } from "@/features/auth/auth-context";
+import { useAuth } from "@/modules/auth/auth-context";
 
-const primary = [
-  { href: "/dashboard", label: "Dashboard", icon: LayoutDashboard },
-  { href: "/leads", label: "Leads", icon: UsersRound },
-  { href: "/tasks", label: "Follow-up", icon: ListTodo },
-  { href: "/research", label: "Research", icon: Search },
-  { href: "/templates", label: "Templates", icon: MessageSquareText },
-  { href: "/growth", label: "Growth", icon: TrendingUp },
-  { href: "/reports", label: "Reports", icon: BarChart3 },
+const navGroups = [
+  {
+    label: "Kerja harian",
+    items: [
+      { href: "/dashboard", label: "Hari ini", icon: LayoutDashboard },
+      { href: "/leads", label: "Daftar calon klien", icon: UsersRound },
+      { href: "/tasks", label: "Tindak lanjut", icon: ListTodo },
+    ],
+  },
+  {
+    label: "Persiapan",
+    items: [
+      { href: "/research", label: "Cari calon klien", icon: Search },
+      { href: "/templates", label: "Contoh pesan", icon: MessageSquareText },
+    ],
+  },
+  {
+    label: "Analisis",
+    items: [
+      { href: "/growth", label: "Rencana pertumbuhan", icon: TrendingUp },
+      { href: "/reports", label: "Laporan", icon: BarChart3 },
+    ],
+  },
+  {
+    label: "Bantuan",
+    items: [
+      { href: "/guide", label: "Panduan", icon: BookOpen },
+    ],
+  },
 ];
 
 export function AppShell({ children }: { children: React.ReactNode }) {
@@ -33,32 +55,39 @@ export function AppShell({ children }: { children: React.ReactNode }) {
   return (
     <div className="app-layout">
       <aside className="sidebar">
-        <div className="sidebar-brand">
+        <Link href="/dashboard" className="sidebar-brand" aria-label="Buka halaman Hari ini">
           <div className="brand-mark brand-mark-small">N</div>
           <div>
             <strong>NextyLeads</strong>
-            <span>Marketing workspace</span>
+            <span>Tim Pemasaran NextyLabs</span>
           </div>
-        </div>
+        </Link>
 
         <nav className="sidebar-nav" aria-label="Navigasi utama">
-          {primary.map((item) => {
-            const Icon = item.icon;
-            const active = pathname === item.href || (item.href !== "/dashboard" && pathname.startsWith(`${item.href}/`));
-            return (
-              <Link key={item.href} href={item.href} className={clsx("nav-link", active && "active")}>
-                <Icon size={18} strokeWidth={1.8} />
-                <span>{item.label}</span>
-              </Link>
-            );
-          })}
+          {navGroups.map((group) => (
+            <div className="nav-group" key={group.label}>
+              <p className="nav-group-label">{group.label}</p>
+              {group.items.map((item) => {
+                const Icon = item.icon;
+                const active = pathname === item.href || (item.href !== "/dashboard" && pathname.startsWith(`${item.href}/`));
+
+                return (
+                  <Link key={item.href} href={item.href} className={clsx("nav-link", active && "active")}>
+                    <Icon size={18} strokeWidth={1.8} />
+                    <span>{item.label}</span>
+                  </Link>
+                );
+              })}
+            </div>
+          ))}
         </nav>
 
         <div className="sidebar-spacer" />
+
         <div className="sidebar-footer">
           <Link href="/settings" className={clsx("nav-link", pathname === "/settings" && "active")}>
             <Settings size={18} strokeWidth={1.8} />
-            <span>Settings</span>
+            <span>Pengaturan</span>
           </Link>
           <button className="nav-link nav-button" onClick={() => logout()}>
             <LogOut size={18} strokeWidth={1.8} />
@@ -66,7 +95,7 @@ export function AppShell({ children }: { children: React.ReactNode }) {
           </button>
           <div className="sidebar-user" title={user?.email ?? ""}>
             <span className="user-dot" />
-            <span>{user?.email ?? "Marketing"}</span>
+            <span>{user?.email ?? "Tim Pemasaran"}</span>
           </div>
         </div>
       </aside>

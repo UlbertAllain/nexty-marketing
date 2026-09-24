@@ -1,10 +1,10 @@
 import type { Metadata } from "next";
 import "./globals.css";
-import { AuthProvider } from "@/features/auth/auth-context";
+import { AuthProvider } from "@/modules/auth/auth-context";
 
 export const metadata: Metadata = {
   title: "NextyLeads",
-  description: "Marketing workspace NextyLabs",
+  description: "Ruang kerja pemasaran NextyLabs",
 };
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {

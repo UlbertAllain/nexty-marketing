@@ -30,9 +30,9 @@ export default function SettingsPage() {
   return (
     <>
       <PageHeader
-        eyebrow="Workspace"
-        title="Settings & data Excel"
-        description="Excel sekarang menjadi sumber awal data. Sistem menyimpan versi terstruktur untuk workflow dan snapshot mentah untuk memastikan tidak ada data yang hilang."
+        eyebrow="Pengaturan"
+        title="Pengaturan sistem & data"
+        description="Bagian ini untuk admin atau maintainer. Tim marketing sehari-hari tidak perlu membuka halaman ini."
       />
       <div className="settings-grid">
         <section className="panel setting-card">

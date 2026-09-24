@@ -18,13 +18,13 @@ export default function DataVaultPage() {
 
   return (
     <>
-      <PageHeader eyebrow="Data sumber" title="Snapshot workbook marketing" description="Halaman ini hanya untuk audit data. Tim marketing sehari-hari sebaiknya memakai menu Hari ini, Daftar lead, dan Follow-up." />
+      <PageHeader eyebrow="Data sumber" title="Salinan data Excel pemasaran" description="Halaman ini hanya untuk audit data. Tim marketing sehari-hari sebaiknya memakai menu Hari ini, Daftar lead, dan Follow-up." />
       <section className="filter-bar data-vault-filter">
-        <label className="field-inline"><span>Sheet</span><select value={sheet.name} onChange={(e) => setSheetName(e.target.value)}>{sheets.map((item) => <option key={item.name} value={item.name}>{item.name}</option>)}</select></label>
-        <span className="result-count">Range {sheet.range} · {sheet.formulas.length} formula</span>
+        <label className="field-inline"><span>Lembar</span><select value={sheet.name} onChange={(e) => setSheetName(e.target.value)}>{sheets.map((item) => <option key={item.name} value={item.name}>{item.name}</option>)}</select></label>
+        <span className="result-count">Range {sheet.range} · {sheet.formulas.length} rumus</span>
       </section>
       <section className="panel reference-page-panel">
-        <div className="panel-heading"><div><p className="eyebrow">{sheet.name}</p><h2>Data asli workbook</h2></div></div>
+        <div className="panel-heading"><div><p className="eyebrow">{sheet.name}</p><h2>Data asli Excel</h2></div></div>
         <RawSheetView data={data} intro="Data di sini adalah snapshot sumber. Untuk pekerjaan sehari-hari, gunakan menu utama agar informasi lebih mudah dibaca." />
       </section>
     </>

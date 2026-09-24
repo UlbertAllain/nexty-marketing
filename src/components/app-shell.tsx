@@ -14,7 +14,7 @@ import {
   UsersRound,
 } from "lucide-react";
 import clsx from "clsx";
-import { useAuth } from "@/features/auth/auth-context";
+import { useAuth } from "@/modules/auth/auth-context";
 
 const navGroups = [
   {

@@ -18,7 +18,7 @@ export default function DataVaultPage() {
 
   return (
     <>
-      <PageHeader eyebrow="Data sumber" title="Salinan data Excel pemasaran" description="Halaman ini hanya untuk audit data. Tim marketing sehari-hari sebaiknya memakai menu Hari ini, Daftar lead, dan Follow-up." />
+      <PageHeader eyebrow="Data sumber" title="Salinan data Excel pemasaran" description="Halaman ini hanya untuk audit data. Tim pemasaran sehari-hari sebaiknya memakai menu Hari ini, Daftar calon klien, dan Tindak lanjut." />
       <section className="filter-bar data-vault-filter">
         <label className="field-inline"><span>Lembar</span><select value={sheet.name} onChange={(e) => setSheetName(e.target.value)}>{sheets.map((item) => <option key={item.name} value={item.name}>{item.name}</option>)}</select></label>
         <span className="result-count">Range {sheet.range} · {sheet.formulas.length} rumus</span>

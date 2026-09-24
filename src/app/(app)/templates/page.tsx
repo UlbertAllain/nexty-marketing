@@ -5,6 +5,7 @@ import { Search } from "lucide-react";
 import { CopyableTemplate } from "@/components/copyable-template";
 import { PageHeader } from "@/components/page-header";
 import { RawSheetView, type RawSheet } from "@/components/raw-sheet-view";
+import { useReferenceData } from "@/modules/reference/reference.hooks";
 import commonTemplates from "@/data/seed/common-templates.json";
 import objections from "@/data/seed/objections.json";
 import discovery from "@/data/seed/discovery.json";
@@ -18,7 +19,17 @@ type Tab = "chat" | "objection" | "discovery" | "conversation" | "offer" | "prop
 export default function TemplatesPage() {
   const [tab, setTab] = useState<Tab>("chat");
   const [query, setQuery] = useState("");
-  const templateList = useMemo(() => commonTemplates.filter((item) => `${item.scenario} ${item.useWhen} ${item.template}`.toLowerCase().includes(query.toLowerCase())), [query]);
+  const { data: liveCommonTemplates } = useReferenceData("common-templates", commonTemplates);
+  const { data: liveObjections } = useReferenceData("objections", objections);
+  const { data: liveDiscovery } = useReferenceData("discovery", discovery);
+  const { data: liveOffers } = useReferenceData("offers", offers);
+  const { data: liveConversationTree } = useReferenceData("conversation-tree", conversationTree);
+  const { data: liveProposalSections } = useReferenceData("proposal-sections", proposalSections);
+  const { data: liveMiniAudit } = useReferenceData("mini-audit", miniAudit);
+  const templateList = useMemo(
+    () => liveCommonTemplates.filter((item) => `${item.scenario} ${item.useWhen} ${item.template}`.toLowerCase().includes(query.toLowerCase())),
+    [liveCommonTemplates, query],
+  );
 
   return (
     <>
@@ -40,7 +51,7 @@ export default function TemplatesPage() {
         </>
       ) : null}
 
-      {tab === "objection" ? <div className="objection-grid">{objections.map((item) => (
+      {tab === "objection" ? <div className="objection-grid">{liveObjections.map((item) => (
         <article className="panel objection-card" key={item.objection}>
           <div className="panel-heading"><div><p className="eyebrow">Prospect bilang</p><h2>“{item.objection}”</h2></div></div>
           <dl className="definition-list">
@@ -53,11 +64,11 @@ export default function TemplatesPage() {
         </article>
       ))}</div> : null}
 
-      {tab === "discovery" ? <div className="panel"><div className="question-list">{discovery.map((item, index) => (
+      {tab === "discovery" ? <div className="panel"><div className="question-list">{liveDiscovery.map((item, index) => (
         <div className="question-row" key={item.area}><span>{String(index + 1).padStart(2, "0")}</span><div><strong>{item.area}</strong><p>{item.question}</p><small>{item.why}</small></div></div>
       ))}</div></div> : null}
 
-      {tab === "conversation" ? <div className="panel"><div className="conversation-list">{conversationTree.map((item, index) => (
+      {tab === "conversation" ? <div className="panel"><div className="conversation-list">{liveConversationTree.map((item, index) => (
         <div className="conversation-row" key={`${item.from}-${item.response}-${index}`}>
           <div><span className="label">Dari</span><strong>{item.from}</strong></div>
           <div><span className="label">Prospect</span><strong>{item.response}</strong><small>{item.interpretation}</small></div>
@@ -66,7 +77,7 @@ export default function TemplatesPage() {
         </div>
       ))}</div></div> : null}
 
-      {tab === "offer" ? <div className="offer-grid">{offers.map((item) => (
+      {tab === "offer" ? <div className="offer-grid">{liveOffers.map((item) => (
         <article className="panel offer-card" key={item.name}>
           <p className="eyebrow">{item.startingRange}</p><h2>{item.name}</h2><p>{item.target}</p>
           <div className="offer-scope">{item.scope}</div>
@@ -74,14 +85,14 @@ export default function TemplatesPage() {
         </article>
       ))}</div> : null}
 
-      {tab === "proposal" ? <div className="proposal-list">{proposalSections.map((item) => (
+      {tab === "proposal" ? <div className="proposal-list">{liveProposalSections.map((item) => (
         <article className="panel proposal-card" key={item.section}>
           <p className="eyebrow">{item.owner}</p><h2>{item.section}</h2><p>{item.purpose}</p>
           <dl className="definition-list"><div><dt>Wajib ada</dt><dd>{item.mustInclude}</dd></div><div><dt>Jangan masukkan</dt><dd>{item.doNotInclude}</dd></div><div><dt>Pertanyaan client</dt><dd>{item.clientQuestion}</dd></div><div><dt>Gate</dt><dd>{item.gate}</dd></div></dl>
         </article>
       ))}</div> : null}
 
-      {tab === "audit" ? <section className="panel reference-page-panel"><RawSheetView data={miniAudit as RawSheet} intro="Checklist Mini Audit dari Excel tetap lengkap, tetapi dibuka hanya saat lead sudah memberi izin atau menunjukkan ketertarikan." /></section> : null}
+      {tab === "audit" ? <section className="panel reference-page-panel"><RawSheetView data={liveMiniAudit as RawSheet} intro="Checklist Mini Audit dari Excel tetap lengkap, tetapi dibuka hanya saat lead sudah memberi izin atau menunjukkan ketertarikan." /></section> : null}
     </>
   );
 }

@@ -72,12 +72,12 @@ export default function TemplatesPage() {
       ))}</div> : null}
 
       {tab === "discovery" ? <div className="panel"><div className="question-list">{liveDiscovery.map((item, index) => (
-        <div className="question-row" key={item.area}><span>{String(index + 1).padStart(2, "0")}</span><div><strong>{item.area}</strong><p>{item.question}</p><small>{item.why}</small></div></div>
+        <div className="question-row" key={item.area}><span>{String(index + 1).padStart(2, "0")}</span><div><strong>{toIndonesianMarketingCopy(item.area)}</strong><p>{toIndonesianMarketingCopy(item.question)}</p><small>{toIndonesianMarketingCopy(item.why)}</small></div></div>
       ))}</div></div> : null}
 
       {tab === "conversation" ? <div className="panel"><div className="conversation-list">{liveConversationTree.map((item, index) => (
         <div className="conversation-row" key={`${item.from}-${item.response}-${index}`}>
-          <div><span className="label">Dari</span><strong>{item.from}</strong></div>
+          <div><span className="label">Dari</span><strong>{toIndonesianMarketingCopy(item.from)}</strong></div>
           <div><span className="label">Calon klien</span><strong>{toIndonesianMarketingCopy(item.response)}</strong><small>{toNaturalIndonesianResearchText(item.interpretation, "Perlu dipahami lebih lanjut.")}</small></div>
           <div><span className="label">Lakukan</span><strong>{toIndonesianMarketingCopy(item.nextAction)}</strong><small>{toIndonesianMarketingCopy(item.asset)} · {toIndonesianMarketingCopy(item.wait)}</small></div>
           <div><span className="label">CRM</span><strong>{toIndonesianMarketingCopy(item.crmStage)}</strong><small>{toIndonesianMarketingCopy(item.exit)}</small></div>
@@ -88,7 +88,7 @@ export default function TemplatesPage() {
         <article className="panel offer-card" key={item.name}>
           <p className="eyebrow">{toIndonesianMarketingCopy(item.startingRange)}</p><h2>{toIndonesianMarketingCopy(item.name)}</h2><p>{toNaturalIndonesianResearchText(item.target, "Untuk bisnis yang membutuhkan solusi ini.")}</p>
           <div className="offer-scope">{toNaturalIndonesianResearchText(item.scope, "Cakupan disesuaikan dengan kebutuhan bisnis.")}</div>
-          <dl className="definition-list compact-def"><div><dt>Pembayaran</dt><dd>{item.payment}</dd></div><div><dt>Cocok untuk</dt><dd>{toNaturalIndonesianResearchText(item.bestUse, "Disesuaikan dengan kebutuhan bisnis.")}</dd></div><div><dt>Catatan penting</dt><dd>{toNaturalIndonesianResearchText(item.guardrail, "Cakupan dan batas pekerjaan harus jelas.")}</dd></div></dl>
+          <dl className="definition-list compact-def"><div><dt>Pembayaran</dt><dd>{toIndonesianMarketingCopy(item.payment)}</dd></div><div><dt>Cocok untuk</dt><dd>{toNaturalIndonesianResearchText(item.bestUse, "Disesuaikan dengan kebutuhan bisnis.")}</dd></div><div><dt>Catatan penting</dt><dd>{toNaturalIndonesianResearchText(item.guardrail, "Cakupan dan batas pekerjaan harus jelas.")}</dd></div></dl>
         </article>
       ))}</div> : null}
 

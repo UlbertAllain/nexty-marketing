@@ -37,31 +37,11 @@ async function saveField(field: "nextAction" | "notes", value: string) {
 }
 
   const scores = [
-    {
-      label: "Potensi kebutuhan",
-      value: lead.demandScore,
-      help: "Seberapa besar kemungkinan bisnis membutuhkan solusi digital atau sistem.",
-    },
-    {
-      label: "Celah digital",
-      value: lead.digitalGapScore,
-      help: "Seberapa jelas ruang perbaikan pada situs web, kanal digital, atau alur pelanggan.",
-    },
-    {
-      label: "Kompleksitas operasional",
-      value: lead.opsComplexityScore,
-      help: "Seberapa kompleks aktivitas bisnis yang berpotensi terbantu oleh sistem.",
-    },
-    {
-      label: "Potensi nilai proyek",
-      value: lead.ticketPotentialScore,
-      help: "Perkiraan skala dan nilai pekerjaan jika kebutuhan benar-benar tervalidasi.",
-    },
-    {
-      label: "Kemudahan keputusan",
-      value: lead.decisionEaseScore,
-      help: "Seberapa mudah tim menjangkau pengambil keputusan dan melanjutkan pembicaraan.",
-    },
+    ["Potensi kebutuhan", lead.demandScore],
+    ["Celah digital", lead.digitalGapScore],
+    ["Kompleksitas operasional", lead.opsComplexityScore],
+    ["Potensi nilai proyek", lead.ticketPotentialScore],
+    ["Kemudahan keputusan", lead.decisionEaseScore],
   ] as const;
 
   return (
@@ -83,26 +63,75 @@ async function saveField(field: "nextAction" | "notes", value: string) {
 
           <MessageComposer lead={lead} />
 
-          <section className="panel">
-            <div className="panel-heading"><div><p className="eyebrow">Ringkasan riset</p><h2>Kenapa bisnis ini layak dihubungi?</h2><p className="panel-description">Bagian ini merangkum hasil riset publik dan hipotesis awal untuk membantu menentukan pendekatan.</p></div><span className="score-large">{lead.opportunityScore}<small>/100</small></span></div>
-            <div className="research-score-note"><strong>Cara membaca skor:</strong> skor 1–5 dan nilai /100 adalah alat prioritas internal, bukan persentase peluang closing. Semakin tinggi nilainya, semakin layak calon klien diperiksa atau dihubungi lebih dulu.</div>
-            <div className="score-factor-grid">{scores.map((score) => <div className="score-factor" key={score.label}><span>{score.label}</span><strong>{score.value}/5</strong><small>{score.help}</small></div>)}</div>
-            <div className="research-grid">
-              <ResearchBlock field="primaryDigitalAsset" label="Aset digital yang terlihat" help="Aset publik yang ditemukan saat riset, misalnya situs web, Google Maps, Instagram, atau kanal pemesanan." text={lead.primaryDigitalAsset} />
-              <ResearchBlock field="hasNow" label="Yang sudah dimiliki" help="Hal yang sudah tersedia atau sudah berjalan pada bisnis berdasarkan informasi publik." text={lead.hasNow} />
-              <ResearchBlock field="verifiedGap" label="Peluang perbaikan" help="Ruang yang berpotensi diperbaiki. Ini bukan berarti bisnis pasti memiliki masalah tersebut." text={lead.verifiedGap} />
-              <ResearchBlock field="publicFriction" label="Masalah yang terlihat" help="Keluhan atau hambatan yang benar-benar terlihat dari sumber publik dan cukup relevan untuk dicatat." text={lead.publicFriction} />
-              <ResearchBlock field="evidenceStatus" label="Status data" help="Menjelaskan seberapa kuat hasil riset dan bagian mana yang masih perlu divalidasi langsung." text={lead.evidenceStatus} />
-              <ResearchBlock field="recommendedOffer" label="Penawaran yang cocok" help="Layanan NextyLabs yang paling relevan sebagai hipotesis awal, bukan penawaran final." text={lead.recommendedOffer} />
-              <ResearchBlock field="solutionConcept" label="Ide solusi" help="Gambaran awal solusi yang mungkin relevan setelah kebutuhan bisnis dikonfirmasi." text={lead.solutionConcept} />
-              <ResearchBlock field="firstContactAngle" label="Sudut pembuka pesan" help="Topik aman untuk membuka percakapan tanpa mengklaim kondisi internal bisnis." text={lead.firstContactAngle} />
+          <section className="panel research-summary-panel">
+            <div className="panel-heading research-summary-heading">
+              <div>
+                <p className="eyebrow">Ringkasan riset</p>
+                <h2>Inti yang perlu diketahui</h2>
+                <p className="panel-description">Baca tiga poin utama ini dulu. Detail lengkap tersedia di bawah kalau dibutuhkan.</p>
+              </div>
+              <div className="research-score">
+                <strong>{lead.opportunityScore}</strong>
+                <span>/100</span>
+                <small>Prioritas internal</small>
+              </div>
             </div>
-            <div className="guardrail"><strong>Catatan penting:</strong> {toIndonesianResearchField("guardrail", lead.guardrail) || DEFAULT_RESEARCH_GUARDRAIL}</div>
-            <div className="source-row">
-              {lead.source1 ? <a href={lead.source1} target="_blank" rel="noreferrer">Sumber 1 <ExternalLink size={13} /></a> : null}
-              {lead.source2 ? <a href={lead.source2} target="_blank" rel="noreferrer">Sumber 2 <ExternalLink size={13} /></a> : null}
-              {lead.social?.verificationSource ? <a href={lead.social.verificationSource} target="_blank" rel="noreferrer">Verifikasi media sosial <ExternalLink size={13} /></a> : null}
+
+            <div className="research-key-grid">
+              <ResearchKeyPoint
+                label="Peluang utama"
+                value={toIndonesianResearchField("verifiedGap", lead.verifiedGap)}
+              />
+              <ResearchKeyPoint
+                label="Penawaran yang cocok"
+                value={toIndonesianResearchField("recommendedOffer", lead.recommendedOffer)}
+              />
+              <ResearchKeyPoint
+                label="Cara membuka percakapan"
+                value={toIndonesianResearchField("firstContactAngle", lead.firstContactAngle)}
+              />
             </div>
+
+            <div className="score-factor-grid compact-score-grid">
+              {scores.map(([label, value]) => (
+                <div className="score-factor compact-score" key={label}>
+                  <span>{label}</span>
+                  <strong>{value}/5</strong>
+                </div>
+              ))}
+            </div>
+
+            <details className="research-details">
+              <summary>
+                <span>Lihat detail riset lengkap</span>
+                <small>Aset, kondisi saat ini, masalah, ide solusi, dan sumber</small>
+              </summary>
+
+              <div className="research-details-content">
+                <div className="research-grid">
+                  <ResearchBlock field="primaryDigitalAsset" label="Aset digital yang terlihat" text={lead.primaryDigitalAsset} />
+                  <ResearchBlock field="hasNow" label="Yang sudah dimiliki" text={lead.hasNow} />
+                  <ResearchBlock field="publicFriction" label="Masalah yang terlihat" text={lead.publicFriction} />
+                  <ResearchBlock field="evidenceStatus" label="Status data" text={lead.evidenceStatus} />
+                  <ResearchBlock field="solutionConcept" label="Ide solusi" text={lead.solutionConcept} />
+                </div>
+
+                <div className="guardrail">
+                  <strong>Catatan penting:</strong>{" "}
+                  {toIndonesianResearchField("guardrail", lead.guardrail) || DEFAULT_RESEARCH_GUARDRAIL}
+                </div>
+
+                <div className="source-row">
+                  {lead.source1 ? <a href={lead.source1} target="_blank" rel="noreferrer">Sumber 1 <ExternalLink size={13} /></a> : null}
+                  {lead.source2 ? <a href={lead.source2} target="_blank" rel="noreferrer">Sumber 2 <ExternalLink size={13} /></a> : null}
+                  {lead.social?.verificationSource ? <a href={lead.social.verificationSource} target="_blank" rel="noreferrer">Verifikasi media sosial <ExternalLink size={13} /></a> : null}
+                </div>
+              </div>
+            </details>
+
+            <p className="research-score-footnote">
+              Nilai /100 adalah skor prioritas internal, bukan persentase peluang menjadi klien.
+            </p>
           </section>
 
           <section className="panel"><div className="panel-heading"><div><p className="eyebrow">Riwayat calon klien</p><h2>Aktivitas terakhir</h2></div></div><ActivityTimeline activities={activities} /></section>
@@ -131,21 +160,33 @@ async function saveField(field: "nextAction" | "notes", value: string) {
   );
 }
 
+function ResearchKeyPoint({
+  label,
+  value,
+}: {
+  label: string;
+  value: string;
+}) {
+  return (
+    <div className="research-key-point">
+      <span>{label}</span>
+      <p>{value}</p>
+    </div>
+  );
+}
+
 function ResearchBlock({
   field,
   label,
-  help,
   text,
 }: {
   field: LeadResearchField;
   label: string;
-  help: string;
   text: string;
 }) {
   return (
     <div className="research-block">
       <span>{label}</span>
-      <small>{help}</small>
       <p>{toIndonesianResearchField(field, text)}</p>
     </div>
   );

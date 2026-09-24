@@ -1,5 +1,7 @@
 "use client";
 
+import Link from "next/link";
+import { ArrowRight } from "lucide-react";
 import { PageHeader } from "@/components/page-header";
 import { TaskList } from "@/components/task-list";
 import { useTasks } from "@/features/tasks/hooks";
@@ -10,12 +12,56 @@ export default function TasksPage() {
 
   return (
     <>
-      <PageHeader eyebrow="Follow-up" title="Jangan ada lead yang hilang karena lupa" description="Task dibuat otomatis setelah chat pertama dan follow-up D+2 ditandai terkirim." />
-      <div className="three-column-panels">
-        <section className="panel"><div className="panel-heading"><div><p className="eyebrow danger">Terlambat</p><h2>{overdue.length} task</h2></div></div><TaskList tasks={overdue} /></section>
-        <section className="panel"><div className="panel-heading"><div><p className="eyebrow">Hari ini</p><h2>{dueToday.length} task</h2></div></div><TaskList tasks={dueToday} /></section>
-        <section className="panel"><div className="panel-heading"><div><p className="eyebrow">Berikutnya</p><h2>{future.length} task</h2></div></div><TaskList tasks={future.slice(0, 20)} /></section>
+      <PageHeader
+        eyebrow="Follow-up"
+        title="Siapa yang harus dihubungi hari ini?"
+        description="Mulai dari yang terlambat. Setelah itu selesaikan jadwal hari ini. Klik nama bisnis untuk membuka detail lead."
+        actions={<Link href="/leads" className="button secondary">Buka daftar lead <ArrowRight size={15} /></Link>}
+      />
+
+      <section className="task-summary-strip">
+        <div><strong>{overdue.length}</strong><span>Terlambat</span></div>
+        <div><strong>{dueToday.length}</strong><span>Hari ini</span></div>
+        <div><strong>{future.length}</strong><span>Berikutnya</span></div>
+      </section>
+
+      <div className="followup-grid">
+        <section className="panel followup-panel urgent-panel">
+          <div className="panel-heading">
+            <div>
+              <p className="eyebrow danger">Prioritas pertama</p>
+              <h2>Follow-up terlambat</h2>
+              <p className="panel-description">Selesaikan bagian ini sebelum mengerjakan outreach baru.</p>
+            </div>
+            <span className="count-pill danger-pill">{overdue.length}</span>
+          </div>
+          <TaskList tasks={overdue} />
+        </section>
+
+        <section className="panel followup-panel">
+          <div className="panel-heading">
+            <div>
+              <p className="eyebrow">Jadwal hari ini</p>
+              <h2>Hubungi hari ini</h2>
+              <p className="panel-description">Jangan lewatkan follow-up yang sudah dijadwalkan.</p>
+            </div>
+            <span className="count-pill">{dueToday.length}</span>
+          </div>
+          <TaskList tasks={dueToday} />
+        </section>
       </div>
+
+      <section className="panel upcoming-panel">
+        <div className="panel-heading">
+          <div>
+            <p className="eyebrow">Tidak perlu dikerjakan sekarang</p>
+            <h2>Jadwal berikutnya</h2>
+            <p className="panel-description">Daftar ini hanya untuk melihat pekerjaan yang akan datang.</p>
+          </div>
+          <span className="count-pill neutral-pill">{future.length}</span>
+        </div>
+        <TaskList tasks={future.slice(0, 30)} />
+      </section>
     </>
   );
 }

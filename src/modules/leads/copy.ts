@@ -16,6 +16,7 @@ const replacements: Array<[RegExp, string]> = [
   [/Laundry Ops Integration Discovery/gi, "Penggalian Integrasi Operasional Laundry"],
   [/Enrollment \/ Scheduling System Discovery/gi, "Penggalian Sistem Pendaftaran & Penjadwalan"],
   [/Lead → Survey → RAB → Project CRM/gi, "Calon Klien → Survei → RAB → CRM Proyek"],
+  [/Promote to Targets \/ verify latest public channels before outreach\./gi, "Periksa kanal publik terbaru, lalu jadikan calon klien jika datanya sudah cukup."],
   [/Re-check latest public channels/gi, "Periksa kembali kanal publik terbaru"],
   [/mention one verified observation/gi, "sebutkan satu hal yang sudah terverifikasi"],
   [/never accuse based on reviews/gi, "jangan menyimpulkan hanya dari ulasan"],
@@ -150,4 +151,17 @@ export function getAuthorityRiskLabel(value?: string | null) {
 
 export function getVerificationLabel(value?: string | null) {
   return toIndonesianMarketingCopy(value) || "Belum diverifikasi";
+}
+
+
+const englishSentenceMarkers =
+  /\b(validate|checked|overlap|focus|approval|acknowledge|proceed|outside|existing|tracking|audit|generic|mature|integration|gaps|current|appears|remains|coordinated|discover|inquiry|quotation|after-sales|storytelling|qualified|workflow|availability|delivery|pickup)\b/i;
+
+export function toNaturalIndonesianResearchText(
+  value?: string | null,
+  fallback = "Perlu ditinjau lebih lanjut dan divalidasi sebelum menghubungi calon klien.",
+) {
+  const localized = toIndonesianMarketingCopy(value);
+  if (!localized) return fallback;
+  return englishSentenceMarkers.test(localized) ? fallback : localized;
 }

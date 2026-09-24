@@ -71,7 +71,7 @@ async function saveField(field: "nextAction" | "notes", value: string) {
               <ResearchBlock label="Status data" text={lead.evidenceStatus} />
               <ResearchBlock label="Penawaran yang cocok" text={lead.recommendedOffer} />
               <ResearchBlock label="Ide solusi" text={lead.solutionConcept} />
-              <ResearchBlock label="Sudut pembuka chat" text={lead.firstContactAngle} />
+              <ResearchBlock label="Sudut pembuka pesan" text={lead.firstContactAngle} />
             </div>
             <div className="guardrail"><strong>Catatan penting:</strong> {toIndonesianMarketingCopy(lead.guardrail) || DEFAULT_RESEARCH_GUARDRAIL}</div>
             <div className="source-row">

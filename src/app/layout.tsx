@@ -4,7 +4,7 @@ import { AuthProvider } from "@/modules/auth/auth-context";
 
 export const metadata: Metadata = {
   title: "NextyLeads",
-  description: "Marketing workspace NextyLabs",
+  description: "Ruang kerja pemasaran NextyLabs",
 };
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {

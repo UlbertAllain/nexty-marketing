@@ -22,14 +22,14 @@ export default function TemplatesPage() {
 
   return (
     <>
-      <PageHeader eyebrow="Sales Toolkit" title="Semua template dan playbook" description="Outreach personal ada di tiap lead. Di sini tersimpan template umum, objection, discovery, conversation flow, offer, mini audit, dan proposal dari Excel." />
+      <PageHeader eyebrow="Template pesan" title="Contoh pesan untuk berbagai situasi" description="Pilih sesuai kebutuhan. Untuk menghubungi bisnis tertentu, buka detail lead agar pesannya bisa disesuaikan dulu." />
       <div className="tool-tabs scroll-tabs">
-        <button className={tab === "chat" ? "active" : ""} onClick={() => setTab("chat")}>Chat</button>
-        <button className={tab === "objection" ? "active" : ""} onClick={() => setTab("objection")}>Objection</button>
-        <button className={tab === "discovery" ? "active" : ""} onClick={() => setTab("discovery")}>Discovery</button>
-        <button className={tab === "conversation" ? "active" : ""} onClick={() => setTab("conversation")}>Conversation flow</button>
+        <button className={tab === "chat" ? "active" : ""} onClick={() => setTab("chat")}>Pesan awal</button>
+        <button className={tab === "objection" ? "active" : ""} onClick={() => setTab("objection")}>Balas keberatan</button>
+        <button className={tab === "discovery" ? "active" : ""} onClick={() => setTab("discovery")}>Pertanyaan discovery</button>
+        <button className={tab === "conversation" ? "active" : ""} onClick={() => setTab("conversation")}>Alur percakapan</button>
         <button className={tab === "offer" ? "active" : ""} onClick={() => setTab("offer")}>Offer & harga</button>
-        <button className={tab === "audit" ? "active" : ""} onClick={() => setTab("audit")}>Mini Audit</button>
+        <button className={tab === "audit" ? "active" : ""} onClick={() => setTab("audit")}>Mini audit</button>
         <button className={tab === "proposal" ? "active" : ""} onClick={() => setTab("proposal")}>Proposal</button>
       </div>
 

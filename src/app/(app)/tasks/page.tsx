@@ -4,7 +4,7 @@ import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 import { PageHeader } from "@/components/page-header";
 import { TaskList } from "@/components/task-list";
-import { useTasks } from "@/features/tasks/hooks";
+import { useTasks } from "@/modules/tasks/hooks";
 
 export default function TasksPage() {
   const { overdue, dueToday, open } = useTasks();

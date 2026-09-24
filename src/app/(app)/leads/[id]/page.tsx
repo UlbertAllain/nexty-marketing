@@ -55,7 +55,7 @@ async function saveField(field: "nextAction" | "notes", value: string) {
           <section className="panel social-overview-panel">
             <div className="panel-heading"><div><p className="eyebrow">Kontak bisnis</p><h2>Situs web & media sosial</h2><p className="panel-description">Gunakan bagian ini untuk cek profil bisnis sebelum mengirim pesan.</p></div><span className={lead.social?.verificationStatus?.startsWith("Verified") ? "verification verified" : "verification needs-check"}>{getVerificationLabel(lead.social?.verificationStatus || lead.socialVerification)}</span></div>
             <SocialLinks social={lead.social} />
-            {lead.social?.notes ? <p className="tiny muted social-note">{lead.social.notes}</p> : null}
+            {lead.social?.notes ? <p className="tiny muted social-note">{toIndonesianMarketingCopy(lead.social.notes)}</p> : null}
           </section>
 
           <MessageComposer lead={lead} />
@@ -88,14 +88,14 @@ async function saveField(field: "nextAction" | "notes", value: string) {
           <section className="panel sticky-panel">
             <p className="eyebrow">Perbarui perkembangan</p>
             <label className="field"><span>Status lead</span><select value={lead.stage} onChange={(e) => changeLeadStage(lead, e.target.value as LeadStage)}>{LEAD_STAGES.map((stage) => <option key={stage} value={stage}>{getStageLabel(stage)}</option>)}</select></label>
-            <label className="field"><span>Langkah berikutnya</span><textarea defaultValue={lead.nextAction} rows={4} onBlur={(e) => saveField("nextAction", e.target.value)} /></label>
+            <label className="field"><span>Langkah berikutnya</span><textarea defaultValue={toIndonesianMarketingCopy(lead.nextAction)} rows={4} onBlur={(e) => saveField("nextAction", e.target.value)} /></label>
             <label className="field"><span>Catatan tim</span><textarea defaultValue={lead.notes ?? ""} rows={5} onBlur={(e) => saveField("notes", e.target.value)} placeholder="Contoh: sudah balas, minta dihubungi Jumat…" /></label>
             <p className="tiny muted">{saving ? "Menyimpan…" : "Tersimpan otomatis setelah selesai mengetik."}</p>
             <hr />
             <div className="detail-list">
               <div><span>Terakhir diriset</span><strong>{lead.researchDate || "—"}</strong></div>
               <div><span>Nilai Google</span><strong>{lead.googleRating ? `${lead.googleRating} · ${lead.reviewCount} ulasan` : "—"}</strong></div>
-              <div><span>Jalur kontak utama</span><strong>{lead.contactRoute || "—"}</strong></div>
+              <div><span>Jalur kontak utama</span><strong>{toIndonesianMarketingCopy(lead.contactRoute) || "—"}</strong></div>
               <div><span>Kontak terakhir</span><strong>{formatDate(lead.lastContactAt)}</strong></div>
               <div><span>Tindak lanjut berikutnya</span><strong>{formatDate(lead.nextFollowUpAt)}</strong></div>
             </div>

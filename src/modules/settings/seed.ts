@@ -9,6 +9,20 @@ import researchQueue from "@/data/seed/research-queue.json";
 import dailyKpis from "@/data/seed/daily-kpi.json";
 import researchSources from "@/data/seed/sources.json";
 import excelWorkbook from "@/data/seed/excel-workbook.json";
+import commonTemplates from "@/data/seed/common-templates.json";
+import objections from "@/data/seed/objections.json";
+import discovery from "@/data/seed/discovery.json";
+import offers from "@/data/seed/offers.json";
+import conversationTree from "@/data/seed/conversation-tree.json";
+import proposalSections from "@/data/seed/proposal-sections.json";
+import miniAudit from "@/data/seed/mini-audit.json";
+import weeklyReview from "@/data/seed/weekly-review.json";
+import cashflow from "@/data/seed/cashflow.json";
+import contentPlan from "@/data/seed/content-plan.json";
+import growthPlan from "@/data/seed/growth-plan.json";
+import partnerships from "@/data/seed/partnerships.json";
+import portfolioProof from "@/data/seed/portfolio-proof.json";
+import excelCoverage from "@/data/seed/excel-coverage.json";
 
 function chunk<T>(items: T[], size = 350) {
   const result: T[][] = [];
@@ -62,6 +76,34 @@ export async function seedWorkspace() {
   await writeCollection("dailyKpis", dailyKpis, (item) => (item as { id: string }).id);
   await writeCollection("researchSources", researchSources, (item) => (item as { id: string }).id);
 
+  const referenceDocuments = {
+    "common-templates": commonTemplates,
+    objections,
+    discovery,
+    offers,
+    "conversation-tree": conversationTree,
+    "proposal-sections": proposalSections,
+    "mini-audit": miniAudit,
+    "weekly-review": weeklyReview,
+    cashflow,
+    "content-plan": contentPlan,
+    "growth-plan": growthPlan,
+    partnerships,
+    "portfolio-proof": portfolioProof,
+    "excel-coverage": excelCoverage,
+    "daily-kpis": dailyKpis,
+  } as const;
+
+  await Promise.all(
+    Object.entries(referenceDocuments).map(([key, payload]) =>
+      setDoc(
+        doc(db, "referenceData", key),
+        { payload, updatedAt: serverTimestamp() },
+        { merge: true },
+      ),
+    ),
+  );
+
   // Exact Excel parity layer: every sheet is also stored as a raw snapshot.
   // This makes the workbook fully traceable even when a cell is not part of a normalized workflow yet.
   const sheets = (excelWorkbook as { sheets: Array<{ name: string; range: string; values: unknown[][]; formulas: unknown[] }> }).sheets;
@@ -91,6 +133,7 @@ export async function seedWorkspace() {
     researchQueue: researchQueue.length,
     dailyKpis: dailyKpis.length,
     researchSources: researchSources.length,
+    referenceDocuments: Object.keys(referenceDocuments).length,
     note: "All 18 Excel sheets are preserved in excelSheets; functional data is additionally normalized into app collections.",
   }, { merge: true });
 

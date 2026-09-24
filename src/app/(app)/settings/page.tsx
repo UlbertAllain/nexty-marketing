@@ -6,11 +6,13 @@ import { CheckCircle2, Database, ShieldCheck } from "lucide-react";
 import { PageHeader } from "@/components/page-header";
 import { Button } from "@/components/ui/button";
 import { seedWorkspace } from "@/modules/settings/seed";
+import { useReferenceData } from "@/modules/reference/reference.hooks";
 import coverage from "@/data/seed/excel-coverage.json";
 
 export default function SettingsPage() {
   const [status, setStatus] = useState("");
   const [busy, setBusy] = useState(false);
+  const { data: liveCoverage } = useReferenceData("excel-coverage", coverage);
 
   async function seed() {
     if (!window.confirm("Sinkronkan seluruh data Excel terbaru ke Firestore? Data riset/template akan diperbarui, tetapi progress CRM lead yang sudah berjalan tidak akan di-reset.")) return;
@@ -25,7 +27,7 @@ export default function SettingsPage() {
     }
   }
 
-  const totalCells = coverage.reduce((sum, item) => sum + item.nonEmptyCells, 0);
+  const totalCells = liveCoverage.reduce((sum, item) => sum + item.nonEmptyCells, 0);
 
   return (
     <>
@@ -57,7 +59,7 @@ export default function SettingsPage() {
           </div>
           <p className="muted small">Total {totalCells.toLocaleString("id-ID")} sel non-kosong dipertahankan dalam layer snapshot. Data yang dipakai sehari-hari juga dinormalisasi agar UI tidak berubah menjadi Excel versi web.</p>
           <div className="coverage-grid">
-            {coverage.map((item) => (
+            {liveCoverage.map((item) => (
               <div className="coverage-row" key={item.sheet}>
                 <div><strong>{item.sheet}</strong><span>{item.range}</span></div>
                 <div><span>Masuk ke</span><strong>{item.destination}</strong></div>

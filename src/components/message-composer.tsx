@@ -2,8 +2,8 @@
 
 import { useMemo, useState } from "react";
 import { CheckCircle2, Clipboard, ExternalLink } from "lucide-react";
-import type { Lead, LeadTemplateKey } from "@/features/leads/types";
-import { recordOutboundMessage } from "@/features/messages/automation";
+import type { Lead, LeadTemplateKey } from "@/modules/leads/types";
+import { recordOutboundMessage } from "@/modules/messages/automation";
 import { buildWhatsAppUrl } from "@/lib/utils/phone";
 import { Button } from "./ui/button";
 

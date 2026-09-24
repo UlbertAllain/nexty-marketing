@@ -14,7 +14,7 @@ export function CopyableTemplate({ title, description, text }: { title: string; 
     <article className="template-card">
       <div className="template-card-head">
         <div><strong>{title}</strong>{description ? <span>{description}</span> : null}</div>
-        <button className="icon-button" onClick={copy} title="Copy template">{copied ? <Check size={16} /> : <Clipboard size={16} />}</button>
+        <button className="icon-button" onClick={copy} title="Salin contoh pesan">{copied ? <Check size={16} /> : <Clipboard size={16} />}</button>
       </div>
       <p>{text}</p>
     </article>

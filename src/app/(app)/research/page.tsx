@@ -58,7 +58,7 @@ export default function ResearchPage() {
       <section className="filter-bar">
         <label className="search-field"><Search size={16} /><input value={query} onChange={(e) => setQuery(e.target.value)} placeholder="Cari bisnis, area, kategori, atau akun…" /></label>
         {tab === "pool" ? <select value={status} onChange={(e) => setStatus(e.target.value)}><option value="needs-research">Masih perlu riset</option><option value="ready">Riset lengkap</option><option value="qualified">Sudah jadi calon klien</option><option value="all">Semua calon klien</option></select> : null}
-        <span className="result-count">{tab === "pool" && loading ? "Memuat…" : tab === "queue" && queueLoading ? "Memuat…" : tab === "social" && socialLoading ? "Memuat…" : tab === "sources" && sourceLoading ? "Memuat…" : `${tab === "pool" ? prospects.length : tab === "queue" ? queue.length : tab === "social" ? socials.length : sourceRows.length} item`}</span>
+        <span className="result-count">{tab === "pool" && loading ? "Memuat…" : tab === "queue" && queueLoading ? "Memuat…" : tab === "social" && socialLoading ? "Memuat…" : tab === "sources" && sourceLoading ? "Memuat…" : `${tab === "pool" ? prospects.length : tab === "queue" ? queue.length : tab === "social" ? socials.length : sourceRows.length} data`}</span>
       </section>
 
       {tab === "pool" ? (

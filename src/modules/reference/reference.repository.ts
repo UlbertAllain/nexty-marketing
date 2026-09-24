@@ -22,7 +22,7 @@ export function subscribeReferenceData<T>(
 export interface ExcelSheetSnapshot {
   name: string;
   range: string;
-  values: unknown[][];
+  values: Array<Array<string | number | boolean | null>>;
   formulas: unknown[];
 }
 
@@ -37,7 +37,7 @@ export function subscribeExcelSheets(
       return {
         name: String(data.name ?? ""),
         range: String(data.sourceRange ?? ""),
-        values: Array.isArray(data.rows) ? data.rows : [],
+        values: Array.isArray(data.rows) ? data.rows as Array<Array<string | number | boolean | null>> : [],
         formulas: Array.isArray(data.formulas) ? data.formulas : [],
       };
     }));

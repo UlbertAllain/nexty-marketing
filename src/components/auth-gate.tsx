@@ -16,7 +16,7 @@ export function AuthGate({ children }: { children: React.ReactNode }) {
     return (
       <main className="center-screen">
         <div className="loading-dot" />
-        <span>Menyiapkan workspace…</span>
+        <span>Menyiapkan ruang kerja…</span>
       </main>
     );
   }

@@ -23,7 +23,7 @@ import growthPlan from "@/data/seed/growth-plan.json";
 import partnerships from "@/data/seed/partnerships.json";
 import portfolioProof from "@/data/seed/portfolio-proof.json";
 import excelCoverage from "@/data/seed/excel-coverage.json";
-import { buildIndonesianLeadTemplates, DEFAULT_PERSONALIZATION_CHECKLIST, DEFAULT_RESEARCH_GUARDRAIL, toIndonesianMarketingCopy, toNaturalIndonesianResearchText } from "@/modules/leads/copy";
+import { buildIndonesianLeadTemplates, DEFAULT_PERSONALIZATION_CHECKLIST, DEFAULT_RESEARCH_GUARDRAIL, toIndonesianMarketingCopy, toIndonesianResearchField, toNaturalIndonesianResearchText } from "@/modules/leads/copy";
 
 function chunk<T>(items: T[], size = 350) {
   const result: T[][] = [];
@@ -56,16 +56,16 @@ export async function seedWorkspace() {
       const localizedLead = {
         ...lead,
         niche: toIndonesianMarketingCopy(lead.niche),
-        primaryDigitalAsset: toNaturalIndonesianResearchText(lead.primaryDigitalAsset, "Aset digital perlu diperiksa kembali."),
-        hasNow: toNaturalIndonesianResearchText(lead.hasNow, "Informasi bisnis perlu diperiksa kembali."),
-        verifiedGap: toNaturalIndonesianResearchText(lead.verifiedGap, "Peluang perbaikan masih perlu divalidasi."),
-        publicFriction: toNaturalIndonesianResearchText(lead.publicFriction, "Belum ada masalah publik yang tervalidasi."),
-        evidenceStatus: toNaturalIndonesianResearchText(lead.evidenceStatus, "Data publik tersedia, tetapi kebutuhan internal masih perlu divalidasi."),
-        recommendedOffer: toIndonesianMarketingCopy(lead.recommendedOffer),
-        solutionConcept: toNaturalIndonesianResearchText(lead.solutionConcept, "Solusi akan ditentukan setelah kebutuhan divalidasi."),
-        firstContactAngle: toNaturalIndonesianResearchText(lead.firstContactAngle, "Mulai dari pertanyaan terbuka tentang proses yang sekarang."),
-        nextAction: toIndonesianMarketingCopy(lead.nextAction),
-        guardrail: DEFAULT_RESEARCH_GUARDRAIL,
+        primaryDigitalAsset: toIndonesianResearchField("primaryDigitalAsset", lead.primaryDigitalAsset),
+        hasNow: toIndonesianResearchField("hasNow", lead.hasNow),
+        verifiedGap: toIndonesianResearchField("verifiedGap", lead.verifiedGap),
+        publicFriction: toIndonesianResearchField("publicFriction", lead.publicFriction),
+        evidenceStatus: toIndonesianResearchField("evidenceStatus", lead.evidenceStatus),
+        recommendedOffer: toIndonesianResearchField("recommendedOffer", lead.recommendedOffer),
+        solutionConcept: toIndonesianResearchField("solutionConcept", lead.solutionConcept),
+        firstContactAngle: toIndonesianResearchField("firstContactAngle", lead.firstContactAngle),
+        nextAction: toIndonesianResearchField("nextAction", lead.nextAction),
+        guardrail: toIndonesianResearchField("guardrail", lead.guardrail) || DEFAULT_RESEARCH_GUARDRAIL,
         personalizationChecklist: DEFAULT_PERSONALIZATION_CHECKLIST,
         templates: buildIndonesianLeadTemplates(lead.business, lead.primaryDigitalAsset),
         social: lead.social ? {

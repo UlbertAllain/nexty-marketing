@@ -166,6 +166,33 @@ Penghapusan bersifat permanen.
 
 Pesan kustom disimpan di Firestore koleksi `messageTemplates` dan tidak ditimpa sinkronisasi Excel.
 
+## Membaca ringkasan riset
+
+Pada detail calon klien terdapat bagian **Ringkasan riset**. Bagian ini bukan data pasti tentang proses internal perusahaan. Isinya adalah ringkasan informasi publik dan hipotesis awal untuk membantu tim menentukan prioritas dan cara membuka percakapan.
+
+### Arti skor
+
+- **Potensi kebutuhan** — seberapa besar kemungkinan bisnis membutuhkan solusi digital atau sistem.
+- **Celah digital** — seberapa jelas ruang perbaikan pada aset digital atau alur pelanggan.
+- **Kompleksitas operasional** — seberapa kompleks aktivitas bisnis yang mungkin terbantu oleh sistem.
+- **Potensi nilai proyek** — perkiraan skala pekerjaan jika kebutuhan benar-benar tervalidasi.
+- **Kemudahan keputusan** — seberapa mudah menjangkau pengambil keputusan dan melanjutkan pembicaraan.
+
+Nilai **/100 adalah skor prioritas internal, bukan persentase peluang closing**.
+
+### Arti kotak ringkasan
+
+- **Aset digital yang terlihat** — aset publik yang ditemukan saat riset.
+- **Yang sudah dimiliki** — aset/proses yang sudah terlihat berjalan.
+- **Peluang perbaikan** — ruang perbaikan yang masih perlu divalidasi.
+- **Masalah yang terlihat** — hambatan atau keluhan yang benar-benar terlihat dari sumber publik.
+- **Status data** — tingkat keyakinan hasil riset dan apa yang belum diketahui.
+- **Penawaran yang cocok** — layanan NextyLabs yang mungkin relevan sebagai hipotesis awal.
+- **Ide solusi** — gambaran awal solusi.
+- **Sudut pembuka pesan** — topik aman untuk membuka percakapan.
+
+Raw source tetap dipertahankan pada Data Sumber untuk audit, sedangkan data operasional yang dibaca tim dinormalisasi ke Bahasa Indonesia.
+
 ## Riset
 
 Gunakan riset untuk memahami bisnis sebelum menghubungi.

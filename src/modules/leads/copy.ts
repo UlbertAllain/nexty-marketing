@@ -222,6 +222,158 @@ const replacements: Array<[RegExp, string]> = [
   [/\bsystem\b/gi, "sistem"],
 ];
 
+const researchExactTranslations: Record<string, string> = {
+  "Strong local rating/review count for an architecture/interior/contractor business.": "Rating lokal dan jumlah ulasan cukup kuat untuk bisnis arsitektur, interior, atau kontraktor.",
+  "High-ticket project category benefits from project case studies, inquiry qualification and project pipeline; owned site did not surface in the reviewed search.": "Kategori proyek bernilai tinggi akan terbantu dengan studi kasus proyek, penyaringan calon klien, dan alur proyek yang lebih jelas. Situs web milik sendiri belum terlihat pada pencarian yang ditinjau.",
+  "No verified customer complaint.": "Belum ditemukan keluhan pelanggan yang terverifikasi.",
+  "Deep public research completed; internal workflow/stack still requires discovery.": "Riset publik sudah dilakukan cukup mendalam; alur kerja dan sistem internal masih perlu divalidasi langsung.",
+  "Architecture Portfolio + Lead Qualification": "Portofolio Arsitektur + Penyaringan Calon Klien",
+  "Project case studies, service/area pages, project budget/type qualifier, consultation flow, optional project CRM discovery.": "Studi kasus proyek, halaman layanan dan area, penyaring anggaran serta jenis proyek, alur konsultasi, dan opsi CRM proyek.",
+  "Sell project storytelling and qualified inquiry, then discover internal project tracking.": "Mulai dari cara mereka menampilkan cerita proyek dan menyaring pertanyaan calon klien, lalu gali bagaimana proyek dipantau secara internal.",
+  "Public phone/WhatsApp/website/Instagram as verified before outreach": "Nomor telepon, WhatsApp, situs web, atau Instagram publik yang sudah diverifikasi sebelum menghubungi.",
+  "Re-check current website/IG → identify decision-maker → send personalized first contact": "Periksa ulang situs web dan Instagram terbaru → identifikasi pengambil keputusan → kirim pesan pertama yang dipersonalisasi.",
+  "Do not present operational hypotheses as facts. Acknowledge strong existing systems where evidence shows them.": "Jangan menyampaikan dugaan operasional sebagai fakta. Akui sistem yang sudah berjalan dengan baik jika bukti menunjukkan hal tersebut.",
+  "Verified class-volume signal; system gap is hypothesis": "Volume kelas terverifikasi; kebutuhan sistem masih berupa hipotesis yang perlu divalidasi.",
+  "Operational-fit hypothesis backed by business model": "Kecocokan operasional masih berupa hipotesis berdasarkan model bisnis.",
+  "Website weakness directly verified": "Kelemahan situs web terverifikasi langsung.",
+  "Verified demand; digital gap inferred from public search": "Potensi kebutuhan terverifikasi; celah digital disimpulkan dari pencarian publik.",
+  "Mixed evidence; validate existing booking stack": "Bukti masih beragam; sistem pemesanan yang sudah ada perlu divalidasi.",
+  "Business-model fit; system gap hypothesis": "Model bisnis terlihat cocok; kebutuhan sistem masih berupa hipotesis.",
+  "Verified booking-channel structure": "Struktur kanal pemesanan sudah terverifikasi.",
+  "Verified channel/location structure": "Struktur kanal dan lokasi sudah terverifikasi.",
+  "Verified public review; avoid overgeneralizing": "Ulasan publik sudah terverifikasi; hindari membuat generalisasi berlebihan.",
+  "Verified business presence; operational gap hypothesis": "Keberadaan bisnis terverifikasi; celah operasional masih berupa hipotesis.",
+  "Verified service structure; gap hypothesis": "Struktur layanan terverifikasi; celah kebutuhan masih berupa hipotesis.",
+};
+
+export type LeadResearchField =
+  | "primaryDigitalAsset"
+  | "hasNow"
+  | "verifiedGap"
+  | "publicFriction"
+  | "evidenceStatus"
+  | "recommendedOffer"
+  | "solutionConcept"
+  | "firstContactAngle"
+  | "contactRoute"
+  | "guardrail"
+  | "nextAction";
+
+const researchFieldFallbacks: Record<LeadResearchField, string> = {
+  primaryDigitalAsset: "Aset digital publik sudah terdeteksi. Periksa kembali detail terbaru sebelum menghubungi.",
+  hasNow: "Bisnis sudah memiliki aset atau proses yang berjalan; detailnya perlu dikonfirmasi saat percakapan.",
+  verifiedGap: "Ada peluang perbaikan dari informasi publik, tetapi kebutuhan internal tetap perlu divalidasi.",
+  publicFriction: "Belum ditemukan masalah publik yang cukup kuat untuk dijadikan dasar pendekatan.",
+  evidenceStatus: "Riset publik sudah dilakukan; kondisi internal masih perlu divalidasi langsung.",
+  recommendedOffer: "Penawaran akan disesuaikan setelah kebutuhan calon klien divalidasi.",
+  solutionConcept: "Konsep solusi awal akan disesuaikan setelah kebutuhan dan proses internal dipahami.",
+  firstContactAngle: "Mulai dari observasi publik yang relevan, lalu ajukan pertanyaan terbuka tentang proses yang berjalan.",
+  contactRoute: "Gunakan kanal kontak publik yang sudah diverifikasi sebelum menghubungi.",
+  guardrail: "Jangan menyimpulkan proses internal hanya dari informasi publik. Validasi langsung saat calon klien merespons.",
+  nextAction: "Periksa informasi terbaru lalu tentukan langkah berikutnya sesuai kondisi calon klien.",
+};
+
+const researchPhraseReplacements: Array<[RegExp, string]> = [
+  [/strong local rating/gi, "rating lokal yang kuat"],
+  [/review count/gi, "jumlah ulasan"],
+  [/high-ticket project/gi, "proyek bernilai tinggi"],
+  [/project case studies/gi, "studi kasus proyek"],
+  [/case studies/gi, "studi kasus"],
+  [/inquiry qualification/gi, "penyaringan calon klien"],
+  [/qualified inquiry/gi, "pertanyaan calon klien yang sudah tersaring"],
+  [/project pipeline/gi, "alur proyek"],
+  [/project tracking/gi, "pemantauan proyek"],
+  [/owned site/gi, "situs web milik sendiri"],
+  [/owned website/gi, "situs web milik sendiri"],
+  [/reviewed search/gi, "pencarian yang ditinjau"],
+  [/public research completed/gi, "riset publik sudah selesai"],
+  [/deep public research completed/gi, "riset publik sudah dilakukan cukup mendalam"],
+  [/internal workflow/gi, "alur kerja internal"],
+  [/internal project/gi, "proyek internal"],
+  [/internal process/gi, "proses internal"],
+  [/still requires discovery/gi, "masih perlu divalidasi langsung"],
+  [/requires discovery/gi, "perlu divalidasi langsung"],
+  [/service\/area pages/gi, "halaman layanan dan area"],
+  [/project budget\/type qualifier/gi, "penyaring anggaran dan jenis proyek"],
+  [/consultation flow/gi, "alur konsultasi"],
+  [/optional project CRM discovery/gi, "opsi CRM proyek"],
+  [/project storytelling/gi, "cara menampilkan cerita proyek"],
+  [/decision-maker/gi, "pengambil keputusan"],
+  [/personalized first contact/gi, "pesan pertama yang dipersonalisasi"],
+  [/operational hypotheses/gi, "dugaan operasional"],
+  [/as facts/gi, "sebagai fakta"],
+  [/strong existing systems/gi, "sistem yang sudah berjalan dengan baik"],
+  [/where evidence shows them/gi, "jika bukti menunjukkan hal tersebut"],
+  [/customer complaint/gi, "keluhan pelanggan"],
+  [/customer complaints/gi, "keluhan pelanggan"],
+  [/no verified/gi, "belum ditemukan yang terverifikasi"],
+  [/system gap is hypothesis/gi, "kebutuhan sistem masih berupa hipotesis"],
+  [/gap hypothesis/gi, "celah kebutuhan masih berupa hipotesis"],
+  [/business model/gi, "model bisnis"],
+  [/booking channel/gi, "kanal pemesanan"],
+  [/booking stack/gi, "sistem pemesanan"],
+  [/public search/gi, "pencarian publik"],
+  [/public review/gi, "ulasan publik"],
+  [/digital gap/gi, "celah digital"],
+  [/operational gap/gi, "celah operasional"],
+  [/service structure/gi, "struktur layanan"],
+  [/business presence/gi, "keberadaan bisnis"],
+  [/channel structure/gi, "struktur kanal"],
+  [/location structure/gi, "struktur lokasi"],
+  [/public presence/gi, "kehadiran publik"],
+  [/re-check/gi, "periksa ulang"],
+  [/current website/gi, "situs web terbaru"],
+  [/current/gi, "saat ini"],
+  [/identify/gi, "identifikasi"],
+  [/send/gi, "kirim"],
+  [/first contact/gi, "pesan pertama"],
+  [/before outreach/gi, "sebelum menghubungi"],
+  [/outreach/gi, "pendekatan"],
+  [/public phone/gi, "nomor telepon publik"],
+  [/website/gi, "situs web"],
+  [/workflow/gi, "alur kerja"],
+  [/research/gi, "riset"],
+  [/evidence/gi, "bukti"],
+  [/verified/gi, "terverifikasi"],
+  [/hypothesis/gi, "hipotesis"],
+  [/inquiry/gi, "pertanyaan calon klien"],
+  [/project/gi, "proyek"],
+  [/tracking/gi, "pemantauan"],
+  [/review/gi, "ulasan"],
+  [/strong/gi, "kuat"],
+  [/local/gi, "lokal"],
+  [/business/gi, "bisnis"],
+  [/internal/gi, "internal"],
+  [/public/gi, "publik"],
+  [/system/gi, "sistem"],
+];
+
+const remainingEnglishResearchMarkers =
+  /\b(an|the|for|with|from|where|shows|show|still|requires|required|completed|benefits|surface|surfaced|reviewed|sell|then|discover|present|acknowledge|existing|stack|facts|count|rating|complaint|inferred|mixed|fit|backed|signal|channel|service|demand|digital|operational|booking|member|membership|renewal|attendance|waitlist|availability|quote|pickup|delivery|order|payment|vendor|client|portfolio|corporate|branch|production|manual|online|official|listing|aftercare|warranty)\b/i;
+
+export function toIndonesianResearchField(
+  field: LeadResearchField,
+  value?: string | null,
+) {
+  if (!value) return researchFieldFallbacks[field];
+
+  const exact = researchExactTranslations[value.trim()];
+  if (exact) return exact;
+
+  const phraseLocalized = researchPhraseReplacements.reduce(
+    (result, [pattern, replacement]) => result.replace(pattern, replacement),
+    value,
+  );
+
+  const localized = toIndonesianMarketingCopy(phraseLocalized)
+    .replace(/\s+/g, " ")
+    .trim();
+
+  return remainingEnglishResearchMarkers.test(localized)
+    ? researchFieldFallbacks[field]
+    : localized || researchFieldFallbacks[field];
+}
+
 export function toIndonesianMarketingCopy(value?: string | null) {
   if (!value) return "";
 
@@ -235,7 +387,7 @@ export function buildIndonesianLeadTemplates(
   business: string,
   publicObservation?: string | null,
 ): LeadTemplates {
-  const observation = toNaturalIndonesianResearchText(publicObservation, "").replace(/[.]+$/, "");
+  const observation = publicObservation ? toIndonesianResearchField("primaryDigitalAsset", publicObservation).replace(/[.]+$/, "") : "";
   const observationSentence = observation
     ? ` Dari informasi publik yang saya lihat, ${observation}.`
     : "";

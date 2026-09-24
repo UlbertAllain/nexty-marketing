@@ -21,21 +21,21 @@ const navGroups = [
     label: "Kerja harian",
     items: [
       { href: "/dashboard", label: "Hari ini", icon: LayoutDashboard },
-      { href: "/leads", label: "Daftar lead", icon: UsersRound },
-      { href: "/tasks", label: "Follow-up", icon: ListTodo },
+      { href: "/leads", label: "Daftar calon klien", icon: UsersRound },
+      { href: "/tasks", label: "Tindak lanjut", icon: ListTodo },
     ],
   },
   {
     label: "Persiapan",
     items: [
-      { href: "/research", label: "Cari prospect", icon: Search },
-      { href: "/templates", label: "Template pesan", icon: MessageSquareText },
+      { href: "/research", label: "Cari calon klien", icon: Search },
+      { href: "/templates", label: "Contoh pesan", icon: MessageSquareText },
     ],
   },
   {
     label: "Analisis",
     items: [
-      { href: "/growth", label: "Growth plan", icon: TrendingUp },
+      { href: "/growth", label: "Rencana pertumbuhan", icon: TrendingUp },
       { href: "/reports", label: "Laporan", icon: BarChart3 },
     ],
   },
@@ -88,7 +88,7 @@ export function AppShell({ children }: { children: React.ReactNode }) {
           </button>
           <div className="sidebar-user" title={user?.email ?? ""}>
             <span className="user-dot" />
-            <span>{user?.email ?? "Tim Marketing"}</span>
+            <span>{user?.email ?? "Tim Pemasaran"}</span>
           </div>
         </div>
       </aside>

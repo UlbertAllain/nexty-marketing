@@ -5,8 +5,8 @@ import { useMemo, useState } from "react";
 import { Plus, Search } from "lucide-react";
 import { LeadTable } from "@/components/lead-table";
 import { PageHeader } from "@/components/page-header";
-import { LEAD_STAGES } from "@/features/leads/types";
-import { useLeads } from "@/features/leads/hooks";
+import { LEAD_STAGES } from "@/modules/leads/types";
+import { useLeads } from "@/modules/leads/hooks";
 
 export default function LeadsPage() {
   const { items, loading } = useLeads();

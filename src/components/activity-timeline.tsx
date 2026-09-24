@@ -1,4 +1,4 @@
-import type { Activity } from "@/features/leads/types";
+import type { Activity } from "@/modules/leads/types";
 import { formatDateTime } from "@/lib/utils/date";
 
 export function ActivityTimeline({ activities }: { activities: Activity[] }) {

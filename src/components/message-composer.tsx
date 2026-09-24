@@ -48,8 +48,8 @@ export function MessageComposer({ lead }: { lead: Lead }) {
     <section className="panel composer-panel">
       <div className="panel-heading">
         <div>
-          <p className="eyebrow">Outreach</p>
-          <h2>Kirim chat tanpa cari template lagi</h2>
+          <p className="eyebrow">Kirim pesan</p>
+          <h2>Siapkan pesan untuk lead ini</h2>
         </div>
         <span className="channel-pill">WhatsApp</span>
       </div>
@@ -63,18 +63,18 @@ export function MessageComposer({ lead }: { lead: Lead }) {
       </div>
 
       <textarea className="message-editor" value={message} onChange={(e) => setMessage(e.target.value)} rows={9} />
-      <p className="composer-note"><strong>Sebelum kirim:</strong> {lead.personalizationChecklist || "cek kembali fakta publik dan personalisasi satu observasi."}</p>
+      <p className="composer-note"><strong>Cek sebelum kirim:</strong> {lead.personalizationChecklist || "cek kembali fakta publik dan personalisasi satu observasi."}</p>
 
       <div className="composer-actions">
-        <button className="button secondary" onClick={copy}><Clipboard size={16} />{copied ? "Tersalin" : "Copy"}</button>
+        <button className="button secondary" onClick={copy}><Clipboard size={16} />{copied ? "Tersalin" : "Salin pesan"}</button>
         <a className={url ? "button secondary" : "button secondary disabled"} href={url || undefined} target="_blank" rel="noreferrer">
-          <ExternalLink size={16} />Buka WhatsApp
+          <ExternalLink size={16} />Buka di WhatsApp
         </a>
         <Button onClick={markSent} disabled={busy || !message.trim()}>
           <CheckCircle2 size={16} />{busy ? "Menyimpan…" : "Tandai terkirim"}
         </Button>
       </div>
-      <p className="tiny muted">Membuka WhatsApp tidak otomatis dianggap terkirim. Klik “Tandai terkirim” setelah pesan benar-benar dikirim; sistem lalu membuat follow-up berikutnya otomatis.</p>
+      <p className="tiny muted">Setelah pesan benar-benar terkirim di WhatsApp, kembali ke sini lalu klik “Tandai terkirim”. Sistem akan membuat jadwal follow-up berikutnya otomatis.</p>
     </section>
   );
 }

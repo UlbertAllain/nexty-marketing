@@ -81,7 +81,7 @@ export async function createLead(input: Partial<Lead> & Pick<Lead, "business" | 
     firstContactAngle: "",
     contactRoute: "WhatsApp",
     stage: "New",
-    nextAction: "Riset singkat lalu kirim chat pertama",
+    nextAction: "Riset singkat lalu kirim pesan pertama",
     researchDate: new Date().toISOString().slice(0, 10),
     source1: "",
     source2: "",

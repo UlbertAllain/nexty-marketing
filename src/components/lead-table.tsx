@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
-import type { Lead } from "@/features/leads/types";
+import type { Lead } from "@/modules/leads/types";
 import { PriorityBadge, StatusBadge } from "./status-badge";
 import { ScoreBar } from "./score-bar";
 import { EmptyState } from "./empty-state";

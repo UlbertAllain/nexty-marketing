@@ -3,13 +3,14 @@
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 import type { Lead } from "@/modules/leads/types";
+import { toIndonesianMarketingCopy } from "@/modules/leads/copy";
 import { PriorityBadge, StatusBadge } from "./status-badge";
 import { ScoreBar } from "./score-bar";
 import { EmptyState } from "./empty-state";
 
 export function LeadTable({ leads }: { leads: Lead[] }) {
   if (!leads.length) {
-    return <EmptyState title="Lead tidak ditemukan" text="Coba ubah pencarian/filter atau tambahkan lead baru." />;
+    return <EmptyState title="Calon klien tidak ditemukan" text="Coba ubah pencarian atau penyaring, atau tambahkan calon klien baru." />;
   }
 
   return (
@@ -20,7 +21,7 @@ export function LeadTable({ leads }: { leads: Lead[] }) {
             <th>Bisnis</th>
             <th>Prioritas</th>
             <th>Status</th>
-            <th>Offer yang cocok</th>
+            <th>Penawaran yang cocok</th>
             <th>Langkah berikutnya</th>
             <th aria-label="Aksi" />
           </tr>
@@ -30,7 +31,7 @@ export function LeadTable({ leads }: { leads: Lead[] }) {
             <tr key={lead.id}>
               <td>
                 <Link className="table-primary" href={`/leads/${lead.id}`}>{lead.business}</Link>
-                <span className="table-secondary">{lead.niche} · {lead.area || "Area belum diisi"}</span>
+                <span className="table-secondary">{toIndonesianMarketingCopy(lead.niche)} · {lead.area || "Area belum diisi"}</span>
               </td>
               <td>
                 <div className="priority-cell">
@@ -39,8 +40,8 @@ export function LeadTable({ leads }: { leads: Lead[] }) {
                 </div>
               </td>
               <td><StatusBadge value={lead.stage} /></td>
-              <td className="table-wrap">{lead.recommendedOffer || "Belum ditentukan"}</td>
-              <td className="table-wrap next-action-cell">{lead.nextAction || "Belum ada langkah berikutnya"}</td>
+              <td className="table-wrap">{toIndonesianMarketingCopy(lead.recommendedOffer) || "Belum ditentukan"}</td>
+              <td className="table-wrap next-action-cell">{toIndonesianMarketingCopy(lead.nextAction) || "Belum ada langkah berikutnya"}</td>
               <td>
                 <Link className="row-action" href={`/leads/${lead.id}`} aria-label={`Buka detail ${lead.business}`}>
                   <ArrowRight size={16} />

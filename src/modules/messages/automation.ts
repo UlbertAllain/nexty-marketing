@@ -9,7 +9,7 @@ import {
   writeBatch,
 } from "firebase/firestore";
 import { db } from "@/lib/firebase/client";
-import type { Lead, LeadTemplateKey } from "@/features/leads/types";
+import type { Lead, LeadTemplateKey } from "@/modules/leads/types";
 
 const nextRule: Partial<Record<LeadTemplateKey, { key: LeadTemplateKey; days: number; type: "follow_up_d2" | "follow_up_d5"; title: string }>> = {
   FIRST_OUTREACH: { key: "FOLLOW_UP_D2", days: 2, type: "follow_up_d2", title: "Follow-up D+2" },

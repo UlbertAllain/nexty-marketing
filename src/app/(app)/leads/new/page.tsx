@@ -4,7 +4,7 @@ import { FormEvent, useState } from "react";
 import { useRouter } from "next/navigation";
 import { PageHeader } from "@/components/page-header";
 import { Button } from "@/components/ui/button";
-import { createLead } from "@/features/leads/repository";
+import { createLead } from "@/modules/leads/repository";
 
 export default function NewLeadPage() {
   const router = useRouter();

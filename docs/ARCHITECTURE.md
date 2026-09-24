@@ -51,6 +51,14 @@ The app follows the **workflow**, not the workbook tab layout. Excel remains the
 `researchSources/{id}`
 - 138 source/evidence rows
 
+`researchAnalyses/{analysisId}`
+- AI-assisted research snapshot for one lead
+- evidence-backed findings and business gaps
+- deterministic opportunity scoring
+- matched NextyLabs offers
+- outreach strategy and draft message
+- model + research timestamp for traceability
+
 `dailyKpis/{id}`
 - 30-day KPI plan imported from Excel
 
@@ -81,6 +89,39 @@ This layer guarantees that no workbook cell is silently discarded just because t
 - Growth combines Content Plan + Growth Plan + Partnerships/Reactivation/Referral + Portfolio Proof.
 - Reports combines live funnel + Daily KPI + Weekly Review + Cashflow.
 - Data Vault exposes the raw workbook snapshot for audit only.
+
+## AI Research Intelligence
+
+Request flow:
+
+```text
+Lead Detail / Client
+↓
+POST /api/research/analyze
+↓
+Firebase ID token verification
+↓
+Load lead from Firestore
+↓
+OpenAI Responses API + web search
+↓
+Zod validation + source verification
+↓
+NextyLabs offer matching
+↓
+Deterministic scoring
+↓
+Save researchAnalyses/{analysisId}
+```
+
+Rules:
+- OpenAI credentials are server-only and never exposed through `NEXT_PUBLIC_*` variables.
+- The model researches and extracts evidence; it does not determine the final opportunity score.
+- `serviceFit` comes from matching verified gaps against the NextyLabs service catalog.
+- `evidenceQuality` is calculated from evidence confidence, coverage, and source diversity.
+- Web sources returned by the model are accepted only when they also appear in the web-search sources returned by the provider.
+- Missing public evidence must be described as "not found in checked public sources", not as proof that a system or process does not exist.
+- Research output is persisted separately from the operational lead document so historical research remains auditable.
 
 ## Chat automation
 
@@ -131,6 +172,7 @@ src/
 ├── modules/                # domain + data access
 │   ├── auth/
 │   ├── leads/
+│   ├── intelligence/
 │   ├── messages/
 │   ├── research/
 │   ├── reference/
@@ -140,6 +182,7 @@ src/
 ├── components/             # reusable application UI
 │   └── ui/
 ├── lib/
+│   ├── ai/
 │   ├── firebase/
 │   └── utils/
 └── data/
@@ -164,6 +207,7 @@ Operational data is live from Firestore:
 - research queue
 - social profiles
 - research sources
+- AI research analyses
 - custom message templates
 
 Reference/workbook content is synchronized into Firestore `referenceData` / `excelSheets` and read live by the UI after synchronization. Bundled JSON is retained only as the bootstrap fallback for a fresh workspace.

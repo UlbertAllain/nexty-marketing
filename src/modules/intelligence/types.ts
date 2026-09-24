@@ -1,25 +1,31 @@
-export type ResearchConfidence = "low" | "medium" | "high";
-export type EvidenceType =
-  | "website"
-  | "social"
-  | "google_business"
-  | "directory"
-  | "news"
-  | "other";
+export const RESEARCH_CONFIDENCES = ["low", "medium", "high"] as const;
+export type ResearchConfidence = typeof RESEARCH_CONFIDENCES[number];
 
-export type FindingCategory =
-  | "digital_presence"
-  | "conversion"
-  | "sales_process"
-  | "customer_experience"
-  | "operations"
-  | "lead_management"
-  | "automation"
-  | "commerce"
-  | "booking"
-  | "catalog"
-  | "crm"
-  | "internal_system";
+export const EVIDENCE_TYPES = [
+  "website",
+  "social",
+  "google_business",
+  "directory",
+  "news",
+  "other",
+] as const;
+export type EvidenceType = typeof EVIDENCE_TYPES[number];
+
+export const FINDING_CATEGORIES = [
+  "digital_presence",
+  "conversion",
+  "sales_process",
+  "customer_experience",
+  "operations",
+  "lead_management",
+  "automation",
+  "commerce",
+  "booking",
+  "catalog",
+  "crm",
+  "internal_system",
+] as const;
+export type FindingCategory = typeof FINDING_CATEGORIES[number];
 
 export interface ResearchEvidence {
   id: string;
@@ -76,6 +82,13 @@ export interface OpportunityScoringInput {
   evidenceQuality: number;
 }
 
+export interface ResearchScoringSignals {
+  digitalGap: number;
+  businessNeed: number;
+  ticketPotential: number;
+  contactability: number;
+}
+
 export interface OpportunityScoring extends OpportunityScoringInput {
   opportunityScore: number;
 }
@@ -111,7 +124,7 @@ export interface ResearchAnalysisDraft {
   assets: ObservedAsset[];
   findings: ResearchFinding[];
   gaps: BusinessGap[];
-  scoringInput: OpportunityScoringInput;
+  scoringSignals: ResearchScoringSignals;
   outreach: OutreachStrategy;
   sources: ResearchEvidence[];
   model?: string;

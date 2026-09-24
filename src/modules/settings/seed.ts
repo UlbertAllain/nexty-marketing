@@ -23,7 +23,7 @@ import growthPlan from "@/data/seed/growth-plan.json";
 import partnerships from "@/data/seed/partnerships.json";
 import portfolioProof from "@/data/seed/portfolio-proof.json";
 import excelCoverage from "@/data/seed/excel-coverage.json";
-import { buildIndonesianLeadTemplates, DEFAULT_PERSONALIZATION_CHECKLIST, DEFAULT_RESEARCH_GUARDRAIL, getAuthorityRiskLabel, getResearchLevelLabel, getVerificationLabel, toIndonesianMarketingCopy, toNaturalIndonesianResearchText } from "@/modules/leads/copy";
+import { buildIndonesianLeadTemplates, DEFAULT_PERSONALIZATION_CHECKLIST, DEFAULT_RESEARCH_GUARDRAIL, toIndonesianMarketingCopy, toNaturalIndonesianResearchText } from "@/modules/leads/copy";
 
 function chunk<T>(items: T[], size = 350) {
   const result: T[][] = [];
@@ -68,11 +68,9 @@ export async function seedWorkspace() {
         guardrail: DEFAULT_RESEARCH_GUARDRAIL,
         personalizationChecklist: DEFAULT_PERSONALIZATION_CHECKLIST,
         templates: buildIndonesianLeadTemplates(lead.business),
-        socialVerification: getVerificationLabel(lead.socialVerification),
         social: lead.social ? {
           ...lead.social,
           niche: toIndonesianMarketingCopy(lead.social.niche),
-          verificationStatus: getVerificationLabel(lead.social.verificationStatus),
           notes: toNaturalIndonesianResearchText(lead.social.notes, ""),
         } : lead.social,
       };
@@ -98,26 +96,21 @@ export async function seedWorkspace() {
     ...item,
     niche: toIndonesianMarketingCopy(item.niche),
     publicAssets: toNaturalIndonesianResearchText(item.publicAssets, "Informasi publik perlu diperiksa kembali."),
-    researchLevel: getResearchLevelLabel(item.researchLevel),
     potentialGap: toNaturalIndonesianResearchText(item.potentialGap, "Peluang perbaikan masih perlu divalidasi."),
     publicFriction: toNaturalIndonesianResearchText(item.publicFriction, "Belum ada masalah publik yang tervalidasi."),
     recommendedOffer: toIndonesianMarketingCopy(item.recommendedOffer),
-    authorityRisk: getAuthorityRiskLabel(item.authorityRisk),
     notes: toNaturalIndonesianResearchText(item.notes, "Periksa kembali informasi publik terbaru sebelum menghubungi."),
   }));
 
   const localizedSocialProfiles = socialProfiles.map((item) => ({
     ...item,
     niche: toIndonesianMarketingCopy(item.niche),
-    verificationStatus: getVerificationLabel(item.verificationStatus),
     notes: toNaturalIndonesianResearchText(item.notes, ""),
   }));
 
   const localizedResearchQueue = researchQueue.map((item) => ({
     ...item,
     niche: toIndonesianMarketingCopy(item.niche),
-    researchLevel: getResearchLevelLabel(item.researchLevel),
-    authorityRisk: getAuthorityRiskLabel(item.authorityRisk),
     whyInteresting: toNaturalIndonesianResearchText(item.whyInteresting),
     nextResearch: toNaturalIndonesianResearchText(item.nextResearch, "Periksa kembali kanal publik terbaru sebelum menghubungi."),
     recommendedOffer: toIndonesianMarketingCopy(item.recommendedOffer),

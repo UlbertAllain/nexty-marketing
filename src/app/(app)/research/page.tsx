@@ -8,12 +8,12 @@ import { PageHeader } from "@/components/page-header";
 import { EmptyState } from "@/components/empty-state";
 import { ScoreBar } from "@/components/score-bar";
 import { SocialLinks } from "@/components/social-links";
-import { useProspects } from "@/features/leads/hooks";
-import { promoteProspect } from "@/features/leads/repository";
+import { useProspects } from "@/modules/leads/hooks";
+import { promoteProspect } from "@/modules/leads/repository";
 import researchQueue from "@/data/seed/research-queue.json";
 import socialProfiles from "@/data/seed/social-media.json";
 import sources from "@/data/seed/sources.json";
-import type { SocialProfile } from "@/features/leads/types";
+import type { SocialProfile } from "@/modules/leads/types";
 
 type Tab = "pool" | "queue" | "social" | "sources";
 

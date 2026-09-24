@@ -1,6 +1,6 @@
 import type { ReactNode } from "react";
 import { ExternalLink, Facebook, Globe2, Instagram, Linkedin, Link as LinkIcon } from "lucide-react";
-import type { SocialProfile } from "@/features/leads/types";
+import type { SocialProfile } from "@/modules/leads/types";
 
 type LinkItem = { label: string; href: string; icon: ReactNode };
 

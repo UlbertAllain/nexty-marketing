@@ -46,17 +46,17 @@ export default function ResearchPage() {
 
   return (
     <>
-      <PageHeader eyebrow="Research" title="Prospect, research queue, social media, dan sumber" description="Semua data research dari Excel ada di satu area. Gunakan Prospect Pool untuk pipeline riset; buka Social Media dan Sources saat perlu verifikasi sebelum outreach." />
+      <PageHeader eyebrow="Cari prospect" title="Cari dan siapkan calon client" description="Gunakan halaman ini saat daftar lead mulai menipis. Pilih calon bisnis, cek datanya, lalu jadikan lead kalau sudah layak dihubungi." />
       <div className="tool-tabs">
-        <button className={tab === "pool" ? "active" : ""} onClick={() => setTab("pool")}>Prospect Pool · 129</button>
-        <button className={tab === "queue" ? "active" : ""} onClick={() => setTab("queue")}>Research Queue · 88</button>
-        <button className={tab === "social" ? "active" : ""} onClick={() => setTab("social")}>Social Media · 69</button>
-        <button className={tab === "sources" ? "active" : ""} onClick={() => setTab("sources")}>Sources · 138</button>
+        <button className={tab === "pool" ? "active" : ""} onClick={() => setTab("pool")}>Daftar prospect · 129</button>
+        <button className={tab === "queue" ? "active" : ""} onClick={() => setTab("queue")}>Perlu diriset · 88</button>
+        <button className={tab === "social" ? "active" : ""} onClick={() => setTab("social")}>Akun sosial · 69</button>
+        <button className={tab === "sources" ? "active" : ""} onClick={() => setTab("sources")}>Sumber data · 138</button>
       </div>
 
       <section className="filter-bar">
         <label className="search-field"><Search size={16} /><input value={query} onChange={(e) => setQuery(e.target.value)} placeholder="Cari bisnis, area, kategori, handle…" /></label>
-        {tab === "pool" ? <select value={status} onChange={(e) => setStatus(e.target.value)}><option value="needs-research">Masih perlu riset</option><option value="ready">Deep research</option><option value="qualified">Sudah jadi target</option><option value="all">Semua prospect</option></select> : null}
+        {tab === "pool" ? <select value={status} onChange={(e) => setStatus(e.target.value)}><option value="needs-research">Masih perlu riset</option><option value="ready">Riset lengkap</option><option value="qualified">Sudah jadi lead</option><option value="all">Semua prospect</option></select> : null}
         <span className="result-count">{tab === "pool" ? prospects.length : tab === "queue" ? queue.length : tab === "social" ? socials.length : sourceRows.length} item</span>
       </section>
 

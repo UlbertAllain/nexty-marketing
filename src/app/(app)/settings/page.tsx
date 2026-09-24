@@ -5,7 +5,7 @@ import Link from "next/link";
 import { CheckCircle2, Database, ShieldCheck } from "lucide-react";
 import { PageHeader } from "@/components/page-header";
 import { Button } from "@/components/ui/button";
-import { seedWorkspace } from "@/features/settings/seed";
+import { seedWorkspace } from "@/modules/settings/seed";
 import coverage from "@/data/seed/excel-coverage.json";
 
 export default function SettingsPage() {

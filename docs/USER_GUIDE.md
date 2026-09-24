@@ -116,6 +116,22 @@ Prioritas adalah alat untuk mengatur urutan kerja, bukan prediksi penjualan.
 | Tindak lanjut nanti | Perlu dihubungi kembali di waktu lain |
 | Tidak cocok | Tidak sesuai target |
 
+## Prinsip pesan bawaan
+
+Pesan bawaan NextyLeads tidak mengambil kalimat riset mentah untuk ditempel ke calon klien.
+
+Contoh data seperti jumlah kelas per hari, jumlah ulasan, hipotesis kebutuhan sistem, atau catatan audit hanya digunakan sebagai konteks internal tim.
+
+Pesan bawaan dibuat berdasarkan jenis bisnis dan berfokus pada pertanyaan yang natural, misalnya:
+
+- studio kebugaran: booking, jadwal, dan data member;
+- arsitektur/interior: alur calon klien, survei, dan penawaran;
+- restoran: reservasi dan pesanan;
+- bengkel: booking servis, status pekerjaan, dan riwayat kendaraan;
+- pendidikan: jadwal, siswa, dan paket belajar.
+
+Sebelum dikirim, pengguna tetap harus membaca ulang dan menyesuaikan pesan jika konteks calon klien berbeda.
+
 ## Mengirim WhatsApp
 
 1. Buka detail calon klien.

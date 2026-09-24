@@ -87,7 +87,7 @@ export async function createLead(input: Partial<Lead> & Pick<Lead, "business" | 
     source2: "",
     guardrail: DEFAULT_RESEARCH_GUARDRAIL,
     personalizationChecklist: DEFAULT_PERSONALIZATION_CHECKLIST,
-    templates: buildIndonesianLeadTemplates(input.business, input.primaryDigitalAsset),
+    templates: buildIndonesianLeadTemplates(input.business, input.niche),
     ...input,
     createdAt: serverTimestamp(),
     updatedAt: serverTimestamp(),

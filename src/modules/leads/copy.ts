@@ -383,26 +383,151 @@ export function toIndonesianMarketingCopy(value?: string | null) {
   );
 }
 
-export function buildIndonesianLeadTemplates(
-  business: string,
-  publicObservation?: string | null,
-): LeadTemplates {
-  const observation = publicObservation ? toIndonesianResearchField("primaryDigitalAsset", publicObservation).replace(/[.]+$/, "") : "";
-  const observationSentence = observation
-    ? ` Dari informasi publik yang saya lihat, ${observation}.`
-    : "";
+type OutreachContext = {
+  topic: string;
+  question: string;
+  helper: string;
+};
+
+function getOutreachContext(niche?: string | null): OutreachContext {
+  const value = (niche ?? "").toLowerCase();
+
+  if (value.includes("digital agency")) {
+    return {
+      topic: "kebutuhan partner development",
+      question: "Kalau tim Kakak lagi penuh atau ada proyek web/sistem yang butuh tambahan developer, biasanya terbuka kerja sama dengan partner luar nggak ya?",
+      helper: "Kami fokus di pengembangan web app dan sistem custom, jadi arahnya lebih ke partner teknis daripada jualan website.",
+    };
+  }
+
+  if (value.includes("pilates") || value.includes("gym") || value.includes("fitness")) {
+    return {
+      topic: "booking, jadwal, dan data member",
+      question: "Untuk booking kelas, jadwal, dan data member sekarang biasanya dikelola lewat apa ya, Kak? Sudah ada sistem sendiri atau masih banyak lewat admin/WhatsApp?",
+      helper: "Kami biasa bantu merapikan alur booking dan pengelolaan member kalau memang bagian itu mulai terasa ramai.",
+    };
+  }
+
+  if (value.includes("salon") || value.includes("spa") || value.includes("barber") || value.includes("beauty")) {
+    return {
+      topic: "booking dan jadwal layanan",
+      question: "Untuk booking, jadwal layanan, dan pelanggan yang datang lagi sekarang biasanya dikelola lewat apa ya, Kak?",
+      helper: "Kami biasa bantu merapikan booking dan pengingat pelanggan kalau memang dibutuhkan.",
+    };
+  }
+
+  if (value.includes("architecture") || value.includes("architect") || value.includes("interior") || value.includes("construction")) {
+    return {
+      topic: "alur calon klien sampai proyek berjalan",
+      question: "Kalau ada calon klien baru masuk, biasanya alurnya dari konsultasi awal sampai survei atau penawaran sekarang dikelola lewat apa ya, Kak?",
+      helper: "Kami biasa bantu merapikan alur calon klien dan pemantauan proyek kalau prosesnya mulai tersebar di banyak tempat.",
+    };
+  }
+
+  if (value.includes("catering") || value.includes("wedding") || value.includes("event")) {
+    return {
+      topic: "permintaan masuk, penawaran, dan jadwal acara",
+      question: "Kalau ada permintaan acara baru, proses dari tanya paket, penawaran, sampai jadwal acaranya sekarang biasanya dicatat lewat apa ya, Kak?",
+      helper: "Kami biasa bantu merapikan alur permintaan dan jadwal supaya tim nggak perlu cek banyak tempat.",
+    };
+  }
+
+  if (value.includes("restaurant") || value.includes("cafe") || value.includes("coffee") || value.includes("bakery") || value.includes("f&b")) {
+    return {
+      topic: "reservasi dan pesanan pelanggan",
+      question: "Untuk reservasi, pesanan khusus, atau pertanyaan pelanggan sekarang biasanya masuk dan dicatat lewat apa ya, Kak?",
+      helper: "Kami biasa bantu merapikan alur reservasi atau pesanan kalau kanal masuknya sudah mulai banyak.",
+    };
+  }
+
+  if (value.includes("driving school") || value.includes("education") || value.includes("training")) {
+    return {
+      topic: "jadwal, siswa, dan paket belajar",
+      question: "Untuk jadwal siswa, paket atau sisa sesi, dan perubahan jadwal sekarang biasanya dikelola lewat apa ya, Kak?",
+      helper: "Kami biasa bantu merapikan penjadwalan dan data siswa kalau administrasinya mulai makan waktu.",
+    };
+  }
+
+  if (value.includes("automotive") || value.includes("workshop") || value.includes("detailing") || value.includes("coating")) {
+    return {
+      topic: "booking servis dan riwayat pelanggan",
+      question: "Untuk booking, riwayat kendaraan, status pekerjaan, dan pengingat servis sekarang biasanya dikelola lewat apa ya, Kak?",
+      helper: "Kami biasa bantu merapikan alur servis dan data pelanggan tanpa harus mengganti proses yang sudah berjalan baik.",
+    };
+  }
+
+  if (value.includes("printing")) {
+    return {
+      topic: "pesanan dan status produksi",
+      question: "Untuk pesanan masuk, pengecekan file, dan status produksi sekarang biasanya tim memantaunya lewat apa ya, Kak?",
+      helper: "Kami biasa bantu merapikan alur order sampai produksi supaya statusnya gampang dicek tim.",
+    };
+  }
+
+  if (value.includes("rental") || value.includes("transport")) {
+    return {
+      topic: "booking dan ketersediaan unit",
+      question: "Untuk booking, ketersediaan unit, dan jadwal pelanggan sekarang biasanya dikelola lewat apa ya, Kak?",
+      helper: "Kami biasa bantu merapikan alur booking kalau pencatatan mulai tersebar antara WhatsApp dan admin.",
+    };
+  }
+
+  if (value.includes("clinic") || value.includes("dental") || value.includes("health")) {
+    return {
+      topic: "janji temu dan tindak lanjut pasien",
+      question: "Untuk janji temu, perubahan jadwal, dan tindak lanjut pasien sekarang biasanya dikelola lewat apa ya, Kak?",
+      helper: "Kami biasa bantu merapikan alur administrasi tanpa mengganggu sistem yang sudah dipakai.",
+    };
+  }
+
+  if (value.includes("laundry")) {
+    return {
+      topic: "pesanan, penjemputan, dan status cucian",
+      question: "Untuk pesanan, jadwal penjemputan atau pengantaran, dan status cucian sekarang biasanya tim memantaunya lewat apa ya, Kak?",
+      helper: "Kalau sistem yang sekarang sudah bagus, biasanya kami mulai dari bagian yang masih bikin admin kerja dua kali.",
+    };
+  }
+
+  if (value.includes("photography") || value.includes("studio")) {
+    return {
+      topic: "booking studio dan paket",
+      question: "Untuk booking studio, pilihan paket, dan pengingat jadwal sekarang biasanya dikelola lewat apa ya, Kak?",
+      helper: "Kami biasa bantu merapikan alur booking kalau pelanggan masih perlu banyak bolak-balik dengan admin.",
+    };
+  }
+
+  if (value.includes("furniture")) {
+    return {
+      topic: "calon pelanggan, survei, dan penawaran proyek",
+      question: "Kalau ada calon pelanggan baru, alur dari tanya produk atau proyek sampai survei dan penawaran sekarang biasanya dicatat lewat apa ya, Kak?",
+      helper: "Kami biasa bantu merapikan alur calon pelanggan sampai proyek supaya informasi nggak tercecer.",
+    };
+  }
 
   return {
-    FIRST_OUTREACH: `Halo Kak, saya dari NextyLabs. Saya sempat melihat ${business}.${observationSentence} Ada beberapa hal yang menurut saya menarik untuk dirapikan dari sisi digital atau operasional. Kalau berkenan, saya bisa kirim 2–3 catatan singkat dulu lewat pesan ini. Santai saja, belum perlu bahas paket atau harga.`,
-    INTERESTED_REPLY: "Siap Kak. Saya kirim ringkasan singkat dulu berisi hal yang kami lihat, peluang perbaikan, dan gambaran solusi. Kalau terasa relevan, baru kita ngobrol sekitar 15–20 menit supaya kami bisa memahami proses yang sekarang.",
-    FOLLOW_UP_D2: `Halo Kak, izin menindaklanjuti pesan saya sebelumnya tentang ${business}. Kalau berkenan, saya bisa kirim 2–3 catatan singkat langsung di sini supaya Kakak bisa lihat dulu tanpa harus menjadwalkan pertemuan.`,
-    FOLLOW_UP_D5: "Halo Kak, saya izin menindaklanjuti sekali lagi supaya tidak mengganggu. Kalau belum menjadi prioritas sekarang, tidak apa-apa. Kalau nanti ingin membahas situs web atau sistem operasional, kami siap mulai dari pengecekan singkat dulu. Terima kasih, Kak.",
-    MEETING_CTA: "Kalau poinnya terasa relevan, boleh kita telepon atau bertemu sekitar 15–20 menit? Saya ingin memahami proses yang sekarang, volume aktivitas, siapa yang mengelola, dan bagian yang paling banyak memakan waktu. Setelah itu baru kami bisa menilai apakah memang perlu sistem baru atau cukup perbaikan proses.",
+    topic: "alur calon pelanggan dan tindak lanjut",
+    question: "Kalau ada calon pelanggan baru masuk, proses dari pertanyaan awal sampai tindak lanjut sekarang biasanya dikelola lewat apa ya, Kak?",
+    helper: "Kami biasa bantu merapikan alur kerja kalau informasinya mulai tersebar di beberapa tempat.",
+  };
+}
+
+export function buildIndonesianLeadTemplates(
+  business: string,
+  niche?: string | null,
+): LeadTemplates {
+  const context = getOutreachContext(niche);
+
+  return {
+    FIRST_OUTREACH: `Halo Kak, saya dari NextyLabs. Tadi saya sempat lihat ${business}. Mau tanya sedikit, ${context.question} ${context.helper} Kalau kebetulan bagian ini lagi jadi kendala, saya boleh kirim gambaran singkatnya?`,
+    INTERESTED_REPLY: "Siap Kak. Biar nggak kepanjangan, saya kirim garis besarnya di sini dulu ya. Kalau ada yang nyambung sama kebutuhan sekarang, baru kita bahas lebih detail.",
+    FOLLOW_UP_D2: `Halo Kak, izin menindaklanjuti pesan kemarin ya. Kira-kira topik ${context.topic} ini relevan nggak buat ${business}? Kalau belum jadi fokus sekarang juga nggak apa-apa.`,
+    FOLLOW_UP_D5: `Halo Kak, izin terakhir soal pesan kemarin. Kalau belum relevan sekarang nggak apa-apa, saya stop sampai sini biar nggak ganggu. Kalau nanti butuh bantuan soal ${context.topic}, tinggal kabari ya. Terima kasih, Kak.`,
+    MEETING_CTA: "Kalau lebih enak dibahas langsung, kita bisa ngobrol santai sekitar 15 menit lewat WhatsApp atau Google Meet. Saya pengin dengar alur yang sekarang dulu supaya nggak asal kasih solusi. Nggak perlu siapin apa-apa.",
   };
 }
 
 export const DEFAULT_PERSONALIZATION_CHECKLIST =
-  "Sebelum kirim, cek lagi situs web dan media sosial terbaru. Sebut satu hal yang benar-benar terlihat, jangan menebak proses internal, dan jangan bahas harga di pesan pertama.";
+  "Sebelum kirim, baca ulang pesannya dan pastikan pertanyaannya memang relevan dengan bisnis tersebut. Jangan masukkan angka, statistik, ulasan, atau kesimpulan dari riset publik ke pesan kecuali benar-benar diperlukan dan mudah dipahami.";
 
 export const DEFAULT_RESEARCH_GUARDRAIL =
   "Jangan menyimpulkan proses internal hanya dari informasi publik. Gunakan hasil riset sebagai bahan pembuka, lalu validasi saat mereka merespons.";

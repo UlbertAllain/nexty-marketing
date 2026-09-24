@@ -67,7 +67,7 @@ export async function seedWorkspace() {
         nextAction: toIndonesianResearchField("nextAction", lead.nextAction),
         guardrail: toIndonesianResearchField("guardrail", lead.guardrail) || DEFAULT_RESEARCH_GUARDRAIL,
         personalizationChecklist: DEFAULT_PERSONALIZATION_CHECKLIST,
-        templates: buildIndonesianLeadTemplates(lead.business, lead.primaryDigitalAsset),
+        templates: buildIndonesianLeadTemplates(lead.business, lead.niche),
         social: lead.social ? {
           ...lead.social,
           niche: toIndonesianMarketingCopy(lead.social.niche),

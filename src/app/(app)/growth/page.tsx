@@ -25,9 +25,9 @@ export default function GrowthPage() {
   return (
     <>
       <PageHeader
-        eyebrow="Growth workspace"
-        title="Planning yang tidak mengganggu kerja harian"
-        description="Data Content Plan, Growth Plan, Partnership, Referral, Reactivation, dan Portfolio Proof dari Excel tetap masuk — tapi dikumpulkan dalam satu halaman supaya sidebar tidak penuh."
+        eyebrow="Rencana growth"
+        title="Strategi untuk menambah peluang baru"
+        description="Gunakan halaman ini untuk planning mingguan atau bulanan. Pekerjaan harian tetap dikerjakan dari menu Hari ini."
       />
       <div className="tool-tabs growth-tabs">
         {tabs.map((item) => <button key={item.key} className={tab === item.key ? "active" : ""} onClick={() => setTab(item.key)}>{item.label}</button>)}

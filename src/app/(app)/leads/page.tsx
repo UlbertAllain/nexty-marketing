@@ -4,6 +4,7 @@ import Link from "next/link";
 import { useMemo, useState } from "react";
 import { Plus, Search } from "lucide-react";
 import { LeadTable } from "@/components/lead-table";
+import { getStageLabel } from "@/components/status-badge";
 import { PageHeader } from "@/components/page-header";
 import { LEAD_STAGES } from "@/modules/leads/types";
 import { useLeads } from "@/modules/leads/hooks";
@@ -24,17 +25,17 @@ export default function LeadsPage() {
   return (
     <>
       <PageHeader
-        eyebrow="Daftar lead"
+        eyebrow="Daftar calon klien"
         title="Semua bisnis yang sedang dikerjakan"
         description="Cari bisnis, lihat statusnya, lalu buka detail untuk melihat pesan dan pekerjaan berikutnya."
-        actions={<Link href="/leads/new" className="button"><Plus size={16} />Tambah lead</Link>}
+        actions={<Link href="/leads/new" className="button"><Plus size={16} />Tambah calon klien</Link>}
       />
 
       <section className="filter-bar leads-filter">
         <label className="search-field">
           <Search size={16} />
           <input
-            placeholder="Cari nama bisnis, kategori, area, atau offer…"
+            placeholder="Cari nama bisnis, kategori, area, atau penawaran…"
             value={query}
             onChange={(event) => setQuery(event.target.value)}
           />
@@ -54,11 +55,11 @@ export default function LeadsPage() {
           <span>Status</span>
           <select value={stage} onChange={(event) => setStage(event.target.value)}>
             <option value="all">Semua</option>
-            {LEAD_STAGES.map((item) => <option key={item} value={item}>{item}</option>)}
+            {LEAD_STAGES.map((item) => <option key={item} value={item}>{getStageLabel(item)}</option>)}
           </select>
         </label>
 
-        <span className="result-count">{loading ? "Memuat…" : `${leads.length} dari ${items.length} lead`}</span>
+        <span className="result-count">{loading ? "Memuat…" : `${leads.length} dari ${items.length} calon klien`}</span>
       </section>
 
       <div className="table-help">

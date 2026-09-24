@@ -12,8 +12,8 @@ import { db } from "@/lib/firebase/client";
 import type { Lead, LeadTemplateKey } from "@/modules/leads/types";
 
 const nextRule: Partial<Record<LeadTemplateKey, { key: LeadTemplateKey; days: number; type: "follow_up_d2" | "follow_up_d5"; title: string }>> = {
-  FIRST_OUTREACH: { key: "FOLLOW_UP_D2", days: 2, type: "follow_up_d2", title: "Follow-up D+2" },
-  FOLLOW_UP_D2: { key: "FOLLOW_UP_D5", days: 3, type: "follow_up_d5", title: "Follow-up terakhir" },
+  FIRST_OUTREACH: { key: "FOLLOW_UP_D2", days: 2, type: "follow_up_d2", title: "Tindak lanjut H+2" },
+  FOLLOW_UP_D2: { key: "FOLLOW_UP_D5", days: 3, type: "follow_up_d5", title: "Tindak lanjut terakhir" },
 };
 
 export async function recordOutboundMessage(lead: Lead, templateKey: LeadTemplateKey, body: string) {
@@ -48,7 +48,7 @@ export async function recordOutboundMessage(lead: Lead, templateKey: LeadTemplat
 
   if (templateKey === "MEETING_CTA") {
     leadPatch.stage = "Interested";
-    leadPatch.nextAction = "Tentukan jadwal discovery";
+    leadPatch.nextAction = "Tentukan jadwal penggalian kebutuhan";
   }
 
   if (rule) {
@@ -68,7 +68,7 @@ export async function recordOutboundMessage(lead: Lead, templateKey: LeadTemplat
     leadPatch.nextAction = rule.title;
   } else if (templateKey === "FOLLOW_UP_D5") {
     leadPatch.nextFollowUpAt = null;
-    leadPatch.nextAction = "Stop cold follow-up; tunggu respons atau masukkan Follow Up Later";
+    leadPatch.nextAction = "Hentikan tindak lanjut aktif; tunggu respons atau jadwalkan untuk dihubungi lagi nanti";
   }
 
   if (templateKey === "FOLLOW_UP_D2" || templateKey === "FOLLOW_UP_D5") {

@@ -211,9 +211,17 @@ export function toIndonesianMarketingCopy(value?: string | null) {
   );
 }
 
-export function buildIndonesianLeadTemplates(business: string): LeadTemplates {
+export function buildIndonesianLeadTemplates(
+  business: string,
+  publicObservation?: string | null,
+): LeadTemplates {
+  const observation = toNaturalIndonesianResearchText(publicObservation, "").replace(/[.]+$/, "");
+  const observationSentence = observation
+    ? ` Dari informasi publik yang saya lihat, ${observation}.`
+    : "";
+
   return {
-    FIRST_OUTREACH: `Halo Kak, saya dari NextyLabs. Saya sempat melihat ${business} dan ada beberapa hal yang menurut saya menarik untuk dirapikan dari sisi digital atau operasional. Kalau berkenan, saya bisa kirim 2–3 catatan singkat dulu lewat pesan ini. Santai saja, belum perlu bahas paket atau harga.`,
+    FIRST_OUTREACH: `Halo Kak, saya dari NextyLabs. Saya sempat melihat ${business}.${observationSentence} Ada beberapa hal yang menurut saya menarik untuk dirapikan dari sisi digital atau operasional. Kalau berkenan, saya bisa kirim 2–3 catatan singkat dulu lewat pesan ini. Santai saja, belum perlu bahas paket atau harga.`,
     INTERESTED_REPLY: "Siap Kak. Saya kirim ringkasan singkat dulu berisi hal yang kami lihat, peluang perbaikan, dan gambaran solusi. Kalau terasa relevan, baru kita ngobrol sekitar 15–20 menit supaya kami bisa memahami proses yang sekarang.",
     FOLLOW_UP_D2: `Halo Kak, izin menindaklanjuti pesan saya sebelumnya tentang ${business}. Kalau berkenan, saya bisa kirim 2–3 catatan singkat langsung di sini supaya Kakak bisa lihat dulu tanpa harus menjadwalkan pertemuan.`,
     FOLLOW_UP_D5: "Halo Kak, saya izin menindaklanjuti sekali lagi supaya tidak mengganggu. Kalau belum menjadi prioritas sekarang, tidak apa-apa. Kalau nanti ingin membahas situs web atau sistem operasional, kami siap mulai dari pengecekan singkat dulu. Terima kasih, Kak.",

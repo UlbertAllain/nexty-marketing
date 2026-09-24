@@ -115,3 +115,49 @@ For an existing lead, sync updates research, scoring, templates, social profile,
 - No public sign-up.
 - Firestore requires authenticated requests.
 - Current scope assumes one internal marketing account.
+
+## Current source structure
+
+```text
+src/
+├── app/                    # routing/layout/page only
+│   ├── (app)/
+│   └── login/
+├── modules/                # domain + data access
+│   ├── auth/
+│   ├── leads/
+│   ├── messages/
+│   ├── research/
+│   ├── reference/
+│   ├── settings/
+│   └── tasks/
+├── components/             # reusable application UI
+│   └── ui/
+├── lib/
+│   ├── firebase/
+│   └── utils/
+└── data/
+    └── seed/                # import/bootstrap fallback only
+```
+
+### Boundary rules
+
+- `app/` must not initialize Firebase or own persistence code.
+- Firestore subscriptions and writes belong inside the relevant `modules/*` repository/service boundary.
+- `src/data/seed` is bootstrap/reference fallback. Runtime workspace data prefers Firestore after synchronization.
+- Domain-specific behavior must stay inside its module; generic reusable visual components stay under `components/`.
+- Add a new layer only when there is a concrete responsibility, testing, security, or reuse reason.
+
+## Runtime data model
+
+Operational data is live from Firestore:
+
+- leads and lead activities
+- follow-up tasks
+- prospects
+- research queue
+- social profiles
+- research sources
+
+Reference/workbook content is synchronized into Firestore `referenceData` / `excelSheets` and read live by the UI after synchronization. Bundled JSON is retained only as the bootstrap fallback for a fresh workspace.
+

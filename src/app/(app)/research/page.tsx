@@ -10,15 +10,15 @@ import { ScoreBar } from "@/components/score-bar";
 import { SocialLinks } from "@/components/social-links";
 import { useProspects } from "@/modules/leads/hooks";
 import { promoteProspect } from "@/modules/leads/repository";
-import researchQueue from "@/data/seed/research-queue.json";
-import socialProfiles from "@/data/seed/social-media.json";
-import sources from "@/data/seed/sources.json";
-import type { SocialProfile } from "@/modules/leads/types";
+import { useResearchQueue, useResearchSources, useSocialProfiles } from "@/modules/research/research.hooks";
 
 type Tab = "pool" | "queue" | "social" | "sources";
 
 export default function ResearchPage() {
   const { items, loading } = useProspects();
+  const { items: researchQueue, loading: queueLoading } = useResearchQueue();
+  const { items: socialProfiles, loading: socialLoading } = useSocialProfiles();
+  const { items: sources, loading: sourceLoading } = useResearchSources();
   const [tab, setTab] = useState<Tab>("pool");
   const [query, setQuery] = useState("");
   const [status, setStatus] = useState("needs-research");
@@ -57,7 +57,7 @@ export default function ResearchPage() {
       <section className="filter-bar">
         <label className="search-field"><Search size={16} /><input value={query} onChange={(e) => setQuery(e.target.value)} placeholder="Cari bisnis, area, kategori, handle…" /></label>
         {tab === "pool" ? <select value={status} onChange={(e) => setStatus(e.target.value)}><option value="needs-research">Masih perlu riset</option><option value="ready">Riset lengkap</option><option value="qualified">Sudah jadi lead</option><option value="all">Semua prospect</option></select> : null}
-        <span className="result-count">{tab === "pool" ? prospects.length : tab === "queue" ? queue.length : tab === "social" ? socials.length : sourceRows.length} item</span>
+        <span className="result-count">{tab === "pool" && loading ? "Memuat…" : tab === "queue" && queueLoading ? "Memuat…" : tab === "social" && socialLoading ? "Memuat…" : tab === "sources" && sourceLoading ? "Memuat…" : `${tab === "pool" ? prospects.length : tab === "queue" ? queue.length : tab === "social" ? socials.length : sourceRows.length} item`}</span>
       </section>
 
       {tab === "pool" ? (
@@ -83,7 +83,7 @@ export default function ResearchPage() {
       {tab === "social" ? <div className="social-directory">{socials.map((item) => (
         <article className="panel social-card" key={item.leadId}>
           <div className="social-card-head"><div><span className="tiny muted">{item.leadId} · {item.area}</span><h2>{item.business}</h2><p>{item.niche}</p></div><span className={item.verificationStatus.startsWith("Verified") ? "verification verified" : "verification needs-check"}>{item.verificationStatus}</span></div>
-          <SocialLinks social={item as SocialProfile} />
+          <SocialLinks social={item} />
           {item.notes ? <p className="tiny muted social-note">{item.notes}</p> : null}
           {item.verificationSource ? <a className="text-link" href={item.verificationSource} target="_blank" rel="noreferrer">Sumber verifikasi <ArrowUpRight size={14} /></a> : null}
         </article>

@@ -23,6 +23,7 @@ import growthPlan from "@/data/seed/growth-plan.json";
 import partnerships from "@/data/seed/partnerships.json";
 import portfolioProof from "@/data/seed/portfolio-proof.json";
 import excelCoverage from "@/data/seed/excel-coverage.json";
+import { buildIndonesianLeadTemplates, DEFAULT_PERSONALIZATION_CHECKLIST, DEFAULT_RESEARCH_GUARDRAIL, getAuthorityRiskLabel, getResearchLevelLabel, getVerificationLabel, toIndonesianMarketingCopy, toNaturalIndonesianResearchText } from "@/modules/leads/copy";
 
 function chunk<T>(items: T[], size = 350) {
   const result: T[][] = [];
@@ -52,7 +53,30 @@ export async function seedWorkspace() {
     const batch = writeBatch(db);
     group.forEach((lead) => {
       const exists = existingLeadIds.has(lead.id);
-      const payload: Record<string, unknown> = { ...lead, updatedAt: serverTimestamp() };
+      const localizedLead = {
+        ...lead,
+        niche: toIndonesianMarketingCopy(lead.niche),
+        primaryDigitalAsset: toNaturalIndonesianResearchText(lead.primaryDigitalAsset, "Aset digital perlu diperiksa kembali."),
+        hasNow: toNaturalIndonesianResearchText(lead.hasNow, "Informasi bisnis perlu diperiksa kembali."),
+        verifiedGap: toNaturalIndonesianResearchText(lead.verifiedGap, "Peluang perbaikan masih perlu divalidasi."),
+        publicFriction: toNaturalIndonesianResearchText(lead.publicFriction, "Belum ada masalah publik yang tervalidasi."),
+        evidenceStatus: toNaturalIndonesianResearchText(lead.evidenceStatus, "Data publik tersedia, tetapi kebutuhan internal masih perlu divalidasi."),
+        recommendedOffer: toIndonesianMarketingCopy(lead.recommendedOffer),
+        solutionConcept: toNaturalIndonesianResearchText(lead.solutionConcept, "Solusi akan ditentukan setelah kebutuhan divalidasi."),
+        firstContactAngle: toNaturalIndonesianResearchText(lead.firstContactAngle, "Mulai dari pertanyaan terbuka tentang proses yang sekarang."),
+        nextAction: toIndonesianMarketingCopy(lead.nextAction),
+        guardrail: DEFAULT_RESEARCH_GUARDRAIL,
+        personalizationChecklist: DEFAULT_PERSONALIZATION_CHECKLIST,
+        templates: buildIndonesianLeadTemplates(lead.business),
+        socialVerification: getVerificationLabel(lead.socialVerification),
+        social: lead.social ? {
+          ...lead.social,
+          niche: toIndonesianMarketingCopy(lead.social.niche),
+          verificationStatus: getVerificationLabel(lead.social.verificationStatus),
+          notes: toNaturalIndonesianResearchText(lead.social.notes, ""),
+        } : lead.social,
+      };
+      const payload: Record<string, unknown> = { ...localizedLead, updatedAt: serverTimestamp() };
       if (exists) {
         // Enrich the research/template/social dataset without destroying live CRM progress.
         delete payload.stage;
@@ -70,11 +94,48 @@ export async function seedWorkspace() {
     await batch.commit();
   }
 
-  await writeCollection("prospects", prospects, (item) => (item as { id: string }).id);
-  await writeCollection("socialProfiles", socialProfiles, (item) => (item as { leadId: string }).leadId);
-  await writeCollection("researchQueue", researchQueue, (_, index) => `RQ-${String(index + 1).padStart(3, "0")}`);
+  const localizedProspects = prospects.map((item) => ({
+    ...item,
+    niche: toIndonesianMarketingCopy(item.niche),
+    publicAssets: toNaturalIndonesianResearchText(item.publicAssets, "Informasi publik perlu diperiksa kembali."),
+    researchLevel: getResearchLevelLabel(item.researchLevel),
+    potentialGap: toNaturalIndonesianResearchText(item.potentialGap, "Peluang perbaikan masih perlu divalidasi."),
+    publicFriction: toNaturalIndonesianResearchText(item.publicFriction, "Belum ada masalah publik yang tervalidasi."),
+    recommendedOffer: toIndonesianMarketingCopy(item.recommendedOffer),
+    authorityRisk: getAuthorityRiskLabel(item.authorityRisk),
+    notes: toNaturalIndonesianResearchText(item.notes, "Periksa kembali informasi publik terbaru sebelum menghubungi."),
+  }));
+
+  const localizedSocialProfiles = socialProfiles.map((item) => ({
+    ...item,
+    niche: toIndonesianMarketingCopy(item.niche),
+    verificationStatus: getVerificationLabel(item.verificationStatus),
+    notes: toNaturalIndonesianResearchText(item.notes, ""),
+  }));
+
+  const localizedResearchQueue = researchQueue.map((item) => ({
+    ...item,
+    niche: toIndonesianMarketingCopy(item.niche),
+    researchLevel: getResearchLevelLabel(item.researchLevel),
+    authorityRisk: getAuthorityRiskLabel(item.authorityRisk),
+    whyInteresting: toNaturalIndonesianResearchText(item.whyInteresting),
+    nextResearch: toNaturalIndonesianResearchText(item.nextResearch, "Periksa kembali kanal publik terbaru sebelum menghubungi."),
+    recommendedOffer: toIndonesianMarketingCopy(item.recommendedOffer),
+    decision: toIndonesianMarketingCopy(item.decision),
+  }));
+
+  const localizedResearchSources = researchSources.map((item) => ({
+    ...item,
+    sourceType: toIndonesianMarketingCopy(item.sourceType),
+    usedFor: toNaturalIndonesianResearchText(item.usedFor, "Digunakan untuk mendukung riset bisnis."),
+    confidence: toNaturalIndonesianResearchText(item.confidence, "Perlu diverifikasi kembali sebelum digunakan."),
+  }));
+
+  await writeCollection("prospects", localizedProspects, (item) => (item as { id: string }).id);
+  await writeCollection("socialProfiles", localizedSocialProfiles, (item) => (item as { leadId: string }).leadId);
+  await writeCollection("researchQueue", localizedResearchQueue, (_, index) => `RQ-${String(index + 1).padStart(3, "0")}`);
   await writeCollection("dailyKpis", dailyKpis, (item) => (item as { id: string }).id);
-  await writeCollection("researchSources", researchSources, (item) => (item as { id: string }).id);
+  await writeCollection("researchSources", localizedResearchSources, (item) => (item as { id: string }).id);
 
   const referenceDocuments = {
     "common-templates": commonTemplates,

@@ -7,8 +7,8 @@ import { StatCard } from "@/components/stat-card";
 import { TaskList } from "@/components/task-list";
 import { PriorityBadge } from "@/components/status-badge";
 import { ScoreBar } from "@/components/score-bar";
-import { useLeads, useLeadStats } from "@/features/leads/hooks";
-import { useTasks } from "@/features/tasks/hooks";
+import { useLeads, useLeadStats } from "@/modules/leads/hooks";
+import { useTasks } from "@/modules/tasks/hooks";
 
 export default function DashboardPage() {
   const { items: leads } = useLeads();

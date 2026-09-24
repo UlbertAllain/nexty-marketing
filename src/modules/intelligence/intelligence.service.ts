@@ -1,5 +1,8 @@
 import { matchOffersToGaps } from "./offer-matcher";
-import { calculateOpportunityScore } from "./scoring.service";
+import {
+  calculateEvidenceQuality,
+  calculateOpportunityScore,
+} from "./scoring.service";
 import type {
   ResearchAnalysis,
   ResearchAnalysisDraft,
@@ -15,14 +18,13 @@ export function buildResearchAnalysis(
   researchedAt = new Date().toISOString(),
 ): ResearchAnalysis {
   const recommendedOffers = matchOffersToGaps(draft.gaps);
-  const strongestOfferFit = recommendedOffers[0]?.fitScore ?? 0;
+  const serviceFit = recommendedOffers[0]?.fitScore ?? 0;
+  const evidenceQuality = calculateEvidenceQuality(draft.sources);
 
   const scoring = calculateOpportunityScore({
-    ...draft.scoringInput,
-    serviceFit:
-      draft.scoringInput.serviceFit > 0
-        ? draft.scoringInput.serviceFit
-        : strongestOfferFit,
+    ...draft.scoringSignals,
+    serviceFit,
+    evidenceQuality,
   });
 
   return {

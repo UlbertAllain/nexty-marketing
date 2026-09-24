@@ -3,7 +3,7 @@
 import { useEffect, useMemo, useState } from "react";
 import { startOfDay } from "date-fns";
 import { subscribeTasks } from "./repository";
-import type { Task } from "@/features/leads/types";
+import type { Task } from "@/modules/leads/types";
 
 export function useTasks() {
   const [items, setItems] = useState<Task[]>([]);

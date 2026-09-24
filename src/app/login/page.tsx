@@ -21,11 +21,12 @@ export default function LoginPage() {
     event.preventDefault();
     setError("");
     setBusy(true);
+
     try {
       await login(email, password);
       router.replace("/dashboard");
     } catch {
-      setError("Email atau password tidak cocok.");
+      setError("Email atau password salah. Coba periksa lagi.");
     } finally {
       setBusy(false);
     }
@@ -34,22 +35,31 @@ export default function LoginPage() {
   return (
     <main className="login-page">
       <section className="login-card">
-        <div className="brand-mark">N</div>
-        <p className="eyebrow">NextyLabs Internal</p>
-        <h1>Masuk ke NextyLeads</h1>
-        <p className="muted">Satu tempat untuk riset prospect, outreach, follow-up, dan pipeline.</p>
+        <div className="login-brand-row">
+          <div className="brand-mark">N</div>
+          <div>
+            <strong>NextyLeads</strong>
+            <span>Marketing workspace</span>
+          </div>
+        </div>
+
+        <div className="login-intro">
+          <p className="eyebrow">NextyLabs Internal</p>
+          <h1>Masuk ke workspace marketing</h1>
+          <p className="muted">Kelola lead, follow-up, dan progress marketing dari satu tempat.</p>
+        </div>
 
         <form onSubmit={onSubmit} className="stack-lg">
           <label className="field">
             <span>Email</span>
-            <input type="email" value={email} onChange={(e) => setEmail(e.target.value)} required />
+            <input type="email" autoComplete="email" placeholder="nama@nextylabs.id" value={email} onChange={(event) => setEmail(event.target.value)} required />
           </label>
           <label className="field">
             <span>Password</span>
-            <input type="password" value={password} onChange={(e) => setPassword(e.target.value)} required />
+            <input type="password" autoComplete="current-password" placeholder="Masukkan password" value={password} onChange={(event) => setPassword(event.target.value)} required />
           </label>
           {error ? <p className="form-error">{error}</p> : null}
-          <Button type="submit" disabled={busy}>{busy ? "Masuk…" : "Masuk"}</Button>
+          <Button type="submit" disabled={busy}>{busy ? "Sedang masuk…" : "Masuk"}</Button>
         </form>
       </section>
     </main>

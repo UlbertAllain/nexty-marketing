@@ -1,3 +1,4 @@
+import { createStructuredWebResponse } from "@/lib/ai/openai-responses";
 import type { Lead } from "@/modules/leads/types";
 import {
   AI_RESEARCH_JSON_SCHEMA,
@@ -8,61 +9,6 @@ import type {
   ResearchAnalysisDraft,
   ResearchEvidence,
 } from "./types";
-
-const OPENAI_RESPONSES_URL = "https://api.openai.com/v1/responses";
-const DEFAULT_RESEARCH_MODEL = "gpt-5.6-terra";
-
-type UrlSource = {
-  url?: string;
-};
-
-type UrlAnnotation = {
-  type?: string;
-  url?: string;
-};
-
-type OutputContent = {
-  type?: string;
-  text?: string;
-  annotations?: UrlAnnotation[];
-};
-
-type OpenAIOutputItem = {
-  type?: string;
-  action?: {
-    sources?: UrlSource[];
-    url?: string;
-  };
-  content?: OutputContent[];
-};
-
-type OpenAIResponse = {
-  status?: string;
-  error?: {
-    message?: string;
-  } | null;
-  output?: OpenAIOutputItem[];
-};
-
-function getOpenAIConfig() {
-  const apiKey = process.env.OPENAI_API_KEY;
-  if (!apiKey) throw new Error("OPENAI_API_KEY is not configured.");
-
-  return {
-    apiKey,
-    model: process.env.OPENAI_RESEARCH_MODEL || DEFAULT_RESEARCH_MODEL,
-  };
-}
-
-function extractOutputText(response: OpenAIResponse): string {
-  return (response.output ?? [])
-    .filter((item) => item.type === "message")
-    .flatMap((item) => item.content ?? [])
-    .filter((content) => content.type === "output_text")
-    .map((content) => content.text ?? "")
-    .join("")
-    .trim();
-}
 
 function normalizeUrl(value: string): string | null {
   try {
@@ -80,30 +26,15 @@ function normalizeUrl(value: string): string | null {
   }
 }
 
-function extractTrustedUrls(response: OpenAIResponse): Set<string> {
-  const urls = new Set<string>();
+function buildTrustedUrlSet(sourceUrls: string[]): Set<string> {
+  const trustedUrls = new Set<string>();
 
-  for (const item of response.output ?? []) {
-    for (const source of item.action?.sources ?? []) {
-      const normalized = source.url ? normalizeUrl(source.url) : null;
-      if (normalized) urls.add(normalized);
-    }
-
-    if (item.action?.url) {
-      const normalized = normalizeUrl(item.action.url);
-      if (normalized) urls.add(normalized);
-    }
-
-    for (const content of item.content ?? []) {
-      for (const annotation of content.annotations ?? []) {
-        if (annotation.type !== "url_citation" || !annotation.url) continue;
-        const normalized = normalizeUrl(annotation.url);
-        if (normalized) urls.add(normalized);
-      }
-    }
+  for (const sourceUrl of sourceUrls) {
+    const normalized = normalizeUrl(sourceUrl);
+    if (normalized) trustedUrls.add(normalized);
   }
 
-  return urls;
+  return trustedUrls;
 }
 
 function keepTrustedSources(
@@ -135,64 +66,23 @@ function sanitizeEvidenceIds(ids: string[], validIds: Set<string>): string[] {
 export async function researchLeadWithOpenAI(
   lead: Lead,
 ): Promise<ResearchAnalysisDraft> {
-  const { apiKey, model } = getOpenAIConfig();
   const prompt = buildResearchPrompt(lead);
-
-  const response = await fetch(OPENAI_RESPONSES_URL, {
-    method: "POST",
-    headers: {
-      authorization: `Bearer ${apiKey}`,
-      "content-type": "application/json",
-    },
-    body: JSON.stringify({
-      model,
-      store: false,
-      reasoning: { effort: "medium" },
-      tools: [
-        {
-          type: "web_search",
-          search_context_size: "high",
-        },
-      ],
-      tool_choice: "auto",
-      include: ["web_search_call.action.sources"],
-      instructions: prompt.instructions,
-      input: prompt.input,
-      text: {
-        format: AI_RESEARCH_JSON_SCHEMA,
-      },
-      max_output_tokens: 7000,
-    }),
-    cache: "no-store",
+  const response = await createStructuredWebResponse({
+    instructions: prompt.instructions,
+    input: prompt.input,
+    jsonSchema: AI_RESEARCH_JSON_SCHEMA,
   });
-
-  const payload = (await response.json()) as OpenAIResponse;
-
-  if (!response.ok) {
-    throw new Error(
-      `OPENAI_REQUEST_FAILED_${response.status}: ${payload.error?.message || "Unknown OpenAI error"}`,
-    );
-  }
-
-  if (payload.status && payload.status !== "completed") {
-    throw new Error(`OPENAI_RESPONSE_${payload.status.toUpperCase()}`);
-  }
-
-  const outputText = extractOutputText(payload);
-  if (!outputText) {
-    throw new Error("OPENAI_EMPTY_OUTPUT");
-  }
 
   let parsedJson: unknown;
   try {
-    parsedJson = JSON.parse(outputText);
+    parsedJson = JSON.parse(response.outputText);
   } catch {
     throw new Error("OPENAI_INVALID_JSON");
   }
 
   const parsed = aiResearchResultSchema.parse(parsedJson);
   const checkedAt = new Date().toISOString();
-  const trustedUrls = extractTrustedUrls(payload);
+  const trustedUrls = buildTrustedUrlSet(response.sourceUrls);
 
   if (!trustedUrls.size) {
     throw new Error("OPENAI_RESEARCH_HAS_NO_WEB_SOURCES");
@@ -238,6 +128,6 @@ export async function researchLeadWithOpenAI(
     scoringSignals: parsed.scoringSignals,
     outreach: parsed.outreach,
     sources,
-    model,
+    model: response.model,
   };
 }

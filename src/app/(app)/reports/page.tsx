@@ -22,11 +22,11 @@ export default function ReportsPage() {
 
   return (
     <>
-      <PageHeader eyebrow="Reporting" title="Funnel, KPI, weekly review, dan cashflow" description="Semua reporting dari Excel tetap ada. Live Pipeline membaca Firestore; target KPI/weekly/cashflow awal berasal dari workbook terbaru." />
+      <PageHeader eyebrow="Laporan" title="Lihat kondisi marketing secara ringkas" description="Gunakan Pipeline sekarang untuk kondisi terbaru. Target, review mingguan, dan cashflow dipakai saat evaluasi, bukan untuk pekerjaan harian." />
       <div className="tool-tabs">
-        <button className={tab === "live" ? "active" : ""} onClick={() => setTab("live")}>Live Pipeline</button>
-        <button className={tab === "daily" ? "active" : ""} onClick={() => setTab("daily")}>Daily KPI · 30 hari</button>
-        <button className={tab === "weekly" ? "active" : ""} onClick={() => setTab("weekly")}>Weekly Review</button>
+        <button className={tab === "live" ? "active" : ""} onClick={() => setTab("live")}>Pipeline sekarang</button>
+        <button className={tab === "daily" ? "active" : ""} onClick={() => setTab("daily")}>Target 30 hari</button>
+        <button className={tab === "weekly" ? "active" : ""} onClick={() => setTab("weekly")}>Review mingguan</button>
         <button className={tab === "cashflow" ? "active" : ""} onClick={() => setTab("cashflow")}>Cashflow</button>
       </div>
 

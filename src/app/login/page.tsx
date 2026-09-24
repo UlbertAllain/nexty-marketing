@@ -39,14 +39,14 @@ export default function LoginPage() {
           <div className="brand-mark">N</div>
           <div>
             <strong>NextyLeads</strong>
-            <span>Marketing workspace</span>
+            <span>Ruang kerja pemasaran</span>
           </div>
         </div>
 
         <div className="login-intro">
-          <p className="eyebrow">NextyLabs Internal</p>
-          <h1>Masuk ke workspace marketing</h1>
-          <p className="muted">Kelola lead, follow-up, dan progress marketing dari satu tempat.</p>
+          <p className="eyebrow">Internal NextyLabs</p>
+          <h1>Masuk ke ruang kerja pemasaran</h1>
+          <p className="muted">Kelola calon klien, tindak lanjut, dan perkembangan pemasaran dari satu tempat.</p>
         </div>
 
         <form onSubmit={onSubmit} className="stack-lg">

@@ -20,7 +20,7 @@ export default function SettingsPage() {
     setBusy(true); setStatus("");
     try {
       const result = await seedWorkspace();
-      setStatus(`Selesai: ${result.sheets} sheet, ${result.leads} lead, ${result.prospects} prospect, ${result.socialProfiles} profil sosial, ${result.researchQueue} research item, ${result.dailyKpis} KPI harian, dan ${result.researchSources} sumber.`);
+      setStatus(`Selesai: ${result.sheets} lembar, ${result.leads} calon klien, ${result.prospects} prospek riset, ${result.socialProfiles} profil media sosial, ${result.researchQueue} data riset, ${result.dailyKpis} target harian, dan ${result.researchSources} sumber.`);
     } catch (error) {
       setStatus(error instanceof Error ? error.message : "Gagal melakukan sinkronisasi.");
     } finally {

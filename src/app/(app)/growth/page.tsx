@@ -12,10 +12,10 @@ import portfolioProof from "@/data/seed/portfolio-proof.json";
 type Tab = "content" | "plan" | "partners" | "portfolio";
 
 const tabs: Array<{ key: Tab; label: string; description: string }> = [
-  { key: "content", label: "Content", description: "Kalender, channel strategy, founder distribution, audit campaign, dan website plan." },
-  { key: "plan", label: "Growth Plan", description: "30-day war plan, roadmap 30/60/90 hari, dan pembagian peran." },
-  { key: "partners", label: "Partnerships", description: "White-label, reactivation, dan referral program." },
-  { key: "portfolio", label: "Portfolio Proof", description: "Project mana yang cocok ditunjukkan ke jenis prospect tertentu." },
+  { key: "content", label: "Konten", description: "Kalender konten, strategi kanal, distribusi pendiri, kampanye audit, dan rencana situs web." },
+  { key: "plan", label: "Rencana pertumbuhan", description: "Rencana kerja 30 hari, peta jalan 30/60/90 hari, dan pembagian peran." },
+  { key: "partners", label: "Kemitraan", description: "Kerja sama mitra, menghubungi kembali relasi lama, dan program referensi." },
+  { key: "portfolio", label: "Bukti portofolio", description: "Proyek mana yang paling cocok ditunjukkan ke jenis calon klien tertentu." },
 ];
 
 export default function GrowthPage() {
@@ -36,9 +36,9 @@ export default function GrowthPage() {
   return (
     <>
       <PageHeader
-        eyebrow="Rencana growth"
+        eyebrow="Rencana pertumbuhan"
         title="Strategi untuk menambah peluang baru"
-        description="Gunakan halaman ini untuk planning mingguan atau bulanan. Pekerjaan harian tetap dikerjakan dari menu Hari ini."
+        description="Gunakan halaman ini untuk perencanaan mingguan atau bulanan. Pekerjaan harian tetap dikerjakan dari menu Hari ini."
       />
       <div className="tool-tabs growth-tabs">
         {tabs.map((item) => <button key={item.key} className={tab === item.key ? "active" : ""} onClick={() => setTab(item.key)}>{item.label}</button>)}

@@ -154,6 +154,8 @@ export async function researchLeadWithOpenAI(
           search_context_size: "high",
         },
       ],
+      tool_choice: "auto",
+      include: ["web_search_call.action.sources"],
       instructions: prompt.instructions,
       input: prompt.input,
       text: {

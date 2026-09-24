@@ -13,10 +13,10 @@ export default function TasksPage() {
   return (
     <>
       <PageHeader
-        eyebrow="Follow-up"
+        eyebrow="Tindak lanjut"
         title="Siapa yang harus dihubungi hari ini?"
-        description="Mulai dari yang terlambat. Setelah itu selesaikan jadwal hari ini. Klik nama bisnis untuk membuka detail lead."
-        actions={<Link href="/leads" className="button secondary">Buka daftar lead <ArrowRight size={15} /></Link>}
+        description="Mulai dari yang terlambat. Setelah itu selesaikan jadwal hari ini. Klik nama bisnis untuk membuka detail calon klien."
+        actions={<Link href="/leads" className="button secondary">Buka daftar calon klien <ArrowRight size={15} /></Link>}
       />
 
       <section className="task-summary-strip">
@@ -30,8 +30,8 @@ export default function TasksPage() {
           <div className="panel-heading">
             <div>
               <p className="eyebrow danger">Prioritas pertama</p>
-              <h2>Follow-up terlambat</h2>
-              <p className="panel-description">Selesaikan bagian ini sebelum mengerjakan outreach baru.</p>
+              <h2>Tindak lanjut terlambat</h2>
+              <p className="panel-description">Selesaikan bagian ini sebelum menghubungi calon klien baru.</p>
             </div>
             <span className="count-pill danger-pill">{overdue.length}</span>
           </div>
@@ -43,7 +43,7 @@ export default function TasksPage() {
             <div>
               <p className="eyebrow">Jadwal hari ini</p>
               <h2>Hubungi hari ini</h2>
-              <p className="panel-description">Jangan lewatkan follow-up yang sudah dijadwalkan.</p>
+              <p className="panel-description">Jangan lewatkan tindak lanjut yang sudah dijadwalkan.</p>
             </div>
             <span className="count-pill">{dueToday.length}</span>
           </div>

@@ -7,6 +7,7 @@ import { RawSheetView, type RawSheet } from "@/components/raw-sheet-view";
 import { LEAD_STAGES } from "@/modules/leads/types";
 import { useLeads, useLeadStats } from "@/modules/leads/hooks";
 import { useTasks } from "@/modules/tasks/hooks";
+import { useReferenceData } from "@/modules/reference/reference.hooks";
 import dailyKpis from "@/data/seed/daily-kpi.json";
 import weeklyReview from "@/data/seed/weekly-review.json";
 import cashflow from "@/data/seed/cashflow.json";
@@ -18,6 +19,9 @@ export default function ReportsPage() {
   const stats = useLeadStats(items);
   const { overdue, dueToday } = useTasks();
   const [tab, setTab] = useState<Tab>("live");
+  const { data: liveDailyKpis } = useReferenceData("daily-kpis", dailyKpis);
+  const { data: liveWeeklyReview } = useReferenceData("weekly-review", weeklyReview);
+  const { data: liveCashflow } = useReferenceData("cashflow", cashflow);
   const total = Math.max(items.length, 1);
 
   return (
@@ -38,10 +42,10 @@ export default function ReportsPage() {
         </section>
       </> : null}
 
-      {tab === "daily" ? <section className="panel reference-page-panel"><div className="panel-heading"><div><p className="eyebrow">30-day KPI</p><h2>Target harian dari Excel</h2></div><span className="muted small">Actual akan hidup dari aktivitas sistem setelah dipakai rutin.</span></div><div className="reference-table-shell"><table className="reference-table kpi-table"><thead><tr><th>Hari</th><th>Tanggal</th><th>Qualified</th><th>Outreach</th><th>Follow-up</th><th>Meeting</th><th>Content</th><th>Partner</th></tr></thead><tbody>{dailyKpis.map((row) => <tr key={row.id}><td>{row.Day}</td><td>{row.Date}</td><td>{row["Qualified Target"]}</td><td>{row["Outreach Target"]}</td><td>{row["Follow-up Target"]}</td><td>{row["Meeting Target"]}</td><td>{row["Content Published"] || "—"}</td><td>{row["Partner Contacts"] || "—"}</td></tr>)}</tbody></table></div></section> : null}
+      {tab === "daily" ? <section className="panel reference-page-panel"><div className="panel-heading"><div><p className="eyebrow">30-day KPI</p><h2>Target harian dari Excel</h2></div><span className="muted small">Actual akan hidup dari aktivitas sistem setelah dipakai rutin.</span></div><div className="reference-table-shell"><table className="reference-table kpi-table"><thead><tr><th>Hari</th><th>Tanggal</th><th>Qualified</th><th>Outreach</th><th>Follow-up</th><th>Meeting</th><th>Content</th><th>Partner</th></tr></thead><tbody>{liveDailyKpis.map((row) => <tr key={row.id}><td>{row.Day}</td><td>{row.Date}</td><td>{row["Qualified Target"]}</td><td>{row["Outreach Target"]}</td><td>{row["Follow-up Target"]}</td><td>{row["Meeting Target"]}</td><td>{row["Content Published"] || "—"}</td><td>{row["Partner Contacts"] || "—"}</td></tr>)}</tbody></table></div></section> : null}
 
-      {tab === "weekly" ? <section className="panel reference-page-panel"><RawSheetView data={weeklyReview as RawSheet} intro="Weekly Funnel, 30-day scoreboard, Lost Analysis, dan A/B Experiments dari Excel digabung di sini." /></section> : null}
-      {tab === "cashflow" ? <section className="panel reference-page-panel"><RawSheetView data={cashflow as RawSheet} intro="Target cash-in, contract value, dan simulasi revenue dari workbook tetap tersimpan di sistem." /></section> : null}
+      {tab === "weekly" ? <section className="panel reference-page-panel"><RawSheetView data={liveWeeklyReview as RawSheet} intro="Weekly Funnel, 30-day scoreboard, Lost Analysis, dan A/B Experiments dari Excel digabung di sini." /></section> : null}
+      {tab === "cashflow" ? <section className="panel reference-page-panel"><RawSheetView data={liveCashflow as RawSheet} intro="Target cash-in, contract value, dan simulasi revenue dari workbook tetap tersimpan di sistem." /></section> : null}
     </>
   );
 }

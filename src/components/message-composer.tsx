@@ -17,7 +17,7 @@ const templateLabels: Record<LeadTemplateKey, string> = {
 };
 
 export function MessageComposer({ lead }: { lead: Lead }) {
-  const templates = useMemo(() => buildIndonesianLeadTemplates(lead.business), [lead.business]);
+  const templates = useMemo(() => buildIndonesianLeadTemplates(lead.business, lead.primaryDigitalAsset), [lead.business, lead.primaryDigitalAsset]);
   const initialKey: LeadTemplateKey = lead.stage === "New" || lead.stage === "Qualified" ? "FIRST_OUTREACH" : "FOLLOW_UP_D2";
   const [key, setKey] = useState<LeadTemplateKey>(initialKey);
   const [message, setMessage] = useState(templates[initialKey] ?? "");

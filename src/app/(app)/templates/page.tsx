@@ -3,6 +3,7 @@
 import { useMemo, useState } from "react";
 import { Search } from "lucide-react";
 import { CopyableTemplate } from "@/components/copyable-template";
+import { getStageLabel } from "@/components/status-badge";
 import { PageHeader } from "@/components/page-header";
 import { RawSheetView, type RawSheet } from "@/components/raw-sheet-view";
 import { useReferenceData } from "@/modules/reference/reference.hooks";
@@ -79,8 +80,8 @@ export default function TemplatesPage() {
         <div className="conversation-row" key={`${item.from}-${item.response}-${index}`}>
           <div><span className="label">Dari</span><strong>{toIndonesianMarketingCopy(item.from)}</strong></div>
           <div><span className="label">Calon klien</span><strong>{toIndonesianMarketingCopy(item.response)}</strong><small>{toNaturalIndonesianResearchText(item.interpretation, "Perlu dipahami lebih lanjut.")}</small></div>
-          <div><span className="label">Lakukan</span><strong>{toIndonesianMarketingCopy(item.nextAction)}</strong><small>{toIndonesianMarketingCopy(item.asset)} · {toIndonesianMarketingCopy(item.wait)}</small></div>
-          <div><span className="label">CRM</span><strong>{toIndonesianMarketingCopy(item.crmStage)}</strong><small>{toIndonesianMarketingCopy(item.exit)}</small></div>
+          <div><span className="label">Lakukan</span><strong>{toNaturalIndonesianResearchText(item.nextAction, "Tentukan langkah berikutnya sesuai respons calon klien.")}</strong><small>{toIndonesianMarketingCopy(item.asset)} · {toIndonesianMarketingCopy(item.wait)}</small></div>
+          <div><span className="label">Status CRM</span><strong>{getStageLabel(item.crmStage)}</strong><small>{toIndonesianMarketingCopy(item.exit)}</small></div>
         </div>
       ))}</div></div> : null}
 

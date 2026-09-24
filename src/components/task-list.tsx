@@ -2,8 +2,8 @@
 
 import Link from "next/link";
 import { Check, Clock3 } from "lucide-react";
-import type { Task } from "@/features/leads/types";
-import { completeTask } from "@/features/tasks/repository";
+import type { Task } from "@/modules/leads/types";
+import { completeTask } from "@/modules/tasks/repository";
 import { dueLabel, formatDate } from "@/lib/utils/date";
 
 export function TaskList({ tasks, compact = false }: { tasks: Task[]; compact?: boolean }) {

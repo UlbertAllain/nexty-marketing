@@ -5,7 +5,7 @@ import { useMemo, useState } from "react";
 import { Plus, Search } from "lucide-react";
 import { LeadTable } from "@/components/lead-table";
 import { PageHeader } from "@/components/page-header";
-import { LEAD_STAGES, type LeadPriority } from "@/features/leads/types";
+import { LEAD_STAGES } from "@/features/leads/types";
 import { useLeads } from "@/features/leads/hooks";
 
 export default function LeadsPage() {
@@ -24,26 +24,49 @@ export default function LeadsPage() {
   return (
     <>
       <PageHeader
-        eyebrow="Pipeline"
-        title="Leads"
-        description="Semua bisnis yang sudah cukup terverifikasi untuk dikerjakan marketing."
+        eyebrow="Daftar lead"
+        title="Semua bisnis yang sedang dikerjakan"
+        description="Cari bisnis, lihat statusnya, lalu buka detail untuk melihat pesan dan pekerjaan berikutnya."
         actions={<Link href="/leads/new" className="button"><Plus size={16} />Tambah lead</Link>}
       />
 
-      <section className="filter-bar">
-        <label className="search-field"><Search size={16} /><input placeholder="Cari bisnis, niche, area, offer…" value={query} onChange={(e) => setQuery(e.target.value)} /></label>
-        <select value={priority} onChange={(e) => setPriority(e.target.value)}>
-          <option value="all">Semua prioritas</option>
-          {(["A", "B", "C"] as LeadPriority[]).map((item) => <option key={item} value={item}>Priority {item}</option>)}
-        </select>
-        <select value={stage} onChange={(e) => setStage(e.target.value)}>
-          <option value="all">Semua status</option>
-          {LEAD_STAGES.map((item) => <option key={item} value={item}>{item}</option>)}
-        </select>
-        <span className="result-count">{leads.length} lead</span>
+      <section className="filter-bar leads-filter">
+        <label className="search-field">
+          <Search size={16} />
+          <input
+            placeholder="Cari nama bisnis, kategori, area, atau offer…"
+            value={query}
+            onChange={(event) => setQuery(event.target.value)}
+          />
+        </label>
+
+        <label className="select-filter">
+          <span>Prioritas</span>
+          <select value={priority} onChange={(event) => setPriority(event.target.value)}>
+            <option value="all">Semua</option>
+            <option value="A">Prioritas A</option>
+            <option value="B">Prioritas B</option>
+            <option value="C">Prioritas C</option>
+          </select>
+        </label>
+
+        <label className="select-filter">
+          <span>Status</span>
+          <select value={stage} onChange={(event) => setStage(event.target.value)}>
+            <option value="all">Semua</option>
+            {LEAD_STAGES.map((item) => <option key={item} value={item}>{item}</option>)}
+          </select>
+        </label>
+
+        <span className="result-count">{loading ? "Memuat…" : `${leads.length} dari ${items.length} lead`}</span>
       </section>
 
-      {loading ? <div className="panel muted">Memuat leads…</div> : <LeadTable leads={leads} />}
+      <div className="table-help">
+        <strong>Tips:</strong>
+        <span>Mulai dari Prioritas A, lalu cek kolom “Langkah berikutnya”.</span>
+      </div>
+
+      <LeadTable leads={leads} />
     </>
   );
 }

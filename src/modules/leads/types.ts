@@ -81,6 +81,7 @@ export interface Lead {
   instagram?: string;
   website?: string;
   socialVerification?: string;
+  latestResearchAnalysisId?: string;
   social?: SocialProfile;
   followUpSeed?: FollowUpSeed;
   personalizationChecklist: string;

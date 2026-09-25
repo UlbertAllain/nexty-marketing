@@ -217,7 +217,7 @@ function collectionUrl(collection: string): string {
   return `https://firestore.googleapis.com/v1/projects/${projectId}/databases/(default)/documents/${encodeURIComponent(collection)}`;
 }
 
-export async function listFirestoreCollection<T>(
+export async function listFirestoreCollection<T extends object>(
   collection: string,
   idToken: string,
 ): Promise<Array<T & { id: string }>> {

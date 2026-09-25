@@ -40,13 +40,26 @@ function clamp(value: number): number {
   return Math.max(0, Math.min(100, Math.round(value)));
 }
 
+function safeHttpUrl(value: string): string {
+  if (!value.trim()) return "";
+
+  try {
+    const url = new URL(value.trim());
+    return url.protocol === "http:" || url.protocol === "https:"
+      ? url.toString()
+      : "";
+  } catch {
+    return "";
+  }
+}
+
 function mergeSearchResults(results: TavilySearchResult[][]): SearchEvidence[] {
   const seen = new Set<string>();
   const merged: SearchEvidence[] = [];
 
   for (const group of results) {
     for (const result of group) {
-      const url = result.url.trim();
+      const url = safeHttpUrl(result.url);
       if (!url || seen.has(url)) continue;
       seen.add(url);
       merged.push({
@@ -200,8 +213,8 @@ export async function discoverProspects(input: {
       source1: sourceUrls[0] || "",
       source2: sourceUrls[1] || "",
       notes: candidate.whyPotential,
-      website: candidate.website,
-      instagram: candidate.instagram,
+      website: safeHttpUrl(candidate.website),
+      instagram: safeHttpUrl(candidate.instagram),
       address: candidate.address,
       offerSummary: candidate.offerSummary,
       discoveryRunId: input.runId,

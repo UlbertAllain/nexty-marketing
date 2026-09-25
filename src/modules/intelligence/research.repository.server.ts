@@ -1,6 +1,7 @@
 import type { Lead } from "@/modules/leads/types";
 import {
   getFirestoreDocument,
+  patchFirestoreDocument,
   setFirestoreDocument,
 } from "@/lib/firebase/server-rest";
 import type { ResearchAnalysis } from "./types";
@@ -26,6 +27,16 @@ export async function saveResearchAnalysis(
     "researchAnalyses",
     analysis.id,
     analysis as unknown as Record<string, unknown>,
+    idToken,
+  );
+
+  await patchFirestoreDocument(
+    "leads",
+    analysis.leadId,
+    {
+      latestResearchAnalysisId: analysis.id,
+      researchDate: analysis.researchedAt.slice(0, 10),
+    },
     idToken,
   );
 }

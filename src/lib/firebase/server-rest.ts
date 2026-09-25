@@ -177,3 +177,32 @@ export async function setFirestoreDocument(
     throw new Error(`FIRESTORE_WRITE_FAILED_${response.status}`);
   }
 }
+
+export async function patchFirestoreDocument(
+  collection: string,
+  documentId: string,
+  data: Record<string, unknown>,
+  idToken: string,
+): Promise<void> {
+  const fieldPaths = Object.keys(data);
+  if (!fieldPaths.length) return;
+
+  const url = new URL(documentUrl(collection, documentId));
+  for (const fieldPath of fieldPaths) {
+    url.searchParams.append("updateMask.fieldPaths", fieldPath);
+  }
+
+  const response = await fetch(url, {
+    method: "PATCH",
+    headers: {
+      authorization: `Bearer ${idToken}`,
+      "content-type": "application/json",
+    },
+    body: JSON.stringify({ fields: encodeFields(data) }),
+    cache: "no-store",
+  });
+
+  if (!response.ok) {
+    throw new Error(`FIRESTORE_PATCH_FAILED_${response.status}`);
+  }
+}

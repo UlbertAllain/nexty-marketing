@@ -19,6 +19,22 @@ import { getAuthorityRiskLabel, getResearchLevelLabel, getVerificationLabel, toI
 
 type Tab = "pool" | "queue" | "social" | "sources" | "discovery";
 
+function getDiscoveryMapsUrl(item: {
+  business: string;
+  address?: string;
+  region: string;
+  mapsUrl?: string;
+}) {
+  if (item.mapsUrl) return item.mapsUrl;
+  const query = [item.business, item.address || item.region]
+    .filter(Boolean)
+    .join(" ")
+    .trim();
+  return query
+    ? `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(query)}`
+    : "";
+}
+
 export default function ResearchPage() {
   const { items, loading } = useProspects();
   const { items: researchQueue, loading: queueLoading } = useResearchQueue();
@@ -122,7 +138,7 @@ export default function ResearchPage() {
                   <div><span>Rekomendasi</span><strong>{item.recommendedOffer || "Audit Digital Bisnis"}</strong></div>
                 </div>
                 <div className="discovery-link-row">
-                  {item.mapsUrl ? <a href={item.mapsUrl} target="_blank" rel="noreferrer">Google Maps <ArrowUpRight size={12} /></a> : null}
+                  {getDiscoveryMapsUrl(item) ? <a href={getDiscoveryMapsUrl(item)} target="_blank" rel="noreferrer">Google Maps <ArrowUpRight size={12} /></a> : null}
                   {item.website ? <a href={item.website} target="_blank" rel="noreferrer">Website <ArrowUpRight size={12} /></a> : null}
                   {item.instagram ? <a href={item.instagram} target="_blank" rel="noreferrer">Instagram <ArrowUpRight size={12} /></a> : null}
                   {item.source1 ? <a href={item.source1} target="_blank" rel="noreferrer">Evidence 1 <ArrowUpRight size={12} /></a> : null}

@@ -117,6 +117,7 @@ export async function promoteProspect(prospect: Prospect) {
     source2: prospect.source2,
     website: prospect.website || "",
     instagram: prospect.instagram || "",
+    mapsUrl: prospect.mapsUrl || "",
     primarySocial: prospect.instagram || prospect.website || "",
     solutionConcept: prospect.offerSummary || "",
     evidenceStatus: prospect.researchLevel,

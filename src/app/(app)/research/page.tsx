@@ -122,6 +122,7 @@ export default function ResearchPage() {
                   <div><span>Rekomendasi</span><strong>{item.recommendedOffer || "Audit Digital Bisnis"}</strong></div>
                 </div>
                 <div className="discovery-link-row">
+                  {item.mapsUrl ? <a href={item.mapsUrl} target="_blank" rel="noreferrer">Google Maps <ArrowUpRight size={12} /></a> : null}
                   {item.website ? <a href={item.website} target="_blank" rel="noreferrer">Website <ArrowUpRight size={12} /></a> : null}
                   {item.instagram ? <a href={item.instagram} target="_blank" rel="noreferrer">Instagram <ArrowUpRight size={12} /></a> : null}
                   {item.source1 ? <a href={item.source1} target="_blank" rel="noreferrer">Evidence 1 <ArrowUpRight size={12} /></a> : null}

@@ -80,6 +80,7 @@ export interface Lead {
   primarySocial?: string;
   instagram?: string;
   website?: string;
+  mapsUrl?: string;
   socialVerification?: string;
   latestResearchAnalysisId?: string;
   social?: SocialProfile;
@@ -117,6 +118,7 @@ export interface Prospect {
   website?: string;
   instagram?: string;
   address?: string;
+  mapsUrl?: string;
   offerSummary?: string;
   discoveryRunId?: string;
   discoveredAt?: string;

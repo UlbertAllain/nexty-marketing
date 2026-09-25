@@ -53,6 +53,21 @@ function safeHttpUrl(value: string): string {
   }
 }
 
+function buildGoogleMapsUrl(
+  business: string,
+  address: string,
+  region: string,
+): string {
+  const query = [business, address || region]
+    .filter(Boolean)
+    .join(" ")
+    .trim();
+
+  return query
+    ? `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(query)}`
+    : "";
+}
+
 function mergeSearchResults(results: TavilySearchResult[][]): SearchEvidence[] {
   const seen = new Set<string>();
   const merged: SearchEvidence[] = [];
@@ -216,6 +231,11 @@ export async function discoverProspects(input: {
       website: safeHttpUrl(candidate.website),
       instagram: safeHttpUrl(candidate.instagram),
       address: candidate.address,
+      mapsUrl: buildGoogleMapsUrl(
+        candidate.business,
+        candidate.address,
+        candidate.region || input.area,
+      ),
       offerSummary: candidate.offerSummary,
       discoveryRunId: input.runId,
       discoveredAt: new Date().toISOString(),

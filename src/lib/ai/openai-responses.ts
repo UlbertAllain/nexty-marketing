@@ -108,7 +108,7 @@ export async function createStructuredWebResponse(
           search_context_size: "high",
         },
       ],
-      tool_choice: "auto",
+      tool_choice: "required",
       include: ["web_search_call.action.sources"],
       instructions: request.instructions,
       input: request.input,

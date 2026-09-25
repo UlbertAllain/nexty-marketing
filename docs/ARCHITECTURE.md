@@ -103,9 +103,13 @@ Firebase ID token verification
 ↓
 Load lead from Firestore
 ↓
-OpenAI Responses API + web search
+Tavily Search API
 ↓
-Zod validation + source verification
+Public evidence normalization
+↓
+Groq Responses API + structured output
+↓
+Zod validation + evidence ID verification
 ↓
 NextyLabs offer matching
 ↓
@@ -115,11 +119,12 @@ Save researchAnalyses/{analysisId}
 ```
 
 Rules:
-- OpenAI credentials are server-only and never exposed through `NEXT_PUBLIC_*` variables.
-- The model researches and extracts evidence; it does not determine the final opportunity score.
+- Groq and Tavily credentials are server-only and never exposed through `NEXT_PUBLIC_*` variables.
+- Tavily owns public-web retrieval; Groq only reasons over the supplied evidence.
+- The model does not determine the final opportunity score.
 - `serviceFit` comes from matching verified gaps against the NextyLabs service catalog.
 - `evidenceQuality` is calculated from evidence confidence, coverage, and source diversity.
-- Web sources returned by the model are accepted only when they also appear in the web-search sources returned by the provider.
+- Evidence IDs emitted by the model are accepted only when they exist in the Tavily result set.
 - Missing public evidence must be described as "not found in checked public sources", not as proof that a system or process does not exist.
 - Research output is persisted separately from the operational lead document so historical research remains auditable.
 
@@ -184,6 +189,7 @@ src/
 ├── lib/
 │   ├── ai/
 │   ├── firebase/
+│   ├── search/
 │   └── utils/
 └── data/
     └── seed/                # import/bootstrap fallback only

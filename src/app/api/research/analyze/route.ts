@@ -6,7 +6,7 @@ import {
 } from "@/lib/firebase/server-rest";
 import { buildResearchAnalysis } from "@/modules/intelligence/intelligence.service";
 import { researchRequestSchema } from "@/modules/intelligence/intelligence.schema";
-import { researchLeadWithOpenAI } from "@/modules/intelligence/openai-research.service";
+import { researchLead } from "@/modules/intelligence/research-ai.service";
 import {
   getLeadForResearch,
   saveResearchAnalysis,
@@ -31,76 +31,119 @@ function errorResponse(
   );
 }
 
+function environmentHelp(variable: string) {
+  const environment =
+    process.env.VERCEL_ENV || process.env.NODE_ENV || "unknown";
+
+  return [
+    `Environment aktif: ${environment}.`,
+    `Pastikan ${variable} aktif untuk Preview lalu redeploy.`,
+  ];
+}
+
 function mapResearchError(error: unknown) {
   const message = error instanceof Error ? error.message : "";
 
-  if (message === "OPENAI_API_KEY is not configured.") {
-    const environment = process.env.VERCEL_ENV || process.env.NODE_ENV || "unknown";
+  if (message === "GROQ_API_KEY is not configured.") {
     return errorResponse(
       503,
-      "OPENAI_API_KEY belum tersedia pada environment deployment ini.",
-      [
-        `Environment aktif: ${environment}.`,
-        "Jika memakai branch preview, aktifkan variable untuk Preview lalu redeploy.",
-      ],
+      "GROQ_API_KEY belum tersedia pada deployment ini.",
+      environmentHelp("GROQ_API_KEY"),
     );
   }
 
-  if (message.startsWith("OPENAI_REQUEST_FAILED_401")) {
+  if (message === "TAVILY_API_KEY is not configured.") {
+    return errorResponse(
+      503,
+      "TAVILY_API_KEY belum tersedia pada deployment ini.",
+      environmentHelp("TAVILY_API_KEY"),
+    );
+  }
+
+  if (message.startsWith("GROQ_REQUEST_FAILED_401")) {
     return errorResponse(
       502,
-      "API key OpenAI ditolak.",
-      ["Periksa apakah OPENAI_API_KEY benar, masih aktif, dan berasal dari project OpenAI yang tepat."],
+      "API key Groq ditolak.",
+      ["Periksa GROQ_API_KEY dan pastikan key masih aktif."],
     );
   }
 
-  if (message.startsWith("OPENAI_REQUEST_FAILED_403")) {
+  if (message.startsWith("GROQ_REQUEST_FAILED_403")) {
     return errorResponse(
       502,
-      "Project OpenAI tidak memiliki izin untuk request ini.",
-      ["Periksa permission API key dan akses model pada project OpenAI."],
+      "Groq tidak mengizinkan model atau request ini.",
+      ["Periksa model permission dan GROQ_RESEARCH_MODEL."],
     );
   }
 
-  if (message.startsWith("OPENAI_REQUEST_FAILED_429")) {
+  if (message.startsWith("GROQ_REQUEST_FAILED_429")) {
     return errorResponse(
       429,
-      "Quota atau rate limit OpenAI sedang membatasi request.",
-      ["Periksa API Billing, credit balance, usage limit, dan rate limit project OpenAI."],
+      "Free-tier Groq sedang terkena rate limit.",
+      ["Tunggu sebentar lalu jalankan riset ulang."],
     );
   }
 
-  if (message.startsWith("OPENAI_REQUEST_FAILED_400")) {
+  if (message.startsWith("GROQ_REQUEST_FAILED_400")) {
     return errorResponse(
       502,
-      "OpenAI menolak konfigurasi request.",
+      "Groq menolak konfigurasi model atau structured output.",
       [
-        "Periksa OPENAI_RESEARCH_MODEL dan konfigurasi Responses API.",
-        "Model default yang dipakai aplikasi adalah gpt-5.6-terra.",
+        "Periksa GROQ_RESEARCH_MODEL.",
+        "Default aplikasi: openai/gpt-oss-120b.",
       ],
     );
   }
 
-  if (
-    message === "OPENAI_RESEARCH_HAS_NO_WEB_SOURCES" ||
-    message === "OPENAI_RESEARCH_HAS_NO_VERIFIED_SOURCES"
-  ) {
+  if (message.startsWith("TAVILY_REQUEST_FAILED_401")) {
+    return errorResponse(
+      502,
+      "API key Tavily ditolak.",
+      ["Periksa TAVILY_API_KEY dan pastikan key masih aktif."],
+    );
+  }
+
+  if (message.startsWith("TAVILY_REQUEST_FAILED_429")) {
+    return errorResponse(
+      429,
+      "Credit atau rate limit Tavily sedang membatasi pencarian.",
+      ["Periksa credit Tavily atau tunggu sebelum menjalankan riset ulang."],
+    );
+  }
+
+  if (message.startsWith("TAVILY_REQUEST_FAILED_")) {
+    return errorResponse(
+      502,
+      "Tavily gagal mengambil sumber publik.",
+      ["Periksa status Tavily dan konfigurasi search API."],
+    );
+  }
+
+  if (message === "TAVILY_NO_RESULTS") {
     return errorResponse(
       422,
-      "AI belum menemukan sumber publik yang cukup untuk membuat analisis terverifikasi.",
-      ["Coba pastikan nama bisnis, website, atau profil sosial lead sudah cukup spesifik lalu jalankan riset ulang."],
+      "Belum ditemukan sumber publik yang cukup untuk calon klien ini.",
+      ["Pastikan nama bisnis, area, website, atau profil sosial cukup spesifik."],
     );
   }
 
   if (
-    message === "OPENAI_EMPTY_OUTPUT" ||
-    message === "OPENAI_INVALID_JSON" ||
-    message.startsWith("OPENAI_RESPONSE_")
+    message === "GROQ_EMPTY_OUTPUT" ||
+    message === "GROQ_INVALID_JSON" ||
+    message.startsWith("GROQ_RESPONSE_")
   ) {
     return errorResponse(
       502,
-      "Respons model AI belum dapat diproses dengan aman.",
-      ["Silakan coba riset ulang. Jika berulang, cek log server untuk detail provider."],
+      "Respons Groq belum dapat diproses dengan aman.",
+      ["Silakan coba riset ulang. Jika berulang, cek log server."],
+    );
+  }
+
+  if (message === "RESEARCH_HAS_NO_VERIFIED_EVIDENCE") {
+    return errorResponse(
+      422,
+      "AI belum menghasilkan temuan yang dapat dihubungkan ke evidence Tavily.",
+      ["Coba riset ulang atau lengkapi website/profil sosial calon klien."],
     );
   }
 
@@ -128,7 +171,10 @@ export async function POST(request: Request) {
   try {
     await verifyFirebaseIdToken(idToken);
   } catch {
-    return errorResponse(401, "Sesi tidak valid atau sudah kedaluwarsa.");
+    return errorResponse(
+      401,
+      "Sesi tidak valid atau sudah kedaluwarsa.",
+    );
   }
 
   try {
@@ -140,7 +186,7 @@ export async function POST(request: Request) {
       return errorResponse(404, "Calon klien tidak ditemukan.");
     }
 
-    const draft = await researchLeadWithOpenAI(lead);
+    const draft = await researchLead(lead);
     const analysis = buildResearchAnalysis(draft);
 
     await saveResearchAnalysis(analysis, idToken);

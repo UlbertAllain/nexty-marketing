@@ -1,7 +1,6 @@
 import { z } from "zod";
 import { GAP_TAGS } from "./offer-matcher";
 import {
-  EVIDENCE_TYPES,
   FINDING_CATEGORIES,
   RESEARCH_CONFIDENCES,
 } from "./types";
@@ -10,15 +9,6 @@ const evidenceIdSchema = z.string().trim().min(1).max(64);
 
 export const researchRequestSchema = z.object({
   leadId: z.string().trim().min(1).max(128),
-}).strict();
-
-const aiSourceSchema = z.object({
-  id: evidenceIdSchema,
-  type: z.enum(EVIDENCE_TYPES),
-  title: z.string().trim().min(1).max(200),
-  url: z.string().url().max(2000),
-  excerpt: z.string().trim().max(800),
-  confidence: z.enum(RESEARCH_CONFIDENCES),
 }).strict();
 
 const aiAssetSchema = z.object({
@@ -67,7 +57,6 @@ export const aiResearchResultSchema = z.object({
     avoid: z.array(z.string().trim().min(1).max(300)).max(8),
     draftMessage: z.string().trim().min(1).max(3000),
   }).strict(),
-  sources: z.array(aiSourceSchema).min(1).max(15),
 }).strict();
 
 export type AiResearchResult = z.infer<typeof aiResearchResultSchema>;
@@ -75,8 +64,6 @@ export type AiResearchResult = z.infer<typeof aiResearchResultSchema>;
 export const AI_RESEARCH_JSON_SCHEMA = {
   type: "json_schema",
   name: "nextyleads_research",
-  description:
-    "Structured, evidence-backed business research for a NextyLeads marketing prospect.",
   strict: true,
   schema: {
     type: "object",
@@ -88,7 +75,6 @@ export const AI_RESEARCH_JSON_SCHEMA = {
       "gaps",
       "scoringSignals",
       "outreach",
-      "sources",
     ],
     properties: {
       summary: { type: "string" },
@@ -204,22 +190,6 @@ export const AI_RESEARCH_JSON_SCHEMA = {
             items: { type: "string" },
           },
           draftMessage: { type: "string" },
-        },
-      },
-      sources: {
-        type: "array",
-        items: {
-          type: "object",
-          additionalProperties: false,
-          required: ["id", "type", "title", "url", "excerpt", "confidence"],
-          properties: {
-            id: { type: "string" },
-            type: { type: "string", enum: [...EVIDENCE_TYPES] },
-            title: { type: "string" },
-            url: { type: "string" },
-            excerpt: { type: "string" },
-            confidence: { type: "string", enum: [...RESEARCH_CONFIDENCES] },
-          },
         },
       },
     },

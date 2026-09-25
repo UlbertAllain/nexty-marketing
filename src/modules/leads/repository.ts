@@ -115,6 +115,10 @@ export async function promoteProspect(prospect: Prospect) {
     firstContactAngle: prospect.notes,
     source1: prospect.source1,
     source2: prospect.source2,
+    website: prospect.website || "",
+    instagram: prospect.instagram || "",
+    primarySocial: prospect.instagram || prospect.website || "",
+    solutionConcept: prospect.offerSummary || "",
     evidenceStatus: prospect.researchLevel,
     guardrail: DEFAULT_RESEARCH_GUARDRAIL,
   });

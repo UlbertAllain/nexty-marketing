@@ -206,3 +206,48 @@ export async function patchFirestoreDocument(
     throw new Error(`FIRESTORE_PATCH_FAILED_${response.status}`);
   }
 }
+
+type FirestoreListResponse = {
+  documents?: Array<FirestoreDocument & { name?: string }>;
+  nextPageToken?: string;
+};
+
+function collectionUrl(collection: string): string {
+  const projectId = encodeURIComponent(getFirebaseProjectId());
+  return `https://firestore.googleapis.com/v1/projects/${projectId}/databases/(default)/documents/${encodeURIComponent(collection)}`;
+}
+
+export async function listFirestoreCollection<T>(
+  collection: string,
+  idToken: string,
+): Promise<Array<T & { id: string }>> {
+  const items: Array<T & { id: string }> = [];
+  let pageToken = "";
+
+  do {
+    const url = new URL(collectionUrl(collection));
+    url.searchParams.set("pageSize", "500");
+    if (pageToken) url.searchParams.set("pageToken", pageToken);
+
+    const response = await fetch(url, {
+      headers: { authorization: `Bearer ${idToken}` },
+      cache: "no-store",
+    });
+
+    if (!response.ok) throw new Error(`FIRESTORE_LIST_FAILED_${response.status}`);
+
+    const payload = (await response.json()) as FirestoreListResponse;
+    for (const document of payload.documents ?? []) {
+      const rawId = document.name?.split("/").pop() || "";
+      if (!rawId) continue;
+      items.push({
+        ...(decodeFields(document.fields ?? {}) as T),
+        id: decodeURIComponent(rawId),
+      });
+    }
+
+    pageToken = payload.nextPageToken || "";
+  } while (pageToken);
+
+  return items;
+}

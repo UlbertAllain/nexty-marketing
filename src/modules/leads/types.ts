@@ -27,6 +27,13 @@ export interface SocialProfile {
   checkedAt: string;
   verificationSource: string;
   notes: string;
+  website?: string;
+  instagram?: string;
+  address?: string;
+  offerSummary?: string;
+  discoveryRunId?: string;
+  discoveredAt?: string;
+  discoverySourceCount?: number;
 }
 
 export interface FollowUpSeed {

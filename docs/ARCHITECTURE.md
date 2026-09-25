@@ -128,6 +128,39 @@ Rules:
 - Missing public evidence must be described as "not found in checked public sources", not as proof that a system or process does not exist.
 - Research output is persisted separately from the operational lead document so historical research remains auditable.
 
+## AI Target Discovery
+
+Target Discovery is the second AI workflow and is intentionally separate from per-lead intelligence.
+
+```text
+Research page
+↓
+Area + target category
+↓
+Tavily public-web discovery
+↓
+Groq candidate extraction and market-fit analysis
+↓
+Server-side deduplication against prospects + leads
+↓
+Deterministic NextyLabs service matching + fit score
+↓
+prospects/{prospectId}
+↓
+Human review
+↓
+Promote selected prospect to leads/{leadId}
+```
+
+Rules:
+- Discovery is batch-based and does not claim exhaustive coverage of every business in an area.
+- Tavily owns public-web retrieval; Groq only reasons over supplied evidence.
+- Missing phone, address, social account, rating, or website remains empty rather than being invented.
+- Repeated runs deduplicate against both the staging prospect pool and active leads.
+- AI-discovered prospects remain staging data until the marketing user explicitly promotes them.
+- `discoveryRuns/{runId}` stores run-level traceability and candidate IDs.
+- Final discovery fit is calculated by application rules from relevance, observable digital opportunity, contactability, evidence strength, and deterministic service fit.
+
 ## Chat automation
 
 First outreach:

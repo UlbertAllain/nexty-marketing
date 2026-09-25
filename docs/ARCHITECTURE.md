@@ -39,7 +39,12 @@ The app follows the **workflow**, not the workbook tab layout. Excel remains the
 - D+2 / D+5 / manual follow-up tasks
 
 `prospects/{prospectId}`
-- 129-prospect pool
+- approved prospect pool
+
+`discoveryCandidates/{candidateId}`
+- AI-discovered businesses waiting for human audit
+- public evidence, enrichment, gap, offer match, fit score
+- status: pending / added
 
 `socialProfiles/{leadId}`
 - Instagram, TikTok, Facebook, LinkedIn, website, link-in-bio
@@ -145,11 +150,15 @@ Server-side deduplication against prospects + leads
 ↓
 Deterministic NextyLabs service matching + fit score
 ↓
+discoveryCandidates/{candidateId}
+↓
+Human audit in "Hasil discovery"
+↓
+Explicit "Masukkan ke daftar"
+↓
 prospects/{prospectId}
 ↓
-Human review
-↓
-Promote selected prospect to leads/{leadId}
+Existing prospect-to-lead workflow
 ```
 
 Rules:
@@ -157,7 +166,8 @@ Rules:
 - Tavily owns public-web retrieval; Groq only reasons over supplied evidence.
 - Missing phone, address, social account, rating, or website remains empty rather than being invented.
 - Repeated runs deduplicate against both the staging prospect pool and active leads.
-- AI-discovered prospects remain staging data until the marketing user explicitly promotes them.
+- AI-discovered businesses are stored in `discoveryCandidates`, never directly in `prospects`.
+- The marketing user explicitly approves a discovery candidate before it is copied into the prospect pool.
 - `discoveryRuns/{runId}` stores run-level traceability and candidate IDs.
 - Final discovery fit is calculated by application rules from relevance, observable digital opportunity, contactability, evidence strength, and deterministic service fit.
 
@@ -243,6 +253,7 @@ Operational data is live from Firestore:
 - leads and lead activities
 - follow-up tasks
 - prospects
+- discovery candidates + discovery runs
 - research queue
 - social profiles
 - research sources

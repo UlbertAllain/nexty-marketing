@@ -1,16 +1,17 @@
 import { listFirestoreCollection, setFirestoreDocument } from "@/lib/firebase/server-rest";
 import type { Lead, Prospect } from "@/modules/leads/types";
-import type { DiscoveryRunResult } from "./discovery.types";
+import type { DiscoveryCandidate, DiscoveryRunResult } from "./discovery.types";
 import { normalizeDiscoveryBusinessName } from "./discovery.service";
 
 export async function getExistingDiscoveryBusinessNames(idToken: string): Promise<Set<string>> {
-  const [prospects, leads] = await Promise.all([
+  const [discoveryCandidates, prospects, leads] = await Promise.all([
+    listFirestoreCollection<DiscoveryCandidate>("discoveryCandidates", idToken),
     listFirestoreCollection<Prospect>("prospects", idToken),
     listFirestoreCollection<Lead>("leads", idToken),
   ]);
 
   return new Set(
-    [...prospects, ...leads]
+    [...discoveryCandidates, ...prospects, ...leads]
       .map((item) => normalizeDiscoveryBusinessName(item.business || ""))
       .filter(Boolean),
   );
@@ -19,7 +20,7 @@ export async function getExistingDiscoveryBusinessNames(idToken: string): Promis
 export async function saveDiscoveryRun(result: DiscoveryRunResult, idToken: string): Promise<void> {
   for (const candidate of result.candidates) {
     await setFirestoreDocument(
-      "prospects",
+      "discoveryCandidates",
       candidate.id,
       candidate as unknown as Record<string, unknown>,
       idToken,

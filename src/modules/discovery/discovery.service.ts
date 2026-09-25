@@ -1,6 +1,7 @@
 import { createGroqStructuredResponse } from "@/lib/ai/groq-responses";
 import { searchWeb, type TavilySearchResult } from "@/lib/search/tavily";
 import type { Prospect } from "@/modules/leads/types";
+import type { DiscoveryCandidate } from "./discovery.types";
 import { matchOffersToGaps } from "@/modules/intelligence/offer-matcher";
 import type { BusinessGap } from "@/modules/intelligence/types";
 import {
@@ -149,7 +150,7 @@ export async function discoverProspects(input: {
   maxCandidates: number;
   existingBusinessNames: Set<string>;
   runId: string;
-}): Promise<{ prospects: Prospect[]; searchedSources: number; analyzedCandidates: number; duplicates: number }> {
+}): Promise<{ prospects: DiscoveryCandidate[]; searchedSources: number; analyzedCandidates: number; duplicates: number }> {
   const queries = buildQueries(input.area, input.category);
   const searchGroups = await Promise.all(queries.map((query) => searchWeb(query, 8)));
   const evidence = mergeSearchResults(searchGroups);
@@ -173,7 +174,7 @@ export async function discoverProspects(input: {
   const parsed = discoveryAiResultSchema.parse(raw);
   const evidenceById = new Map(evidence.map((item) => [item.id, item]));
   const localSeen = new Set<string>();
-  const prospects: Prospect[] = [];
+  const prospects: DiscoveryCandidate[] = [];
   let duplicates = 0;
 
   for (const candidate of parsed.candidates.slice(0, input.maxCandidates)) {
@@ -220,6 +221,7 @@ export async function discoverProspects(input: {
       discoveryRunId: input.runId,
       discoveredAt: new Date().toISOString(),
       discoverySourceCount: validEvidenceIds.length,
+      discoveryStatus: "pending",
     });
   }
 

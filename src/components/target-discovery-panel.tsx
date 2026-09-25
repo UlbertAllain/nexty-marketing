@@ -43,8 +43,7 @@ export function TargetDiscoveryPanel() {
           <p className="eyebrow">AI Target Discovery</p>
           <h2>Temukan calon klien baru dari pasar lokal</h2>
           <p className="panel-description">
-            Cari bisnis publik, cek jejak digitalnya, analisis peluang kebutuhan,
-            lalu masukkan kandidat yang layak ke daftar calon klien.
+            Cari bisnis publik, cek jejak digitalnya, dan simpan hasilnya ke ruang audit sebelum kandidat dipilih masuk ke daftar calon klien.
           </p>
         </div>
         <span className="discovery-ai-pill"><Sparkles size={13} />AI #2</span>
@@ -85,21 +84,20 @@ export function TargetDiscoveryPanel() {
 
       <p className="discovery-note">
         Discovery bekerja per batch dari sumber publik. Hasil bukan daftar seluruh
-        bisnis yang ada di wilayah tersebut, dan kandidat tetap harus dipilih
-        sebelum masuk ke daftar kerja.
+        bisnis yang ada di wilayah tersebut. Semua hasil disimpan dulu di tab Hasil discovery untuk diaudit.
       </p>
 
       {error ? <div className="discovery-error">{error}</div> : null}
 
       {result ? (
         <div className="discovery-summary">
-          <div><strong>{result.inserted}</strong><span>Kandidat baru</span></div>
+          <div><strong>{result.inserted}</strong><span>Hasil baru</span></div>
           <div><strong>{result.duplicates}</strong><span>Duplikat dilewati</span></div>
           <div><strong>{result.searchedSources}</strong><span>Sumber diperiksa</span></div>
           <div><strong>{result.analyzedCandidates}</strong><span>Kandidat dianalisis</span></div>
           <p>
-            Hasil baru otomatis masuk ke daftar di bawah. Review detailnya lalu klik
-            <strong> Masukkan ke daftar</strong> hanya untuk bisnis yang ingin diprospek.
+            Hasil baru disimpan di tab <strong>Hasil discovery</strong>. Audit dulu datanya,
+            lalu pilih <strong>Masukkan ke daftar</strong> hanya untuk bisnis yang benar-benar ingin diprospek.
           </p>
         </div>
       ) : null}

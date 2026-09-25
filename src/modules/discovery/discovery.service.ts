@@ -1,6 +1,5 @@
 import { createGroqStructuredResponse } from "@/lib/ai/groq-responses";
 import { searchWeb, type TavilySearchResult } from "@/lib/search/tavily";
-import type { Prospect } from "@/modules/leads/types";
 import type { DiscoveryCandidate } from "./discovery.types";
 import { matchOffersToGaps } from "@/modules/intelligence/offer-matcher";
 import type { BusinessGap } from "@/modules/intelligence/types";

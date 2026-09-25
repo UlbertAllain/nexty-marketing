@@ -37,15 +37,13 @@ export function subscribeDiscoveryCandidates(
 }
 
 function toProspect(candidate: DiscoveryCandidate): Prospect {
-  const {
-    discoveryStatus: _discoveryStatus,
-    addedToProspectsAt: _addedToProspectsAt,
-    ...prospect
-  } = candidate;
+  const prospect = { ...candidate } as Partial<DiscoveryCandidate>;
+  delete prospect.discoveryStatus;
+  delete prospect.addedToProspectsAt;
 
   return {
-    ...prospect,
-    targetId: prospect.targetId || "",
+    ...(prospect as Prospect),
+    targetId: candidate.targetId || "",
     poolStatus: "Needs Research",
   };
 }

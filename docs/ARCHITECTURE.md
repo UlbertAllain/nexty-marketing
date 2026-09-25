@@ -39,7 +39,12 @@ The app follows the **workflow**, not the workbook tab layout. Excel remains the
 - D+2 / D+5 / manual follow-up tasks
 
 `prospects/{prospectId}`
-- 129-prospect pool
+- approved prospect pool
+
+`discoveryCandidates/{candidateId}`
+- AI-discovered businesses waiting for human audit
+- public evidence, enrichment, gap, offer match, fit score
+- status: pending / added
 
 `socialProfiles/{leadId}`
 - Instagram, TikTok, Facebook, LinkedIn, website, link-in-bio
@@ -50,6 +55,14 @@ The app follows the **workflow**, not the workbook tab layout. Excel remains the
 
 `researchSources/{id}`
 - 138 source/evidence rows
+
+`researchAnalyses/{analysisId}`
+- AI-assisted research snapshot for one lead
+- evidence-backed findings and business gaps
+- deterministic opportunity scoring
+- matched NextyLabs offers
+- outreach strategy and draft message
+- model + research timestamp for traceability
 
 `dailyKpis/{id}`
 - 30-day KPI plan imported from Excel
@@ -81,6 +94,82 @@ This layer guarantees that no workbook cell is silently discarded just because t
 - Growth combines Content Plan + Growth Plan + Partnerships/Reactivation/Referral + Portfolio Proof.
 - Reports combines live funnel + Daily KPI + Weekly Review + Cashflow.
 - Data Vault exposes the raw workbook snapshot for audit only.
+
+## AI Research Intelligence
+
+Request flow:
+
+```text
+Lead Detail / Client
+↓
+POST /api/research/analyze
+↓
+Firebase ID token verification
+↓
+Load lead from Firestore
+↓
+Tavily Search API
+↓
+Public evidence normalization
+↓
+Groq Responses API + structured output
+↓
+Zod validation + evidence ID verification
+↓
+NextyLabs offer matching
+↓
+Deterministic scoring
+↓
+Save researchAnalyses/{analysisId}
+```
+
+Rules:
+- Groq and Tavily credentials are server-only and never exposed through `NEXT_PUBLIC_*` variables.
+- Tavily owns public-web retrieval; Groq only reasons over the supplied evidence.
+- The model does not determine the final opportunity score.
+- `serviceFit` comes from matching verified gaps against the NextyLabs service catalog.
+- `evidenceQuality` is calculated from evidence confidence, coverage, and source diversity.
+- Evidence IDs emitted by the model are accepted only when they exist in the Tavily result set.
+- Missing public evidence must be described as "not found in checked public sources", not as proof that a system or process does not exist.
+- Research output is persisted separately from the operational lead document so historical research remains auditable.
+
+## AI Target Discovery
+
+Target Discovery is the second AI workflow and is intentionally separate from per-lead intelligence.
+
+```text
+Research page
+↓
+Area + target category
+↓
+Tavily public-web discovery
+↓
+Groq candidate extraction and market-fit analysis
+↓
+Server-side deduplication against prospects + leads
+↓
+Deterministic NextyLabs service matching + fit score
+↓
+discoveryCandidates/{candidateId}
+↓
+Human audit in "Hasil discovery"
+↓
+Explicit "Masukkan ke daftar"
+↓
+prospects/{prospectId}
+↓
+Existing prospect-to-lead workflow
+```
+
+Rules:
+- Discovery is batch-based and does not claim exhaustive coverage of every business in an area.
+- Tavily owns public-web retrieval; Groq only reasons over supplied evidence.
+- Missing phone, address, social account, rating, or website remains empty rather than being invented.
+- Repeated runs deduplicate against both the staging prospect pool and active leads.
+- AI-discovered businesses are stored in `discoveryCandidates`, never directly in `prospects`.
+- The marketing user explicitly approves a discovery candidate before it is copied into the prospect pool.
+- `discoveryRuns/{runId}` stores run-level traceability and candidate IDs.
+- Final discovery fit is calculated by application rules from relevance, observable digital opportunity, contactability, evidence strength, and deterministic service fit.
 
 ## Chat automation
 
@@ -131,6 +220,7 @@ src/
 ├── modules/                # domain + data access
 │   ├── auth/
 │   ├── leads/
+│   ├── intelligence/
 │   ├── messages/
 │   ├── research/
 │   ├── reference/
@@ -140,7 +230,9 @@ src/
 ├── components/             # reusable application UI
 │   └── ui/
 ├── lib/
+│   ├── ai/
 │   ├── firebase/
+│   ├── search/
 │   └── utils/
 └── data/
     └── seed/                # import/bootstrap fallback only
@@ -161,9 +253,11 @@ Operational data is live from Firestore:
 - leads and lead activities
 - follow-up tasks
 - prospects
+- discovery candidates + discovery runs
 - research queue
 - social profiles
 - research sources
+- AI research analyses
 - custom message templates
 
 Reference/workbook content is synchronized into Firestore `referenceData` / `excelSheets` and read live by the UI after synchronization. Bundled JSON is retained only as the bootstrap fallback for a fresh workspace.

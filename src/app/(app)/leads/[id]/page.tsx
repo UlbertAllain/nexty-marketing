@@ -6,6 +6,7 @@ import { ExternalLink, Phone } from "lucide-react";
 import { ActivityTimeline } from "@/components/activity-timeline";
 import { MessageComposer } from "@/components/message-composer";
 import { PageHeader } from "@/components/page-header";
+import { ResearchIntelligencePanel } from "@/components/research-intelligence-panel";
 import { getStageLabel, PriorityBadge, StatusBadge } from "@/components/status-badge";
 import { SocialLinks } from "@/components/social-links";
 import { useActivities, useLead } from "@/modules/leads/hooks";
@@ -60,6 +61,8 @@ async function saveField(field: "nextAction" | "notes", value: string) {
             <SocialLinks social={lead.social} />
             {lead.social?.notes ? <p className="tiny muted social-note">{toIndonesianMarketingCopy(lead.social.notes)}</p> : null}
           </section>
+
+          <ResearchIntelligencePanel lead={lead} />
 
           <MessageComposer lead={lead} />
 

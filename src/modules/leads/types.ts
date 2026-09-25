@@ -80,7 +80,9 @@ export interface Lead {
   primarySocial?: string;
   instagram?: string;
   website?: string;
+  mapsUrl?: string;
   socialVerification?: string;
+  latestResearchAnalysisId?: string;
   social?: SocialProfile;
   followUpSeed?: FollowUpSeed;
   personalizationChecklist: string;
@@ -113,6 +115,14 @@ export interface Prospect {
   source1: string;
   source2: string;
   notes: string;
+  website?: string;
+  instagram?: string;
+  address?: string;
+  mapsUrl?: string;
+  offerSummary?: string;
+  discoveryRunId?: string;
+  discoveredAt?: string;
+  discoverySourceCount?: number;
 }
 
 export interface Activity {
